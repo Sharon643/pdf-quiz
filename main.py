@@ -1,33 +1,104 @@
 import fitz
 
-from extractor.word_extractor import WordExtractor
+from extractor.config import INPUT_PDF, OUTPUT_JSON, PDF_DPI
+
+from extractor.question_parser import QuestionParser
 from extractor.highlight_detector import HighlightDetector
-from extractor.matcher import Matcher
+from extractor.ocr_reader import OCRReader
+from extractor.answer_matcher import AnswerMatcher
+from extractor.exporter import Exporter
 
-doc = fitz.open("data/pdf/sample.pdf")
 
-page = doc[1]
+def main():
 
-print(page.rect)
+    parser = QuestionParser()
+    ocr = OCRReader()
+    matcher = AnswerMatcher()
 
-# Extract words
-words = WordExtractor(page).extract()
+    doc = fitz.open(INPUT_PDF)
 
-# Detect highlights
-highlights = HighlightDetector("page2.png").detect()
+    print("========== STEP 1: Parsing Questions ==========\n")
 
-# print("First 5 words:")
-# for word in words[:5]:
-#     print(word)
+    # Parse every page while keeping parser state
+    for page_number, page in enumerate(doc):
 
-# print("\nFirst 5 highlights:")
-# for highlight in highlights[:5]:
-#     print(highlight)
+        print(f"Parsing Page {page_number + 1}")
 
-# Match
-answers = Matcher.match(words, highlights)
+        parser.parse(page.get_text())
 
-print("\nDetected highlighted answers:\n")
+    questions = parser.get_questions()
 
-for answer in answers:
-    print(answer)
+    print(f"\nTotal Questions Parsed : {len(questions)}")
+
+    print("\n========== STEP 2: OCR Extraction ==========\n")
+
+    ocr_answers = []
+
+    for page_number, page in enumerate(doc):
+
+        print(f"OCR Page {page_number + 1}")
+
+        TEMP_IMAGE = "temp_page.png"
+
+        page.get_pixmap(dpi=PDF_DPI).save(TEMP_IMAGE)
+
+        detector = HighlightDetector(TEMP_IMAGE)
+
+        page.get_pixmap(dpi=PDF_DPI).save(TEMP_IMAGE)
+
+        detector = HighlightDetector(TEMP_IMAGE)
+
+        highlights = detector.detect(save_debug=False)
+
+        for highlight in highlights:
+
+            answer = ocr.read(highlight["image"])
+
+            ocr_answers.append(answer)
+
+    print(f"\nTotal OCR Answers : {len(ocr_answers)}")
+    print("\nFirst 5 Questions")
+
+    for q in questions[:5]:
+        print(q["number"])
+
+    print("\nFirst 5 OCR Answers")
+
+    for a in ocr_answers[:5]:
+        print(a)
+
+    print("\n========== STEP 3: Validation ==========\n")
+
+    if len(questions) != len(ocr_answers):
+
+        print("Counts don't match!")
+        print(f"Questions : {len(questions)}")
+        print(f"OCR Answers : {len(ocr_answers)}")
+
+        return
+
+    print("Counts match!\n")
+
+    print("========== STEP 4: Matching ==========\n")
+
+    for question, answer in zip(questions, ocr_answers):
+
+        letter, score = matcher.match(question, answer)
+
+        question["correct_answer"] = letter
+        question["match_score"] = score
+
+    print("Matching complete.\n")
+
+    print("========== STEP 5: Export ==========\n")
+
+    Exporter.save(
+        questions,
+        OUTPUT_JSON
+    )
+
+    print("Done!")
+
+
+if __name__ == "__main__":
+    main()
