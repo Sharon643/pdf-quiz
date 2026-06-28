@@ -1,1 +1,10 @@
 venv/
+__pycache__/
+*.pyc
+page2.png
+word_boxes.png
+debug_page.png
+highlight_detection.png
+test.py
+debug/
+test_question.py
