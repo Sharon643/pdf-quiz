@@ -1,4 +1,8 @@
 import fitz
+import os
+import cv2
+
+
 
 from extractor.config import INPUT_PDF, OUTPUT_JSON, PDF_DPI
 
@@ -7,6 +11,8 @@ from extractor.highlight_detector import HighlightDetector
 from extractor.ocr_reader import OCRReader
 from extractor.answer_matcher import AnswerMatcher
 from extractor.exporter import Exporter
+
+
 
 
 def main():
@@ -20,11 +26,18 @@ def main():
     print("========== STEP 1: Parsing Questions ==========\n")
 
     # Parse every page while keeping parser state
+    page_question_counts = []
+
     for page_number, page in enumerate(doc):
 
-        print(f"Parsing Page {page_number + 1}")
+        page_questions = parser.parse(page.get_text())
 
-        parser.parse(page.get_text())
+        page_question_counts.append(len(page_questions))
+
+        print(
+            f"Page {page_number+1}: "
+            f"{len(page_questions)} questions"
+        )
 
     questions = parser.get_questions()
 
@@ -33,22 +46,46 @@ def main():
     print("\n========== STEP 2: OCR Extraction ==========\n")
 
     ocr_answers = []
+    os.makedirs("debug", exist_ok=True)
+
+    highlight_counts = []
 
     for page_number, page in enumerate(doc):
 
-        print(f"OCR Page {page_number + 1}")
+        print(f"\nOCR Page {page_number+1}")
 
-        TEMP_IMAGE = "temp_page.png"
+        image_path = "temp_page.png"
 
-        page.get_pixmap(dpi=PDF_DPI).save(TEMP_IMAGE)
+        page.get_pixmap(dpi=PDF_DPI).save(image_path)
 
-        detector = HighlightDetector(TEMP_IMAGE)
-
-        page.get_pixmap(dpi=PDF_DPI).save(TEMP_IMAGE)
-
-        detector = HighlightDetector(TEMP_IMAGE)
+        detector = HighlightDetector(image_path)
 
         highlights = detector.detect(save_debug=False)
+
+        count = len(highlights)
+        highlight_counts.append(count)
+
+        print(f"Highlights detected: {count}")
+
+        if count <= 2:
+
+            page_folder = f"debug/page_{page_number+1}"
+            os.makedirs(page_folder, exist_ok=True)
+
+            for i, highlight in enumerate(highlights):
+
+                cv2.imwrite(
+                    f"{page_folder}/highlight_{i+1}.png",
+                    highlight["image"]
+                )
+        # Save suspicious pages
+        if count <= 2:
+
+            print("Possible problem page")
+
+            page.get_pixmap(dpi=300).save(
+                f"debug/page_{page_number+1}.png"
+            )
 
         for highlight in highlights:
 
@@ -66,6 +103,24 @@ def main():
 
     for a in ocr_answers[:5]:
         print(a)
+
+        print("\n")
+    print("=" * 60)
+    print("HIGHLIGHT REPORT")
+    print("=" * 60)
+
+    for page, count in enumerate(highlight_counts, start=1):
+        print(f"Page {page:3} : {count}")
+
+    print("=" * 60)
+
+    print("\n========== PAGE REPORT ==========\n")
+
+    for i in range(len(page_question_counts)):
+
+        q = page_question_counts[i]
+
+        print(f"Page {i+1}: Questions = {q}")
 
     print("\n========== STEP 3: Validation ==========\n")
 

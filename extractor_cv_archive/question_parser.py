@@ -10,6 +10,8 @@ class QuestionParser:
 
     def parse(self, text):
 
+        page_questions = []
+
         lines = [line.strip() for line in text.split("\n")]
 
         for line in lines:
@@ -24,7 +26,6 @@ class QuestionParser:
             if line.startswith("http"):
                 continue
 
-            # Skip subject headings for now
             if line.lower().endswith("system"):
                 continue
 
@@ -35,6 +36,7 @@ class QuestionParser:
 
                 if self.current:
                     self.questions.append(self.current)
+                    page_questions.append(self.current)
 
                 number = int(re.match(r"^(\d+)\.", line).group(1))
 
@@ -57,9 +59,7 @@ class QuestionParser:
 
             if option:
 
-                # Ignore orphan options safely
                 if self.current is None:
-                    print(f"Warning: Option found before question: {line}")
                     continue
 
                 letter = option.group(1).upper()
@@ -79,15 +79,13 @@ class QuestionParser:
 
                 self.current["options"][self.current_option] += " " + line
 
-            # -----------------------------
-            # Continue question
-            # -----------------------------
             elif self.current:
 
                 self.current["question"] += " " + line
 
+        return page_questions
+    
     def get_questions(self):
-
         if self.current:
             self.questions.append(self.current)
             self.current = None
