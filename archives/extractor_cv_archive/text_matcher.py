@@ -1,7 +1,7 @@
 import fitz
 
-from question_parser import QuestionParser
-from answer_matcher import AnswerMatcher
+from archives.extractor_cv_archive.question_parser import QuestionParser
+from archives.extractor_cv_archive.answer_matcher import AnswerMatcher
 
 doc = fitz.open("data/pdf/sample.pdf")
 
