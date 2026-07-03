@@ -30,7 +30,7 @@ class Exporter:
     def merge(chunk_dir, output_file):
 
         import re
-        from extractor.validator import Validator
+        from backend.extractor.validator import Validator
 
         all_questions = []
 

@@ -1,4 +1,4 @@
-from utils.constants import HOME
+from backend.utils.constants import HOME
 import streamlit as st
 
 

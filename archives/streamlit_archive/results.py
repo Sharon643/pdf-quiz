@@ -1,6 +1,6 @@
 import streamlit as st
 
-from utils.scorer import calculate_score
+from backend.utils.scorer import calculate_score
 
 
 def show_results():

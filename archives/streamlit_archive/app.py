@@ -4,7 +4,7 @@ from quiz.quiz_page import show_quiz
 from quiz.results import show_results
 import streamlit as st
 
-from utils.constants import *
+from backend.utils.constants import *
 
 
 class QuizApp:

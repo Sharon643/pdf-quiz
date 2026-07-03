@@ -1,6 +1,6 @@
 import streamlit as st
 
-from utils.constants import RESULTS
+from backend.utils.constants import RESULTS
 
 
 def show_controls(current, total):

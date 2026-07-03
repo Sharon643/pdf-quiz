@@ -1,13 +1,22 @@
-venv/
+# Python
+backend/venv/
+backend/debug/
+backend/data/
 __pycache__/
 *.pyc
-page2.png
-word_boxes.png
-debug_page.png
-highlight_detection.png
-test.py
-debug/
-test_question.py
-.env
-data/
-temp_page.png
+
+# Environment
+backend/.env
+
+# React
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+venv/

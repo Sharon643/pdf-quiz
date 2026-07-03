@@ -1,11 +1,11 @@
 import os
 
-from extractor.pdf_splitter import PDFSplitter
-from extractor.gemini_client import GeminiClient
-from extractor.exporter import Exporter
-from extractor.checkpoint import Checkpoint
+from backend.extractor.pdf_splitter import PDFSplitter
+from backend.extractor.gemini_client import GeminiClient
+from backend.extractor.exporter import Exporter
+from backend.extractor.checkpoint import Checkpoint
 
-from extractor.config import (
+from backend.extractor.config import (
     CHUNK_SIZE,
     CHUNKS_DIR,
     CHUNK_JSON_DIR,

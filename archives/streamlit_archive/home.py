@@ -1,8 +1,8 @@
 import streamlit as st
 
-from utils.loader import load_questions
-from config import QUESTIONS_JSON
-from utils.constants import EXAM_SETTINGS
+from backend.utils.loader import load_questions
+from backend.config import QUESTIONS_JSON
+from backend.utils.constants import EXAM_SETTINGS
 
 
 def show_home():

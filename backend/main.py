@@ -2,7 +2,7 @@ import streamlit as st
 
 from quiz.styles import load_css
 from quiz.app import QuizApp
-from utils.session import initialize
+from backend.utils.session import initialize
 
 st.set_page_config(
     page_title="QuizForge AI",

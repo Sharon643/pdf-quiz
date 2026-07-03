@@ -1,7 +1,7 @@
 import streamlit as st
 
-from utils.constants import EXAM
-from utils.exam_manager import ExamManager
+from backend.utils.constants import EXAM
+from backend.utils.exam_manager import ExamManager
 
 
 def show_exam_settings():
