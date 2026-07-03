@@ -8,3 +8,5 @@ highlight_detection.png
 test.py
 debug/
 test_question.py
+.env
+data/
