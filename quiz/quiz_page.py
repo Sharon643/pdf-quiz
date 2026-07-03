@@ -1,12 +1,23 @@
 import streamlit as st
 
+from quiz.navigator import show_navigator
 from utils.constants import RESULTS
+
 
 def show_quiz():
 
-    st.title("🧠 QuizForge AI")
+    # -----------------------------
+    # Sidebar
+    # -----------------------------
 
-    questions = st.session_state.questions
+    with st.sidebar:
+        show_navigator()
+
+    # -----------------------------
+    # Questions
+    # -----------------------------
+
+    questions = st.session_state.active_questions
 
     current = st.session_state.current_question
 
@@ -14,9 +25,11 @@ def show_quiz():
 
     question = questions[current]
 
-    # -----------------------------------
-    # Progress
-    # -----------------------------------
+    # -----------------------------
+    # Header
+    # -----------------------------
+
+    st.title("🧠 QuizForge AI")
 
     progress = (current + 1) / total
 
@@ -24,17 +37,13 @@ def show_quiz():
 
     st.caption(f"Question {current + 1} of {total}")
 
-    # -----------------------------------
-    # Subject
-    # -----------------------------------
-
     st.markdown(f"### 📖 {question['subject']}")
 
     st.divider()
 
-    # -----------------------------------
+    # -----------------------------
     # Question
-    # -----------------------------------
+    # -----------------------------
 
     st.subheader(question["question"])
 
@@ -42,13 +51,12 @@ def show_quiz():
 
     letters = ["A", "B", "C", "D"]
 
-    # Previously selected answer
-    previous = st.session_state.answers.get(current)
+    previous_answer = st.session_state.answers.get(current)
 
     default_index = None
 
-    if previous in letters:
-        default_index = letters.index(previous)
+    if previous_answer in letters:
+        default_index = letters.index(previous_answer)
 
     selected = st.radio(
         "Choose an answer",
@@ -58,37 +66,43 @@ def show_quiz():
         key=f"question_{current}"
     )
 
-    # Save answer only if something is selected
+    # for letter in letters:
+    #     st.write(f"{letter}. {options.get(letter, '')}")
+
     if selected is not None:
         st.session_state.answers[current] = selected
 
     st.divider()
 
-    # -----------------------------------
+    # -----------------------------
     # Navigation
-    # -----------------------------------
+    # -----------------------------
 
-    left, right = st.columns(2)
+    col1, col2 = st.columns(2)
 
-    with left:
+    with col1:
 
         if st.button(
             "⬅ Previous",
             use_container_width=True,
             disabled=current == 0
         ):
+
             st.session_state.current_question -= 1
+
             st.rerun()
 
-    with right:
+    with col2:
 
         if current == total - 1:
 
             if st.button(
-                "✅ Submit Quiz",
+                "✅ Submit Exam",
                 use_container_width=True
             ):
+
                 st.session_state.page = RESULTS
+
                 st.rerun()
 
         else:
@@ -97,5 +111,7 @@ def show_quiz():
                 "Next ➡",
                 use_container_width=True
             ):
+
                 st.session_state.current_question += 1
+
                 st.rerun()

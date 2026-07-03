@@ -18,6 +18,8 @@ def initialize():
 
         "answers": {},
 
+        "marked_questions": set(),
+
         "score": 0,
 
         "review": [],

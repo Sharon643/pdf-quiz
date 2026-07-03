@@ -1,6 +1,7 @@
 import streamlit as st
 
 from utils.constants import EXAM
+from utils.exam_manager import ExamManager
 
 
 def show_exam_settings():
@@ -56,6 +57,17 @@ def show_exam_settings():
         st.session_state.randomize = randomize
 
         st.session_state.timer = timer
+
+        active_questions = ExamManager.build_exam(
+            st.session_state.questions,
+            size=exam_size,
+            randomize=randomize
+        )
+
+        st.session_state.active_questions = active_questions
+
+        st.session_state.current_question = 0
+        st.session_state.answers = {}
 
         st.session_state.page = EXAM
 
