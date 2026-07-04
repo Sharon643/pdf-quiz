@@ -1,7 +1,7 @@
 from google import genai
 import json
 
-from backend.extractor.config import API_KEY, MODEL
+from extractor.config import API_KEY, MODEL
 
 
 class LLMExtractor:

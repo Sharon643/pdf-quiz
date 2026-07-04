@@ -4,8 +4,8 @@ import time
 
 from google import genai
 
-from backend.extractor.config import API_KEY, MODEL, MAX_RETRIES
-from backend.extractor.prompt import PROMPT
+from extractor.config import API_KEY, MODEL, MAX_RETRIES
+from extractor.prompt import PROMPT
 
 
 class GeminiClient:

@@ -1,29 +1,23 @@
-import streamlit as st
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-from quiz.styles import load_css
-from quiz.app import QuizApp
-from backend.utils.session import initialize
+from api.question_bank import router as question_bank_router
+from api.extraction import router as extraction_router
 
-st.set_page_config(
-    page_title="QuizForge AI",
-    page_icon="🧠",
-    layout="wide"
+
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-initialize()
-
-load_css()
-
-app = QuizApp()
-app.run()
-# def main():
-
-#     pdf_path = "data/pdfs/sample.pdf" 
-
-#     extractor = Extractor()
-
-#     extractor.run(pdf_path)
-
-
-# if __name__ == "__main__":
-#     main()
+app.include_router(question_bank_router)
+app.include_router(extraction_router)

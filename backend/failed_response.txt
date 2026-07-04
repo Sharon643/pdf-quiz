@@ -1,0 +1,420 @@
+```json
+[
+  {
+    "number": 1,
+    "page": 2,
+    "subject": "Respiratory system",
+    "question": "A nurse is caring for a child with a diagnosis of cystic fibrosis and pneumonia. The plan of care includes nebulizer treatment and chest physiotherapy. The nurse should perform chest physiotherapy:",
+    "options": {
+      "A": "Continuously during the nebulizer treatment",
+      "B": "Prior to the nebulizer treatment",
+      "C": "After the nebulizer treatment",
+      "D": "Intermittently during the nebulizer treatment"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 2,
+    "page": 2,
+    "subject": "Respiratory system",
+    "question": "A patient with a pulmonary embolus and a nursing diagnosis of impaired gas exchange has an order to obtain arterial blood gases. The FIRST intervention by the nurse is to:",
+    "options": {
+      "A": "Perform an Allen's test",
+      "B": "Explain the procedure",
+      "C": "Gather the equipment",
+      "D": "Document the procedure"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 3,
+    "page": 2,
+    "subject": "Respiratory system",
+    "question": "While caring for a patient in the post-anesthesia care unit (PACU), a nurse observes the onset of rapid breathing cyanosis, and narrowing blood pressure. The nurse should plan to:",
+    "options": {
+      "A": "Administer bolus glucose",
+      "B": "Suction the airway",
+      "C": "Turn the patient to the right side",
+      "D": "Administer intra venous fluids"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 4,
+    "page": 3,
+    "subject": "Respiratory system",
+    "question": "While caring for a patient with in effective airway clearance related to increased mucus production, the nurse should encourage fluids to:",
+    "options": {
+      "A": "Maintain nutrition",
+      "B": "Prevent boredom",
+      "C": "Stimulate coughing",
+      "D": "Thin secretions"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 5,
+    "page": 3,
+    "subject": "Respiratory system",
+    "question": "A patient with advanced lung cancer is exhibiting cyanosis and edema of the head and upper extremities. Which of the following intervention would MOST likely provide an immediate benefit for this patient?",
+    "options": {
+      "A": "Place in Trendelenburg position",
+      "B": "Position on the right side",
+      "C": "Elevate the head of the bed",
+      "D": "Elevate extremities"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 6,
+    "page": 3,
+    "subject": "Respiratory system",
+    "question": "A nurse is administering tuberculin skin tests purified protein derivative (PPD), which of the following time frames should the nurse tell the patient to return to the clinic for the test to be read?",
+    "options": {
+      "A": "In 12-24 hours",
+      "B": "In 24-36 hours",
+      "C": "In 36-48 hours",
+      "D": "In 48-72 hours"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 7,
+    "page": 3,
+    "subject": "Respiratory system",
+    "question": "A patient who is scheduled for a tonsillectomy is in pre-operative unit. The nurse notes an order for pre anesthetic medication to be given \"on call to operation room”. The nurse should give this medication:",
+    "options": {
+      "A": "Immediately upon being notified to prepare the patient for transport",
+      "B": "When the operation room staff arrive to transport the patient",
+      "C": "Only if clearly needed after assessment",
+      "D": "Upon the patient's arrival in the operation room"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 8,
+    "page": 4,
+    "subject": "Respiratory system",
+    "question": "Which gauge needle should the nurse use for an intradermal injection on the ventral surface of the forearm for patient with TB?",
+    "options": {
+      "A": "16 gauge needle",
+      "B": "20 gauge needle",
+      "C": "22 gauge needle",
+      "D": "26 gauge needle"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 9,
+    "page": 4,
+    "subject": "Respiratory system",
+    "question": "A nurse makes a home visit to a patient recently diagnosed with chronic obstructive pulmonary disease (COPD), which of the following should the nurse teach the patient about managing COPD?",
+    "options": {
+      "A": "Recognizing signs of impending respiratory infection",
+      "B": "Limiting fluids intake minimize bronchial secretions",
+      "C": "Correct technique to auscultate the lung fields",
+      "D": "Importance of starting antibiotic therapy"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 10,
+    "page": 4,
+    "subject": "Respiratory system",
+    "question": "A patient with chronic obstructive pulmonary disease (COPD) experiencing frequent dyspnea which of the following exercise would teach the patient how to BETTER control breathing?",
+    "options": {
+      "A": "Lower side rib",
+      "B": "Segmental",
+      "C": "Pursed-lip",
+      "D": "Diaphragmatic"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 11,
+    "page": 4,
+    "subject": "Respiratory system",
+    "question": "Patient with asthma is experiencing thick respiratory secretions resulting in increased work of breathing. The best nursing intervention is to:",
+    "options": {
+      "A": "Encourage fluids",
+      "B": "Eliminate dairy products",
+      "C": "Decrease relative humidity of the room",
+      "D": "Have the child lay on the left side."
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 12,
+    "page": 5,
+    "subject": "Respiratory system",
+    "question": "What would be the long-term goal for a patient with asthma?",
+    "options": {
+      "A": "Quickly reverse airflow obstruction",
+      "B": "Correct hypoxemia",
+      "C": "Deliver humidified oxygen via nasal cannula",
+      "D": "Develop a home and school management plan"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 13,
+    "page": 5,
+    "subject": "Respiratory system",
+    "question": "A nurse administers an albuterol nebulizer on a patient with asthma exacerbation. Which of following indicates effectiveness of the treatment?",
+    "options": {
+      "A": "Adventitious breath sound with cough",
+      "B": "O2 saturation 94%",
+      "C": "Nasal flaring",
+      "D": "Respiration rate 28"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 14,
+    "page": 5,
+    "subject": "Respiratory system",
+    "question": "A patient is diagnosed with asthma exacerbation . Which of the following nursing diagnoses should be the FIRST priority?",
+    "options": {
+      "A": "In effective airway clearance related to broncho spasm and mucosal edema",
+      "B": "Fatigue related to hypoxia",
+      "C": "Anxiety related to illness and loss of control",
+      "D": "Deficient knowledge related to potential side effect of the medication"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 15,
+    "page": 5,
+    "subject": "Respiratory system",
+    "question": "An asthmatic patient presents with wheezing and coughing. Oxygen saturation is 88% on room air. Which of the following nursing diagnosis would take priority?",
+    "options": {
+      "A": "Imbalanced nutrition related to decreased food intake",
+      "B": "Activity intolerance related to inefficient breathing",
+      "C": "Anxiety-related dyspnea and concern of illness",
+      "D": "Ineffective gas exchange related to broncho spasm"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 16,
+    "page": 6,
+    "subject": "Respiratory system",
+    "question": "A patient presents to the emergency department with complaints of head ache, dizziness and confusion. Clinical symptoms include tachypnea and dyspnea with the use of accessory muscles to facilitate breathing. Which of the following orders would the nurse MOST likely implement to reduce the patient's confusion and disorientation?",
+    "options": {
+      "A": "Oxygen therapy",
+      "B": "Chest physical therapy",
+      "C": "Bronchodilators",
+      "D": "Hydration fluids"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 17,
+    "page": 6,
+    "subject": "Respiratory system",
+    "question": "The nurse is caring for a patient who just had a chest tube inserted due to spontaneous pneumothorax . An appropriate goal is that the patient will:",
+    "options": {
+      "A": "Be free of pain within 4 hours",
+      "B": "Report decreased pain",
+      "C": "Rest quietly",
+      "D": "Sleep with few movements"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 18,
+    "page": 6,
+    "subject": "Respiratory system",
+    "question": "A home health nurse visits a patient with chronic obstructive pulmonary disease (COPD) using home oxygen at 2 liters per minute. The patient reports periods of shortness of breath and inquires about increasing the oxygen to 4 liters/minute. The nurse explains that increasing the supplemental oxygen will:",
+    "options": {
+      "A": "Increased activity tolerance",
+      "B": "Suppress the hypoxic drive",
+      "C": "Alleviate the shortness of breath",
+      "D": "Prevent lung infection"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 19,
+    "page": 7,
+    "subject": "Respiratory system",
+    "question": "A patient exhibits clinical manifestation of a pulmonary embolism. Arterial blood gas (ABG) levels and a chest x-ray are ordered. Which of the following test is used to diagnose this condition?",
+    "options": {
+      "A": "Computer tomography scan(CT scan)",
+      "B": "Magnetic resonance imaging (MRI)",
+      "C": "Pulmonary angiography",
+      "D": "Pulmonary function test"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 20,
+    "page": 7,
+    "subject": "Respiratory system",
+    "question": "A nurse is caring for a child who is post-tonsillectomy and adenoidectomy. The nurse should plan to assess which of the following complications?",
+    "options": {
+      "A": "Pulmonary hypertension",
+      "B": "Hemorrhage",
+      "C": "Hearing loss",
+      "D": ""
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 21,
+    "page": 7,
+    "subject": "Respiratory system",
+    "question": "A nurse caring for a patient with acute pulmonary edema observes that the patient's cough produces white, frothy and that the patient is extremely dyspneic. The patient has inspiratory and expiratory wheezing on auscultation of the lungs. The immediate objective of treatment is to",
+    "options": {
+      "A": "Improve oxygenation",
+      "B": "Decrease anxiety",
+      "C": "Improve tissue perfusion",
+      "D": "Decrease risk for aspiration"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 22,
+    "page": 7,
+    "subject": "Respiratory system",
+    "question": "While performing an assessment on a post-surgical patient 2 days after surgery, the nurse notes shallow and rapid respirations. What should the nurse do NEXT?",
+    "options": {
+      "A": "Asses the patient from pain",
+      "B": "Obtain an order from supplemental oxygen",
+      "C": "Elevate the head of the bed",
+      "D": "Place a warmed blanket on the patient"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 23,
+    "page": 8,
+    "subject": "Respiratory system",
+    "question": "The nurse is caring for child admitted with viral pneumonia. Which of the following nursing diagnoses should receive PRIORITY?",
+    "options": {
+      "A": "Nutrition altered: less than body requirements",
+      "B": "Ineffective airway clearance",
+      "C": "Fluid volume deficit",
+      "D": "Risk for injury"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 24,
+    "page": 8,
+    "subject": "Respiratory system",
+    "question": "The nurse receives an order to obtain an arterial blood gas (ABG) specimen on a patient. The nurse will use the radial artery to obtain the specimen . Which of the following will the nurse assess before puncturing the radial artery?",
+    "options": {
+      "A": "Allen test",
+      "B": "Partial pressure of arterial oxygen",
+      "C": "Partial carbon dioxide",
+      "D": "Prothrombin time"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 25,
+    "page": 8,
+    "subject": "Respiratory system",
+    "question": "A patient with pneumonia has a temperature, 40 C (104 F); heart rate 20; respiratory rate 32 and dyspnea patient has an ineffective airway clearance related to excessive tracheobronchial secretions. Which of the following interventions would the nurse implement to enhance the patient's airway clearance?",
+    "options": {
+      "A": "Administer oxygen as ordered",
+      "B": "Maintain a comfortable position",
+      "C": "Increase fluid intake",
+      "D": "Administer prescribed analgesic"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 26,
+    "page": 9,
+    "subject": "Respiratory system",
+    "question": "When a child is brought to the emergency department with acute epiglottitis, which of the following nursing diagnoses should receive PRIORITY?",
+    "options": {
+      "A": "Ineffective airway clearance",
+      "B": "Activity intolerance",
+      "C": "Fluid volume deficit",
+      "D": "Impaired verbal communication"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 27,
+    "page": 9,
+    "subject": "Respiratory system",
+    "question": "A patient with pneumonia experiences ineffective airway clearance related to the presence of thick secretions secondary to infection. Oxygen saturation is 89% on room air. Which of the following nursing interventions takes priority?",
+    "options": {
+      "A": "Deliver oxygen with humidity",
+      "B": "Encourage fluid intake",
+      "C": "Assist patient into",
+      "D": "Inspect sputum for"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 28,
+    "page": 9,
+    "subject": "Respiratory system",
+    "question": "During the immediate postoperative period, a patient reveals an oxygen saturation level of 91%. The nurse should:",
+    "options": {
+      "A": "Position the patient on the left side",
+      "B": "Administer supplemental oxygen",
+      "C": "Continue to provide supportive care",
+      "D": "Lower the temperature of the room"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 29,
+    "page": 9,
+    "subject": "Respiratory system",
+    "question": "A patient presents to the emergency department with difficulty breathing. The patient's Parents report that patienthas a history of bronchial asthma and has recently had an Upper respiratory tract infection (URI). Upon auscultation, the nurse decreased Breath sounds in the left-lower lung field. The nurse should NEXT assess the child's:",
+    "options": {
+      "A": "Oral temperature",
+      "B": "O2 saturation",
+      "C": "Apical pulse",
+      "D": "Level of comfort"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 30,
+    "page": 10,
+    "subject": "Respiratory system",
+    "question": "A patient with pulmonary emboli complains of pain, dyspnea, and a fear of dying. Which of the following interventions would MOST likely help to reduce the patient's anxiety level?",
+    "options": {
+      "A": "Administer oxygen as ordered",
+      "B": "Administer pain medication as ordered",
+      "C": "Observe closely for signs of pain and discomfort",
+      "D": "Listen to the patient's concerns"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 31,
+    "page": 10,
+    "subject": "Respiratory system",
+    "question": "The nurse is caring for a client who has had a chest tube inserted and connected to water seal drainage. The nurse determines the drainage system is functioning correctly when which of the following is observed:",
+    "options": {
+      "A": "Continuous bubbling in the water seal chamber",
+      "B": "Fluctuation in the water seal chamber",
+      "C": "Suction tubing attached to a wall unit",
+      "D": "Vesicular breath sounds throughout the lung fields"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 32,
+    "page": 10,
+    "subject": "Respiratory system",
+    "question": "A patient who underwent hand surgery requiring general anesthesia presents to the post anesthesia care unit (PACU) after extubation, The nurse should FIRST assess",
+    "options": {
+      "A": "Circulatory status",
+      "B": "Wound status",
+      "C": "",
+      "D": ""
+    },
+    "correct_answer": ""
+  }
+]
+```

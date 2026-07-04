@@ -1,6 +1,8 @@
 import json
 import os
 import re
+import re
+from extractor.validator import Validator
 
 
 class Exporter:
@@ -29,8 +31,7 @@ class Exporter:
     @staticmethod
     def merge(chunk_dir, output_file):
 
-        import re
-        from backend.extractor.validator import Validator
+        
 
         all_questions = []
 
