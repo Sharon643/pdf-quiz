@@ -1,420 +1,470 @@
-```json
 [
   {
-    "number": 1,
-    "page": 2,
-    "subject": "Respiratory system",
-    "question": "A nurse is caring for a child with a diagnosis of cystic fibrosis and pneumonia. The plan of care includes nebulizer treatment and chest physiotherapy. The nurse should perform chest physiotherapy:",
+    "number": 56,
+    "page": 1,
+    "subject": null,
+    "question": "Which nursing diagnosis takes priority for a newly diagnosed patient with a left- sided stroke?",
     "options": {
-      "A": "Continuously during the nebulizer treatment",
-      "B": "Prior to the nebulizer treatment",
-      "C": "After the nebulizer treatment",
-      "D": "Intermittently during the nebulizer treatment"
+      "A": "Risk of impaired swallowing related to\nabsent gag reflex",
+      "B": "Risk for impaired skin integrity related\nto immobility",
+      "C": "Risk for infection related to\ninvasive line placement",
+      "D": "Risk for impaired\nleft sided stroke"
     },
-    "correct_answer": "C"
+    "correct_answer": "A"
+  },
+  {
+    "number": 57,
+    "page": 1,
+    "subject": null,
+    "question": "Changes in personality and judgment are often associated with a lesion in which of the following:",
+    "options": {
+      "A": "Frontal lobe",
+      "B": "Parietal lobe",
+      "C": "Broca's area",
+      "D": "Wernicke's area"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 58,
+    "page": 2,
+    "subject": null,
+    "question": "Anterior lobe of the brain is responsible for which of the following:",
+    "options": {
+      "A": "Personality",
+      "B": "Movement",
+      "C": "Speech",
+      "D": "Memory"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 59,
+    "page": 2,
+    "subject": null,
+    "question": "The nurse is observing a detailed neurological assessment on a client with a suspected brain tumor. When performing the Romberg test, the client sways when the eyes are both open and closed. What does this indicate?",
+    "options": {
+      "A": "The problem is probably in the cerebellum",
+      "B": "It is a position sense abnormality",
+      "C": "This is not an abnormal test result",
+      "D": "The client has lost proprioception"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 60,
+    "page": 2,
+    "subject": null,
+    "question": "A client with multiple sclerosis has been prescribed the drug baclofen (Lioresal). What is the action of this drug?",
+    "options": {
+      "A": "Reduces spasticity",
+      "B": "Skeletal muscle relaxation",
+      "C": "Immune suppression",
+      "D": "Prevents viral infections"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 61,
+    "page": 3,
+    "subject": null,
+    "question": "After X-rays are taken of the head, neck, and spine, the client is diagnosed with a head injury and admitted for inpatient care. When assessing the client with a head injury, which of the following should receive priority attention?",
+    "options": {
+      "A": "Lung sound",
+      "B": "Clarity of speech",
+      "C": "Mobility of fingers",
+      "D": "Pupillary responses"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 62,
+    "page": 3,
+    "subject": null,
+    "question": "An elderly client is experiencing an alteration in his equilibrium and coordinated muscle movements. The nurse realizes that these functions are controlled by which area of the nervous system?",
+    "options": {
+      "A": "Brain stem",
+      "B": "Cerebrum",
+      "C": "Diencephalon",
+      "D": "Cerebellum"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 63,
+    "page": 3,
+    "subject": null,
+    "question": "A nurse evaluates a patient for signs of rebleeding from ruptured intracranial aneurysm that required surgical ligation. The highest risk for aneurysm rebleed is within:",
+    "options": {
+      "A": "6 hours",
+      "B": "24 hours",
+      "C": "48 hours",
+      "D": "72 hours"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 1,
+    "page": 4,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "In evaluating the appropriateness of various exercises enjoyed by a patient with osteoporosis, the nurse would recommend:",
+    "options": {
+      "A": "Walking",
+      "B": "Bowling",
+      "C": "Sit-ups",
+      "D": "Golf"
+    },
+    "correct_answer": "A"
   },
   {
     "number": 2,
-    "page": 2,
-    "subject": "Respiratory system",
-    "question": "A patient with a pulmonary embolus and a nursing diagnosis of impaired gas exchange has an order to obtain arterial blood gases. The FIRST intervention by the nurse is to:",
+    "page": 4,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A hospitalized patient has fallen from bed. The nurse notes shortening of the left leg. Pain upon movement of the left leg, and rapid, swallow respirations. What action should the nurse take FIRST?",
     "options": {
-      "A": "Perform an Allen's test",
-      "B": "Explain the procedure",
-      "C": "Gather the equipment",
-      "D": "Document the procedure"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 3,
-    "page": 2,
-    "subject": "Respiratory system",
-    "question": "While caring for a patient in the post-anesthesia care unit (PACU), a nurse observes the onset of rapid breathing cyanosis, and narrowing blood pressure. The nurse should plan to:",
-    "options": {
-      "A": "Administer bolus glucose",
-      "B": "Suction the airway",
-      "C": "Turn the patient to the right side",
-      "D": "Administer intra venous fluids"
+      "A": "Call for help",
+      "B": "Immobilize the left leg",
+      "C": "Obtain blood pressure",
+      "D": "Evaluate lung sounds"
     },
     "correct_answer": "B"
   },
   {
-    "number": 4,
-    "page": 3,
-    "subject": "Respiratory system",
-    "question": "While caring for a patient with in effective airway clearance related to increased mucus production, the nurse should encourage fluids to:",
+    "number": 3,
+    "page": 4,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "While caring for a patient prior to surgery to amputate the leg. What is the MOST affective measure to prevent phantom limb sensation after the amputation?",
     "options": {
-      "A": "Maintain nutrition",
-      "B": "Prevent boredom",
-      "C": "Stimulate coughing",
-      "D": "Thin secretions"
+      "A": "Control pain prior to the surgery",
+      "B": "Make sure the patient understands the procedure",
+      "C": "Elevate the limb on two pillows",
+      "D": "Help the patient grieve for the limb"
     },
     "correct_answer": "D"
   },
   {
-    "number": 5,
-    "page": 3,
-    "subject": "Respiratory system",
-    "question": "A patient with advanced lung cancer is exhibiting cyanosis and edema of the head and upper extremities. Which of the following intervention would MOST likely provide an immediate benefit for this patient?",
+    "number": 4,
+    "page": 4,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A marathon runner experiences a sudden onset of sharp pain in calf immediately after a workout. The nurse in the clinic notes mild swelling of the calf and tenderness to touch. Which of the following would the nurse suspect the patient is experiencing?",
     "options": {
-      "A": "Place in Trendelenburg position",
-      "B": "Position on the right side",
-      "C": "Elevate the head of the bed",
-      "D": "Elevate extremities"
+      "A": "Bursitis",
+      "B": "Tendonitis",
+      "C": "Plantar fasciitis",
+      "D": "Joint dislocation"
     },
     "correct_answer": "C"
   },
   {
-    "number": 6,
-    "page": 3,
-    "subject": "Respiratory system",
-    "question": "A nurse is administering tuberculin skin tests purified protein derivative (PPD), which of the following time frames should the nurse tell the patient to return to the clinic for the test to be read?",
+    "number": 5,
+    "page": 4,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A nurse is evaluating a patient 5 days after a right total hip replacement. Which of the following goals is appropriate for the patient?",
     "options": {
-      "A": "In 12-24 hours",
-      "B": "In 24-36 hours",
-      "C": "In 36-48 hours",
-      "D": "In 48-72 hours"
+      "A": "Maintain hip abduction without dislocation",
+      "B": "Rest with legs elevate while sitting",
+      "C": "Tie shoes and put on undergarments without assistive devices",
+      "D": "Perform scissors-like leg exercise daily"
     },
-    "correct_answer": "D"
+    "correct_answer": "A"
+  },
+  {
+    "number": 6,
+    "page": 5,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A patient with bowlegs due to abnormal bone formations and deformities has a calcium level of 7.5 mg/100 ml. Which of the following foods would the nurse MOST likely instruct the patients to add to a diet?",
+    "options": {
+      "A": "Organ meats",
+      "B": "Whole grains",
+      "C": "Egg yolks",
+      "D": "Lean means"
+    },
+    "correct_answer": "C"
   },
   {
     "number": 7,
-    "page": 3,
-    "subject": "Respiratory system",
-    "question": "A patient who is scheduled for a tonsillectomy is in pre-operative unit. The nurse notes an order for pre anesthetic medication to be given \"on call to operation room”. The nurse should give this medication:",
+    "page": 5,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A nurse is caring for a 3 year-old child with a fractured arm. Which of the following interventions is the MOST appropriate for pain management?",
     "options": {
-      "A": "Immediately upon being notified to prepare the patient for transport",
-      "B": "When the operation room staff arrive to transport the patient",
-      "C": "Only if clearly needed after assessment",
-      "D": "Upon the patient's arrival in the operation room"
+      "A": "Administer analgesics when necessary",
+      "B": "Assess pain once a shift",
+      "C": "Anticipate pain and intervene early",
+      "D": "Encourage the use of self-quieting techniques"
     },
     "correct_answer": "A"
   },
   {
     "number": 8,
-    "page": 4,
-    "subject": "Respiratory system",
-    "question": "Which gauge needle should the nurse use for an intradermal injection on the ventral surface of the forearm for patient with TB?",
+    "page": 5,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A patient has a history of severe, uncontrolled epistaxis . The patient's blood pressure and patient count are normal. The nurse should teach the patient to:",
     "options": {
-      "A": "16 gauge needle",
-      "B": "20 gauge needle",
-      "C": "22 gauge needle",
-      "D": "26 gauge needle"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 9,
-    "page": 4,
-    "subject": "Respiratory system",
-    "question": "A nurse makes a home visit to a patient recently diagnosed with chronic obstructive pulmonary disease (COPD), which of the following should the nurse teach the patient about managing COPD?",
-    "options": {
-      "A": "Recognizing signs of impending respiratory infection",
-      "B": "Limiting fluids intake minimize bronchial secretions",
-      "C": "Correct technique to auscultate the lung fields",
-      "D": "Importance of starting antibiotic therapy"
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 10,
-    "page": 4,
-    "subject": "Respiratory system",
-    "question": "A patient with chronic obstructive pulmonary disease (COPD) experiencing frequent dyspnea which of the following exercise would teach the patient how to BETTER control breathing?",
-    "options": {
-      "A": "Lower side rib",
-      "B": "Segmental",
-      "C": "Pursed-lip",
-      "D": "Diaphragmatic"
+      "A": "Sleep with the head elevated on at least two three pillows",
+      "B": "Apply firm pressure to the nostrils four times a day",
+      "C": "Use a cotton-filled applicator to apply a water-soluble lubricant to the nasal septum twice daily",
+      "D": "Minimize the intake of caffeine while increasing the intake of fluids rich in vitamin K"
     },
     "correct_answer": "C"
   },
   {
-    "number": 11,
-    "page": 4,
-    "subject": "Respiratory system",
-    "question": "Patient with asthma is experiencing thick respiratory secretions resulting in increased work of breathing. The best nursing intervention is to:",
+    "number": 9,
+    "page": 5,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "The following pain medications are ordered for a patient who had a right leg debridement . Oxycodone 5 mg every 4 hours as needed and morphine 5 mg every 4 hours as needed. The nurse administered oxycodone 2 hours ago, but the patient report pain Rated 8 on a scale of 0 (no pain) to 10 (Severe pain) as the dressing change begins.Vital signs are: blood pressure level, 169/98 mmHg; heat rate, 112; Respiration rate 22; temperature 36.7 C (98.1 F). After evaluating the effectiveness of the pain Medication, what action should the nurse take?",
     "options": {
-      "A": "Encourage fluids",
-      "B": "Eliminate dairy products",
-      "C": "Decrease relative humidity of the room",
-      "D": "Have the child lay on the left side."
+      "A": "Administer additional oxycodone 5 mg",
+      "B": "Administer morphine 5 mg",
+      "C": "Change the dressing quickly",
+      "D": "Encourage deep breathing"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 10,
+    "page": 6,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A patient in a long-term care facility is in persistent vegetative state with a right contracture of the right arm and hand. What is the BEST goal over the next 90 days for this patient related to the nursing diagnosis of impaired mobility?",
+    "options": {
+      "A": "Develop no further contractures",
+      "B": "Wear an arm and hand splint",
+      "C": "Have no pain related to the contractures",
+      "D": ""
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 11,
+    "page": 6,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A patient is scheduled for a total hip arthroplasty. Th preoperative nurse reviews the chest and notes the following: serum potassium level of 2.8 mEq/l, AB positive blood type, and elevated ST Segments on the electrocardiogram (ECG). Which of the following would be the MOST appropriate action for the nurse to do next?",
+    "options": {
+      "A": "Report abnormal diagnostic results to the surgeon",
+      "B": "Review the patient consent for the surgical procedure",
+      "C": "Educate the patient on the risk factors and side-effects of the surgery",
+      "D": "Ensure that the patient has a post-surgery physical therapy order"
     },
     "correct_answer": "A"
   },
   {
     "number": 12,
-    "page": 5,
-    "subject": "Respiratory system",
-    "question": "What would be the long-term goal for a patient with asthma?",
+    "page": 6,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A 45-year-old patient is in a lower body cast following a motor vehicle accident. In order to minimize muscle strength loss while in the cast, the nurse will instruct the patient in the performance of:",
     "options": {
-      "A": "Quickly reverse airflow obstruction",
-      "B": "Correct hypoxemia",
-      "C": "Deliver humidified oxygen via nasal cannula",
-      "D": "Develop a home and school management plan"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 13,
-    "page": 5,
-    "subject": "Respiratory system",
-    "question": "A nurse administers an albuterol nebulizer on a patient with asthma exacerbation. Which of following indicates effectiveness of the treatment?",
-    "options": {
-      "A": "Adventitious breath sound with cough",
-      "B": "O2 saturation 94%",
-      "C": "Nasal flaring",
-      "D": "Respiration rate 28"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 14,
-    "page": 5,
-    "subject": "Respiratory system",
-    "question": "A patient is diagnosed with asthma exacerbation . Which of the following nursing diagnoses should be the FIRST priority?",
-    "options": {
-      "A": "In effective airway clearance related to broncho spasm and mucosal edema",
-      "B": "Fatigue related to hypoxia",
-      "C": "Anxiety related to illness and loss of control",
-      "D": "Deficient knowledge related to potential side effect of the medication"
+      "A": "Isometric exercises",
+      "B": "Passive range of motion exercises",
+      "C": "Active-assistive range of motion exercises",
+      "D": "Resistive range of motion exercises"
     },
     "correct_answer": "A"
   },
   {
-    "number": 15,
-    "page": 5,
-    "subject": "Respiratory system",
-    "question": "An asthmatic patient presents with wheezing and coughing. Oxygen saturation is 88% on room air. Which of the following nursing diagnosis would take priority?",
+    "number": 13,
+    "page": 6,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "After total knee replacement a patient being discharged to have after which he will ambulate with for-prong cane. When providing patient teaching regarding giving up and down stairs with the cane, the first step in going up stairs is to :",
     "options": {
-      "A": "Imbalanced nutrition related to decreased food intake",
-      "B": "Activity intolerance related to inefficient breathing",
-      "C": "Anxiety-related dyspnea and concern of illness",
-      "D": "Ineffective gas exchange related to broncho spasm"
+      "A": "Place the cane and the affected extremities upon the step",
+      "B": "Place the cane and the unaffected extremity upon the step",
+      "C": "Step up on the affected extremity",
+      "D": "Step up on the unaffected extremity"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "number": 14,
+    "page": 7,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A patient with SLE (systemic lupus erythematous) report decreased urinary output during the past 2-4 days and chest pain that is aggravated by breathing and coughing. The patient vital signs remain within the baseline normal range s1 and s2 are present with audible friction rub. Which of the following statement would be appropriate for the nurse to make?",
+    "options": {
+      "A": "It sounds like SLE is being well controlled",
+      "B": "I need to get some nitroglycerine for your chest pain",
+      "C": "There may be some inflammation surrounding your heart",
+      "D": "Your symptoms may be due to a urinary tract infection"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 15,
+    "page": 7,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A diabetic patient comes to the office for follow-up six weeks undergoing below the knee amputation of the right leg for gangrene. The nurse observes that the patient is progressing well with the use of prosthesis and that the skin is intact. The patient reports being generally pain free but occasionally feels severe pain and itching of the right ankle. What should the nurse do?",
+    "options": {
+      "A": "Notify the doctor that there appears to be nerve damage of the right leg",
+      "B": "Refer to pain management specialist for long term management",
+      "C": "Refer to psychiatrist for evaluation since the patient has no right ankle",
+      "D": "Explain the phenomena of phantom pain and phantom sensation to the patient"
     },
     "correct_answer": "D"
   },
   {
     "number": 16,
-    "page": 6,
-    "subject": "Respiratory system",
-    "question": "A patient presents to the emergency department with complaints of head ache, dizziness and confusion. Clinical symptoms include tachypnea and dyspnea with the use of accessory muscles to facilitate breathing. Which of the following orders would the nurse MOST likely implement to reduce the patient's confusion and disorientation?",
+    "page": 7,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A 40 year- old woman presented with right hip pain. Palpation of the pelvic girdle is normal. An X- ray shows bone deformities, with osteolytic lesions and bone enlargement. The patient has not suffered any trauma and has been generally healthy. Which serum laboratory analysis would be most useful?",
     "options": {
-      "A": "Oxygen therapy",
-      "B": "Chest physical therapy",
-      "C": "Bronchodilators",
-      "D": "Hydration fluids"
+      "A": "Prothrombin time",
+      "B": "Alkaline phosphatase (if this high, calcium will be low and opposite)",
+      "C": "Acid phosphatase",
+      "D": "Parathyroid hormone"
     },
-    "correct_answer": "A"
+    "correct_answer": "B"
   },
   {
     "number": 17,
-    "page": 6,
-    "subject": "Respiratory system",
-    "question": "The nurse is caring for a patient who just had a chest tube inserted due to spontaneous pneumothorax . An appropriate goal is that the patient will:",
+    "page": 7,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A patient who is 4 days postoperative after a total hip replacement surgery, is obese and has not been able to ambulate since the surgery. The patient is now diaphoretic, has chills, and complains of pain in the thigh. There is tenderness over the anteromedial surface of the thigh. The MOST likely cause is:",
     "options": {
-      "A": "Be free of pain within 4 hours",
-      "B": "Report decreased pain",
-      "C": "Rest quietly",
-      "D": "Sleep with few movements"
+      "A": "Wound infection",
+      "B": "Deep vein thrombosis (DVT)",
+      "C": "Pulmonary edema",
+      "D": "Dehydration"
     },
     "correct_answer": "B"
   },
   {
     "number": 18,
-    "page": 6,
-    "subject": "Respiratory system",
-    "question": "A home health nurse visits a patient with chronic obstructive pulmonary disease (COPD) using home oxygen at 2 liters per minute. The patient reports periods of shortness of breath and inquires about increasing the oxygen to 4 liters/minute. The nurse explains that increasing the supplemental oxygen will:",
+    "page": 8,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A 22 year-old man suffered major injuries to the right leg in a road traffic accident that resulted in an above -the- knee amputation with a rigid dressing. Twelve hours later the patient complains of increasing pressure from the dressing and the feeling that something is crawling around the stump.",
     "options": {
-      "A": "Increased activity tolerance",
-      "B": "Suppress the hypoxic drive",
-      "C": "Alleviate the shortness of breath",
-      "D": "Prevent lung infection"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 19,
-    "page": 7,
-    "subject": "Respiratory system",
-    "question": "A patient exhibits clinical manifestation of a pulmonary embolism. Arterial blood gas (ABG) levels and a chest x-ray are ordered. Which of the following test is used to diagnose this condition?",
-    "options": {
-      "A": "Computer tomography scan(CT scan)",
-      "B": "Magnetic resonance imaging (MRI)",
-      "C": "Pulmonary angiography",
-      "D": "Pulmonary function test"
+      "A": "Notify the physician",
+      "B": "Remove and reapply the dressing",
+      "C": "Remind patient phantom limb pain is normal",
+      "D": "Elevate and apply ice to the residual limb"
     },
     "correct_answer": "C"
   },
   {
-    "number": 20,
-    "page": 7,
-    "subject": "Respiratory system",
-    "question": "A nurse is caring for a child who is post-tonsillectomy and adenoidectomy. The nurse should plan to assess which of the following complications?",
+    "number": 19,
+    "page": 8,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A nursing home resident with chronic osteoarthritis complains of knee pain. A routine order of acetaminophen (Tylenol) 500 mg every 6 hours was administered 2 hours ago with no relief. The patient also has an order for ibuprofen (Motrin) 400 mg every 6 hours as needed. The patient reports some relief, but is still bothered by mild pain. The nurse should",
     "options": {
-      "A": "Pulmonary hypertension",
-      "B": "Hemorrhage",
-      "C": "Hearing loss",
-      "D": ""
+      "A": "Administer ibuprofen (Motrin) 400mg",
+      "B": "Educate the patient that mild pain is expected with osteoarthritis",
+      "C": "Call the physician for additional pain medication",
+      "D": "Administer acetaminophen (Tylenol) 500 mg"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 20,
+    "page": 8,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A 40 year-old woman present with painful leg cramps and muscle twitching, which wakens her at night. Her menstrual cycles are irregular and cause painful abdominal cramping. The hair, skin and nails appear dry and brittle (see lab results)\nTest Result Normal Values\nCalcium 2.09 2. 15-2.62mmollL\nPhosphate, inorganic 1.69 0.82-1.51mmollL\nMagnesium 0.55 0.7-1.0mmollL\nWhat type of lifelong diet would be most beneficial for this patient?",
+    "options": {
+      "A": "Increased magnesium and vitamin C",
+      "B": "Increased calcium and vitamin D",
+      "C": "Increased dairy and iron",
+      "D": "High protein and high calorie"
     },
     "correct_answer": "B"
   },
   {
     "number": 21,
-    "page": 7,
-    "subject": "Respiratory system",
-    "question": "A nurse caring for a patient with acute pulmonary edema observes that the patient's cough produces white, frothy and that the patient is extremely dyspneic. The patient has inspiratory and expiratory wheezing on auscultation of the lungs. The immediate objective of treatment is to",
+    "page": 8,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A 35 year-old man twisted his right ankle. Since then, he has had swelling and stiffness of the ankle in the morning hours. He presented to the clinic six months after the injury and complains that he is in too much pain to participate in sports. An arthroscopy reveals thickening and inflammation of the lining of the ankle joint. Which treatment is most likely to be ordered for this client?",
     "options": {
-      "A": "Improve oxygenation",
-      "B": "Decrease anxiety",
-      "C": "Improve tissue perfusion",
-      "D": "Decrease risk for aspiration"
+      "A": "Aspiration of fluids",
+      "B": "Surgical intervention",
+      "C": "Physical therapy",
+      "D": "NSAID administration"
     },
-    "correct_answer": "A"
+    "correct_answer": "D"
   },
   {
     "number": 22,
-    "page": 7,
-    "subject": "Respiratory system",
-    "question": "While performing an assessment on a post-surgical patient 2 days after surgery, the nurse notes shallow and rapid respirations. What should the nurse do NEXT?",
+    "page": 9,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A 67 year-old man was admitted to the hospital following a closed bone fracture. An intramedullary nail is inserted and the patient is placed in balanced skeletal traction. The following day, the patient becomes restless, drowsy and confused, he has difficulty breathing and appears very tired. Which additional sign or symptom would require immediate intervention?",
     "options": {
-      "A": "Asses the patient from pain",
-      "B": "Obtain an order from supplemental oxygen",
-      "C": "Elevate the head of the bed",
-      "D": "Place a warmed blanket on the patient"
+      "A": "Anxiety",
+      "B": "Cold skin",
+      "C": "Constipation",
+      "D": "Petechiae on chest"
     },
-    "correct_answer": "C"
+    "correct_answer": "D"
   },
   {
     "number": 23,
-    "page": 8,
-    "subject": "Respiratory system",
-    "question": "The nurse is caring for child admitted with viral pneumonia. Which of the following nursing diagnoses should receive PRIORITY?",
+    "page": 9,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A 12 year- old patient had a cast removed from the left leg after wearing if for eight weeks. The patient wants to resume sports as soon as possible. In order to regain muscle strength lost while wearing cast, the nurse will instruct the patient in performance of:",
     "options": {
-      "A": "Nutrition altered: less than body requirements",
-      "B": "Ineffective airway clearance",
-      "C": "Fluid volume deficit",
-      "D": "Risk for injury"
+      "A": "Resistive range of motion exercises to left leg",
+      "B": "Passive range of motion exercises to right leg",
+      "C": "Active- assistive range of motion exercises to the right leg",
+      "D": "Active range of motion exercises to both legs"
     },
-    "correct_answer": "B"
+    "correct_answer": "D"
   },
   {
     "number": 24,
-    "page": 8,
-    "subject": "Respiratory system",
-    "question": "The nurse receives an order to obtain an arterial blood gas (ABG) specimen on a patient. The nurse will use the radial artery to obtain the specimen . Which of the following will the nurse assess before puncturing the radial artery?",
+    "page": 9,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "RTA. The patient appears restless confused and disoriented. He reports that he had hit his head against the steering wheel of the car when it had collided with the car directly in front of him.\nBlood pressure 110/68 mmHg\nHeart rate 100/min\nRespiratory rate 22/min\nBody Temperature 37.0 coral\nOxygen saturation 98 % on room air\nWhat is the most important next step in management?",
     "options": {
-      "A": "Allen test",
-      "B": "Partial pressure of arterial oxygen",
-      "C": "Partial carbon dioxide",
-      "D": "Prothrombin time"
+      "A": "Immobilize head and neck",
+      "B": "Administer oxygen.",
+      "C": "Establish an intravenous line.",
+      "D": "Arrange for an MRI scan."
     },
     "correct_answer": "A"
   },
   {
     "number": 25,
-    "page": 8,
-    "subject": "Respiratory system",
-    "question": "A patient with pneumonia has a temperature, 40 C (104 F); heart rate 20; respiratory rate 32 and dyspnea patient has an ineffective airway clearance related to excessive tracheobronchial secretions. Which of the following interventions would the nurse implement to enhance the patient's airway clearance?",
+    "page": 10,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "which of the following anatomical terms best describes the motion in the picture above:",
     "options": {
-      "A": "Administer oxygen as ordered",
-      "B": "Maintain a comfortable position",
-      "C": "Increase fluid intake",
-      "D": "Administer prescribed analgesic"
+      "A": "Adduction",
+      "B": "Abduction",
+      "C": "Supination",
+      "D": "Pronation"
     },
-    "correct_answer": "C"
+    "correct_answer": "B"
   },
   {
     "number": 26,
-    "page": 9,
-    "subject": "Respiratory system",
-    "question": "When a child is brought to the emergency department with acute epiglottitis, which of the following nursing diagnoses should receive PRIORITY?",
+    "page": 10,
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "The following picture represents an auto immune disease known as:",
     "options": {
-      "A": "Ineffective airway clearance",
-      "B": "Activity intolerance",
-      "C": "Fluid volume deficit",
-      "D": "Impaired verbal communication"
+      "A": "Psoriasis",
+      "B": "Systemic Lupus Erythematous",
+      "C": "Molluscum Contagiosum",
+      "D": "Eczema"
     },
-    "correct_answer": "A"
+    "correct_answer": "B"
   },
   {
     "number": 27,
-    "page": 9,
-    "subject": "Respiratory system",
-    "question": "A patient with pneumonia experiences ineffective airway clearance related to the presence of thick secretions secondary to infection. Oxygen saturation is 89% on room air. Which of the following nursing interventions takes priority?",
-    "options": {
-      "A": "Deliver oxygen with humidity",
-      "B": "Encourage fluid intake",
-      "C": "Assist patient into",
-      "D": "Inspect sputum for"
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 28,
-    "page": 9,
-    "subject": "Respiratory system",
-    "question": "During the immediate postoperative period, a patient reveals an oxygen saturation level of 91%. The nurse should:",
-    "options": {
-      "A": "Position the patient on the left side",
-      "B": "Administer supplemental oxygen",
-      "C": "Continue to provide supportive care",
-      "D": "Lower the temperature of the room"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 29,
-    "page": 9,
-    "subject": "Respiratory system",
-    "question": "A patient presents to the emergency department with difficulty breathing. The patient's Parents report that patienthas a history of bronchial asthma and has recently had an Upper respiratory tract infection (URI). Upon auscultation, the nurse decreased Breath sounds in the left-lower lung field. The nurse should NEXT assess the child's:",
-    "options": {
-      "A": "Oral temperature",
-      "B": "O2 saturation",
-      "C": "Apical pulse",
-      "D": "Level of comfort"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 30,
     "page": 10,
-    "subject": "Respiratory system",
-    "question": "A patient with pulmonary emboli complains of pain, dyspnea, and a fear of dying. Which of the following interventions would MOST likely help to reduce the patient's anxiety level?",
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "A client has just returned to a nursing unit after an above-knee amputation of the right leg. A nurse places the client in which position:",
     "options": {
-      "A": "Administer oxygen as ordered",
-      "B": "Administer pain medication as ordered",
-      "C": "Observe closely for signs of pain and discomfort",
-      "D": "Listen to the patient's concerns"
+      "A": "Prone",
+      "B": "Reverse Trendelenburg's",
+      "C": "Supine, with the amputated limb flat on the bed",
+      "D": "Supine, with the amputated limb supported with pillows"
     },
     "correct_answer": "D"
   },
   {
-    "number": 31,
+    "number": 28,
     "page": 10,
-    "subject": "Respiratory system",
-    "question": "The nurse is caring for a client who has had a chest tube inserted and connected to water seal drainage. The nurse determines the drainage system is functioning correctly when which of the following is observed:",
+    "subject": "Musculoskeletal & hematology & heredity",
+    "question": "After the client undergoes a total hip replacement, how should the nurse position the affected hip?",
     "options": {
-      "A": "Continuous bubbling in the water seal chamber",
-      "B": "Fluctuation in the water seal chamber",
-      "C": "Suction tubing attached to a wall unit",
-      "D": "Vesicular breath sounds throughout the lung fields"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 32,
-    "page": 10,
-    "subject": "Respiratory system",
-    "question": "A patient who underwent hand surgery requiring general anesthesia presents to the post anesthesia care unit (PACU) after extubation, The nurse should FIRST assess",
-    "options": {
-      "A": "Circulatory status",
-      "B": "Wound status",
+      "A": "Adduct the hip",
+      "B": "Flex the hip",
       "C": "",
       "D": ""
     },
-    "correct_answer": ""
+    "correct_answer": "A"
   }
 ]
-```

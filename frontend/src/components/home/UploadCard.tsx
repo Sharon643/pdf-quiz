@@ -1,10 +1,21 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 
-function UploadCard() {
-  const [file, setFile] = useState<File | null>(null);
+type UploadCardProps = {
+  file: File | null;
+  loading: boolean;
+  onFileChange: (file: File | null) => void;
+  onExtract: () => void;
+};
+
+function UploadCard({
+  file,
+  loading,
+  onFileChange,
+  onExtract,
+}: UploadCardProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -12,59 +23,73 @@ function UploadCard() {
     inputRef.current?.click();
   }
 
-  function handleFileChange(
-    event: React.ChangeEvent<HTMLInputElement>
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement>
   ) {
-    if (event.target.files?.length) {
-      setFile(event.target.files[0]);
+
+    if (e.target.files?.length) {
+      onFileChange(e.target.files[0]);
     }
+
   }
 
   return (
+
     <Card>
+
       <h2 className="text-2xl font-semibold">
         Upload Question PDF
       </h2>
 
       <p className="mt-2 text-zinc-400">
-        Select a PDF containing multiple-choice questions.
+        Upload a PDF containing MCQs.
       </p>
 
       <input
         ref={inputRef}
         type="file"
         accept=".pdf"
-        onChange={handleFileChange}
+        onChange={handleChange}
         className="hidden"
       />
 
-        <div className="mt-6 space-y-3">
+      <div className="mt-6 space-y-3">
 
         <Button
-            text="Choose PDF"
-            onClick={chooseFile}
-            variant="secondary"
+          text="Choose PDF"
+          variant="secondary"
+          onClick={chooseFile}
         />
 
         <Button
-            text="Extract Questions"
-            onClick={() => {}}
-            disabled={!file}
+          text="Extract Questions"
+          loading={loading}
+          disabled={!file}
+          onClick={onExtract}
         />
 
-        </div>
+      </div>
 
       {file && (
-        <div className="mt-4 rounded-lg border border-zinc-700 p-3">
-          <p className="font-medium">{file.name}</p>
+
+        <div className="mt-5 rounded-lg border border-zinc-700 p-4">
+
+          <p className="font-semibold">
+            {file.name}
+          </p>
 
           <p className="text-sm text-zinc-400">
             {(file.size / 1024 / 1024).toFixed(2)} MB
           </p>
+
         </div>
+
       )}
+
     </Card>
+
   );
+
 }
 
 export default UploadCard;

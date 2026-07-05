@@ -1,21 +1,34 @@
 import json
 from pathlib import Path
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
+
+CURRENT_BANK = Path("data/extracted/current.json")
 
 
 @router.get("/question-bank")
 def get_question_bank():
 
-    json_path = Path("data/extracted/sample.json")
+    if not CURRENT_BANK.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="No question bank found.",
+        )
 
-    with open(json_path, "r", encoding="utf-8") as f:
+    with open(
+        CURRENT_BANK,
+        "r",
+        encoding="utf-8",
+    ) as f:
         questions = json.load(f)
 
     subjects = len(
-        set(q["subject"] for q in questions)
+        {
+            q.get("subject", "Unknown")
+            for q in questions
+        }
     )
 
     return {

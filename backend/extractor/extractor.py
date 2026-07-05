@@ -9,7 +9,7 @@ from extractor.config import (
     CHUNK_SIZE,
     CHUNKS_DIR,
     CHUNK_JSON_DIR,
-    OUTPUT_DIR
+    OUTPUT_DIR,
 )
 
 
@@ -30,17 +30,17 @@ class Extractor:
 
         chunk_dir = os.path.join(
             CHUNKS_DIR,
-            pdf_name
+            pdf_name,
         )
 
         chunk_json_dir = os.path.join(
             CHUNK_JSON_DIR,
-            pdf_name
+            pdf_name,
         )
 
         output_json = os.path.join(
             OUTPUT_DIR,
-            f"{pdf_name}.json"
+            f"{pdf_name}.json",
         )
 
         return chunk_dir, chunk_json_dir, output_json
@@ -67,73 +67,139 @@ class Extractor:
 
         return self.splitter.split(
             pdf_path,
-            chunk_dir
+            chunk_dir,
         )
 
-    def process_chunks(self, chunks, chunk_json_dir):
+    def process_chunks(
+        self,
+        chunks,
+        chunk_json_dir,
+        progress=None,
+    ):
 
         print("\n========== EXTRACTING ==========\n")
 
-        os.makedirs(chunk_json_dir, exist_ok=True)
+        os.makedirs(
+            chunk_json_dir,
+            exist_ok=True,
+        )
 
         total = len(chunks)
 
-        for index, chunk in enumerate(chunks, start=1):
+        for index, chunk in enumerate(
+            chunks,
+            start=1,
+        ):
 
-            print(f"\n========== Chunk {index}/{total} ==========")
+            percent = 15 + int(
+                (index / total) * 70
+            )
+
+            if progress:
+                progress.update(
+                    stage="extracting",
+                    percent=percent,
+                    message=f"Extracting chunk {index}/{total}",
+                )
+
+            print(
+                f"\n========== Chunk {index}/{total} =========="
+            )
 
             if Checkpoint.completed(
                 chunk,
-                chunk_json_dir
+                chunk_json_dir,
             ):
 
-                print(f"Skipping {os.path.basename(chunk)}")
+                print(
+                    f"Skipping {os.path.basename(chunk)}"
+                )
 
                 continue
 
-            print(f"Processing {os.path.basename(chunk)}")
+            print(
+                f"Processing {os.path.basename(chunk)}"
+            )
 
             questions = self.client.extract(chunk)
 
             Exporter.save_chunk(
                 questions,
                 chunk,
-                chunk_json_dir
+                chunk_json_dir,
             )
 
-    def merge_results(self, chunk_json_dir, output_json):
+    def merge_results(
+        self,
+        chunk_json_dir,
+        output_json,
+    ):
 
         print("\n========== MERGING ==========\n")
 
         os.makedirs(
             os.path.dirname(output_json),
-            exist_ok=True
+            exist_ok=True,
         )
 
         Exporter.merge(
             chunk_json_dir,
-            output_json
+            output_json,
         )
 
-    def run(self, pdf_path):
+    def run(
+        self,
+        pdf_path,
+        progress=None,
+    ):
 
         chunk_dir, chunk_json_dir, output_json = self._get_paths(
             pdf_path
         )
 
+        if progress:
+            progress.update(
+                stage="splitting",
+                percent=5,
+                message="Splitting PDF...",
+            )
+
         chunks = self.split_pdf(
             pdf_path,
-            chunk_dir
+            chunk_dir,
         )
+
+        if progress:
+            progress.update(
+                stage="extracting",
+                percent=15,
+                message=f"Created {len(chunks)} chunks",
+            )
 
         self.process_chunks(
             chunks,
-            chunk_json_dir
+            chunk_json_dir,
+            progress,
         )
+
+        if progress:
+            progress.update(
+                stage="merging",
+                percent=90,
+                message="Merging questions...",
+            )
 
         self.merge_results(
             chunk_json_dir,
-            output_json
+            output_json,
         )
+
+        if progress:
+            progress.update(
+                stage="completed",
+                percent=100,
+                message="Extraction completed!",
+                completed=True,
+            )
 
         return output_json

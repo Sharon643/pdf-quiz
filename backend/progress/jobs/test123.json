@@ -1,0 +1,7 @@
+{
+    "jobId": "test123",
+    "stage": "extracting",
+    "percent": 45,
+    "message": "Extracting chunk 4/9",
+    "completed": false
+}
