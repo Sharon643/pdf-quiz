@@ -48,11 +48,18 @@ def save_answer(
     request: SaveAnswerRequest,
 ):
 
-    session = service.save_answer(
-        exam_id,
-        request.questionId,
-        request.selectedOption,
-    )
+    try:
+        session = service.save_answer(
+            exam_id,
+            request.questionId,
+            request.selectedOption,
+        )
+
+    except ValueError as e:
+        raise HTTPException(
+            status_code=400,
+            detail=str(e),
+        )
 
     if session is None:
         raise HTTPException(

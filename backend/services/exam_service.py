@@ -48,13 +48,15 @@ class ExamService:
             question_id = str(uuid.uuid4())
 
             answer_key[question_id] = {
-                "correctAnswer": question.get("correctAnswer"),
-                "explanation": question.get("explanation"),
+                "correctAnswer": question.get("correct_answer"),
+                "correctOption": question.get("correct_option"),
+                "explanation": question.get("explanation", ""),
             }
 
             frontend_question = question.copy()
 
-            frontend_question.pop("correctAnswer", None)
+            frontend_question.pop("correct_answer", None)
+            frontend_question.pop("correct_option", None)
             frontend_question.pop("explanation", None)
 
             frontend_question["id"] = question_id
@@ -125,15 +127,25 @@ class ExamService:
         question_id: str,
         selected_option: str | None,
     ):
-
         manager = ExamManager(exam_id)
 
-        session = manager.update_answer(
+        session = manager.read_session()
+
+        if session is None:
+            return None
+
+        valid_question_ids = {
+            question["id"]
+            for question in session["questions"]
+        }
+
+        if question_id not in valid_question_ids:
+            raise ValueError("Invalid question ID.")
+
+        return manager.update_answer(
             question_id,
             selected_option,
         )
-
-        return session
     
     def mark_for_review(
     self,
@@ -149,49 +161,49 @@ class ExamService:
             marked,
         )
     
-def submit_exam(self, exam_id: str):
+    def submit_exam(self, exam_id: str):
 
-    manager = ExamManager(exam_id)
+        manager = ExamManager(exam_id)
 
-    session = manager.read_session()
-    answer_key = manager.read_answer_key()
+        session = manager.read_session()
+        answer_key = manager.read_answer_key()
 
-    if session is None or answer_key is None:
-        return None
+        if session is None or answer_key is None:
+            return None
 
-    correct = 0
-    wrong = 0
-    unanswered = 0
+        correct = 0
+        wrong = 0
+        unanswered = 0
 
-    answers = session.get("answers", {})
+        answers = session.get("answers", {})
 
-    for question_id, key in answer_key.items():
+        for question_id, key in answer_key.items():
 
-        user_answer = answers.get(question_id, {}).get("selectedOption")
+            user_answer = answers.get(question_id, {}).get("selectedOption")
 
-        if user_answer is None:
-            unanswered += 1
+            if user_answer is None:
+                unanswered += 1
 
-        elif user_answer == key["correctAnswer"]:
-            correct += 1
+            elif user_answer == key["correctAnswer"]:
+                correct += 1
 
-        else:
-            wrong += 1
+            else:
+                wrong += 1
 
-    total = len(answer_key)
+        total = len(answer_key)
 
-    percentage = round((correct / total) * 100, 2) if total else 0
+        percentage = round((correct / total) * 100, 2) if total else 0
 
-    session["completed"] = True
+        session["completed"] = True
 
-    manager.save_session(session)
+        manager.save_session(session)
 
-    return {
-        "success": True,
-        "score": correct,
-        "totalQuestions": total,
-        "correctAnswers": correct,
-        "wrongAnswers": wrong,
-        "unanswered": unanswered,
-        "percentage": percentage,
-    }
+        return {
+            "success": True,
+            "score": correct,
+            "totalQuestions": total,
+            "correctAnswers": correct,
+            "wrongAnswers": wrong,
+            "unanswered": unanswered,
+            "percentage": percentage,
+        }
