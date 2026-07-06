@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.question_bank import router as question_bank_router
 from api.extraction import router as extraction_router
 from api.progress import router as progress_router
+from api.exam import router as exam_router
 
 
 
@@ -25,3 +26,4 @@ app.add_middleware(
 app.include_router(question_bank_router)
 app.include_router(extraction_router)
 app.include_router(progress_router)
+app.include_router(exam_router)
