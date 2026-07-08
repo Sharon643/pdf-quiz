@@ -3,13 +3,12 @@ import type { ReactNode } from "react";
 interface StatCardProps {
   title: string;
   value: string | number;
-  icon: ReactNode;
+  icon?: ReactNode;
 }
 
 export default function StatCard({
   title,
   value,
-  icon,
 }: StatCardProps) {
   return (
     <div
@@ -18,24 +17,22 @@ export default function StatCard({
         border
         border-zinc-800
         bg-zinc-900
-        p-5
+        p-6
         transition-colors
-        hover:bg-zinc-800
+        hover:border-zinc-700
       "
     >
-      <div className="mb-5 flex items-center justify-between">
-        <span className="text-sm text-zinc-400">
+      <div className="space-y-2">
+
+        <h2 className="text-4xl font-semibold tracking-tight text-white">
+          {value}
+        </h2>
+
+        <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">
           {title}
-        </span>
+        </p>
 
-        <div className="text-zinc-500">
-          {icon}
-        </div>
       </div>
-
-      <h2 className="text-3xl font-bold text-white">
-        {value}
-      </h2>
     </div>
   );
 }

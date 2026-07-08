@@ -19,10 +19,10 @@ export default function Button({
 }: ButtonProps) {
   const variants = {
     primary:
-      "bg-blue-600 text-white hover:bg-blue-700",
+      "bg-blue-600 text-white hover:bg-blue-500",
 
     secondary:
-      "bg-zinc-900 text-white border border-zinc-700 hover:bg-zinc-800",
+      "border border-zinc-700 bg-zinc-800 text-zinc-200 hover:bg-zinc-700",
 
     danger:
       "bg-red-600 text-white hover:bg-red-700",

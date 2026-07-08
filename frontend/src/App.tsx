@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
 import Exam from "./pages/Exam";
 import ExamSettings from "./pages/ExamSettings";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <Routes>
       <Route
         path="/"
-        element={<Home />}
+        element={<Dashboard />}
       />
 
       <Route
@@ -22,6 +22,7 @@ function App() {
         element={<Exam />}
       />
     </Routes>
+    
   );
 }
 
