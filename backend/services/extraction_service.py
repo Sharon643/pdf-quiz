@@ -3,6 +3,7 @@ import json
 import shutil
 from extractor.extractor import Extractor
 from utils.progress import ProgressManager
+from utils.question_bank import QuestionBankManager
 
 
 class ExtractionService:
@@ -53,6 +54,13 @@ class ExtractionService:
             percent=100,
             message="Extraction completed!",
             completed=True,
+        )
+
+        manager = QuestionBankManager()
+
+        manager.save(
+            file_name=pdf_path.name,
+            question_count=len(questions),
         )
 
         return {

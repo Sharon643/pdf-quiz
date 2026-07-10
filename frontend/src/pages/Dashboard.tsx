@@ -1,8 +1,5 @@
+import { useEffect, useState } from "react";
 import {
-  // BookOpen,
-  // ClipboardCheck,
-  // Files,
-  FolderOpen,
   Upload,
   ClipboardList,
   Brain,
@@ -12,18 +9,43 @@ import { useNavigate } from "react-router-dom";
 
 import DashboardHeader from "../components/dashboard/DashboardHeader";
 import ContinueCard from "../components/dashboard/ContinueCard";
-import StatCard from "../components/dashboard/StatCard";
-import ActionCard from "../components/dashboard/ActionCard";
+import QuestionBankCard from "../components/dashboard/QuestionBankCard";
 import QuickActionCard from "../components/dashboard/QuickActionCard";
+import StatCard from "../components/dashboard/StatCard";
+
+import type { QuestionBank } from "../types/questionBank";
+import { getQuestionBank } from "../services/questionBank";
+import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+
+  const [questionBank, setQuestionBank] = useState<QuestionBank | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadQuestionBank() {
+      try {
+        const data = await getQuestionBank();
+        setQuestionBank(data);
+      } catch (error) {
+        console.error("Failed to load question bank:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadQuestionBank();
+  }, []);
+
+  if (loading) {
+    return <DashboardSkeleton />;
+  }
 
   return (
     <main className="min-h-screen bg-zinc-950">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-8 py-8">
 
-        {/* Header */}
         <DashboardHeader />
 
         {/* Welcome */}
@@ -33,7 +55,7 @@ export default function Dashboard() {
           </h2>
 
           <p className="mt-2 text-zinc-400">
-            Prepare. Practice. Improve.
+            Continue your preparation and build momentum.
           </p>
         </section>
 
@@ -43,7 +65,7 @@ export default function Dashboard() {
 
             <StatCard
               title="Questions"
-              value={364}
+              value={questionBank?.questionCount ?? 0}
             />
 
             <StatCard
@@ -53,7 +75,7 @@ export default function Dashboard() {
 
             <StatCard
               title="Question Banks"
-              value={1}
+              value={questionBank?.hasQuestions ? 1 : 0}
             />
 
           </div>
@@ -64,19 +86,27 @@ export default function Dashboard() {
           <div className="grid gap-6 lg:grid-cols-2">
 
             <ContinueCard
-              title="Medical MCQs.pdf"
-              questionCount={364}
+              title={questionBank?.fileName ?? "No Question Bank"}
+              questionCount={questionBank?.questionCount ?? 0}
               progress={19}
-              lastStudied="Yesterday"
-              onResume={() => {}}
+              lastStudied={
+                questionBank?.uploadedAt
+                  ? new Date(questionBank.uploadedAt).toLocaleDateString()
+                  : "N/A"
+              }
+              onResume={() => navigate("/exam-settings")}
             />
 
-            <ActionCard
-              title="Question Bank"
-              description="Manage your extracted questions."
-              icon={<FolderOpen size={22} className="text-zinc-400" />}
-              buttonText="Manage"
-              onClick={() => navigate("/question-bank")}
+            <QuestionBankCard
+              fileName={questionBank?.fileName ?? "No Question Bank"}
+              questionCount={questionBank?.questionCount ?? 0}
+              uploadedAt={
+                questionBank?.uploadedAt
+                  ? new Date(questionBank.uploadedAt).toLocaleDateString()
+                  : "N/A"
+              }
+              onManage={() => navigate("/question-bank")}
+              onUpload={() => navigate("/")}
             />
 
           </div>
@@ -120,7 +150,7 @@ export default function Dashboard() {
 
             <QuickActionCard
               title="Review"
-              description="Review incorrect and flagged questions."
+              description="Review previous exams and incorrect answers."
               icon={<RotateCcw size={22} className="text-zinc-400" />}
               onClick={() => navigate("/review")}
             />
