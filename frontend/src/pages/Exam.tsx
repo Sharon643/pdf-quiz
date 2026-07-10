@@ -1,175 +1,255 @@
+import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { useExam } from "../hooks/useExam";
+import type { ExamSession } from "../types/exam";
 
-function Exam() {
+import { getExam } from "../services/examService";
+
+import ExamHeader from "../components/exam/ExamHeader";
+import QuestionPanel from "../components/exam/QuestionPanel";
+import QuestionNavigator from "../components/exam/QuestionNavigator";
+import SubmitExamModal from "../components/exam/SubmitExamModal";
+import { submitExam } from "../services/examService";
+
+export default function Exam() {
   const { examId } = useParams();
 
-  if (!examId) {
-    return (
-      <div className="p-8 text-center text-red-500">
-        Invalid exam.
-      </div>
+  const [exam, setExam] = useState<ExamSession | null>(null);
+
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  const [answers, setAnswers] = useState<Record<string, string | null>>({});
+
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
+
+  const [submitting, setSubmitting] = useState(false);
+
+  const [reviewQuestions] = useState<Set<number>>(new Set());
+
+  const [loading, setLoading] = useState(true);
+
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function loadExam() {
+      if (!examId) {
+        setError("Invalid exam.");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const session = await getExam(examId);
+
+        setExam(session);
+        setAnswers(session.answers ?? {});
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load exam.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadExam();
+  }, [examId]);
+
+  const currentQuestion = useMemo(() => {
+    if (!exam) return null;
+
+    return exam.questions[currentQuestionIndex];
+  }, [exam, currentQuestionIndex]);
+
+  const answeredQuestions = useMemo(() => {
+    return new Set(
+      Object.keys(answers)
+        .filter((id) => answers[id])
+        .map(Number)
+    );
+  }, [answers]);
+
+  function handleSelectOption(option: string) {
+    if (!currentQuestion) return;
+
+    setAnswers((previous) => ({
+      ...previous,
+      [currentQuestion.id]: option,
+    }));
+  }
+
+  function handlePrevious() {
+    setCurrentQuestionIndex((index) =>
+      Math.max(index - 1, 0)
     );
   }
 
-  const {
-    loading,
-    exam,
-    result,
+  function handleNext() {
+    if (!exam) return;
 
-    currentIndex,
-    currentQuestion,
-
-    nextQuestion,
-    previousQuestion,
-
-    selectAnswer,
-    toggleReview,
-
-    finishExam,
-  } = useExam(examId);
+    setCurrentQuestionIndex((index) =>
+      Math.min(index + 1, exam.questions.length - 1)
+    );
+  }
 
   if (loading) {
     return (
-      <div className="p-8 text-center">
-        Loading Exam...
-      </div>
+      <main className="flex min-h-screen items-center justify-center bg-zinc-950">
+        <p className="text-zinc-400">Loading Exam...</p>
+      </main>
     );
   }
 
-  if (!exam || !currentQuestion) {
+  if (error || !exam || !currentQuestion) {
     return (
-      <div className="p-8 text-center">
-        Exam not found.
-      </div>
+      <main className="flex min-h-screen items-center justify-center bg-zinc-950">
+        <p className="text-red-400">
+          {error || "Exam not found"}
+        </p>
+      </main>
     );
   }
-
-  const answer =
-    exam.answers[currentQuestion.id];
 
   return (
-    <div className="mx-auto max-w-4xl p-8">
+    <main className="min-h-screen bg-zinc-950">
 
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mx-auto max-w-[1800px] px-8 py-8">
 
-        <h1 className="text-2xl font-bold">
-          Question {currentIndex + 1} / {exam.questionCount}
-        </h1>
+        <ExamHeader
+          current={currentQuestionIndex + 1}
+          total={exam.questionCount}
+          answered={answeredQuestions.size}
+        />
 
-        <button
-          onClick={finishExam}
-          className="rounded bg-red-600 px-4 py-2 text-white"
-        >
-          Submit Exam
-        </button>
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
 
-      </div>
+          {/* LEFT */}
 
-      <div className="rounded-lg border p-6">
+          <section className="min-h-0">
 
-        <p className="mb-6 text-lg font-medium">
-          {currentQuestion.question}
-        </p>
+            <QuestionPanel
+              question={currentQuestion}
+              selectedOption={
+                answers[currentQuestion.id] ?? null
+              }
+              hasPrevious={currentQuestionIndex > 0}
+              hasNext={
+                currentQuestionIndex <
+                exam.questionCount - 1
+              }
+              onSelectOption={handleSelectOption}
+              onPrevious={handlePrevious}
+              onNext={handleNext}
+              onMarkReview={() => {}}
+            />
 
-        <div className="space-y-3">
+          </section>
 
-          {Object.entries(currentQuestion.options).map(
-            ([key, value]) => (
+          {/* RIGHT */}
+
+          <aside className="sticky top-8 self-start space-y-6">
+
+            <QuestionNavigator
+              total={exam.questionCount}
+              current={currentQuestionIndex + 1}
+              answered={answeredQuestions}
+              review={reviewQuestions}
+              onSelect={(question) =>
+                setCurrentQuestionIndex(question - 1)
+              }
+            />
+
+            {/* Progress */}
+
+            <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
+
+              <h3 className="text-lg font-semibold text-white">
+                Progress
+              </h3>
+
+              <div className="mt-6 space-y-5">
+
+                <div className="flex items-center justify-between">
+                  <span className="text-zinc-400">
+                    Answered
+                  </span>
+
+                  <span className="font-semibold text-white">
+                    {answeredQuestions.size}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-zinc-400">
+                    Review
+                  </span>
+
+                  <span className="font-semibold text-white">
+                    {reviewQuestions.size}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-zinc-400">
+                    Remaining
+                  </span>
+
+                  <span className="font-semibold text-white">
+                    {exam.questionCount -
+                      answeredQuestions.size}
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+            {/* Submit */}
 
               <button
-                key={key}
-                onClick={() => selectAnswer(key)}
-                className={`w-full rounded border p-3 text-left transition
-
-                ${
-                  answer?.selectedOption === key
-                    ? "border-blue-600 bg-blue-100"
-                    : "hover:bg-gray-100"
-                }
-                `}
+                className="
+                  mt-6
+                  w-full
+                  rounded-lg
+                  bg-blue-600
+                  py-3
+                  font-medium
+                  text-white
+                  transition
+                  hover:bg-blue-500
+                "
               >
-                <strong>{key}.</strong> {value}
+                Submit Exam
               </button>
 
-            )
-          )}
-
-        </div>
-
-        <div className="mt-8 flex justify-between">
-
-          <button
-            onClick={previousQuestion}
-            disabled={currentIndex === 0}
-            className="rounded bg-gray-200 px-4 py-2 disabled:opacity-50"
-          >
-            Previous
-          </button>
-
-          <button
-            onClick={toggleReview}
-            className={`rounded px-4 py-2 text-white
-
-            ${
-              answer?.markedForReview
-                ? "bg-yellow-600"
-                : "bg-gray-600"
-            }
-            `}
-          >
-            {answer?.markedForReview
-              ? "Remove Review"
-              : "Mark for Review"}
-          </button>
-
-          <button
-            onClick={nextQuestion}
-            disabled={
-              currentIndex === exam.questionCount - 1
-            }
-            className="rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-50"
-          >
-            Next
-          </button>
+          </aside>
 
         </div>
 
       </div>
 
-      {result && (
-
-        <div className="mt-8 rounded-lg border bg-green-50 p-6">
-
-          <h2 className="mb-4 text-xl font-bold">
-            Exam Result
-          </h2>
-
-          <p>Score: {result.score}</p>
-
-          <p>
-            Correct: {result.correctAnswers}
-          </p>
-
-          <p>
-            Wrong: {result.wrongAnswers}
-          </p>
-
-          <p>
-            Unanswered: {result.unanswered}
-          </p>
-
-          <p>
-            Percentage: {result.percentage}%
-          </p>
-
-        </div>
-
-      )}
-
-    </div>
+    </main>
   );
 }
 
-export default Exam;
+// interface LegendItemProps {
+//   color: string;
+//   label: string;
+// }
+
+// function LegendItem({
+//   color,
+//   label,
+// }: LegendItemProps) {
+//   return (
+//     <div className="flex items-center gap-3">
+
+//       <div
+//         className={`h-3 w-3 rounded-full ${color}`}
+//       />
+
+//       <span className="text-zinc-300">
+//         {label}
+//       </span>
+
+//     </div>
+//   );
+// }

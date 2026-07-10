@@ -1,4 +1,4 @@
-import api from "./api";
+import {api} from "./api";
 import type { ExtractionJob } from "../types/job";
 
 export async function uploadPdf(

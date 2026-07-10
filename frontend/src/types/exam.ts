@@ -1,8 +1,8 @@
-export interface Question {
+export interface ExamQuestion {
   id: string;
   number: number;
-  page: number;
-  subject: string;
+  page?: number;
+  subject?: string;
   question: string;
   options: Record<string, string>;
 }
@@ -16,8 +16,8 @@ export interface AnswerState {
 export interface ExamSession {
   examId: string;
   questionCount: number;
-  questions: Question[];
-  answers: Record<string, AnswerState>;
+  questions: ExamQuestion[];
+  answers: Record<string, string | null>;
   completed: boolean;
 }
 

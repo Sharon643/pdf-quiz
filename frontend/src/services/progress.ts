@@ -1,4 +1,4 @@
-import api from "./api";
+import {api} from "./api";
 import type { ProgressResponse } from "../types/progress";
 
 export async function getProgress(

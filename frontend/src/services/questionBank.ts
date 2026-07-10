@@ -1,11 +1,9 @@
-import axios from "axios";
+import { api } from "./api";
 
 import type { QuestionBank } from "../types/questionBank";
 
-const API_URL = "http://localhost:8000";
-
 export interface QuestionSummary {
-  id: number;
+  id: string;
   number: number;
   page: number;
   subject?: string;
@@ -19,16 +17,14 @@ export interface QuestionListResponse {
 }
 
 export async function getQuestionBank(): Promise<QuestionBank> {
-  const response = await axios.get<QuestionBank>(
-    `${API_URL}/question-bank`
-  );
+  const response = await api.get<QuestionBank>("/question-bank");
 
   return response.data;
 }
 
 export async function getQuestionBankQuestions(): Promise<QuestionListResponse> {
-  const response = await axios.get<QuestionListResponse>(
-    `${API_URL}/question-bank/questions`
+  const response = await api.get<QuestionListResponse>(
+    "/question-bank/questions"
   );
 
   return response.data;

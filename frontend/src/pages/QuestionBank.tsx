@@ -13,11 +13,15 @@ import QuestionBankInfo from "../components/question-bank/QuestionBankInfo";
 import QuestionSearch from "../components/question-bank/QuestionSearch";
 import QuestionCard from "../components/question-bank/QuestionCard";
 import QuestionBankSkeleton from "../components/question-bank/QuestionBankSkeleton";
+import QuestionDetailsModal from "../components/question-bank/QuestionDetailsModal";
 
 export default function QuestionBank() {
   const [metadata, setMetadata] = useState<QuestionBank | null>(null);
   const [questions, setQuestions] = useState<QuestionSummary[]>([]);
   const [search, setSearch] = useState("");
+
+  const [selectedQuestion, setSelectedQuestion] =
+    useState<QuestionSummary | null>(null);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -58,6 +62,25 @@ export default function QuestionBank() {
     );
   }, [questions, search]);
 
+    const currentIndex = selectedQuestion
+    ? filteredQuestions.findIndex((q) => q.id === selectedQuestion.id)
+    : -1;
+
+  const hasPrevious = currentIndex > 0;
+  const hasNext = currentIndex >= 0 && currentIndex < filteredQuestions.length - 1;
+
+  function handlePrevious() {
+    if (hasPrevious) {
+      setSelectedQuestion(filteredQuestions[currentIndex - 1]);
+    }
+  }
+
+  function handleNext() {
+    if (hasNext) {
+      setSelectedQuestion(filteredQuestions[currentIndex + 1]);
+    }
+  }
+
   if (loading) {
     return <QuestionBankSkeleton />;
   }
@@ -81,38 +104,67 @@ export default function QuestionBank() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-8 py-8">
+    <>
+      <main className="min-h-screen bg-zinc-950">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-8 py-8">
 
-        <QuestionBankHeader />
+          <QuestionBankHeader />
 
-        <QuestionBankInfo metadata={metadata} />
+          <QuestionBankInfo metadata={metadata} />
 
-        <QuestionSearch
-          value={search}
-          onChange={setSearch}
-        />
+          <section>
 
-        <section className="space-y-4">
+            <div className="mb-5">
 
-          {filteredQuestions.length === 0 ? (
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-8 text-center">
-              <p className="text-zinc-400">
-                No matching questions found.
+              <h2 className="text-xl font-semibold text-white">
+                Questions
+              </h2>
+
+              <p className="mt-1 text-zinc-400">
+                Browse and search your extracted questions.
               </p>
+
             </div>
-          ) : (
-            filteredQuestions.map((question) => (
-              <QuestionCard
-                key={question.id}
-                question={question}
-              />
-            ))
-          )}
 
-        </section>
+            <QuestionSearch
+                value={search}
+                onChange={setSearch}
+            />
 
-      </div>
-    </main>
+          </section>
+
+          <section className="space-y-6">
+
+            {filteredQuestions.length === 0 ? (
+              <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-8 text-center">
+                <p className="text-zinc-400">
+                  No matching questions found.
+                </p>
+              </div>
+            ) : (
+              filteredQuestions.map((question) => (
+                <QuestionCard
+                  key={question.id}
+                  question={question}
+                  onView={setSelectedQuestion}
+                />
+              ))
+            )}
+
+          </section>
+
+        </div>
+      </main>
+
+      <QuestionDetailsModal
+        open={selectedQuestion !== null}
+        question={selectedQuestion}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
+        onPrevious={handlePrevious}
+        onNext={handleNext}
+        onClose={() => setSelectedQuestion(null)}
+      />
+    </>
   );
 }
