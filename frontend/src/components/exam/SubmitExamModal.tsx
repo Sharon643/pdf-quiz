@@ -4,6 +4,7 @@ interface SubmitExamModalProps {
   open: boolean;
   answered: number;
   review: number;
+  answeredReview: number;
   total: number;
   loading: boolean;
   onCancel: () => void;
@@ -14,6 +15,7 @@ export default function SubmitExamModal({
   open,
   answered,
   review,
+  answeredReview,
   total,
   loading,
   onCancel,
@@ -49,7 +51,13 @@ export default function SubmitExamModal({
           />
 
           <Row
-            label="Marked for Review"
+            label="Needs Review"
+            value={answeredReview}
+            color="text-violet-400"
+          />
+
+          <Row
+            label="Review Only"
             value={review}
             color="text-amber-400"
           />

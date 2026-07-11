@@ -1,18 +1,25 @@
 import { CheckCircle2, Clock3, FileQuestion, LogOut } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 interface ExamHeaderProps {
-  current: number;
-  total: number;
-  answered: number;
+    current: number;
+    total: number;
+    answered: number;
+
+    timed: boolean;
+
+    remainingSeconds: number | null;
+
+    onExit: () => void;
 }
 
 export default function ExamHeader({
-  current,
-  total,
-  answered,
+    current,
+    total,
+    answered,
+    timed,
+    remainingSeconds,
+    onExit,
 }: ExamHeaderProps) {
-  const navigate = useNavigate();
 
   return (
     <header className="sticky top-0 z-40 mb-6 rounded-xl border border-zinc-800 bg-zinc-900/95 px-6 py-3 backdrop-blur">
@@ -41,17 +48,19 @@ export default function ExamHeader({
             value={`${answered}`}
           />
 
-          <Stat
-            icon={<Clock3 size={15} />}
-            value="--:--"
-          />
+          {timed && remainingSeconds !== null && (
+              <Stat
+                  icon={<Clock3 size={15} />}
+                  value={formatTime(remainingSeconds)}
+              />
+          )}
 
         </div>
 
         {/* Right */}
 
         <button
-          onClick={() => navigate("/dashboard")}
+          onClick={onExit}
           className="
             flex
             items-center
@@ -97,4 +106,24 @@ function Stat({
 
     </div>
   );
+}
+
+function formatTime(seconds: number) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+
+  if (hours > 0) {
+    return `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${secs
+      .toString()
+      .padStart(2, "0")}`;
+  }
+
+  return `${minutes
+    .toString()
+    .padStart(2, "0")}:${secs
+    .toString()
+    .padStart(2, "0")}`;
 }

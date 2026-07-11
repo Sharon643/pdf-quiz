@@ -22,7 +22,9 @@ service = ExamService()
 )
 def generate_exam(request: GenerateExamRequest):
     return service.generate_exam(
-        request.questionCount
+        question_count=request.questionCount,
+        timed=request.timed,
+        duration_minutes=request.durationMinutes,
     )
 
 

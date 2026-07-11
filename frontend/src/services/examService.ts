@@ -2,12 +2,12 @@ import { api } from "./api";
 
 import type {
   ExamSession,
+  GenerateExamRequest,
   GenerateExamResponse,
 } from "../types/exam";
 
-export interface GenerateExamRequest {
-  questionCount: number;
-}
+import type { ExamResult } from "../types/result";
+
 
 export async function generateExam(
   request: GenerateExamRequest
@@ -51,11 +51,25 @@ export async function markForReview(
     marked,
   });
 }
+export interface SubmitExamResponse {
+    success: boolean;
 
+    score: number;
+
+    totalQuestions: number;
+
+    correctAnswers: number;
+
+    wrongAnswers: number;
+
+    unanswered: number;
+
+    percentage: number;
+}
 export async function submitExam(
   examId: string
-) {
-  const response = await api.post(
+): Promise<ExamResult> {
+  const response = await api.post<ExamResult>(
     `/exam/${examId}/submit`
   );
 

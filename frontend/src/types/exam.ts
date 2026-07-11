@@ -16,13 +16,24 @@ export interface AnswerState {
 export interface ExamSession {
   examId: string;
   questionCount: number;
+
   questions: ExamQuestion[];
-  answers: Record<string, string | null>;
+
+  answers: Record<string, AnswerState>;
+
   completed: boolean;
+
+  startedAt: string;
+
+  timed: boolean;
+
+  durationMinutes: number | null;
 }
 
 export interface GenerateExamRequest {
   questionCount: number;
+  timed: boolean;
+  durationMinutes: number | null;
 }
 
 export interface GenerateExamResponse {

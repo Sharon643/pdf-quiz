@@ -1,4 +1,4 @@
-export interface QuestionBank {
+export interface QuestionBankResponse {
   fileName: string;
   questionCount: number;
   subjects: number;

@@ -1,12 +1,16 @@
-interface Props {
+interface ExamSummaryProps {
   selectedQuestions: number;
   totalQuestions: number;
+  timed: boolean;
+  duration: number;
 }
 
 export default function ExamSummary({
   selectedQuestions,
-}: Props) {
-  const estimatedMinutes = selectedQuestions;
+  totalQuestions,
+  timed,
+  duration,
+}: ExamSummaryProps) {
 
   return (
     <section className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
@@ -15,40 +19,53 @@ export default function ExamSummary({
         Exam Summary
       </h2>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-3">
+      <p className="mt-2 text-sm text-zinc-400">
+        Review your exam configuration before starting.
+      </p>
 
-        <div>
-          <p className="text-sm text-zinc-500">
-            Questions
-          </p>
+      <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
 
-          <p className="mt-2 text-2xl font-semibold text-white">
-            {selectedQuestions}
-          </p>
-        </div>
+        <SummaryCard
+          label="Questions"
+          value={`${selectedQuestions}/${totalQuestions}`}
+        />
 
-        <div>
-          <p className="text-sm text-zinc-500">
-            Estimated Time
-          </p>
+        <SummaryCard
+          label="Mode"
+          value={timed ? "Timed" : "Practice"}
+        />
 
-          <p className="mt-2 text-2xl font-semibold text-white">
-            {estimatedMinutes} min
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-zinc-500">
-            Difficulty
-          </p>
-
-          <p className="mt-2 text-2xl font-semibold text-white">
-            Mixed
-          </p>
-        </div>
+        <SummaryCard
+          label="Duration"
+          value={timed ? `${duration} min` : "Unlimited"}
+        />
 
       </div>
 
     </section>
+  );
+}
+
+interface SummaryCardProps {
+  label: string;
+  value: string;
+}
+
+function SummaryCard({
+  label,
+  value,
+}: SummaryCardProps) {
+  return (
+    <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
+
+      <p className="text-xs uppercase tracking-wide text-zinc-500">
+        {label}
+      </p>
+
+      <p className="mt-2 text-lg font-semibold text-white">
+        {value}
+      </p>
+
+    </div>
   );
 }

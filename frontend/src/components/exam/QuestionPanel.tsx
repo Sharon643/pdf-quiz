@@ -6,6 +6,7 @@ import type { ExamQuestion } from "../../types/exam";
 interface QuestionPanelProps {
   question: ExamQuestion;
   selectedOption: string | null;
+  isMarkedForReview: boolean;
 
   hasPrevious: boolean;
   hasNext: boolean;
@@ -21,6 +22,7 @@ export default function QuestionPanel({
   selectedOption,
   hasPrevious,
   hasNext,
+  isMarkedForReview,
   onSelectOption,
   onPrevious,
   onNext,
@@ -114,8 +116,15 @@ export default function QuestionPanel({
         <Button
         variant="secondary"
         onClick={onMarkReview}
+        className={
+            isMarkedForReview
+            ? "border-amber-500 text-amber-300"
+            : ""
+        }
         >
-        Review
+        {isMarkedForReview
+            ? "Reviewed"
+            : "Review"}
         </Button>
 
         <Button

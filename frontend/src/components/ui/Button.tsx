@@ -25,7 +25,7 @@ export default function Button({
       "border border-zinc-700 bg-zinc-800 text-zinc-200 hover:bg-zinc-700",
 
     danger:
-      "bg-red-600 text-white hover:bg-red-700",
+      "bg-white text-black hover:bg-zinc-200",
   };
 
   return (

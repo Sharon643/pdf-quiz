@@ -3,6 +3,7 @@ import random
 import uuid
 from pathlib import Path
 from utils.exam_manager import ExamManager
+from datetime import datetime, UTC
 
 
 class ExamService:
@@ -17,7 +18,12 @@ class ExamService:
         self.session_dir.mkdir(parents=True, exist_ok=True)
         self.key_dir.mkdir(parents=True, exist_ok=True)
 
-    def generate_exam(self, question_count: int):
+    def generate_exam(
+    self,
+    question_count: int,
+    timed: bool,
+    duration_minutes: int | None,
+    ):
 
         # -----------------------------
         # Load Question Bank
@@ -70,6 +76,12 @@ class ExamService:
         session = {
             "examId": exam_id,
             "questionCount": len(session_questions),
+
+            "startedAt": datetime.now(UTC).isoformat(),
+
+            "timed": timed,
+            "durationMinutes": duration_minutes,
+
             "questions": session_questions,
             "answers": {},
             "completed": False,

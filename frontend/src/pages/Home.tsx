@@ -14,13 +14,11 @@ import { useProgress } from "../hooks/useProgress";
 
 import type { AlertMessage } from "../types/alert";
 import type { QuestionBankResponse } from "../types/questionBank";
+import QuestionBankSkeleton from "../components/question-bank/QuestionBankSkeleton";
 
 export default function Home() {
   const [questionBank, setQuestionBank] =
-    useState<QuestionBankResponse>({
-      questionCount: 0,
-      subjects: 0,
-    });
+    useState<QuestionBankResponse | null>(null);
 
   const [selectedFile, setSelectedFile] =
     useState<File | null>(null);
@@ -179,10 +177,14 @@ export default function Home() {
 
       )}
 
+    {questionBank ? (
       <QuestionBank
         questionCount={questionBank.questionCount}
         subjects={questionBank.subjects}
       />
+    ) : (
+      <QuestionBankSkeleton />
+    )}
 
       <ModeSelector />
 

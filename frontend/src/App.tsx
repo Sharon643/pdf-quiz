@@ -4,6 +4,7 @@ import Exam from "./pages/Exam";
 import ExamSettings from "./pages/ExamSettings";
 import Dashboard from "./pages/Dashboard";
 import QuestionBank from "./pages/QuestionBank";
+import Results from "./pages/Results";
 
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
       <Route
         path="/question-bank"
         element={<QuestionBank />}
+      />
+      <Route
+          path="/results"
+          element={<Results />}
       />
     </Routes>
     

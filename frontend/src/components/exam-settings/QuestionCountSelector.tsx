@@ -43,7 +43,7 @@ export default function QuestionCountSelector({
               ${
                 value === count
                   ? "border-blue-500 bg-blue-500/10"
-                  : "border-zinc-800 bg-zinc-950 hover:border-zinc-700"
+                  : "border-zinc-800 bg-zinc-900 hover:border-zinc-700"
               }
             `}
           >

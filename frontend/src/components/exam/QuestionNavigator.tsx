@@ -1,6 +1,7 @@
 interface QuestionNavigatorProps {
   total: number;
   current: number;
+  visited: Set<number>;
 
   answered: Set<number>;
   review: Set<number>;
@@ -13,6 +14,7 @@ export default function QuestionNavigator({
   current,
   answered,
   review,
+  visited,
   onSelect,
 }: QuestionNavigatorProps) {
   return (
@@ -32,39 +34,61 @@ export default function QuestionNavigator({
 
           const number = index + 1;
 
+          const isCurrent = current === number;
+          const isAnswered = answered.has(number);
+          const isReview = review.has(number);
+          const isVisited = visited.has(number);
+
           let style =
-            "border-zinc-800 bg-zinc-950 text-zinc-400 hover:border-zinc-700";
+            "border-zinc-700 bg-zinc-950 text-zinc-500";
 
-          if (answered.has(number)) {
+          // Answered + Review
+          if (isAnswered && isReview) {
             style =
-              "border-emerald-500 bg-emerald-500/20 text-emerald-300";
+              "border-violet-500 bg-violet-500/15 text-violet-300";
           }
-
-          if (review.has(number)) {
+          // Answered
+          else if (isAnswered) {
             style =
-              "border-amber-500 bg-amber-500/20 text-amber-300";
+              "border-emerald-500 bg-emerald-500/15 text-emerald-300";
           }
-
-          if (current === number) {
+          // Review only
+          else if (isReview) {
             style =
-              "border-slate-500 bg-slate-600 text-white";
+              "border-amber-500 bg-amber-500/15 text-amber-300";
           }
-
+          // Visited but unanswered
+          else if (isVisited && !isCurrent) {
+            style =
+              "border-red-500 bg-red-500/10 text-red-300";
+          }
+          // Never visited
+          else {
+            style =
+              "border-zinc-700 bg-zinc-950 text-zinc-500";
+          }
           return (
             <button
-              key={number}
-              onClick={() => onSelect(number)}
-              className={`
+            key={number}
+            onClick={() => onSelect(number)}
+            className={`
                 aspect-square
-                rounded-xl
+                rounded-lg
                 border
                 text-sm
                 font-semibold
-                transition-all
+                transition-transform transition-colors duration-150
+
                 ${style}
-              `}
+
+                ${
+                isCurrent
+                    ? "scale-110 ring-2 ring-white/20 shadow-lg z-10"
+                    : "hover:scale-105"
+                }
+            `}
             >
-              {number}
+            {number}
             </button>
           );
 
@@ -79,18 +103,18 @@ export default function QuestionNavigator({
         </span>
 
         <span className="flex items-center gap-2">
-            <div className="h-2.5 w-2.5 rounded-full bg-blue-500" />
-            Current
-        </span>
-
-        <span className="flex items-center gap-2">
             <div className="h-2.5 w-2.5 rounded-full bg-amber-500" />
             Review
         </span>
 
         <span className="flex items-center gap-2">
-            <div className="h-2.5 w-2.5 rounded-full bg-zinc-600" />
+            <div className="h-2.5 w-2.5 rounded-full bg-red-600" />
             Unanswered
+        </span>
+
+        <span className="flex items-center gap-2">
+            <div className="h-2.5 w-2.5 rounded-full bg-violet-500" />
+            Answered + Review
         </span>
 
         </div>

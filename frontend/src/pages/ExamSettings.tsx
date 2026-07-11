@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import type { QuestionBank } from "../types/questionBank";
+import type { QuestionBankResponse } from "../types/questionBank";
 
 import { getQuestionBank } from "../services/questionBank";
 import { generateExam } from "../services/examService";
@@ -12,14 +12,17 @@ import ExamSummary from "../components/exam-settings/ExamSummary";
 import StartExamButton from "../components/exam-settings/StartExamButton";
 import ExamSettingsSkeleton from "../components/exam-settings/ExamSettingsSkeleton";
 import StartExamModal from "../components/exam-settings/StartExamModal";
+import ExamModeSelector from "../components/exam-settings/ExamModeSelector";
 
 export default function ExamSettings() {
   const navigate = useNavigate();
 
   const [questionBank, setQuestionBank] =
-    useState<QuestionBank | null>(null);
+    useState<QuestionBankResponse | null>(null);
 
   const [questionCount, setQuestionCount] = useState(75);
+  const [timed, setTimed] = useState(false);
+  const [duration, setDuration] = useState(60);
   const [showModal, setShowModal] = useState(false);
 
   const [loading, setLoading] = useState(true);
@@ -50,8 +53,9 @@ export default function ExamSettings() {
 
     try {
       const response = await generateExam({
-        questionCount,
-      });
+      questionCount,
+      timed,
+      durationMinutes: timed ? duration : null,});
 
       navigate(`/exam/${response.examId}`);
     } catch (error) {
@@ -86,10 +90,18 @@ export default function ExamSettings() {
           value={questionCount}
           onChange={setQuestionCount}
         />
+        <ExamModeSelector
+          timed={timed}
+          duration={duration}
+          onTimedChange={setTimed}
+          onDurationChange={setDuration}
+        />
 
         <ExamSummary
           selectedQuestions={questionCount}
           totalQuestions={questionBank.questionCount}
+          timed={timed}
+          duration={duration}
         />
 
         <StartExamButton

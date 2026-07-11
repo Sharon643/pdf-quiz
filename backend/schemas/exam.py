@@ -5,6 +5,10 @@ from pydantic import BaseModel
 class GenerateExamRequest(BaseModel):
     questionCount: int = 75
 
+    timed: bool = False
+
+    durationMinutes: int | None = None
+
 
 class GenerateExamResponse(BaseModel):
     success: bool
@@ -15,9 +19,18 @@ class GenerateExamResponse(BaseModel):
 class ExamSession(BaseModel):
     examId: str
     questionCount: int
+
     questions: list[dict[str, Any]]
+
     answers: dict[str, Any]
+
     completed: bool
+
+    startedAt: str
+
+    timed: bool
+
+    durationMinutes: int | None
 
 
 class SaveAnswerRequest(BaseModel):
