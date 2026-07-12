@@ -1,8 +1,33 @@
-export interface QuestionBankResponse {
+export interface QuestionBank {
+  id: string;
   fileName: string;
   questionCount: number;
-  subjects: number;
-  uploadedAt: string | null;
-  lastModified: string | null;
-  hasQuestions: boolean;
+
+  uploadedAt: string;
+  lastModified: string;
+
+  active: boolean;
+
+  // Temporary compatibility fields
+  subjects?: number;
+  hasQuestions?: boolean;
+}
+
+export interface QuestionSummary {
+  id: number;
+  number: number;
+  page: number;
+  subject: string;
+  question: string;
+  options: string[];
+}
+
+export interface QuestionBankListResponse {
+  count: number;
+  banks: QuestionBank[];
+}
+
+export interface QuestionListResponse {
+  count: number;
+  questions: QuestionSummary[];
 }

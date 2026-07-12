@@ -1,14 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 
-import type { QuestionBank } from "../types/questionBank";
+import type {
+  QuestionBank,
+  QuestionSummary,
+} from "../types/questionBank";
 
 import {
-  getQuestionBank,
+  getQuestionBanks,
   getQuestionBankQuestions,
-  type QuestionSummary,
+  selectQuestionBank,
+  deleteQuestionBank,
 } from "../services/questionBank";
 
 import QuestionBankHeader from "../components/question-bank/QuestionBankHeader";
+import QuestionBankCard from "../components/question-bank/QuestionBankCard";
 import QuestionBankInfo from "../components/question-bank/QuestionBankInfo";
 import QuestionSearch from "../components/question-bank/QuestionSearch";
 import QuestionCard from "../components/question-bank/QuestionCard";
@@ -16,68 +21,162 @@ import QuestionBankSkeleton from "../components/question-bank/QuestionBankSkelet
 import QuestionDetailsModal from "../components/question-bank/QuestionDetailsModal";
 
 export default function QuestionBank() {
-  const [metadata, setMetadata] = useState<QuestionBank | null>(null);
+  const [banks, setBanks] = useState<QuestionBank[]>([]);
+  const [selectedBank, setSelectedBank] =
+    useState<QuestionBank | null>(null);
+
   const [questions, setQuestions] = useState<QuestionSummary[]>([]);
-  const [search, setSearch] = useState("");
 
   const [selectedQuestion, setSelectedQuestion] =
     useState<QuestionSummary | null>(null);
 
+  const [search, setSearch] = useState("");
+
   const [loading, setLoading] = useState(true);
+
+  const [loadingQuestions, setLoadingQuestions] =
+    useState(false);
+
   const [error, setError] = useState("");
 
   useEffect(() => {
-    async function loadQuestionBankData() {
-      try {
-        const [metadataResponse, questionsResponse] =
-          await Promise.all([
-            getQuestionBank(),
-            getQuestionBankQuestions(),
-          ]);
-
-        setMetadata(metadataResponse);
-        setQuestions(questionsResponse.questions);
-      } catch (err) {
-        console.error(err);
-        setError("Failed to load Question Bank.");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadQuestionBankData();
+    loadBanks();
   }, []);
+
+  async function loadBanks() {
+    try {
+      setLoading(true);
+
+      const response =
+        await getQuestionBanks();
+
+      setBanks(response.banks);
+    } catch (err) {
+      console.error(err);
+      setError(
+        "Failed to load question banks."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function openBank(
+    bank: QuestionBank
+  ) {
+    try {
+      setLoadingQuestions(true);
+
+      setSelectedBank(bank);
+
+      const response =
+        await getQuestionBankQuestions(
+          bank.id
+        );
+
+      setQuestions(response.questions);
+
+      setSearch("");
+
+      setSelectedQuestion(null);
+    } catch (err) {
+      console.error(err);
+
+      setError(
+        "Failed to load questions."
+      );
+    } finally {
+      setLoadingQuestions(false);
+    }
+  }
+
+  async function handleMakeActive() {
+    if (!selectedBank) return;
+
+    await selectQuestionBank(
+      selectedBank.id
+    );
+
+    await loadBanks();
+
+    setSelectedBank({
+      ...selectedBank,
+      active: true,
+    });
+  }
+
+  async function handleDelete() {
+    if (!selectedBank) return;
+
+    const confirmed = window.confirm(
+      `Delete "${selectedBank.fileName}"?`
+    );
+
+    if (!confirmed) return;
+
+    await deleteQuestionBank(
+      selectedBank.id
+    );
+
+    setSelectedBank(null);
+
+    setQuestions([]);
+
+    await loadBanks();
+  }
 
   const filteredQuestions = useMemo(() => {
     if (!search.trim()) {
       return questions;
     }
 
-    const query = search.toLowerCase();
+    const query =
+      search.toLowerCase();
 
     return questions.filter(
       (question) =>
-        question.question.toLowerCase().includes(query) ||
-        question.subject?.toLowerCase().includes(query)
+        question.question
+          .toLowerCase()
+          .includes(query) ||
+        question.subject
+          ?.toLowerCase()
+          .includes(query)
     );
   }, [questions, search]);
 
-    const currentIndex = selectedQuestion
-    ? filteredQuestions.findIndex((q) => q.id === selectedQuestion.id)
-    : -1;
+  const currentIndex =
+    selectedQuestion
+      ? filteredQuestions.findIndex(
+          (q) =>
+            q.id === selectedQuestion.id
+        )
+      : -1;
 
-  const hasPrevious = currentIndex > 0;
-  const hasNext = currentIndex >= 0 && currentIndex < filteredQuestions.length - 1;
+  const hasPrevious =
+    currentIndex > 0;
+
+  const hasNext =
+    currentIndex >= 0 &&
+    currentIndex <
+      filteredQuestions.length - 1;
 
   function handlePrevious() {
     if (hasPrevious) {
-      setSelectedQuestion(filteredQuestions[currentIndex - 1]);
+      setSelectedQuestion(
+        filteredQuestions[
+          currentIndex - 1
+        ]
+      );
     }
   }
 
   function handleNext() {
     if (hasNext) {
-      setSelectedQuestion(filteredQuestions[currentIndex + 1]);
+      setSelectedQuestion(
+        filteredQuestions[
+          currentIndex + 1
+        ]
+      );
     }
   }
 
@@ -88,70 +187,161 @@ export default function QuestionBank() {
   if (error) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-zinc-950">
-        <p className="text-red-400">{error}</p>
-      </main>
-    );
-  }
-
-  if (!metadata) {
-    return (
-      <main className="flex min-h-screen items-center justify-center bg-zinc-950">
-        <p className="text-zinc-400">
-          No Question Bank Found.
+        <p className="text-red-400">
+          {error}
         </p>
       </main>
     );
   }
 
-  return (
+    return (
     <>
       <main className="min-h-screen bg-zinc-950">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-8 py-8">
+        <div className="mx-auto max-w-7xl px-8 py-8">
 
           <QuestionBankHeader />
 
-          <QuestionBankInfo metadata={metadata} />
+          {!selectedBank ? (
+            <>
+              <section className="mb-8">
 
-          <section>
+                <h2 className="text-3xl font-bold text-white">
+                  Question Banks
+                </h2>
 
-            <div className="mb-5">
-
-              <h2 className="text-xl font-semibold text-white">
-                Questions
-              </h2>
-
-              <p className="mt-1 text-zinc-400">
-                Browse and search your extracted questions.
-              </p>
-
-            </div>
-
-            <QuestionSearch
-                value={search}
-                onChange={setSearch}
-            />
-
-          </section>
-
-          <section className="space-y-6">
-
-            {filteredQuestions.length === 0 ? (
-              <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-8 text-center">
-                <p className="text-zinc-400">
-                  No matching questions found.
+                <p className="mt-2 text-zinc-400">
+                  Select a question bank to browse its questions.
                 </p>
-              </div>
-            ) : (
-              filteredQuestions.map((question) => (
-                <QuestionCard
-                  key={question.id}
-                  question={question}
-                  onView={setSelectedQuestion}
-                />
-              ))
-            )}
 
-          </section>
+              </section>
+
+              <div className="grid gap-6">
+
+                {banks.length === 0 ? (
+
+                  <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-10 text-center">
+
+                    <h3 className="text-xl font-semibold text-white">
+                      No Question Banks
+                    </h3>
+
+                    <p className="mt-3 text-zinc-400">
+                      Upload a PDF to create your first question bank.
+                    </p>
+
+                  </div>
+
+                ) : (
+
+                  banks.map((bank) => (
+
+                    <QuestionBankCard
+                      key={bank.id}
+                      bank={bank}
+                      onOpen={() => openBank(bank)}
+                    />
+
+                  ))
+
+                )}
+
+              </div>
+
+            </>
+          ) : (
+            <>
+              <div className="mb-8 flex items-center justify-between">
+
+                <div>
+
+                  <button
+                    onClick={() => {
+                      setSelectedBank(null);
+                      setQuestions([]);
+                    }}
+                    className="mb-3 text-sm text-blue-400 hover:text-blue-300"
+                  >
+                    ← Back to Question Banks
+                  </button>
+
+                  <h2 className="text-3xl font-bold text-white">
+                    {selectedBank.fileName}
+                  </h2>
+
+                  <p className="mt-2 text-zinc-400">
+                    {selectedBank.questionCount} Questions
+                  </p>
+
+                </div>
+
+                <div className="flex gap-3">
+
+                  {!selectedBank.active && (
+
+                    <button
+                      onClick={handleMakeActive}
+                      className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-medium text-white transition hover:bg-blue-500"
+                    >
+                      Make Active
+                    </button>
+
+                  )}
+
+                  <button
+                    onClick={handleDelete}
+                    className="rounded-lg border border-red-500 px-5 py-2 text-sm font-medium text-red-400 transition hover:bg-red-500/10"
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              </div>
+
+              <QuestionBankInfo metadata={selectedBank} />
+
+              <div className="mt-8">
+
+                <QuestionSearch
+                  value={search}
+                  onChange={setSearch}
+                />
+
+              </div>
+
+              <section className="mt-8 space-y-6">
+
+                {loadingQuestions ? (
+
+                  <QuestionBankSkeleton />
+
+                ) : filteredQuestions.length === 0 ? (
+
+                  <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-10 text-center">
+
+                    <p className="text-zinc-400">
+                      No questions found.
+                    </p>
+
+                  </div>
+
+                ) : (
+
+                  filteredQuestions.map((question) => (
+
+                    <QuestionCard
+                      key={question.id}
+                      question={question}
+                      onView={setSelectedQuestion}
+                    />
+
+                  ))
+
+                )}
+
+              </section>
+            </>
+          )}
 
         </div>
       </main>

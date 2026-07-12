@@ -14,26 +14,38 @@ import QuickActionCard from "../components/dashboard/QuickActionCard";
 import StatCard from "../components/dashboard/StatCard";
 
 import type { QuestionBank } from "../types/questionBank";
-import { getQuestionBank } from "../services/questionBank";
+import { getQuestionBanks } from "../services/questionBank";
 import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
 
 export default function Dashboard() {
   const navigate = useNavigate();
 
-  const [questionBank, setQuestionBank] = useState<QuestionBank | null>(null);
+  const [questionBanks, setQuestionBanks] = useState<QuestionBank[]>([]);
+
+  const [activeBank, setActiveBank] = useState<QuestionBank | null>(null);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function loadQuestionBank() {
-      try {
-        const data = await getQuestionBank();
-        setQuestionBank(data);
-      } catch (error) {
-        console.error("Failed to load question bank:", error);
-      } finally {
-        setLoading(false);
-      }
+  async function loadQuestionBank() {
+    try {
+      const data = await getQuestionBanks();
+
+      setQuestionBanks(data.banks);
+
+      const active =
+        data.banks.find(
+          (bank: QuestionBank) => bank.active
+        ) ?? null;
+
+      setActiveBank(active);
+
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
+  }
 
     loadQuestionBank();
   }, []);
@@ -65,7 +77,7 @@ export default function Dashboard() {
 
             <StatCard
               title="Questions"
-              value={questionBank?.questionCount ?? 0}
+              value={activeBank?.questionCount ?? 0}
             />
 
             <StatCard
@@ -75,7 +87,7 @@ export default function Dashboard() {
 
             <StatCard
               title="Question Banks"
-              value={questionBank?.hasQuestions ? 1 : 0}
+              value={questionBanks.length}
             />
 
           </div>
@@ -86,23 +98,23 @@ export default function Dashboard() {
           <div className="grid gap-6 lg:grid-cols-2">
 
             <ContinueCard
-              title={questionBank?.fileName ?? "No Question Bank"}
-              questionCount={questionBank?.questionCount ?? 0}
+              title={activeBank?.fileName ?? "No Question Bank"}
+              questionCount={activeBank?.questionCount ?? 0}
               progress={19}
               lastStudied={
-                questionBank?.uploadedAt
-                  ? new Date(questionBank.uploadedAt).toLocaleDateString()
+                activeBank?.uploadedAt
+                  ? new Date(activeBank.uploadedAt).toLocaleDateString()
                   : "N/A"
               }
               onResume={() => navigate("/exam-settings")}
             />
 
             <QuestionBankCard
-              fileName={questionBank?.fileName ?? "No Question Bank"}
-              questionCount={questionBank?.questionCount ?? 0}
+              fileName={activeBank?.fileName ?? "No Question Bank"}
+              questionCount={activeBank?.questionCount ?? 0}
               uploadedAt={
-                questionBank?.uploadedAt
-                  ? new Date(questionBank.uploadedAt).toLocaleDateString()
+                activeBank?.uploadedAt
+                  ? new Date(activeBank.uploadedAt).toLocaleDateString()
                   : "N/A"
               }
               onManage={() => navigate("/question-bank")}
@@ -131,7 +143,7 @@ export default function Dashboard() {
               title="Upload PDF"
               description="Import questions into your question bank."
               icon={<Upload size={22} className="text-zinc-400" />}
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/upload")}
             />
 
             <QuickActionCard

@@ -110,3 +110,13 @@ def submit_exam(exam_id: str):
         )
 
     return result
+
+@router.get("/exam/current")
+def get_current_exam():
+
+    exam = service.get_current_exam()
+
+    return {
+        "exists": exam is not None,
+        "exam": exam,
+    }

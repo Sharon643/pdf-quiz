@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import type { QuestionBankResponse } from "../types/questionBank";
+import type { QuestionBank } from "../types/questionBank";
 
-import { getQuestionBank } from "../services/questionBank";
+import { getQuestionBanks } from "../services/questionBank";
 import { generateExam } from "../services/examService";
 
 import ExamSettingsHeader from "../components/exam-settings/ExamSettingsHeader";
@@ -17,8 +17,7 @@ import ExamModeSelector from "../components/exam-settings/ExamModeSelector";
 export default function ExamSettings() {
   const navigate = useNavigate();
 
-  const [questionBank, setQuestionBank] =
-    useState<QuestionBankResponse | null>(null);
+  const [activeBank, setActiveBank] =useState<QuestionBank | null>(null);
 
   const [questionCount, setQuestionCount] = useState(75);
   const [timed, setTimed] = useState(false);
@@ -30,22 +29,29 @@ export default function ExamSettings() {
   
 
   useEffect(() => {
-    async function loadQuestionBank() {
-      try {
-        const data = await getQuestionBank();
-        setQuestionBank(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
+  async function loadQuestionBank() {
+    try {
+      const data = await getQuestionBanks();
+
+      const active =
+        data.banks.find(
+          (bank: QuestionBank) => bank.active
+        ) ?? null;
+
+      setActiveBank(active);
+
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
+  }
 
     loadQuestionBank();
   }, []);
 
   async function handleStartExam() {
-    if (!questionBank) {
+    if (!activeBank) {
       return;
     }
 
@@ -69,7 +75,7 @@ export default function ExamSettings() {
     return <ExamSettingsSkeleton />;
   }
 
-  if (!questionBank) {
+  if (!activeBank) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-zinc-950">
         <p className="text-zinc-400">
@@ -86,7 +92,7 @@ export default function ExamSettings() {
         <ExamSettingsHeader />
 
         <QuestionCountSelector
-          totalQuestions={questionBank.questionCount}
+          totalQuestions={activeBank.questionCount}
           value={questionCount}
           onChange={setQuestionCount}
         />
@@ -99,7 +105,7 @@ export default function ExamSettings() {
 
         <ExamSummary
           selectedQuestions={questionCount}
-          totalQuestions={questionBank.questionCount}
+          totalQuestions={activeBank.questionCount}
           timed={timed}
           duration={duration}
         />

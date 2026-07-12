@@ -5,6 +5,7 @@ import ExamSettings from "./pages/ExamSettings";
 import Dashboard from "./pages/Dashboard";
 import QuestionBank from "./pages/QuestionBank";
 import Results from "./pages/Results";
+import UploadPdf from "./pages/UploadPdf";
 
 
 function App() {
@@ -35,6 +36,10 @@ function App() {
       <Route
           path="/results"
           element={<Results />}
+      />
+      <Route
+          path="/upload"
+          element={<UploadPdf />}
       />
     </Routes>
     

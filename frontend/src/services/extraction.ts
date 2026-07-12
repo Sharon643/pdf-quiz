@@ -1,22 +1,37 @@
-import {api} from "./api";
-import type { ExtractionJob } from "../types/job";
+import { api } from "./api";
 
-export async function uploadPdf(
-  file: File
-): Promise<ExtractionJob> {
-  const formData = new FormData();
+export async function uploadPdf(file: File) {
+    const formData = new FormData();
 
-  formData.append("file", file);
+    formData.append("file", file);
 
-  const { data } = await api.post<ExtractionJob>(
-    "/extract",
-    formData,
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }
+    const response = await api.post(
+        "/extract",
+        formData,
+        {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        }
+    );
+
+    return response.data;
+}
+
+export interface ExtractionProgress {
+  jobId: string;
+  stage: string;
+  percent: number;
+  message: string;
+  completed: boolean;
+}
+
+export async function getExtractionStatus(
+  jobId: string
+): Promise<ExtractionProgress> {
+  const response = await api.get(
+    `/extract/status/${jobId}`
   );
 
-  return data;
+  return response.data;
 }

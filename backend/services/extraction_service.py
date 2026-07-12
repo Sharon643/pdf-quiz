@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 import shutil
+
 from extractor.extractor import Extractor
 from utils.progress import ProgressManager
 from utils.question_bank import QuestionBankManager
@@ -10,9 +11,13 @@ class ExtractionService:
     def __init__(self):
         self.extractor = Extractor()
 
-    def extract(self, pdf_path: Path, job_id: str) -> dict:
+    def extract(
+        self,
+        pdf_path: Path,
+        job_id: str,
+    ) -> dict:
         """
-        Extract questions from a PDF while updating progress.
+        Extract questions from a PDF and create a new question bank.
         """
 
         progress = ProgressManager(job_id)
@@ -20,26 +25,19 @@ class ExtractionService:
         progress.update(
             stage="starting",
             percent=0,
-            message="Starting extraction..."
+            message="Preparing extraction...",
         )
 
         output_json = self.extractor.run(
             str(pdf_path),
             progress=progress,
         )
-        CURRENT_BANK = Path("data/extracted/current.json")
 
-        CURRENT_BANK.parent.mkdir(
-            parents=True,
-            exist_ok=True,
-        )
-
-        shutil.copy2(
+        with open(
             output_json,
-            CURRENT_BANK,
-        )
-
-        with open(output_json, "r", encoding="utf-8") as f:
+            "r",
+            encoding="utf-8",
+        ) as f:
             questions = json.load(f)
 
         subjects = len(
@@ -49,6 +47,23 @@ class ExtractionService:
             }
         )
 
+        manager = QuestionBankManager()
+
+        bank = manager.create_bank(
+            file_name=pdf_path.name,
+            question_count=len(questions),
+        )
+
+        destination = (
+            Path("data/extracted")
+            / bank["jsonFile"]
+        )
+
+        shutil.copy2(
+            output_json,
+            destination,
+        )
+
         progress.update(
             stage="completed",
             percent=100,
@@ -56,18 +71,11 @@ class ExtractionService:
             completed=True,
         )
 
-        manager = QuestionBankManager()
-
-        manager.save(
-            file_name=pdf_path.name,
-            question_count=len(questions),
-        )
-
         return {
             "success": True,
             "jobId": job_id,
-            "filename": pdf_path.name,
+            "bankId": bank["id"],
+            "fileName": bank["fileName"],
             "questionCount": len(questions),
             "subjects": subjects,
-            "outputFile": str(output_json),
         }

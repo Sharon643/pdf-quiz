@@ -16,15 +16,21 @@ export default function QuestionBankInfo({
 
       <div className="mt-6 flex flex-wrap gap-8 text-sm text-zinc-400">
 
-        <span>{metadata.questionCount} Questions</span>
-
-        <span>{metadata.subjects} Subjects</span>
+        <span>
+          {metadata.questionCount} Questions
+        </span>
 
         <span>
           Uploaded{" "}
-          {metadata.uploadedAt
-            ? new Date(metadata.uploadedAt).toLocaleDateString()
-            : "N/A"}
+          {new Date(
+            metadata.uploadedAt
+          ).toLocaleDateString()}
+        </span>
+
+        <span>
+          {metadata.active
+            ? "Current Active Bank"
+            : "Inactive"}
         </span>
 
       </div>

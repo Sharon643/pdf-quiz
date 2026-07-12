@@ -1,6 +1,6 @@
 import { Eye, FileText, Hash } from "lucide-react";
 
-import type { QuestionSummary } from "../../services/questionBank";
+import type { QuestionSummary } from "../../types/questionBank";
 
 interface QuestionCardProps {
   question: QuestionSummary;

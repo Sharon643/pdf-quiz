@@ -11,10 +11,13 @@ from fastapi import (
 )
 
 from services.extraction_service import ExtractionService
+from utils.progress import ProgressManager
 
 router = APIRouter()
 
 service = ExtractionService()
+job_id = str(uuid.uuid4())
+
 
 UPLOAD_FOLDER = Path("data/pdf")
 UPLOAD_FOLDER.mkdir(
@@ -58,3 +61,18 @@ async def extract(
         "success": True,
         "jobId": job_id,
     }
+
+@router.get("/extract/status/{job_id}")
+async def extraction_status(job_id: str):
+
+    progress = ProgressManager(job_id)
+
+    data = progress.read()
+
+    if data is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Job not found.",
+        )
+
+    return data

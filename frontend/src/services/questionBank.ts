@@ -1,30 +1,56 @@
 import { api } from "./api";
 
-import type { QuestionBank } from "../types/questionBank";
-
-export interface QuestionSummary {
-  id: string;
-  number: number;
-  page: number;
-  subject?: string;
-  question: string;
-  options: Record<string, string>;
+export interface QuestionBank {
+    id: string;
+    fileName: string;
+    questionCount: number;
+    uploadedAt: string;
+    lastModified: string;
+    active: boolean;
 }
 
-export interface QuestionListResponse {
-  count: number;
-  questions: QuestionSummary[];
+export async function getQuestionBanks() {
+    const response = await api.get("/question-banks");
+    return response.data;
 }
 
-export async function getQuestionBank(): Promise<QuestionBank> {
-  const response = await api.get<QuestionBank>("/question-bank");
-
-  return response.data;
+export async function selectQuestionBank(
+    id: string
+) {
+    await api.post(
+        `/question-banks/${id}/select`
+    );
 }
 
-export async function getQuestionBankQuestions(): Promise<QuestionListResponse> {
-  const response = await api.get<QuestionListResponse>(
-    "/question-bank/questions"
+export async function deleteQuestionBank(
+    id: string
+) {
+    await api.delete(
+        `/question-banks/${id}`
+    );
+}
+
+export async function getCurrentQuestionBank() {
+    const response = await api.get(
+        "/question-bank"
+    );
+
+    return response.data;
+}
+
+export async function getQuestions() {
+    const response = await api.get(
+        "/question-bank/questions"
+    );
+
+    return response.data;
+}
+
+export async function getQuestionBankQuestions(
+  id: string
+) {
+  const response = await api.get(
+    `/question-banks/${id}/questions`
   );
 
   return response.data;

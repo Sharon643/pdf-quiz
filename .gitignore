@@ -22,3 +22,5 @@ Thumbs.db
 venv/
 
 backend/failed_response.txt
+
+backend/progress

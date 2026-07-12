@@ -3,6 +3,7 @@ import random
 import uuid
 from pathlib import Path
 from utils.exam_manager import ExamManager
+from utils.question_bank import QuestionBankManager
 from datetime import datetime, UTC
 
 
@@ -10,7 +11,7 @@ class ExamService:
 
     def __init__(self):
 
-        self.question_bank = Path("data/extracted/current.json")
+        self.bank_manager = QuestionBankManager()
 
         self.session_dir = Path("data/exams/sessions")
         self.key_dir = Path("data/exams/keys")
@@ -29,8 +30,18 @@ class ExamService:
         # Load Question Bank
         # -----------------------------
 
+        active_bank = self.bank_manager.get_active_bank()
+
+        if active_bank is None:
+            raise ValueError("No active question bank found.")
+
+        question_bank = (
+            Path("data/extracted")
+            / active_bank["jsonFile"]
+        )
+
         with open(
-            self.question_bank,
+            question_bank,
             "r",
             encoding="utf-8",
         ) as f:
@@ -219,3 +230,24 @@ class ExamService:
             "unanswered": unanswered,
             "percentage": percentage,
         }
+    
+
+    def get_current_exam(self):
+
+        for session_file in sorted(
+            self.session_dir.glob("*.json"),
+            reverse=True,
+        ):
+
+            with open(
+                session_file,
+                "r",
+                encoding="utf-8",
+            ) as f:
+
+                session = json.load(f)
+
+            if not session.get("completed", False):
+                return session
+
+        return None

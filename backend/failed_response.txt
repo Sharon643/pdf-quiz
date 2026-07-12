@@ -1,470 +1,379 @@
 [
   {
-    "number": 56,
+    "number": 37,
     "page": 1,
-    "subject": null,
-    "question": "Which nursing diagnosis takes priority for a newly diagnosed patient with a left- sided stroke?",
+    "subject": "General Nursing/Surgical Prep",
+    "question": "A 52 year- old woman is scheduled to undergo an abdomino- perineal resection in three days for removal of a cancer of the rectum. The nurse reviews the care plan with the patient. The patient will receive prophylactic antibiotics and will be given a mechanical bowel preparation the day before. Which additional preparation should the patient undertake at this time?",
     "options": {
-      "A": "Risk of impaired swallowing related to\nabsent gag reflex",
-      "B": "Risk for impaired skin integrity related\nto immobility",
-      "C": "Risk for infection related to\ninvasive line placement",
-      "D": "Risk for impaired\nleft sided stroke"
+      "A": "Wear pressure stockings",
+      "B": "Perform leg strengthening exercises",
+      "C": "Maintain high- protein, low- residue diet",
+      "D": "Take daily ferrous iron tablets"
     },
-    "correct_answer": "A"
+    "correct_answer": "C"
   },
   {
-    "number": 57,
+    "number": 38,
     "page": 1,
-    "subject": null,
-    "question": "Changes in personality and judgment are often associated with a lesion in which of the following:",
+    "subject": "Parenteral Nutrition",
+    "question": "A patient has a central line catheter and is receiving a three-in- one total parenteral nutrition that contains glucose, proteins and lipids. The pump is set to deliver the infusion over a 12-hour period. After how many hours should the intravenous administration set be changed?",
     "options": {
-      "A": "Frontal lobe",
-      "B": "Parietal lobe",
-      "C": "Broca's area",
-      "D": "Wernicke's area"
+      "A": "12",
+      "B": "24",
+      "C": "48",
+      "D": "72"
     },
-    "correct_answer": "A"
+    "correct_answer": "B"
   },
   {
-    "number": 58,
+    "number": 39,
+    "page": 1,
+    "subject": "Gastrointestinal Disorders",
+    "question": "Which of the following is Pancreatitis Patients frequently feel constant pain in the",
+    "options": {
+      "A": "lower right",
+      "B": "upper Left",
+      "C": "lower Left",
+      "D": "upper right"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 40,
     "page": 2,
-    "subject": null,
-    "question": "Anterior lobe of the brain is responsible for which of the following:",
+    "subject": "Nursing Procedures",
+    "question": "A nurse is preparing to insert a nasogastric tube into a client. The nurse places the client in which position for insertion:",
     "options": {
-      "A": "Personality",
-      "B": "Movement",
-      "C": "Speech",
-      "D": "Memory"
+      "A": "Right side",
+      "B": "Low Fowler's",
+      "C": "High Fowler's",
+      "D": "Supine with the head flat"
     },
-    "correct_answer": "A"
+    "correct_answer": "C"
   },
   {
-    "number": 59,
+    "number": 41,
     "page": 2,
-    "subject": null,
-    "question": "The nurse is observing a detailed neurological assessment on a client with a suspected brain tumor. When performing the Romberg test, the client sways when the eyes are both open and closed. What does this indicate?",
+    "subject": "Surgical Procedures",
+    "question": "A patient has an acute inflammation of the gallbladder. The physician orders the nurse to schedule the patient for surgery. Which of the following surgical procedures will the physician MOST likely perform?",
     "options": {
-      "A": "The problem is probably in the cerebellum",
-      "B": "It is a position sense abnormality",
-      "C": "This is not an abnormal test result",
-      "D": "The client has lost proprioception"
+      "A": "Pancreatectomy .",
+      "B": "Cholecystectomy",
+      "C": "Hepatectomy",
+      "D": "Cricothoracotom"
     },
-    "correct_answer": "A"
+    "correct_answer": "B"
   },
   {
-    "number": 60,
+    "number": 42,
     "page": 2,
-    "subject": null,
-    "question": "A client with multiple sclerosis has been prescribed the drug baclofen (Lioresal). What is the action of this drug?",
+    "subject": "Surgical Incisions",
+    "question": "Which of the following is the incision site for an open cholecystectomy operation:",
     "options": {
-      "A": "Reduces spasticity",
-      "B": "Skeletal muscle relaxation",
-      "C": "Immune suppression",
-      "D": "Prevents viral infections"
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
     },
-    "correct_answer": "A"
+    "correct_answer": "B"
   },
   {
-    "number": 61,
+    "number": 43,
     "page": 3,
-    "subject": null,
-    "question": "After X-rays are taken of the head, neck, and spine, the client is diagnosed with a head injury and admitted for inpatient care. When assessing the client with a head injury, which of the following should receive priority attention?",
+    "subject": "Surgical Incisions",
+    "question": "Which of the following is the incision site for an open gastrectomy operation:",
     "options": {
-      "A": "Lung sound",
-      "B": "Clarity of speech",
-      "C": "Mobility of fingers",
-      "D": "Pupillary responses"
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
     },
     "correct_answer": "D"
   },
   {
-    "number": 62,
+    "number": 44,
     "page": 3,
-    "subject": null,
-    "question": "An elderly client is experiencing an alteration in his equilibrium and coordinated muscle movements. The nurse realizes that these functions are controlled by which area of the nervous system?",
+    "subject": "Surgical Incisions",
+    "question": "Which of the following is the incision site for surgical appendectomy operation:",
     "options": {
-      "A": "Brain stem",
-      "B": "Cerebrum",
-      "C": "Diencephalon",
-      "D": "Cerebellum"
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D"
     },
-    "correct_answer": "D"
+    "correct_answer": "C"
   },
   {
-    "number": 63,
+    "number": 45,
     "page": 3,
-    "subject": null,
-    "question": "A nurse evaluates a patient for signs of rebleeding from ruptured intracranial aneurysm that required surgical ligation. The highest risk for aneurysm rebleed is within:",
+    "subject": "Nursing Procedures",
+    "question": "A nurse is administering a cleansing enema to a client with a fecal impaction. Before administering the enema, the nurse places the client in which position:",
     "options": {
-      "A": "6 hours",
-      "B": "24 hours",
-      "C": "48 hours",
-      "D": "72 hours"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 1,
-    "page": 4,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "In evaluating the appropriateness of various exercises enjoyed by a patient with osteoporosis, the nurse would recommend:",
-    "options": {
-      "A": "Walking",
-      "B": "Bowling",
-      "C": "Sit-ups",
-      "D": "Golf"
+      "A": "Left Sims' position",
+      "B": "Right Sims' position",
+      "C": "On the left side of the body, with the head of the bed elevated 45 degrees",
+      "D": "d- On the right side of the body, with the head of the bed elevated 45 degrees"
     },
     "correct_answer": "A"
   },
   {
-    "number": 2,
+    "number": 46,
     "page": 4,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A hospitalized patient has fallen from bed. The nurse notes shortening of the left leg. Pain upon movement of the left leg, and rapid, swallow respirations. What action should the nurse take FIRST?",
+    "subject": "Post-surgical Care",
+    "question": "Which of the following instructions is appropriate for the nurse to give to a female client a who complains of abdominal upset after cholecystectomy operation:",
     "options": {
-      "A": "Call for help",
-      "B": "Immobilize the left leg",
-      "C": "Obtain blood pressure",
-      "D": "Evaluate lung sounds"
+      "A": "Increase fluid intake",
+      "B": "Avoid fatty meal",
+      "C": "Increase protein intake",
+      "D": "Daily exercise"
     },
     "correct_answer": "B"
   },
   {
-    "number": 3,
+    "number": 47,
     "page": 4,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "While caring for a patient prior to surgery to amputate the leg. What is the MOST affective measure to prevent phantom limb sensation after the amputation?",
+    "subject": "Nutritional Support",
+    "question": "Which of the following is the best way for long term feeding for a patient experiencing severe dysphagia:",
     "options": {
-      "A": "Control pain prior to the surgery",
-      "B": "Make sure the patient understands the procedure",
-      "C": "Elevate the limb on two pillows",
-      "D": "Help the patient grieve for the limb"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 4,
-    "page": 4,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A marathon runner experiences a sudden onset of sharp pain in calf immediately after a workout. The nurse in the clinic notes mild swelling of the calf and tenderness to touch. Which of the following would the nurse suspect the patient is experiencing?",
-    "options": {
-      "A": "Bursitis",
-      "B": "Tendonitis",
-      "C": "Plantar fasciitis",
-      "D": "Joint dislocation"
+      "A": "NGT",
+      "B": "Naso-dudenal tube",
+      "C": "Gastrostomy",
+      "D": "Parenteral"
     },
     "correct_answer": "C"
   },
   {
-    "number": 5,
+    "number": 48,
     "page": 4,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A nurse is evaluating a patient 5 days after a right total hip replacement. Which of the following goals is appropriate for the patient?",
+    "subject": "Fluid and Electrolyte Imbalance",
+    "question": "A patient suffers from diarrhea and muscle weakness, the nurse would assess this patient for which of the following abnormal laboratory blood tests:",
     "options": {
-      "A": "Maintain hip abduction without dislocation",
-      "B": "Rest with legs elevate while sitting",
-      "C": "Tie shoes and put on undergarments without assistive devices",
-      "D": "Perform scissors-like leg exercise daily"
+      "A": "Blood calcium",
+      "B": "Blood potassium",
+      "C": "Blood magnesium",
+      "D": "Blood sodium"
     },
-    "correct_answer": "A"
+    "correct_answer": "B"
   },
   {
-    "number": 6,
+    "number": 49,
     "page": 5,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A patient with bowlegs due to abnormal bone formations and deformities has a calcium level of 7.5 mg/100 ml. Which of the following foods would the nurse MOST likely instruct the patients to add to a diet?",
+    "subject": "Nursing Procedures",
+    "question": "A nurse has administered approximately half of an enema solution to a preoperative client when the client complains of pain and cramping. Which nursing action is the most appropriate:",
     "options": {
-      "A": "Organ meats",
-      "B": "Whole grains",
-      "C": "Egg yolks",
-      "D": "Lean means"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 7,
-    "page": 5,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A nurse is caring for a 3 year-old child with a fractured arm. Which of the following interventions is the MOST appropriate for pain management?",
-    "options": {
-      "A": "Administer analgesics when necessary",
-      "B": "Assess pain once a shift",
-      "C": "Anticipate pain and intervene early",
-      "D": "Encourage the use of self-quieting techniques"
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 8,
-    "page": 5,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A patient has a history of severe, uncontrolled epistaxis . The patient's blood pressure and patient count are normal. The nurse should teach the patient to:",
-    "options": {
-      "A": "Sleep with the head elevated on at least two three pillows",
-      "B": "Apply firm pressure to the nostrils four times a day",
-      "C": "Use a cotton-filled applicator to apply a water-soluble lubricant to the nasal septum twice daily",
-      "D": "Minimize the intake of caffeine while increasing the intake of fluids rich in vitamin K"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 9,
-    "page": 5,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "The following pain medications are ordered for a patient who had a right leg debridement . Oxycodone 5 mg every 4 hours as needed and morphine 5 mg every 4 hours as needed. The nurse administered oxycodone 2 hours ago, but the patient report pain Rated 8 on a scale of 0 (no pain) to 10 (Severe pain) as the dressing change begins.Vital signs are: blood pressure level, 169/98 mmHg; heat rate, 112; Respiration rate 22; temperature 36.7 C (98.1 F). After evaluating the effectiveness of the pain Medication, what action should the nurse take?",
-    "options": {
-      "A": "Administer additional oxycodone 5 mg",
-      "B": "Administer morphine 5 mg",
-      "C": "Change the dressing quickly",
-      "D": "Encourage deep breathing"
+      "A": "Raise the enema bag so that the solution can be instilled quickly.",
+      "B": "lamp the tubing for 30 seconds and restart the flow at a slower rate.",
+      "C": "Reassure the client and continue the flow.",
+      "D": "Discontinue the enema and notify the physician"
     },
     "correct_answer": "B"
   },
   {
-    "number": 10,
-    "page": 6,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A patient in a long-term care facility is in persistent vegetative state with a right contracture of the right arm and hand. What is the BEST goal over the next 90 days for this patient related to the nursing diagnosis of impaired mobility?",
+    "number": 50,
+    "page": 5,
+    "subject": "Parenteral Nutrition Complications",
+    "question": "When caring for a client who is receiving total parenteral nutrition (TPN), which of the following complications would be most important for the nurse to assess:",
     "options": {
-      "A": "Develop no further contractures",
-      "B": "Wear an arm and hand splint",
-      "C": "Have no pain related to the contractures",
-      "D": ""
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 11,
-    "page": 6,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A patient is scheduled for a total hip arthroplasty. Th preoperative nurse reviews the chest and notes the following: serum potassium level of 2.8 mEq/l, AB positive blood type, and elevated ST Segments on the electrocardiogram (ECG). Which of the following would be the MOST appropriate action for the nurse to do next?",
-    "options": {
-      "A": "Report abnormal diagnostic results to the surgeon",
-      "B": "Review the patient consent for the surgical procedure",
-      "C": "Educate the patient on the risk factors and side-effects of the surgery",
-      "D": "Ensure that the patient has a post-surgery physical therapy order"
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 12,
-    "page": 6,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A 45-year-old patient is in a lower body cast following a motor vehicle accident. In order to minimize muscle strength loss while in the cast, the nurse will instruct the patient in the performance of:",
-    "options": {
-      "A": "Isometric exercises",
-      "B": "Passive range of motion exercises",
-      "C": "Active-assistive range of motion exercises",
-      "D": "Resistive range of motion exercises"
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 13,
-    "page": 6,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "After total knee replacement a patient being discharged to have after which he will ambulate with for-prong cane. When providing patient teaching regarding giving up and down stairs with the cane, the first step in going up stairs is to :",
-    "options": {
-      "A": "Place the cane and the affected extremities upon the step",
-      "B": "Place the cane and the unaffected extremity upon the step",
-      "C": "Step up on the affected extremity",
-      "D": "Step up on the unaffected extremity"
+      "A": "Chest pain",
+      "B": "Hemorrhage and air embolus",
+      "C": "Pneumonia and hyperglycemia",
+      "D": "Electrolyte imbalance and sepsis"
     },
     "correct_answer": "D"
   },
   {
-    "number": 14,
-    "page": 7,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A patient with SLE (systemic lupus erythematous) report decreased urinary output during the past 2-4 days and chest pain that is aggravated by breathing and coughing. The patient vital signs remain within the baseline normal range s1 and s2 are present with audible friction rub. Which of the following statement would be appropriate for the nurse to make?",
+    "number": 51,
+    "page": 5,
+    "subject": "Post-surgical Care",
+    "question": "Postoperatively, patient is expected to void after:",
     "options": {
-      "A": "It sounds like SLE is being well controlled",
-      "B": "I need to get some nitroglycerine for your chest pain",
-      "C": "There may be some inflammation surrounding your heart",
-      "D": "Your symptoms may be due to a urinary tract infection"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 15,
-    "page": 7,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A diabetic patient comes to the office for follow-up six weeks undergoing below the knee amputation of the right leg for gangrene. The nurse observes that the patient is progressing well with the use of prosthesis and that the skin is intact. The patient reports being generally pain free but occasionally feels severe pain and itching of the right ankle. What should the nurse do?",
-    "options": {
-      "A": "Notify the doctor that there appears to be nerve damage of the right leg",
-      "B": "Refer to pain management specialist for long term management",
-      "C": "Refer to psychiatrist for evaluation since the patient has no right ankle",
-      "D": "Explain the phenomena of phantom pain and phantom sensation to the patient"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 16,
-    "page": 7,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A 40 year- old woman presented with right hip pain. Palpation of the pelvic girdle is normal. An X- ray shows bone deformities, with osteolytic lesions and bone enlargement. The patient has not suffered any trauma and has been generally healthy. Which serum laboratory analysis would be most useful?",
-    "options": {
-      "A": "Prothrombin time",
-      "B": "Alkaline phosphatase (if this high, calcium will be low and opposite)",
-      "C": "Acid phosphatase",
-      "D": "Parathyroid hormone"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 17,
-    "page": 7,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A patient who is 4 days postoperative after a total hip replacement surgery, is obese and has not been able to ambulate since the surgery. The patient is now diaphoretic, has chills, and complains of pain in the thigh. There is tenderness over the anteromedial surface of the thigh. The MOST likely cause is:",
-    "options": {
-      "A": "Wound infection",
-      "B": "Deep vein thrombosis (DVT)",
-      "C": "Pulmonary edema",
-      "D": "Dehydration"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 18,
-    "page": 8,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A 22 year-old man suffered major injuries to the right leg in a road traffic accident that resulted in an above -the- knee amputation with a rigid dressing. Twelve hours later the patient complains of increasing pressure from the dressing and the feeling that something is crawling around the stump.",
-    "options": {
-      "A": "Notify the physician",
-      "B": "Remove and reapply the dressing",
-      "C": "Remind patient phantom limb pain is normal",
-      "D": "Elevate and apply ice to the residual limb"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 19,
-    "page": 8,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A nursing home resident with chronic osteoarthritis complains of knee pain. A routine order of acetaminophen (Tylenol) 500 mg every 6 hours was administered 2 hours ago with no relief. The patient also has an order for ibuprofen (Motrin) 400 mg every 6 hours as needed. The patient reports some relief, but is still bothered by mild pain. The nurse should",
-    "options": {
-      "A": "Administer ibuprofen (Motrin) 400mg",
-      "B": "Educate the patient that mild pain is expected with osteoarthritis",
-      "C": "Call the physician for additional pain medication",
-      "D": "Administer acetaminophen (Tylenol) 500 mg"
+      "A": "6-8 hours",
+      "B": "2-4 hours",
+      "C": "12-24 hours",
+      "D": "10-12 hours"
     },
     "correct_answer": "A"
   },
   {
-    "number": 20,
-    "page": 8,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A 40 year-old woman present with painful leg cramps and muscle twitching, which wakens her at night. Her menstrual cycles are irregular and cause painful abdominal cramping. The hair, skin and nails appear dry and brittle (see lab results)\nTest Result Normal Values\nCalcium 2.09 2. 15-2.62mmollL\nPhosphate, inorganic 1.69 0.82-1.51mmollL\nMagnesium 0.55 0.7-1.0mmollL\nWhat type of lifelong diet would be most beneficial for this patient?",
+    "number": 52,
+    "page": 6,
+    "subject": "Gastrointestinal Assessment",
+    "question": "A 40 years old female complains of abdominal pain. It is worse after eating, especially if she has a meal that is spicy or high in fat. She has tried over-the- counter antacids, but they have not helped the pain. After examining her abdomen, you strongly suspect cholecystitis. Which sign on examination increases your suspicion for this diagnosis:",
     "options": {
-      "A": "Increased magnesium and vitamin C",
-      "B": "Increased calcium and vitamin D",
-      "C": "Increased dairy and iron",
-      "D": "High protein and high calorie"
+      "A": "Psoas sign",
+      "B": "Rovsing's sign",
+      "C": "Murphy's sign",
+      "D": "Grey turner's sign"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 53,
+    "page": 6,
+    "subject": "Post-surgical Care",
+    "question": "When planning the care of a client who has undergone an abdominal hysterectomy, which nursing measure is most helpful for preventing postoperative complications and facilitating an early discharge?",
+    "options": {
+      "A": "Reestablishing oral fluids and nutrition",
+      "B": "Promoting ambulation and movement",
+      "C": "Maintaining accurate intake and output",
+      "D": "Exploring feelings about altered image"
     },
     "correct_answer": "B"
   },
   {
-    "number": 21,
-    "page": 8,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A 35 year-old man twisted his right ankle. Since then, he has had swelling and stiffness of the ankle in the morning hours. He presented to the clinic six months after the injury and complains that he is in too much pain to participate in sports. An arthroscopy reveals thickening and inflammation of the lining of the ankle joint. Which treatment is most likely to be ordered for this client?",
+    "number": 54,
+    "page": 6,
+    "subject": "Post-surgical Complications",
+    "question": "Which of the following is considered one of the common complications following abdominal total hysterectomy:",
     "options": {
-      "A": "Aspiration of fluids",
-      "B": "Surgical intervention",
-      "C": "Physical therapy",
-      "D": "NSAID administration"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 22,
-    "page": 9,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A 67 year-old man was admitted to the hospital following a closed bone fracture. An intramedullary nail is inserted and the patient is placed in balanced skeletal traction. The following day, the patient becomes restless, drowsy and confused, he has difficulty breathing and appears very tired. Which additional sign or symptom would require immediate intervention?",
-    "options": {
-      "A": "Anxiety",
-      "B": "Cold skin",
+      "A": "DVT",
+      "B": "Paralytic ileus",
       "C": "Constipation",
-      "D": "Petechiae on chest"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 23,
-    "page": 9,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A 12 year- old patient had a cast removed from the left leg after wearing if for eight weeks. The patient wants to resume sports as soon as possible. In order to regain muscle strength lost while wearing cast, the nurse will instruct the patient in performance of:",
-    "options": {
-      "A": "Resistive range of motion exercises to left leg",
-      "B": "Passive range of motion exercises to right leg",
-      "C": "Active- assistive range of motion exercises to the right leg",
-      "D": "Active range of motion exercises to both legs"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 24,
-    "page": 9,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "RTA. The patient appears restless confused and disoriented. He reports that he had hit his head against the steering wheel of the car when it had collided with the car directly in front of him.\nBlood pressure 110/68 mmHg\nHeart rate 100/min\nRespiratory rate 22/min\nBody Temperature 37.0 coral\nOxygen saturation 98 % on room air\nWhat is the most important next step in management?",
-    "options": {
-      "A": "Immobilize head and neck",
-      "B": "Administer oxygen.",
-      "C": "Establish an intravenous line.",
-      "D": "Arrange for an MRI scan."
+      "D": "Perforation"
     },
     "correct_answer": "A"
   },
   {
-    "number": 25,
-    "page": 10,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "which of the following anatomical terms best describes the motion in the picture above:",
+    "number": 55,
+    "page": 7,
+    "subject": "Gastrointestinal Disorders",
+    "question": "A client who has a history of Crohn's disease is admitted to the hospital with fever, diarrhea, cramping, abdominal pain, and weight loss. The nurse should monitor the client for:",
     "options": {
-      "A": "Adduction",
-      "B": "Abduction",
-      "C": "Supination",
-      "D": "Pronation"
+      "A": "Hyperalbuminemia",
+      "B": "Thrombocytopenia",
+      "C": "Hypokalemia",
+      "D": "Hypercalcemia"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 29,
+    "page": 8,
+    "subject": "Pediatric Nursing/Aspiration Prevention",
+    "question": "To decrease the incidence of aspiration of gastric contents in a child hospitalization with severe burns, the nurse should position the head:",
+    "options": {
+      "A": "Flat except during meals",
+      "B": "Elevates 30-45 degrees during meals",
+      "C": "Elevated 15-30 degrees for 12-hours after meals",
+      "D": "Elevated 45 degrees at all times"
     },
     "correct_answer": "B"
   },
   {
-    "number": 26,
-    "page": 10,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "The following picture represents an auto immune disease known as:",
+    "number": 34,
+    "page": 8,
+    "subject": "Wound Healing",
+    "question": "Following lumbar surgery a patient has a 4 millimeter (mm) surgical incision. The incision is clean and the edges are well appropriate. This type of tissue healing is classified as which of the following?",
     "options": {
-      "A": "Psoriasis",
-      "B": "Systemic Lupus Erythematous",
-      "C": "Molluscum Contagiosum",
-      "D": "Eczema"
+      "A": "Primary intention",
+      "B": "Secondary intention",
+      "C": "Tertiary intention",
+      "D": "Superficial epidermal"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 36,
+    "page": 8,
+    "subject": "Ethical/Legal Nursing",
+    "question": "A surgeon instructs a nurse to serve as a witness to an elderly patient's informed consent for surgery. During the explanations to the patient, it becomes clear that the patient is confused and does not understand the procedure, but reluctantly sign the consent form. The nurse should:",
+    "options": {
+      "A": "Sign the form as a witness, making a nation that the patient did not appear to understand",
+      "B": "Not sign the form as a witness and notify the nurse supervisor",
+      "C": "Not sign the form and answer the patient's questions after the surgeon leaves he room",
+      "D": "Sign the form and tell surgeon that the patient doesn't understand the procedure"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 38,
+    "page": 9,
+    "subject": "Medication Administration",
+    "question": "A patient schedule for a major surgery in one hour is very nervous and upset. Which of the following order medications would the nurse administer to relax this patient?",
+    "options": {
+      "A": "Meperidine Hydrochloride(Demerol)",
+      "B": "Scopolamine (Transderm-Scop)",
+      "C": "Pentobarbital sodium(Nembutal sodium)",
+      "D": "Trazodone hydrochloride(Trazadone)"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "number": 45,
+    "page": 9,
+    "subject": "Post-anesthesia Care",
+    "question": "While caring for a patient in the post-anesthesia care unit (PACU) Who has developed Hypovolemic shock, a nurse should position the patient:",
+    "options": {
+      "A": "Flat with legs elevated",
+      "B": "In Trendelenburg position",
+      "C": "With the head of the bed elevated 45 degrees",
+      "D": "Completely flat"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 150,
+    "page": 9,
+    "subject": "Surgical Classifications",
+    "question": "A patient with long-standing diabetes mellitus (type I) is scheduled for surgical amputation of 4 gangrenous toes on the right foot. Which surgical intervention would this be classified as?",
+    "options": {
+      "A": "Palliative",
+      "B": "Curative",
+      "C": "Reconstructive",
+      "D": "Diagnostic"
     },
     "correct_answer": "B"
   },
   {
-    "number": 27,
-    "page": 10,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "A client has just returned to a nursing unit after an above-knee amputation of the right leg. A nurse places the client in which position:",
+    "number": 155,
+    "page": 9,
+    "subject": "Preoperative Care",
+    "question": "A patient is in the preoperative area to lumbar surgery. The patient reports anxiety about being in tuba ted and expresses concern about waking up during the surgery. The nurse MUST discuss the patient's concern with the",
     "options": {
-      "A": "Prone",
-      "B": "Reverse Trendelenburg's",
-      "C": "Supine, with the amputated limb flat on the bed",
-      "D": "Supine, with the amputated limb supported with pillows"
+      "A": "Anesthesia provider",
+      "B": "Surgeon",
+      "C": "Scrub nurse",
+      "D": "Charge nurse"
     },
-    "correct_answer": "D"
+    "correct_answer": "A"
   },
   {
-    "number": 28,
+    "number": 157,
     "page": 10,
-    "subject": "Musculoskeletal & hematology & heredity",
-    "question": "After the client undergoes a total hip replacement, how should the nurse position the affected hip?",
+    "subject": "Child Abuse Prevention",
+    "question": "A nurse assesses a 3-month-old infant. The patient expresses anxiety and feeling over whelmed. The nurse offer information on available parenting support. This level of child abuse prevention is classified as which of the following?",
     "options": {
-      "A": "Adduct the hip",
-      "B": "Flex the hip",
-      "C": "",
+      "A": "Intervention",
+      "B": "Primary",
+      "C": "Secondary",
+      "D": "Tertiary"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "number": 165,
+    "page": 10,
+    "subject": "Child Abuse Management",
+    "question": "A nurse assessing a 16-month-old child observes bruises scattered over the body that are at different stage of healing. The child also has poor and diaper rash. What the goal of treatment for this child?",
+    "options": {
+      "A": "Ensure the physical and emotional safety of the child",
+      "B": "Remove the child from the parents",
+      "C": "Admonish the parents of the child",
+      "D": "Ensure that the child stays with the biological parents"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "number": 274,
+    "page": 10,
+    "subject": "Professional Development/Stress Management",
+    "question": "A co-worker informs that the nurse about experiencing increased level of stress associated with daily responsibilities to help cope with professional stress, the nurse should encourage the co-worker to;",
+    "options": {
+      "A": "Make a list of unfinished tasks",
+      "B": "complete complex mental task before physical tasks",
+      "C": "Acknowledge daily accomplishments",
       "D": ""
     },
-    "correct_answer": "A"
+    "correct_answer": "C"
   }
 ]

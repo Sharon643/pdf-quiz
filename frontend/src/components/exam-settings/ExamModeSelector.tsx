@@ -5,7 +5,7 @@ interface ExamModeSelectorProps {
   onDurationChange: (value: number) => void;
 }
 
-const DURATIONS = [15, 30, 45, 60, 90, 120, 180];
+const DURATIONS = [1, 15, 30, 45, 60, 90, 120, 180];
 
 export default function ExamModeSelector({
   timed,

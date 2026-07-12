@@ -12,6 +12,7 @@ import SubmitExamModal from "../components/exam/SubmitExamModal";
 import { submitExam } from "../services/examService";
 import { useNavigate } from "react-router-dom";
 import ExitExamModal from "../components/exam/ExitExamModal";
+import TimeUpModal from "../components/exam/TimeUpModal";
 
 
 export default function Exam() {
@@ -25,7 +26,9 @@ export default function Exam() {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  const [remainingSeconds, setRemainingSeconds] =useState<number | null>(null);
+  const [remainingSeconds, setRemainingSeconds] = useState<number | null>(null);
+
+  const [showTimeUpModal, setShowTimeUpModal] = useState(false);
 
   const [visitedQuestions, setVisitedQuestions] = useState<Set<number>>( new Set([1]) );
 
@@ -112,8 +115,8 @@ export default function Exam() {
 
           setRemainingSeconds(remaining);
 
-          if (remaining === 0 && !submitting) {
-              handleSubmitExam();
+          if (remaining <= 0 && !showTimeUpModal) {
+              setShowTimeUpModal(true);
           }
       };
 
@@ -144,6 +147,7 @@ export default function Exam() {
   }, [answers, exam]);
 
 async function handleSelectOption(option: string) {
+  if (showTimeUpModal) return;
   if (!currentQuestion || !exam) return;
 
   // Update UI immediately
@@ -270,6 +274,8 @@ async function handleSubmitExam() {
       </main>
     );
   }
+
+
 
   return (
     <>
@@ -422,6 +428,11 @@ async function handleSubmitExam() {
         setShowExitModal(false);
         navigate("/dashboard");
       }}
+    />
+    <TimeUpModal
+        open={showTimeUpModal}
+        loading={submitting}
+        onSubmit={handleSubmitExam}
     />
     </>
   );

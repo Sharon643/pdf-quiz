@@ -8,31 +8,31 @@ export default function PerformanceGrid({
   result,
 }: Props) {
   return (
-    <section className="grid gap-5 md:grid-cols-4">
+    <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
       <Card
         title="Correct"
         value={result.correctAnswers}
-        color="text-emerald-400"
+        dot="bg-emerald-400"
       />
 
       <Card
-        title="Wrong"
+        title="Incorrect"
         value={result.wrongAnswers}
-        color="text-red-400"
+        dot="bg-red-400"
       />
 
       <Card
         title="Unanswered"
         value={result.unanswered}
-        color="text-amber-400"
+        dot="bg-amber-400"
       />
 
-        <Card
+      <Card
         title="Accuracy"
         value={`${result.percentage.toFixed(1)}%`}
-        color="text-white"
-        />
+        dot="bg-blue-400"
+      />
 
     </section>
   );
@@ -41,22 +41,30 @@ export default function PerformanceGrid({
 interface CardProps {
   title: string;
   value: string | number;
-  color: string;
+  dot: string;
 }
 
 function Card({
   title,
   value,
-  color,
+  dot,
 }: CardProps) {
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
 
-      <p className="text-sm uppercase text-zinc-500">
-        {title}
-      </p>
+      <div className="flex items-center gap-2">
 
-      <p className={`mt-4 text-3xl font-bold ${color}`}>
+        <span
+          className={`h-2 w-2 rounded-full ${dot}`}
+        />
+
+        <p className="text-sm uppercase tracking-wide text-zinc-500">
+          {title}
+        </p>
+
+      </div>
+
+      <p className="mt-5 text-2xl font-semibold text-white">
         {value}
       </p>
 
