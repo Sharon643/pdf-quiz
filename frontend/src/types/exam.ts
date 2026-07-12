@@ -26,8 +26,10 @@ export interface ExamSession {
   startedAt: string;
 
   timed: boolean;
-
+  
   durationMinutes: number | null;
+  
+  remainingSeconds: number | null;
 }
 
 export interface GenerateExamRequest {
@@ -37,9 +39,13 @@ export interface GenerateExamRequest {
 }
 
 export interface GenerateExamResponse {
-  success: boolean;
-  examId: string;
-  questionCount: number;
+    success: boolean;
+
+    examId: string;
+
+    questionCount?: number;
+
+    unfinishedExam?: boolean;
 }
 
 export interface SaveAnswerRequest {

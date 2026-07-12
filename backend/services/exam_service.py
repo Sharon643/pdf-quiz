@@ -6,7 +6,6 @@ from utils.exam_manager import ExamManager
 from utils.question_bank import QuestionBankManager
 from datetime import datetime, UTC
 
-
 class ExamService:
 
     def __init__(self):
@@ -138,11 +137,43 @@ class ExamService:
             "questionCount": len(session_questions),
         }
     
+
     def get_exam(self, exam_id: str):
 
         manager = ExamManager(exam_id)
 
-        return manager.read_session()
+        session = manager.read_session()
+
+        if session is None:
+            return None
+
+        if (
+            session.get("timed")
+            and session.get("durationMinutes") is not None
+        ):
+
+            started = datetime.fromisoformat(
+                session["startedAt"]
+            )
+
+            now = datetime.now(UTC)
+
+            elapsed = (
+                now - started
+            ).total_seconds()
+
+            remaining = max(
+                0,
+                session["durationMinutes"] * 60 - int(elapsed),
+            )
+
+            session["remainingSeconds"] = remaining
+
+        else:
+
+            session["remainingSeconds"] = None
+
+        return session
     
     def save_answer(
         self,
@@ -251,3 +282,32 @@ class ExamService:
                 return session
 
         return None
+    
+
+    def has_unfinished_exam(self):
+
+        exam = self.get_current_exam()
+
+        if exam is None:
+            return None
+
+        return {
+            "examId": exam["examId"],
+            "questionCount": exam["questionCount"],
+            "timed": exam["timed"],
+            "startedAt": exam["startedAt"],
+        }
+    
+    def delete_exam(self, exam_id: str):
+
+        manager = ExamManager(exam_id)
+
+        if manager.session_file.exists():
+            manager.session_file.unlink()
+
+        if manager.key_file.exists():
+            manager.key_file.unlink()
+
+        return {
+            "success": True,
+        }

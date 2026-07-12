@@ -12,8 +12,12 @@ class GenerateExamRequest(BaseModel):
 
 class GenerateExamResponse(BaseModel):
     success: bool
+
     examId: str
-    questionCount: int
+
+    questionCount: int | None = None
+
+    unfinishedExam: bool = False
 
 
 class ExamSession(BaseModel):
@@ -31,6 +35,8 @@ class ExamSession(BaseModel):
     timed: bool
 
     durationMinutes: int | None
+
+    remainingSeconds: int | None = None
 
 
 class SaveAnswerRequest(BaseModel):

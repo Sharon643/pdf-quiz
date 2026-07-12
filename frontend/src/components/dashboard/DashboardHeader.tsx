@@ -10,7 +10,7 @@ export default function DashboardHeader() {
 
         <div>
           <h1 className="text-2xl font-semibold tracking-tight text-white">
-            QuizForge AI
+            PRACTIZO 
           </h1>
 
         </div>

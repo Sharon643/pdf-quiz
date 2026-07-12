@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
-import type { QuestionSummary } from "../../services/questionBank";
+import type { QuestionSummary } from "../../types/questionBank";
 
 interface QuestionDetailsModalProps {
   question: QuestionSummary | null;

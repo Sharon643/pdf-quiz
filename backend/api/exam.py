@@ -21,11 +21,31 @@ service = ExamService()
     response_model=GenerateExamResponse,
 )
 def generate_exam(request: GenerateExamRequest):
+
+    unfinished = service.has_unfinished_exam()
+
+    if unfinished is not None:
+        return {
+            "success": False,
+            "unfinishedExam": True,
+            "examId": unfinished["examId"],
+        }
+
     return service.generate_exam(
         question_count=request.questionCount,
         timed=request.timed,
         duration_minutes=request.durationMinutes,
     )
+
+@router.get("/exam/current")
+def get_current_exam():
+
+    exam = service.get_current_exam()
+
+    return {
+        "exists": exam is not None,
+        "exam": exam,
+    }
 
 
 @router.get(
@@ -111,12 +131,18 @@ def submit_exam(exam_id: str):
 
     return result
 
-@router.get("/exam/current")
-def get_current_exam():
+@router.get("/exam/unfinished")
+def unfinished_exam():
 
-    exam = service.get_current_exam()
+    exam = service.has_unfinished_exam()
 
     return {
         "exists": exam is not None,
         "exam": exam,
     }
+
+
+@router.delete("/exam/{exam_id}")
+def delete_exam(exam_id: str):
+
+    return service.delete_exam(exam_id)

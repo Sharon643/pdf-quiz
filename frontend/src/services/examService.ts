@@ -75,3 +75,16 @@ export async function submitExam(
 
   return response.data;
 }
+
+export async function getCurrentExam() {
+  const response = await api.get("/exam/current");
+  return response.data;
+}
+
+export async function deleteExam(examId: string) {
+    const response = await api.delete(
+        `/exam/${examId}`
+    );
+
+    return response.data;
+}

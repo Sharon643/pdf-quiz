@@ -16,6 +16,7 @@ import StatCard from "../components/dashboard/StatCard";
 import type { QuestionBank } from "../types/questionBank";
 import { getQuestionBanks } from "../services/questionBank";
 import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
+import { getCurrentExam } from "../services/examService";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -24,35 +25,57 @@ export default function Dashboard() {
 
   const [activeBank, setActiveBank] = useState<QuestionBank | null>(null);
 
+  const [currentExam, setCurrentExam] = useState<any>(null);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  async function loadQuestionBank() {
-    try {
-      const data = await getQuestionBanks();
+    async function loadQuestionBank() {
+      try {
 
-      setQuestionBanks(data.banks);
+        const data = await getQuestionBanks();
 
-      const active =
-        data.banks.find(
-          (bank: QuestionBank) => bank.active
-        ) ?? null;
+        setQuestionBanks(data.banks);
 
-      setActiveBank(active);
+        const active =
+          data.banks.find(
+            (bank: QuestionBank) => bank.active
+          ) ?? null;
 
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
+        setActiveBank(active);
+
+        // NEW CODE
+        const examResponse = await getCurrentExam();
+
+        if (examResponse.exists) {
+          setCurrentExam(examResponse.exam);
+        }
+
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
     }
-  }
-
     loadQuestionBank();
   }, []);
 
   if (loading) {
     return <DashboardSkeleton />;
   }
+  const answered =
+    currentExam
+        ? Object.keys(currentExam.answers ?? {}).length
+        : 0;
+
+  const progress =
+    currentExam
+        ? Math.round(
+              (answered /
+                  currentExam.questionCount) *
+                  100
+          )
+        : 0;
 
   return (
     <main className="min-h-screen bg-zinc-950">
@@ -98,15 +121,29 @@ export default function Dashboard() {
           <div className="grid gap-6 lg:grid-cols-2">
 
             <ContinueCard
-              title={activeBank?.fileName ?? "No Question Bank"}
-              questionCount={activeBank?.questionCount ?? 0}
-              progress={19}
-              lastStudied={
-                activeBank?.uploadedAt
-                  ? new Date(activeBank.uploadedAt).toLocaleDateString()
-                  : "N/A"
-              }
-              onResume={() => navigate("/exam-settings")}
+                title={
+                    currentExam
+                        ? "Continue Exam"
+                        : "No Active Exam"
+                }
+                questionCount={
+                    currentExam?.questionCount ?? 0
+                }
+                progress={progress}
+                lastStudied={
+                    currentExam
+                        ? new Date(
+                              currentExam.startedAt
+                          ).toLocaleDateString()
+                        : "N/A"
+                }
+                onResume={() =>
+                    currentExam
+                        ? navigate(
+                              `/exam/${currentExam.examId}`
+                          )
+                        : navigate("/exam-settings")
+                }
             />
 
             <QuestionBankCard

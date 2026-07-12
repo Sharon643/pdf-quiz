@@ -85,8 +85,13 @@ export default function Exam() {
         });
 
         setVisitedQuestions(restoredVisited);
-      } catch (err) {
-        console.error(err);
+      } catch (error: any) {
+        console.error(error);
+
+        if (error.response) {
+          console.log("Status:", error.response.status);
+          console.log("Data:", error.response.data);
+        }
         setError("Failed to load exam.");
       } finally {
         setLoading(false);
@@ -97,35 +102,49 @@ export default function Exam() {
   }, [examId]);
 
   useEffect(() => {
-      if (!exam?.timed || exam.durationMinutes == null) {
-          setRemainingSeconds(null);
+    if (!exam?.timed) {
+        setRemainingSeconds(null);
+        return;
+    }
+
+    // Use the value calculated by the backend
+    setRemainingSeconds(exam.remainingSeconds ?? 0);
+  }, [exam]);
+
+  useEffect(() => {
+      if (
+          !exam?.timed ||
+          remainingSeconds == null ||
+          showTimeUpModal
+      ) {
           return;
       }
 
-      const startedAt = new Date(exam.startedAt).getTime();
-      const durationMinutes = exam.durationMinutes;
+      if (remainingSeconds <= 0) {
+          setShowTimeUpModal(true);
+          return;
+      }
 
-      const updateTimer = () => {
-          const end = startedAt + durationMinutes * 60 * 1000;
+      const interval = window.setInterval(() => {
+          setRemainingSeconds((previous) => {
+              if (previous == null) return null;
 
-          const remaining = Math.max(
-              0,
-              Math.floor((end - Date.now()) / 1000)
-          );
+              if (previous <= 1) {
+                  window.clearInterval(interval);
+                  setShowTimeUpModal(true);
+                  return 0;
+              }
 
-          setRemainingSeconds(remaining);
+              return previous - 1;
+          });
+      }, 1000);
 
-          if (remaining <= 0 && !showTimeUpModal) {
-              setShowTimeUpModal(true);
-          }
-      };
-
-      updateTimer();
-
-      const interval = setInterval(updateTimer, 1000);
-
-      return () => clearInterval(interval);
-  }, [exam, submitting]);
+      return () => window.clearInterval(interval);
+  }, [
+      exam,
+      remainingSeconds,
+      showTimeUpModal,
+  ]);
   const currentQuestion = useMemo(() => {
     if (!exam) return null;
 

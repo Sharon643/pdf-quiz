@@ -17,12 +17,10 @@ export default function QuestionBankHeader() {
       </Button>
 
       <h1 className="mt-6 text-4xl font-semibold text-white">
-        Question Bank
+        Question Banks
       </h1>
 
-      <p className="mt-2 text-zinc-400">
-        Browse and manage your extracted questions.
-      </p>
+
     </header>
   );
 }

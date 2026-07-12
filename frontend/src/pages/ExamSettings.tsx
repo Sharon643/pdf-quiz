@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import type { QuestionBank } from "../types/questionBank";
 
 import { getQuestionBanks } from "../services/questionBank";
-import { generateExam } from "../services/examService";
+import {generateExam,deleteExam,} from "../services/examService";
 
 import ExamSettingsHeader from "../components/exam-settings/ExamSettingsHeader";
 import QuestionCountSelector from "../components/exam-settings/QuestionCountSelector";
@@ -13,6 +13,7 @@ import StartExamButton from "../components/exam-settings/StartExamButton";
 import ExamSettingsSkeleton from "../components/exam-settings/ExamSettingsSkeleton";
 import StartExamModal from "../components/exam-settings/StartExamModal";
 import ExamModeSelector from "../components/exam-settings/ExamModeSelector";
+import ResumeExamModal from "../components/exam-settings/ResumeExamModal";
 
 export default function ExamSettings() {
   const navigate = useNavigate();
@@ -23,6 +24,9 @@ export default function ExamSettings() {
   const [timed, setTimed] = useState(false);
   const [duration, setDuration] = useState(60);
   const [showModal, setShowModal] = useState(false);
+  const [showResumeModal, setShowResumeModal] = useState(false);
+
+  const [existingExamId, setExistingExamId] = useState("");
 
   const [loading, setLoading] = useState(true);
   const [starting, setStarting] = useState(false);
@@ -59,12 +63,20 @@ export default function ExamSettings() {
 
     try {
       const response = await generateExam({
-      questionCount,
-      timed,
-      durationMinutes: timed ? duration : null,});
+        questionCount,
+        timed,
+          durationMinutes: timed ? duration : null,
+        });
+
+        if (response.unfinishedExam) {
+          setExistingExamId(response.examId);
+          setShowResumeModal(true);
+          return;
+        }
 
       navigate(`/exam/${response.examId}`);
-    } catch (error) {
+    }
+ catch (error) {
       console.error(error);
     } finally {
       setStarting(false);
@@ -125,6 +137,49 @@ export default function ExamSettings() {
               setShowModal(false);
               await handleStartExam();
           }}
+      />
+
+      <ResumeExamModal
+          open={showResumeModal}
+          onResume={() => {
+
+              setShowResumeModal(false);
+
+              navigate(`/exam/${existingExamId}`);
+
+          }}
+          onStartNew={async () => {
+
+              try {
+
+                  setShowResumeModal(false);
+
+                  setStarting(true);
+
+                  await deleteExam(existingExamId);
+
+                  const response = await generateExam({
+                      questionCount,
+                      timed,
+                      durationMinutes: timed
+                          ? duration
+                          : null,
+                  });
+
+                  navigate(`/exam/${response.examId}`);
+
+              } catch (err) {
+
+                  console.error(err);
+
+              } finally {
+
+                  setStarting(false);
+
+              }
+
+          }}
+          onCancel={() => setShowResumeModal(false)}
       />
     </main>
   );
