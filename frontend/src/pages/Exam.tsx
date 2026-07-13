@@ -318,6 +318,7 @@ async function handleSubmitExam() {
           <section className="min-h-0">
 
             <QuestionPanel
+              currentQuestion={currentQuestionIndex + 1}
               question={currentQuestion}
               selectedOption={
                 answers[currentQuestion.id] ?? null

@@ -49,9 +49,17 @@ class MarkReviewRequest(BaseModel):
 
 class SubmitExamResponse(BaseModel):
     success: bool
+
+    examId: str
+
     score: int
+
     totalQuestions: int
+
     correctAnswers: int
+
     wrongAnswers: int
+
     unanswered: int
+
     percentage: float

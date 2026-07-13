@@ -34,7 +34,9 @@ export default function Results() {
 
         <div className="mt-8">
 
-          <ResultActions />
+          <ResultActions
+              examId={result.examId}
+          />
 
         </div>
 

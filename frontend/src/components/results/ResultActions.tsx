@@ -1,13 +1,23 @@
-import { RotateCcw, LayoutDashboard } from "lucide-react";
+import {
+  RotateCcw,
+  LayoutDashboard,
+  BookOpen,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../ui/Button";
 
-export default function ResultActions() {
+interface ResultActionsProps {
+  examId: string;
+}
+
+export default function ResultActions({
+  examId,
+}: ResultActionsProps) {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col-reverse gap-4 sm:flex-row sm:justify-center">
+    <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
 
       <Button
         variant="secondary"
@@ -18,6 +28,17 @@ export default function ResultActions() {
           className="mr-2"
         />
         Dashboard
+      </Button>
+
+      <Button
+        variant="secondary"
+        onClick={() => navigate(`/review/${examId}`)}
+      >
+        <BookOpen
+          size={18}
+          className="mr-2"
+        />
+        Review Answers
       </Button>
 
       <Button

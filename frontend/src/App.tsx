@@ -6,6 +6,8 @@ import Dashboard from "./pages/Dashboard";
 import QuestionBank from "./pages/QuestionBank";
 import Results from "./pages/Results";
 import UploadPdf from "./pages/UploadPdf";
+import History from "./pages/History";
+import Review from "./pages/Review";
 
 
 function App() {
@@ -40,6 +42,16 @@ function App() {
       <Route
           path="/upload"
           element={<UploadPdf />}
+      />
+
+      <Route
+          path="/history"
+          element={<History />}
+      />
+
+      <Route
+          path="/review/:examId"
+          element={<Review />}
       />
     </Routes>
     

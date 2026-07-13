@@ -1,6 +1,8 @@
 export interface ExamResult {
   success: boolean;
 
+  examId: string;
+
   score: number;
 
   totalQuestions: number;

@@ -87,6 +87,9 @@ class ExamService:
 
         session = {
             "examId": exam_id,
+
+            "questionBank": active_bank["fileName"],
+
             "questionCount": len(session_questions),
 
             "startedAt": datetime.now(UTC).isoformat(),
@@ -264,11 +267,19 @@ class ExamService:
 
         return {
             "success": True,
+
+            "examId": session["examId"],
+
             "score": correct,
+
             "totalQuestions": total,
+
             "correctAnswers": correct,
+
             "wrongAnswers": wrong,
+
             "unanswered": unanswered,
+
             "percentage": percentage,
         }
     

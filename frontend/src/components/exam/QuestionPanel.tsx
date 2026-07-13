@@ -7,6 +7,7 @@ interface QuestionPanelProps {
   question: ExamQuestion;
   selectedOption: string | null;
   isMarkedForReview: boolean;
+  currentQuestion: number;
 
   hasPrevious: boolean;
   hasNext: boolean;
@@ -19,6 +20,7 @@ interface QuestionPanelProps {
 
 export default function QuestionPanel({
   question,
+  currentQuestion,
   selectedOption,
   hasPrevious,
   hasNext,
@@ -47,7 +49,7 @@ export default function QuestionPanel({
       <div className="border-b border-zinc-800 px-6 py-4">
 
         <span className="text-sm text-zinc-500">
-          Question {question.number}
+          Question {currentQuestion}
         </span>
 
         <h2 className="mt-2 text-xl font-semibold text-white">

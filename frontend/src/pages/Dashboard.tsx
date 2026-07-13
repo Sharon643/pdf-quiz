@@ -201,7 +201,7 @@ export default function Dashboard() {
               title="Exam History"
               description="Review previous exams."
               icon={<RotateCcw size={22} className="text-zinc-400" />}
-              onClick={() => navigate("/review")}
+              onClick={() => navigate("/history")}
             />
 
           </div>
