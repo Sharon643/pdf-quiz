@@ -14,6 +14,8 @@ class ExamService:
 
         self.session_dir = Path("data/exams/sessions")
         self.key_dir = Path("data/exams/keys")
+        self.history_dir = Path("data/exams/history")
+        self.history_dir.mkdir(parents=True, exist_ok=True)
 
         self.session_dir.mkdir(parents=True, exist_ok=True)
         self.key_dir.mkdir(parents=True, exist_ok=True)
@@ -135,6 +137,7 @@ class ExamService:
             "success": True,
             "examId": exam_id,
             "questionCount": len(session_questions),
+            "questionBank": active_bank["fileName"],
         }
     
 
@@ -247,6 +250,13 @@ class ExamService:
         total = len(answer_key)
 
         percentage = round((correct / total) * 100, 2) if total else 0
+        self.save_exam_history(
+                session,
+                correct,
+                wrong,
+                unanswered,
+                percentage,
+            )
 
         session["completed"] = True
 
@@ -311,3 +321,45 @@ class ExamService:
         return {
             "success": True,
         }
+    
+    def save_exam_history(
+    self,
+    session: dict,
+    correct: int,
+    wrong: int,
+    unanswered: int,
+    percentage: float,
+):
+
+        history = {
+            "examId": session["examId"],
+            "questionBank": session.get("questionBank", "Unknown"),
+            "mode": "Timed" if session.get("timed") else "Practice",
+            "questionCount": session["questionCount"],
+            "correct": correct,
+            "wrong": wrong,
+            "unanswered": unanswered,
+            "percentage": percentage,
+            "completedAt": datetime.now(UTC).isoformat(),
+            "startedAt": session["startedAt"],
+            "timed": session["timed"],
+            "durationMinutes": session.get("durationMinutes"),
+        }
+
+        history_file = (
+            self.history_dir /
+            f"{session['examId']}.json"
+        )
+
+        with open(
+            history_file,
+            "w",
+            encoding="utf-8",
+        ) as f:
+
+            json.dump(
+                history,
+                f,
+                indent=4,
+                ensure_ascii=False,
+            )

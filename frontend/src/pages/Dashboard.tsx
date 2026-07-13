@@ -151,7 +151,7 @@ export default function Dashboard() {
               questionCount={activeBank?.questionCount ?? 0}
               uploadedAt={
                 activeBank?.uploadedAt
-                  ? new Date(activeBank.uploadedAt).toLocaleDateString()
+                  ? new Date(activeBank.uploadedAt).toLocaleDateString("en-GB")
                   : "N/A"
               }
               onManage={() => navigate("/question-bank")}
@@ -198,8 +198,8 @@ export default function Dashboard() {
             />
 
             <QuickActionCard
-              title="Review"
-              description="Review previous exams and incorrect answers."
+              title="Exam History"
+              description="Review previous exams."
               icon={<RotateCcw size={22} className="text-zinc-400" />}
               onClick={() => navigate("/review")}
             />

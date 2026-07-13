@@ -47,7 +47,7 @@ export default function QuestionBankCard({
 
             {new Date(
               bank.uploadedAt
-            ).toLocaleDateString()}
+            ).toLocaleDateString("en-GB")}
 
           </p>
 

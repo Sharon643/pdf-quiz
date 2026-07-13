@@ -24,7 +24,7 @@ export default function QuestionBankInfo({
           Uploaded{" "}
           {new Date(
             metadata.uploadedAt
-          ).toLocaleDateString()}
+          ).toLocaleDateString("en-GB")}
         </span>
 
         <span>
