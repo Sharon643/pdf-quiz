@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 from typing import Optional
 
-
 class StartPracticeRequest(BaseModel):
     questionCount: int
+    questionBankId: str | None = None
 
 
 class StartPracticeResponse(BaseModel):

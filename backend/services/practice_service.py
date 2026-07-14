@@ -22,16 +22,20 @@ class PracticeService:
     def start_practice(
         self,
         question_count: int,
+        question_bank_id: str | None = None,
     ):
 
         # -----------------------------
         # Load Question Bank
         # -----------------------------
 
-        active_bank = self.bank_manager.get_active_bank()
+        if question_bank_id:
+            active_bank = self.bank_manager.get_bank(question_bank_id)
+        else:
+            active_bank = self.bank_manager.get_active_bank()
 
         if active_bank is None:
-            raise ValueError("No active question bank found.")
+            raise ValueError("Question bank not found.")
 
         question_bank = (
             Path("data/extracted")

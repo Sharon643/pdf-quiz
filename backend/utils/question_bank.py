@@ -169,3 +169,10 @@ class QuestionBankManager:
         self._save(data)
 
         return True
+    
+    def get_bank(self, bank_id: str):
+        for bank in self.get_all_banks():
+            if bank["id"] == bank_id:
+                return bank
+
+        return None

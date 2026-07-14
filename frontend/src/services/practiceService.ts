@@ -9,11 +9,13 @@ import type {
 
 export async function startPractice(
   questionCount: number,
+  questionBankId?: string,
 ): Promise<StartPracticeResponse> {
   const response = await api.post(
     "/practice/start",
     {
       questionCount,
+      questionBankId,
     },
   );
 

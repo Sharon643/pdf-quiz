@@ -177,11 +177,17 @@ export default function Practice() {
     if (!practice) return;
 
     try {
-      await finishPractice(
-        practice.practiceId,
-      );
+      const result =
+          await finishPractice(
+              practice.practiceId
+          );
 
-      navigate("/dashboard");
+      navigate(
+          "/practice/result",
+          {
+              state: result,
+          }
+      );
 
     } catch (err) {
       console.error(err);
@@ -345,12 +351,12 @@ return (
             className="
               w-full
               rounded-lg
-              bg-emerald-600
+              bg-blue-600
               py-3
               font-medium
               text-white
               transition
-              hover:bg-emerald-500
+              hover:bg-blue-500
             "
           >
             Finish Practice

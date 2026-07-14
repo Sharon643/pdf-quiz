@@ -17,6 +17,7 @@ def start_practice(
 ):
     return service.start_practice(
         request.questionCount,
+        request.questionBankId,
     )
 
 @router.get("/{practice_id}")

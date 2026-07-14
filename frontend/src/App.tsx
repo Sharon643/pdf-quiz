@@ -10,6 +10,7 @@ import History from "./pages/History";
 import Review from "./pages/Review";
 import Practice from "./pages/Practice"
 import PracticeSettings from "./pages/PracticeSettings";
+import PracticeResult from "./pages/PracticeResults";
 
 
 function App() {
@@ -70,6 +71,10 @@ function App() {
         path="/practice/:practiceId"
         element={<Practice />}
       />
+      <Route
+        path="/practice/result"
+        element={<PracticeResult />}
+    />
     </Routes>
     
   );
