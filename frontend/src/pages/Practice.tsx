@@ -1,0 +1,366 @@
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import type { PracticeSession } from "../types/practice";
+
+import {
+  getPractice,
+  submitPracticeAnswer,
+  finishPractice,
+} from "../services/practiceService";
+
+import ExamHeader from "../components/exam/ExamHeader";
+import QuestionPanel from "../components/exam/QuestionPanel";
+import QuestionNavigator from "../components/exam/QuestionNavigator";
+
+export default function Practice() {
+  const { practiceId } = useParams();
+  const navigate = useNavigate();
+
+  const [practice, setPractice] = useState<PracticeSession | null>(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  const [answers, setAnswers] = useState<
+    Record<string, string | null>
+  >({});
+
+  const [visitedQuestions, setVisitedQuestions] =
+    useState<Set<number>>(new Set([1]));
+
+  // ---------- Practice Feedback ----------
+
+  const [showFeedback, setShowFeedback] =
+    useState(false);
+
+  const [correctAnswer, setCorrectAnswer] =
+    useState("");
+
+  const [answerCorrect, setAnswerCorrect] =
+    useState(false);
+
+  const [explanation, setExplanation] =
+    useState("");
+
+  // ---------------------------------------
+
+  useEffect(() => {
+    async function loadPractice() {
+      if (!practiceId) {
+        setError("Invalid practice session.");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const session = await getPractice(practiceId);
+
+        setPractice(session);
+
+        const restored: Record<
+          string,
+          string | null
+        > = {};
+
+        session.questions.forEach((question) => {
+          const answer =
+            session.answers?.[question.id];
+
+          if (answer) {
+            restored[question.id] =
+              answer.selectedOption;
+          }
+        });
+
+        setAnswers(restored);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load practice.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadPractice();
+  }, [practiceId]);
+
+  const currentQuestion = useMemo(() => {
+    if (!practice) return null;
+
+    return practice.questions[currentQuestionIndex];
+  }, [practice, currentQuestionIndex]);
+
+  const answeredQuestions = useMemo(() => {
+    if (!practice) return new Set<number>();
+
+    const answered = new Set<number>();
+
+    practice.questions.forEach((question, index) => {
+      if (answers[question.id]) {
+        answered.add(index + 1);
+      }
+    });
+
+    return answered;
+  }, [answers, practice]);
+
+  async function handleSelectOption(option: string) {
+    if (!practice || !currentQuestion) return;
+
+    if (showFeedback) return;
+
+    setAnswers((previous) => ({
+      ...previous,
+      [currentQuestion.id]: option,
+    }));
+
+    try {
+      const feedback =
+        await submitPracticeAnswer(
+          practice.practiceId,
+          currentQuestion.id,
+          option,
+        );
+
+      setCorrectAnswer(
+        feedback.correctAnswer,
+      );
+
+      setAnswerCorrect(
+        feedback.correct,
+      );
+
+      setExplanation(
+        feedback.explanation ?? "",
+      );
+
+      setShowFeedback(true);
+
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  function handlePrevious() {
+    setShowFeedback(false);
+
+    setCurrentQuestionIndex((previous) =>
+      Math.max(previous - 1, 0)
+    );
+  }
+
+  function handleNext() {
+    if (!practice) return;
+
+    setShowFeedback(false);
+
+    setCurrentQuestionIndex((previous) =>
+      Math.min(
+        previous + 1,
+        practice.questionCount - 1
+      )
+    );
+
+    setVisitedQuestions((previous) => {
+      const updated = new Set(previous);
+
+      updated.add(currentQuestionIndex + 2);
+
+      return updated;
+    });
+  }
+
+  async function handleFinishPractice() {
+    if (!practice) return;
+
+    try {
+      await finishPractice(
+        practice.practiceId,
+      );
+
+      navigate("/dashboard");
+
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  if (loading) {
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-zinc-950">
+      <p className="text-zinc-400">Loading Practice...</p>
+    </main>
+  );
+}
+
+if (error || !practice || !currentQuestion) {
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-zinc-950">
+      <p className="text-red-400">
+        {error || "Practice session not found"}
+      </p>
+    </main>
+  );
+}
+
+const correctCount = answerCorrect
+  ? answeredQuestions.size
+  : Math.max(answeredQuestions.size - 1, 0);
+
+const wrongCount =
+  answeredQuestions.size - correctCount;
+
+return (
+  <main className="min-h-screen bg-zinc-950">
+    <div className="mx-auto max-w-[1800px] px-8 py-8">
+
+      <ExamHeader
+        current={currentQuestionIndex + 1}
+        total={practice.questionCount}
+        answered={answeredQuestions.size}
+        timed={false}
+        remainingSeconds={null}
+        onExit={() => navigate("/dashboard")}
+      />
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+
+        {/* LEFT */}
+
+        <section>
+
+          <QuestionPanel
+            practiceMode
+
+            showFeedback={showFeedback}
+
+            correctAnswer={correctAnswer}
+
+            answerCorrect={answerCorrect}
+
+            explanation={explanation}
+
+            currentQuestion={currentQuestionIndex + 1}
+
+            question={currentQuestion}
+
+            selectedOption={
+              answers[currentQuestion.id] ?? null
+            }
+
+            hasPrevious={currentQuestionIndex > 0}
+
+            hasNext={
+              currentQuestionIndex <
+              practice.questionCount - 1
+            }
+
+            isMarkedForReview={false}
+
+            onSelectOption={handleSelectOption}
+
+            onPrevious={handlePrevious}
+
+            onNext={handleNext}
+
+            onMarkReview={() => {}}
+          />
+
+        </section>
+
+        {/* RIGHT */}
+
+        <aside className="sticky top-8 self-start space-y-6">
+
+          <QuestionNavigator
+            total={practice.questionCount}
+            current={currentQuestionIndex + 1}
+            answered={answeredQuestions}
+            review={new Set()}
+            visited={visitedQuestions}
+            onSelect={(question) => {
+              setCurrentQuestionIndex(question - 1);
+
+              setShowFeedback(false);
+
+              setVisitedQuestions((previous) => {
+                const updated = new Set(previous);
+
+                updated.add(question);
+
+                return updated;
+              });
+            }}
+          />
+
+          {/* Progress */}
+
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
+
+            <h3 className="text-lg font-semibold text-white">
+              Practice Progress
+            </h3>
+
+            <div className="mt-6 space-y-5">
+
+              <div className="flex items-center justify-between">
+                <span className="text-zinc-400">
+                  Correct
+                </span>
+
+                <span className="font-semibold text-emerald-400">
+                  {correctCount}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="text-zinc-400">
+                  Wrong
+                </span>
+
+                <span className="font-semibold text-red-400">
+                  {wrongCount}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="text-zinc-400">
+                  Remaining
+                </span>
+
+                <span className="font-semibold text-white">
+                  {practice.questionCount -
+                    answeredQuestions.size}
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <button
+            onClick={handleFinishPractice}
+            className="
+              w-full
+              rounded-lg
+              bg-emerald-600
+              py-3
+              font-medium
+              text-white
+              transition
+              hover:bg-emerald-500
+            "
+          >
+            Finish Practice
+          </button>
+
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+);
+}

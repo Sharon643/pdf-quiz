@@ -9,7 +9,7 @@ export interface QuestionBank {
   active: boolean;
 
   // Temporary compatibility fields
-  subjects?: number;
+  subjects: number;
   hasQuestions?: boolean;
 }
 

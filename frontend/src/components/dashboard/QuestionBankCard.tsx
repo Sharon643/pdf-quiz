@@ -58,7 +58,7 @@ export default function QuestionBankCard({
           variant = "secondary"
           onClick={onManage}
         >
-          Manage Question Bank
+          Manage Question Banks
         <ArrowRight
         size={18}
         className="transition-transform group-hover:translate-x-1"

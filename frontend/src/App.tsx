@@ -8,6 +8,8 @@ import Results from "./pages/Results";
 import UploadPdf from "./pages/UploadPdf";
 import History from "./pages/History";
 import Review from "./pages/Review";
+import Practice from "./pages/Practice"
+import PracticeSettings from "./pages/PracticeSettings";
 
 
 function App() {
@@ -52,6 +54,21 @@ function App() {
       <Route
           path="/review/:examId"
           element={<Review />}
+      />
+
+      <Route
+          path="/practice"
+          element={<Practice />}
+      />
+
+      <Route
+        path="/practice/settings"
+        element={<PracticeSettings />}
+      />
+
+      <Route
+        path="/practice/:practiceId"
+        element={<Practice />}
       />
     </Routes>
     

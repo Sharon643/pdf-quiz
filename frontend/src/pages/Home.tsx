@@ -7,18 +7,17 @@ import ModeSelector from "../components/home/ModeSelector";
 import Alert from "../components/ui/Alert";
 import ProgressCard from "../components/ui/ProgressCard";
 
-import { getQuestionBank } from "../services/questionBank";
+import { getQuestionBanks } from "../services/questionBank";
 
 import { useUpload } from "../hooks/useUpload";
 import { useProgress } from "../hooks/useProgress";
 
 import type { AlertMessage } from "../types/alert";
-import type { QuestionBankResponse } from "../types/questionBank";
+import type {QuestionBank as QuestionBankType,} from "../types/questionBank";
 import QuestionBankSkeleton from "../components/question-bank/QuestionBankSkeleton";
 
 export default function Home() {
-  const [questionBank, setQuestionBank] =
-    useState<QuestionBankResponse | null>(null);
+  const [questionBank, setQuestionBank] = useState<QuestionBankType | null>(null);
 
   const [selectedFile, setSelectedFile] =
     useState<File | null>(null);
@@ -46,7 +45,7 @@ export default function Home() {
 
   async function loadQuestionBank() {
     try {
-      const data = await getQuestionBank();
+      const data = await getQuestionBanks();
       setQuestionBank(data);
     } catch (error) {
       console.error(error);

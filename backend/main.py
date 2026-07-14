@@ -7,6 +7,7 @@ from api.progress import router as progress_router
 from api.exam import router as exam_router
 from api import history
 from api import review
+from api.practice import router as practice_router
 
 
 
@@ -31,3 +32,4 @@ app.include_router(progress_router)
 app.include_router(exam_router)
 app.include_router(history.router)
 app.include_router(review.router)
+app.include_router(practice_router)

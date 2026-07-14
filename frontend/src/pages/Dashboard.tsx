@@ -194,7 +194,7 @@ export default function Dashboard() {
               title="Practice"
               description="Practice with instant feedback."
               icon={<Brain size={22} className="text-zinc-400" />}
-              onClick={() => navigate("/practice")}
+              onClick={() => navigate("/practice/settings")}
             />
 
             <QuickActionCard

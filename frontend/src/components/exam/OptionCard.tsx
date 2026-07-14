@@ -1,9 +1,20 @@
-import { CheckCircle2 } from "lucide-react";
+import {
+  CheckCircle2,
+  CircleCheckBig,
+  CircleX,
+} from "lucide-react";
 
 interface OptionCardProps {
   optionKey: string;
   optionText: string;
+
   selected: boolean;
+
+  correct?: boolean;
+  incorrect?: boolean;
+
+  disabled?: boolean;
+
   onSelect: () => void;
 }
 
@@ -11,10 +22,63 @@ export default function OptionCard({
   optionKey,
   optionText,
   selected,
+  correct = false,
+  incorrect = false,
+  disabled = false,
   onSelect,
 }: OptionCardProps) {
+  let container =
+    "border-zinc-800 bg-zinc-950 hover:border-zinc-700 hover:bg-zinc-900";
+
+  let badge =
+    "bg-zinc-800 text-zinc-300";
+
+  let icon = null;
+
+  if (correct) {
+    container =
+        "border-emerald-500 bg-emerald-500/15 scale-[1.02] shadow-lg shadow-emerald-500/20";
+
+    badge =
+      "bg-emerald-500 text-white";
+
+    icon = (
+      <CircleCheckBig
+        size={22}
+        className="text-emerald-400"
+      />
+    );
+  } else if (incorrect) {
+    container =
+      "border-red-500 bg-red-500/15 animate-[shake_0.35s_ease-in-out]";
+
+    badge =
+      "bg-red-500 text-white";
+
+    icon = (
+      <CircleX
+        size={22}
+        className="text-red-400"
+      />
+    );
+  } else if (selected) {
+    container =
+      "border-slate-600 bg-slate-700/20";
+
+    badge =
+      "bg-slate-600 text-white";
+
+    icon = (
+      <CheckCircle2
+        size={22}
+        className="text-slate-300"
+      />
+    );
+  }
+
   return (
     <button
+      disabled={disabled}
       onClick={onSelect}
       className={`
         group
@@ -24,12 +88,15 @@ export default function OptionCard({
         p-6
         text-left
         transition-all
-        duration-200
+        duration-300
+        ease-out
+
+        ${container}
 
         ${
-          selected
-            ? "border-slate-600 bg-slate-700/20"
-            : "border-zinc-800 bg-zinc-950 hover:border-zinc-700 hover:bg-zinc-900"
+          disabled
+            ? "cursor-default"
+            : "hover:scale-[1.01]"
         }
       `}
     >
@@ -45,11 +112,7 @@ export default function OptionCard({
             rounded-xl
             font-semibold
 
-            ${
-              selected
-                ? "bg-slate-600 text-white"
-                : "bg-zinc-800 text-zinc-300"
-            }
+            ${badge}
           `}
         >
           {optionKey}
@@ -63,12 +126,7 @@ export default function OptionCard({
 
         </div>
 
-        {selected && (
-          <CheckCircle2
-            className="text-slate-300"
-            size={22}
-          />
-        )}
+        {icon}
 
       </div>
 

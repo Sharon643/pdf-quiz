@@ -3,20 +3,25 @@ from pathlib import Path
 
 
 class ExamManager:
-    def __init__(self, exam_id: str):
-        self.exam_id = exam_id
+    def __init__(
+    self,
+    session_id: str,
+    mode: str = "exams",
+):
+        self.exam_id = session_id
+
+        base = Path(f"data/{mode}")
 
         self.session_file = (
-            Path("data/exams/sessions")
-            / f"{exam_id}.json"
+            base / "sessions" / f"{session_id}.json"
         )
 
         self.key_file = (
-            Path("data/exams/keys")
-            / f"{exam_id}.json"
+            base / "keys" / f"{session_id}.json"
         )
 
     def read_session(self):
+        
         if not self.session_file.exists():
             return None
 
