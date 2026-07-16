@@ -5,10 +5,7 @@ from typing import Any
 
 class Validator:
     """
-    Validates and normalizes extracted questions.
-
-    The validator ensures every question follows the canonical schema while
-    allowing optional fields for PDFs that do not contain answers.
+    Validates extracted questions against the canonical schema.
     """
 
     REQUIRED_FIELDS = {
@@ -17,87 +14,86 @@ class Validator:
         "subject",
         "question",
         "options",
+        "page",
+        "correct_answer",
+        "explanation",
     }
 
     VALID_OPTIONS = {"A", "B", "C", "D"}
 
     @classmethod
-    def validate(cls, questions: list[dict]) -> tuple[list[dict], list[str]]:
-        """
-        Validate a list of questions.
-
-        Returns:
-            (valid_questions, errors)
-        """
+    def validate(
+        cls,
+        questions: list[dict[str, Any]],
+    ) -> tuple[list[dict[str, Any]], list[str]]:
 
         valid_questions = []
         errors = []
 
+        seen_ids = set()
         seen_numbers = set()
 
         for index, question in enumerate(questions, start=1):
 
-            cls._normalize(question)
-
             question_errors = cls._validate_question(
                 question,
+                seen_ids,
                 seen_numbers,
             )
 
             if question_errors:
+
                 errors.extend(
                     [
-                        f"Question {index}: {err}"
-                        for err in question_errors
+                        f"Question {index}: {error}"
+                        for error in question_errors
                     ]
                 )
-            else:
-                valid_questions.append(question)
+
+                continue
+
+            valid_questions.append(question)
 
         return valid_questions, errors
-
-    @classmethod
-    def _normalize(cls, question: dict[str, Any]) -> None:
-        """
-        Populate optional fields with defaults.
-        """
-
-        question.setdefault("page", None)
-        question.setdefault("correct_answer", None)
-        question.setdefault("explanation", "")
 
     @classmethod
     def _validate_question(
         cls,
         question: dict[str, Any],
+        seen_ids: set[str],
         seen_numbers: set[int],
     ) -> list[str]:
 
         errors = []
 
-        # --------------------------------------------------
-        # Required fields
-        # --------------------------------------------------
-
         missing = cls.REQUIRED_FIELDS - question.keys()
 
         if missing:
-            errors.append(
+            return [
                 f"Missing required fields: {', '.join(sorted(missing))}"
-            )
-            return errors
+            ]
 
         # --------------------------------------------------
         # ID
         # --------------------------------------------------
 
-        if not isinstance(question["id"], str):
+        question_id = question["id"]
+
+        if not isinstance(question_id, str):
 
             errors.append("id must be a string.")
 
-        elif not question["id"].strip():
+        elif not question_id.strip():
 
             errors.append("id cannot be empty.")
+
+        elif question_id in seen_ids:
+
+            errors.append("Duplicate id.")
+
+        else:
+
+            seen_ids.add(question_id)
 
         # --------------------------------------------------
         # Number
@@ -129,7 +125,7 @@ class Validator:
 
         if not isinstance(subject, str):
 
-            errors.append("subject must be text.")
+            errors.append("subject must be a string.")
 
         elif not subject.strip():
 
@@ -139,15 +135,15 @@ class Validator:
         # Question
         # --------------------------------------------------
 
-        question_text = question["question"]
+        text = question["question"]
 
-        if not isinstance(question_text, str):
+        if not isinstance(text, str):
 
-            errors.append("question must be text.")
+            errors.append("question must be a string.")
 
-        elif len(question_text.strip()) < 5:
+        elif len(text.strip()) < 5:
 
-            errors.append("question text is too short.")
+            errors.append("question is too short.")
 
         # --------------------------------------------------
         # Options
@@ -161,32 +157,30 @@ class Validator:
 
         else:
 
-            keys = set(options.keys())
-
-            if keys != cls.VALID_OPTIONS:
+            if set(options.keys()) != cls.VALID_OPTIONS:
 
                 errors.append(
                     "options must contain exactly A, B, C and D."
                 )
 
-            else:
+            for key in cls.VALID_OPTIONS:
 
-                for key, value in options.items():
+                value = options.get(key)
 
-                    if not isinstance(value, str):
+                if not isinstance(value, str):
 
-                        errors.append(
-                            f"Option {key} must be text."
-                        )
+                    errors.append(
+                        f"Option {key} must be a string."
+                    )
 
-                    elif not value.strip():
+                elif not value.strip():
 
-                        errors.append(
-                            f"Option {key} cannot be empty."
-                        )
+                    errors.append(
+                        f"Option {key} cannot be empty."
+                    )
 
         # --------------------------------------------------
-        # Page (optional)
+        # Page
         # --------------------------------------------------
 
         page = question["page"]
@@ -202,7 +196,7 @@ class Validator:
                 errors.append("page must be positive.")
 
         # --------------------------------------------------
-        # Correct Answer (optional)
+        # Correct Answer
         # --------------------------------------------------
 
         answer = question["correct_answer"]
@@ -213,17 +207,14 @@ class Validator:
 
                 errors.append("Invalid correct_answer.")
 
-            elif (
-                isinstance(options, dict)
-                and answer not in options
-            ):
+            elif answer not in options:
 
                 errors.append(
-                    "correct_answer not found in options."
+                    "correct_answer does not exist in options."
                 )
 
         # --------------------------------------------------
-        # Explanation (optional)
+        # Explanation
         # --------------------------------------------------
 
         explanation = question["explanation"]
@@ -233,7 +224,7 @@ class Validator:
             if not isinstance(explanation, str):
 
                 errors.append(
-                    "explanation must be text."
+                    "explanation must be a string."
                 )
 
         return errors
