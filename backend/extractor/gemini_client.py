@@ -1,89 +1,153 @@
-import json
-import re
 import time
 
 from google import genai
 
-from extractor.config import API_KEY, MODEL, MAX_RETRIES
-from extractor.prompt import PROMPT
+from extractor.config import (
+    API_KEY,
+    MODEL,
+    MAX_RETRIES,
+)
+
+from extractor.json_parser import JSONParser
+from extractor.prompts.prompt import PROMPT
 
 
 class GeminiClient:
 
     def __init__(self):
-
         self.client = genai.Client(api_key=API_KEY)
 
-    def _clean_json(self, text: str) -> str:
-        """
-        Remove markdown fences if Gemini returns them.
-        """
+    def _build_prompt(
+        self,
+        chunk_number: int,
+        total_chunks: int,
+    ) -> str:
 
-        text = text.strip()
+        return f"""
+=====================================================================
+RUNTIME CONTEXT
+=====================================================================
 
-        text = re.sub(r"^```json", "", text, flags=re.IGNORECASE)
-        text = re.sub(r"^```", "", text)
-        text = re.sub(r"```$", "", text)
+You are processing one chunk of a larger educational PDF.
 
-        return text.strip()
+Current Chunk: {chunk_number} of {total_chunks}
 
-    def extract(self, pdf_path: str):
+The original PDF has been split into chunks to remain within the model's
+context window.
 
-        pdf = self.client.files.upload(
-            file=pdf_path
+Process ONLY the information contained in this chunk.
+
+=====================================================================
+CHUNK RULES
+=====================================================================
+
+• Never assume missing information.
+
+• Never reconstruct missing text.
+
+• Never invent options.
+
+• Never invent answers.
+
+• Never merge unrelated questions.
+
+• If a question is incomplete, skip it.
+
+• Only extract questions that are completely contained within this chunk.
+
+• If the same question appears multiple times inside this chunk,
+extract it only once.
+
+Accuracy is more important than quantity.
+
+=====================================================================
+
+{PROMPT}
+"""
+
+    def _upload_pdf(
+        self,
+        pdf_path: str,
+    ):
+        return self.client.files.upload(file=pdf_path)
+
+    def extract(
+        self,
+        pdf_path: str,
+        chunk_number: int,
+        total_chunks: int,
+    ):
+
+        pdf = self._upload_pdf(pdf_path)
+
+        prompt = self._build_prompt(
+            chunk_number,
+            total_chunks,
         )
 
         last_exception = None
 
-        for attempt in range(MAX_RETRIES):
+        for attempt in range(1, MAX_RETRIES + 1):
+
+            print("=" * 60)
+            print(
+                f"Chunk {chunk_number}/{total_chunks}"
+            )
+            print(
+                f"Attempt {attempt}/{MAX_RETRIES}"
+            )
+            print("=" * 60)
+
+            raw = None
 
             try:
-
-                print(f"Attempt {attempt + 1}")
 
                 response = self.client.models.generate_content(
                     model=MODEL,
                     contents=[
                         pdf,
-                        PROMPT
-                    ]
+                        prompt,
+                    ],
                 )
+
                 raw = response.text
 
-                with open(
-                    "failed_response.txt",
-                    "w",
-                    encoding="utf8"
-                ) as f:
-                    f.write(raw)
+                questions = JSONParser.parse(raw)
 
-                text = self._clean_json(raw)
+                print(
+                    f"✓ Parsed {len(questions)} questions."
+                )
 
-                data = json.loads(text)
-
-                if not isinstance(data, list):
-                    raise ValueError(
-                        "Gemini did not return a JSON array."
-                    )
-
-                print(f"Extracted {len(data)} questions.")
-
-                return data
+                return questions
 
             except Exception as e:
 
                 last_exception = e
 
-                print(f"Attempt {attempt+1} failed.")
+                print(f"✗ {e}")
 
-                print(e)
+                if raw:
 
-                wait = 2 ** attempt
+                    with open(
+                        f"failed_chunk_{chunk_number}.txt",
+                        "w",
+                        encoding="utf-8",
+                    ) as f:
+                        f.write(raw)
 
-                print(f"Retrying in {wait} seconds...\n")
+                if attempt == MAX_RETRIES:
+                    break
+
+                wait = 2 ** (attempt - 1)
+
+                print(
+                    f"Retrying in {wait} seconds...\n"
+                )
 
                 time.sleep(wait)
 
         raise RuntimeError(
-            f"Extraction failed after {MAX_RETRIES} attempts.\n\n{last_exception}"
+            "Gemini extraction failed after "
+            f"{MAX_RETRIES} attempts.\n\n"
+            f"{last_exception}"
         )

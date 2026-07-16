@@ -1,164 +1,239 @@
-import json
-import os
-from datetime import datetime
+from __future__ import annotations
+
+from typing import Any
 
 
 class Validator:
+    """
+    Validates and normalizes extracted questions.
 
-    REQUIRED_FIELDS = [
+    The validator ensures every question follows the canonical schema while
+    allowing optional fields for PDFs that do not contain answers.
+    """
+
+    REQUIRED_FIELDS = {
+        "id",
         "number",
-        "page",
         "subject",
         "question",
         "options",
-        "correct_answer"
-    ]
+    }
 
-    REQUIRED_OPTIONS = ["A", "B", "C", "D"]
-
-    VALID_ANSWERS = {"A", "B", "C", "D"}
+    VALID_OPTIONS = {"A", "B", "C", "D"}
 
     @classmethod
-    def validate(cls, questions):
+    def validate(cls, questions: list[dict]) -> tuple[list[dict], list[str]]:
+        """
+        Validate a list of questions.
+
+        Returns:
+            (valid_questions, errors)
+        """
 
         valid_questions = []
-        invalid_questions = []
+        errors = []
 
-        for question in questions:
+        seen_numbers = set()
 
-            errors = []
+        for index, question in enumerate(questions, start=1):
 
-            # ---------- Required fields ----------
-            for field in cls.REQUIRED_FIELDS:
+            cls._normalize(question)
 
-                if field not in question:
-                    errors.append(f"Missing field: {field}")
+            question_errors = cls._validate_question(
+                question,
+                seen_numbers,
+            )
 
-            if errors:
-                question["errors"] = errors
-                invalid_questions.append(question)
-                continue
-
-            # ---------- Question ----------
-            if not str(question["question"]).strip():
-                errors.append("Empty question")
-
-            # ---------- Options ----------
-            options = question.get("options", {})
-
-            for option in cls.REQUIRED_OPTIONS:
-
-                if option not in options:
-                    errors.append(f"Missing option {option}")
-
-                elif not str(options[option]).strip():
-                    errors.append(f"Empty option {option}")
-
-            # ---------- Correct Answer ----------
-            answer = question.get("correct_answer", "")
-
-            if answer not in cls.VALID_ANSWERS:
-                errors.append("Invalid correct_answer")
-
-            elif answer not in options:
-                errors.append("correct_answer not found in options")
-
-            # ---------- Derived fields ----------
-            question["correct_option"] = options.get(answer, "")
-
-            question["explanation"] = ""
-
-            if errors:
-                question["errors"] = errors
-                invalid_questions.append(question)
+            if question_errors:
+                errors.extend(
+                    [
+                        f"Question {index}: {err}"
+                        for err in question_errors
+                    ]
+                )
             else:
                 valid_questions.append(question)
 
-        return valid_questions, invalid_questions
+        return valid_questions, errors
 
-    @staticmethod
-    def save_invalid(invalid_questions, output_dir):
+    @classmethod
+    def _normalize(cls, question: dict[str, Any]) -> None:
+        """
+        Populate optional fields with defaults.
+        """
 
-        if not invalid_questions:
-            return
+        question.setdefault("page", None)
+        question.setdefault("correct_answer", None)
+        question.setdefault("explanation", "")
 
-        os.makedirs(output_dir, exist_ok=True)
+    @classmethod
+    def _validate_question(
+        cls,
+        question: dict[str, Any],
+        seen_numbers: set[int],
+    ) -> list[str]:
 
-        with open(
-            os.path.join(output_dir, "invalid_questions.json"),
-            "w",
-            encoding="utf8"
-        ) as f:
+        errors = []
 
-            json.dump(
-                invalid_questions,
-                f,
-                indent=4,
-                ensure_ascii=False
+        # --------------------------------------------------
+        # Required fields
+        # --------------------------------------------------
+
+        missing = cls.REQUIRED_FIELDS - question.keys()
+
+        if missing:
+            errors.append(
+                f"Missing required fields: {', '.join(sorted(missing))}"
             )
+            return errors
 
-   
+        # --------------------------------------------------
+        # ID
+        # --------------------------------------------------
 
+        if not isinstance(question["id"], str):
 
-    @staticmethod
-    def save_report(total, valid_questions, invalid_questions, output_dir):
+            errors.append("id must be a string.")
 
-        os.makedirs(output_dir, exist_ok=True)
+        elif not question["id"].strip():
 
-        report_path = os.path.join(
-            output_dir,
-            "validation_report.txt"
-        )
+            errors.append("id cannot be empty.")
 
-        with open(
-            report_path,
-            "w",
-            encoding="utf8"
-        ) as f:
+        # --------------------------------------------------
+        # Number
+        # --------------------------------------------------
 
-            f.write("=" * 60 + "\n")
-            f.write("PDF QUIZ VALIDATION REPORT\n")
-            f.write("=" * 60 + "\n\n")
+        number = question["number"]
 
-            f.write(
-                f"Generated : {datetime.now()}\n\n"
-            )
+        if not isinstance(number, int):
 
-            f.write(
-                f"Total Questions   : {total}\n"
-            )
+            errors.append("number must be an integer.")
 
-            f.write(
-                f"Valid Questions   : {len(valid_questions)}\n"
-            )
+        elif number <= 0:
 
-            f.write(
-                f"Invalid Questions : {len(invalid_questions)}\n\n"
-            )
+            errors.append("number must be positive.")
 
-            if invalid_questions:
+        elif number in seen_numbers:
 
-                f.write("=" * 60 + "\n")
-                f.write("INVALID QUESTIONS\n")
-                f.write("=" * 60 + "\n\n")
+            errors.append("Duplicate question number.")
 
-                for question in invalid_questions:
+        else:
 
-                    f.write(
-                        f"Question Number : {question.get('number','')}\n"
-                    )
+            seen_numbers.add(number)
 
-                    f.write(
-                        f"Subject         : {question.get('subject','')}\n\n"
-                    )
+        # --------------------------------------------------
+        # Subject
+        # --------------------------------------------------
 
-                    f.write("Errors\n")
-                    f.write("------\n")
+        subject = question["subject"]
 
-                    for error in question["errors"]:
+        if not isinstance(subject, str):
 
-                        f.write(f"- {error}\n")
+            errors.append("subject must be text.")
 
-                    f.write("\n")
-                    f.write("-" * 50)
-                    f.write("\n\n")
+        elif not subject.strip():
+
+            errors.append("subject cannot be empty.")
+
+        # --------------------------------------------------
+        # Question
+        # --------------------------------------------------
+
+        question_text = question["question"]
+
+        if not isinstance(question_text, str):
+
+            errors.append("question must be text.")
+
+        elif len(question_text.strip()) < 5:
+
+            errors.append("question text is too short.")
+
+        # --------------------------------------------------
+        # Options
+        # --------------------------------------------------
+
+        options = question["options"]
+
+        if not isinstance(options, dict):
+
+            errors.append("options must be an object.")
+
+        else:
+
+            keys = set(options.keys())
+
+            if keys != cls.VALID_OPTIONS:
+
+                errors.append(
+                    "options must contain exactly A, B, C and D."
+                )
+
+            else:
+
+                for key, value in options.items():
+
+                    if not isinstance(value, str):
+
+                        errors.append(
+                            f"Option {key} must be text."
+                        )
+
+                    elif not value.strip():
+
+                        errors.append(
+                            f"Option {key} cannot be empty."
+                        )
+
+        # --------------------------------------------------
+        # Page (optional)
+        # --------------------------------------------------
+
+        page = question["page"]
+
+        if page is not None:
+
+            if not isinstance(page, int):
+
+                errors.append("page must be an integer.")
+
+            elif page <= 0:
+
+                errors.append("page must be positive.")
+
+        # --------------------------------------------------
+        # Correct Answer (optional)
+        # --------------------------------------------------
+
+        answer = question["correct_answer"]
+
+        if answer is not None:
+
+            if answer not in cls.VALID_OPTIONS:
+
+                errors.append("Invalid correct_answer.")
+
+            elif (
+                isinstance(options, dict)
+                and answer not in options
+            ):
+
+                errors.append(
+                    "correct_answer not found in options."
+                )
+
+        # --------------------------------------------------
+        # Explanation (optional)
+        # --------------------------------------------------
+
+        explanation = question["explanation"]
+
+        if explanation is not None:
+
+            if not isinstance(explanation, str):
+
+                errors.append(
+                    "explanation must be text."
+                )
+
+        return errors

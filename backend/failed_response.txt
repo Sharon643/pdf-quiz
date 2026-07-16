@@ -1,379 +1,1306 @@
+```json
 [
   {
-    "number": 37,
-    "page": 1,
-    "subject": "General Nursing/Surgical Prep",
-    "question": "A 52 year- old woman is scheduled to undergo an abdomino- perineal resection in three days for removal of a cancer of the rectum. The nurse reviews the care plan with the patient. The patient will receive prophylactic antibiotics and will be given a mechanical bowel preparation the day before. Which additional preparation should the patient undertake at this time?",
+    "id": "e98e82a3-f9c3-4d64-802c-47a32402120e",
+    "number": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "The ages of A and B are in the ratio 5:7. Five years ago, their ages were in the ratio 5:8. The respective present ages (in years) are:",
     "options": {
-      "A": "Wear pressure stockings",
-      "B": "Perform leg strengthening exercises",
-      "C": "Maintain high- protein, low- residue diet",
-      "D": "Take daily ferrous iron tablets"
+      "A": "20,28",
+      "B": "15,21",
+      "C": "25,40",
+      "D": "10,14"
     },
-    "correct_answer": "C"
+    "correctAnswer": null,
+    "explanation": ""
   },
   {
-    "number": 38,
-    "page": 1,
-    "subject": "Parenteral Nutrition",
-    "question": "A patient has a central line catheter and is receiving a three-in- one total parenteral nutrition that contains glucose, proteins and lipids. The pump is set to deliver the infusion over a 12-hour period. After how many hours should the intravenous administration set be changed?",
+    "id": "e215f7b4-c3e0-4966-8800-4b21d58d9981",
+    "number": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "Four years ago, the ratio of ages of A and B was 3: 5. Ten years from now, the ratio of the ages of A and B will be 5 : 6. Find the sum of present ages?",
+    "options": {
+      "A": "32 years",
+      "B": "24 years",
+      "C": "26 years",
+      "D": "22 years"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6737f1a5-3a21-4f81-807c-9b62c140c83a",
+    "number": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "The ratio of present ages of A and B is 1: 2 and 5 years back the ratio was 1: 3. What will be the ratio of their ages after 7 years?",
+    "options": {
+      "A": "7: 12",
+      "B": "3: 4",
+      "C": "17:27",
+      "D": "2: 1"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "278c772e-3363-42e6-993d-d34938a9a20d",
+    "number": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "Ram's present age is thrice his son's present age and 2/5th of the present age of his father. The average present age of all of them is 46 years. What is the difference of ages of Ram's father and Ram's son at present?",
+    "options": {
+      "A": "68 years",
+      "B": "88 years",
+      "C": "78 years",
+      "D": "Cannot be determined"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "515715a0-9721-4d32-9d32-d858348a04c8",
+    "number": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "At present Ranveer is 15 years older than Deepika. 5 years later Deepika will be 10 years old. What is the Present age of Ranveer (in years)?",
+    "options": {
+      "A": "15",
+      "B": "20",
+      "C": "25",
+      "D": "30"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "257b85e0-3e28-444f-83e9-792f33f6797f",
+    "number": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A person was asked to state his age. His reply was- \"Take my age 3 years hence, multiply it by 3, subtract the triple of my age 3 years ago and you will know how old I am.” What is the present age of the person (in years)?",
+    "options": {
+      "A": "24",
+      "B": "20",
+      "C": "32",
+      "D": "18"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "62e15c32-15f1-432a-8d62-10f8a84c297b",
+    "number": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "If a³-b³ = 208 and a- b = 4, then (a + b)² - ab is equal to",
+    "options": {
+      "A": "52",
+      "B": "38",
+      "C": "32",
+      "D": "42"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "31b647f1-5f05-47b2-a42e-d0a6936c53e8",
+    "number": 8,
+    "subject": "Quantitative Aptitude",
+    "question": "If x + 1/x = 5, then x³ + 1/x³ is equal to",
+    "options": {
+      "A": "110",
+      "B": "130",
+      "C": "145",
+      "D": "125"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "67b931a7-66a9-4672-9112-9c98a3b836d5",
+    "number": 9,
+    "subject": "Quantitative Aptitude",
+    "question": "If (x - 5)³ + (x − 6)³ + (x - 7)³ = 3(x - 5) (x – 6) (x – 7), then what is the value of x ?",
+    "options": {
+      "A": "6",
+      "B": "7",
+      "C": "5",
+      "D": "18"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "595e1e19-94d0-449e-af54-0e625a4d1a05",
+    "number": 10,
+    "subject": "Quantitative Aptitude",
+    "question": "If (2x + 3)³ + (x- 8)³ + (x+ 13)³ = (2x +3) (3x - 24) (x + 13), then what is the value of x?",
+    "options": {
+      "A": "-1.5",
+      "B": "-2.5",
+      "C": "-2",
+      "D": "-1"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "622d4f3e-8692-411a-85b4-d7d5668d2f0f",
+    "number": 11,
+    "subject": "Quantitative Aptitude",
+    "question": "If a³ + b³ = 5824 and a + b = 28, then (a – b)² + ab is equal to",
+    "options": {
+      "A": "208",
+      "B": "152",
+      "C": "180",
+      "D": "236"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "531390d4-d841-4775-9626-d99f6b9c9f75",
+    "number": 12,
+    "subject": "Quantitative Aptitude",
+    "question": "If x − 1/x = 6, then x³- 1/x³ is equal to",
+    "options": {
+      "A": "216",
+      "B": "176",
+      "C": "234",
+      "D": "198"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "c1615f3a-a5d6-41f3-9486-4f40a1b64a3e",
+    "number": 13,
+    "subject": "Quantitative Aptitude",
+    "question": "If ratio of male workers to female worker in company P and company R is 15:7 and 13:12 respectively, then find the difference between no. of female workers in company P and that of in company R.",
+    "options": {
+      "A": "1120",
+      "B": "2400",
+      "C": "1365",
+      "D": "1400"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6a9e1026-c225-4556-912f-0b6283c741e6",
+    "number": 14,
+    "subject": "Quantitative Aptitude",
+    "question": "No. of worker in company R are approximately what percent more than no. of worker in company S.",
+    "options": {
+      "A": "61%",
+      "B": "59%",
+      "C": "57%",
+      "D": "55%"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0172828b-b893-4a6c-9214-4a41f6e2f183",
+    "number": 15,
+    "subject": "Quantitative Aptitude",
+    "question": "If ratio of male officer to female officer in company T is 23:27. Then find difference between female officer in company T and no. of worker in company Q.",
+    "options": {
+      "A": "29070",
+      "B": "28970",
+      "C": "29970",
+      "D": "28070"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "93427357-124b-4899-b143-6c84c4c81a95",
+    "number": 16,
+    "subject": "Quantitative Aptitude",
+    "question": "If female workers are 7140 in company S and no. of female worker in company S are 78.5% more Than male officer in the same company, then find female officers in company S.",
+    "options": {
+      "A": "3680",
+      "B": "3280",
+      "C": "3480",
+      "D": "3880"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "e305e55e-5753-43c3-b3c7-313d317ce541",
+    "number": 17,
+    "subject": "Quantitative Aptitude",
+    "question": "Find the average number of officers in company P, Q and T are approximately what percent of total workers in company S.",
+    "options": {
+      "A": "20%",
+      "B": "22%",
+      "C": "18%",
+      "D": "26%"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "84a44f50-6126-4074-8845-a745778a4878",
+    "number": 18,
+    "subject": "Quantitative Aptitude",
+    "question": "AB and AC are the two tangents to a circle whose radius is 6 cm. If ∠BAC = 60°, then what is the value (in cm) of √((AB)² + (AC)²)?",
+    "options": {
+      "A": "6√6",
+      "B": "4√6",
+      "C": "9√3",
+      "D": "8√3"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "a988d400-3484-469b-9c76-590d3e51f28e",
+    "number": 19,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, ABC is a right angled triangle. ∠ABC = 90°and ∠ACB = 60°. If the radius of the smaller circle is 2 cm, then what is the radius (in cm) of the larger circle?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "4.5",
+      "D": "7.5"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "a66f076c-941f-4c59-ac29-5f210a43e74b",
+    "number": 20,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, O is centre of the circle. Circle has 3 tangents. If ∠QPR = 45°, then what is the value (in degrees) of ∠QOR?",
+    "options": {
+      "A": "67.5",
+      "B": "72",
+      "C": "78.5",
+      "D": "65"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0df8c9f2-23c2-4882-938b-d5a2d603a1fc",
+    "number": 21,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given, two identical circles of radius 4 cm touch each other. A and B are the centres of the two circles. If RQ is a tangent to the circle, then what is the length (in cm) of RQ?",
+    "options": {
+      "A": "3√3",
+      "B": "2√6",
+      "C": "4√2",
+      "D": "6√2"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "b328a649-80ac-4131-897d-6554b51c14d8",
+    "number": 22,
+    "subject": "Quantitative Aptitude",
+    "question": "The radius of two circles is 3 cm and 4 cm. The distance between the centres of the circles is 10 cm. What is the ratio of the length of direct common tangent to the length of the transverse common tangent?",
+    "options": {
+      "A": "√51: √68",
+      "B": "√33: √17",
+      "C": "√66: √51",
+      "D": "√28: √17"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "a18e05a8-129b-43d7-a53d-242319084224",
+    "number": 23,
+    "subject": "Quantitative Aptitude",
+    "question": "A line cuts two concentric circles. The lengths of chords formed by that line on the two circles are 4 cm and 16 cm. What is the difference (in cm²) in square of radii of two circles?",
+    "options": {
+      "A": "240",
+      "B": "120",
+      "C": "60",
+      "D": "90"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4b6b60e6-9993-4a25-a740-128a11397b91",
+    "number": 24,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 4: 5. If their HCF is 16, then the sum of these two numbers is",
+    "options": {
+      "A": "144",
+      "B": "124",
+      "C": "160",
+      "D": "150"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3632906e-5a02-45e0-94a0-f203859d57a3",
+    "number": 25,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 4: 7. If their HCF is 26, then the sum of these two numbers will be",
+    "options": {
+      "A": "312",
+      "B": "364",
+      "C": "338",
+      "D": "286"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "119e7104-5858-48b4-9387-920ac343c1ee",
+    "number": 26,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 5 : 11. If their HCF is 24, then the sum of two these numbers is:",
+    "options": {
+      "A": "384",
+      "B": "408",
+      "C": "120",
+      "D": "264"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "895315ff-36ea-452f-a2e6-932f74130094",
+    "number": 27,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 6 : 11. If their HCF is 28, then the sum of these two numbers is:",
+    "options": {
+      "A": "476",
+      "B": "448",
+      "C": "392",
+      "D": "420"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "b73a5a7b-3b36-40e9-b2ee-177914569420",
+    "number": 28,
+    "subject": "Quantitative Aptitude",
+    "question": "Which of the following statement is true?",
+    "options": {
+      "A": "HCF+LCM of two numbers=Product of two numbers",
+      "B": "LCM of two natural numbers is divisible by their HCF.",
+      "C": "Two prime numbers are co-prime numbers if their LCM is 1.",
+      "D": "HCF of two numbers is the smallest common divisor of both numbers."
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "c1618a8b-18a7-47b2-9a60-a23d4b684218",
+    "number": 29,
+    "subject": "Quantitative Aptitude",
+    "question": "The HCF and LCM of two numbers is 6 and 5040 respectively. If one of the numbers is 210, then the other number is :",
+    "options": {
+      "A": "630",
+      "B": "144",
+      "C": "256",
+      "D": "30"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "ac8861e6-056b-4e11-a53d-289574312015",
+    "number": 30,
+    "subject": "Quantitative Aptitude",
+    "question": "From the top of a 10 m high building, the angle of elevation of the top of a tower is 60° and the angle of depression of the foot of the tower is φ, such that tanφ=1/3. What is the height of the tower to nearest metres?",
+    "options": {
+      "A": "34 m",
+      "B": "35 m",
+      "C": "36 m",
+      "D": "33 m"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "184ee531-1554-47ff-8c50-36932a3920fb",
+    "number": 31,
+    "subject": "Quantitative Aptitude",
+    "question": "A ladder leaning against a wall makes an angle α with the horizontal ground such that tan α = 3/4. If the foot of the ladder is 5 m away from the wall, what is the length of the ladder?",
+    "options": {
+      "A": "5.25 m",
+      "B": "3.75 m",
+      "C": "6.25 m",
+      "D": "4.5m"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "31b08b5f-5ce1-460d-a77a-2f4794e5e796",
+    "number": 32,
+    "subject": "Quantitative Aptitude",
+    "question": "From the top of a 12 m high building, the angle of elevation of the top of a tower is 60° and the angle of depression of the foot of the tower is θ, such that tanθ=1/4. What is the height of the tower (√3 = 1.73)?",
+    "options": {
+      "A": "41.41m",
+      "B": "36.22 m",
+      "C": "39.68 m",
+      "D": "37.95 m"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "23c2a373-193e-4395-829d-6490895c202b",
+    "number": 33,
+    "subject": "Quantitative Aptitude",
+    "question": "A ladder leaning against a wall makes an angle θ with the horizontal ground such that Sinθ=12/13. If the foot of the ladder is 7.5 m from the wall, then what is the height of the point where the top of the ladder touches the wall?",
+    "options": {
+      "A": "15 m",
+      "B": "8 m",
+      "C": "18 m",
+      "D": "12 m"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2e06c3a2-a9b7-4a7b-a010-388a6d96a51d",
+    "number": 34,
+    "subject": "Quantitative Aptitude",
+    "question": "From the top of 75 m high tower, the angle of depression of two points P and Q on opposite side of the base of the tower on level ground is θ and φ, such that tanθ = 3/4 and tan φ = 5/8. What is the distance between the points P and Q?",
+    "options": {
+      "A": "190 m",
+      "B": "200 m",
+      "C": "180 m",
+      "D": "220 m"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "060d4b8e-e283-49d7-8321-729938d2f00a",
+    "number": 35,
+    "subject": "Quantitative Aptitude",
+    "question": "The angle of elevation of top of a tower from a point P, on the ground is θ such that tan θ = 12/5. If distance of the point P, from the base of the tower is 75m, what is the height of the tower?",
+    "options": {
+      "A": "160 m",
+      "B": "200 m",
+      "C": "190 m",
+      "D": "180 m"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "90e090a2-2114-41d3-a55a-45b7c02b37b1",
+    "number": 36,
+    "subject": "Quantitative Aptitude",
+    "question": "ABC is a triangle. AB = 5 cm, AC = √41 cm and BC = 8 cm. AD is perpendicular to BC. What is the area (in cm²) of triangle ABD?",
     "options": {
       "A": "12",
-      "B": "24",
-      "C": "48",
-      "D": "72"
+      "B": "6",
+      "C": "10",
+      "D": "20"
     },
-    "correct_answer": "B"
+    "correctAnswer": null,
+    "explanation": ""
   },
   {
-    "number": 39,
-    "page": 1,
-    "subject": "Gastrointestinal Disorders",
-    "question": "Which of the following is Pancreatitis Patients frequently feel constant pain in the",
+    "id": "e7b001a1-f3b1-417c-a44d-5221b033e08f",
+    "number": 37,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, PQR is a triangle and quadrilateral ABCD is inscribed in it. QD = 2 cm, QC = 5 cm, CR = 3 cm, BR = 4 cm, PB = 6 cm, PA = 5 cm and AD = 3 cm. What is the area (in cm²) of the quadrilateral ABCD?",
     "options": {
-      "A": "lower right",
-      "B": "upper Left",
-      "C": "lower Left",
-      "D": "upper right"
+      "A": "(23√21)/4",
+      "B": "(15√21)/4",
+      "C": "(17√21)/5",
+      "D": "(23√21)/5"
     },
-    "correct_answer": "B"
+    "correctAnswer": null,
+    "explanation": ""
   },
   {
-    "number": 40,
-    "page": 2,
-    "subject": "Nursing Procedures",
-    "question": "A nurse is preparing to insert a nasogastric tube into a client. The nurse places the client in which position for insertion:",
-    "options": {
-      "A": "Right side",
-      "B": "Low Fowler's",
-      "C": "High Fowler's",
-      "D": "Supine with the head flat"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 41,
-    "page": 2,
-    "subject": "Surgical Procedures",
-    "question": "A patient has an acute inflammation of the gallbladder. The physician orders the nurse to schedule the patient for surgery. Which of the following surgical procedures will the physician MOST likely perform?",
-    "options": {
-      "A": "Pancreatectomy .",
-      "B": "Cholecystectomy",
-      "C": "Hepatectomy",
-      "D": "Cricothoracotom"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 42,
-    "page": 2,
-    "subject": "Surgical Incisions",
-    "question": "Which of the following is the incision site for an open cholecystectomy operation:",
-    "options": {
-      "A": "1",
-      "B": "2",
-      "C": "3",
-      "D": "4"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 43,
-    "page": 3,
-    "subject": "Surgical Incisions",
-    "question": "Which of the following is the incision site for an open gastrectomy operation:",
-    "options": {
-      "A": "1",
-      "B": "2",
-      "C": "3",
-      "D": "4"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 44,
-    "page": 3,
-    "subject": "Surgical Incisions",
-    "question": "Which of the following is the incision site for surgical appendectomy operation:",
-    "options": {
-      "A": "A",
-      "B": "B",
-      "C": "C",
-      "D": "D"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 45,
-    "page": 3,
-    "subject": "Nursing Procedures",
-    "question": "A nurse is administering a cleansing enema to a client with a fecal impaction. Before administering the enema, the nurse places the client in which position:",
-    "options": {
-      "A": "Left Sims' position",
-      "B": "Right Sims' position",
-      "C": "On the left side of the body, with the head of the bed elevated 45 degrees",
-      "D": "d- On the right side of the body, with the head of the bed elevated 45 degrees"
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 46,
-    "page": 4,
-    "subject": "Post-surgical Care",
-    "question": "Which of the following instructions is appropriate for the nurse to give to a female client a who complains of abdominal upset after cholecystectomy operation:",
-    "options": {
-      "A": "Increase fluid intake",
-      "B": "Avoid fatty meal",
-      "C": "Increase protein intake",
-      "D": "Daily exercise"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 47,
-    "page": 4,
-    "subject": "Nutritional Support",
-    "question": "Which of the following is the best way for long term feeding for a patient experiencing severe dysphagia:",
-    "options": {
-      "A": "NGT",
-      "B": "Naso-dudenal tube",
-      "C": "Gastrostomy",
-      "D": "Parenteral"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 48,
-    "page": 4,
-    "subject": "Fluid and Electrolyte Imbalance",
-    "question": "A patient suffers from diarrhea and muscle weakness, the nurse would assess this patient for which of the following abnormal laboratory blood tests:",
-    "options": {
-      "A": "Blood calcium",
-      "B": "Blood potassium",
-      "C": "Blood magnesium",
-      "D": "Blood sodium"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 49,
-    "page": 5,
-    "subject": "Nursing Procedures",
-    "question": "A nurse has administered approximately half of an enema solution to a preoperative client when the client complains of pain and cramping. Which nursing action is the most appropriate:",
-    "options": {
-      "A": "Raise the enema bag so that the solution can be instilled quickly.",
-      "B": "lamp the tubing for 30 seconds and restart the flow at a slower rate.",
-      "C": "Reassure the client and continue the flow.",
-      "D": "Discontinue the enema and notify the physician"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 50,
-    "page": 5,
-    "subject": "Parenteral Nutrition Complications",
-    "question": "When caring for a client who is receiving total parenteral nutrition (TPN), which of the following complications would be most important for the nurse to assess:",
-    "options": {
-      "A": "Chest pain",
-      "B": "Hemorrhage and air embolus",
-      "C": "Pneumonia and hyperglycemia",
-      "D": "Electrolyte imbalance and sepsis"
-    },
-    "correct_answer": "D"
-  },
-  {
-    "number": 51,
-    "page": 5,
-    "subject": "Post-surgical Care",
-    "question": "Postoperatively, patient is expected to void after:",
-    "options": {
-      "A": "6-8 hours",
-      "B": "2-4 hours",
-      "C": "12-24 hours",
-      "D": "10-12 hours"
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 52,
-    "page": 6,
-    "subject": "Gastrointestinal Assessment",
-    "question": "A 40 years old female complains of abdominal pain. It is worse after eating, especially if she has a meal that is spicy or high in fat. She has tried over-the- counter antacids, but they have not helped the pain. After examining her abdomen, you strongly suspect cholecystitis. Which sign on examination increases your suspicion for this diagnosis:",
-    "options": {
-      "A": "Psoas sign",
-      "B": "Rovsing's sign",
-      "C": "Murphy's sign",
-      "D": "Grey turner's sign"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 53,
-    "page": 6,
-    "subject": "Post-surgical Care",
-    "question": "When planning the care of a client who has undergone an abdominal hysterectomy, which nursing measure is most helpful for preventing postoperative complications and facilitating an early discharge?",
-    "options": {
-      "A": "Reestablishing oral fluids and nutrition",
-      "B": "Promoting ambulation and movement",
-      "C": "Maintaining accurate intake and output",
-      "D": "Exploring feelings about altered image"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 54,
-    "page": 6,
-    "subject": "Post-surgical Complications",
-    "question": "Which of the following is considered one of the common complications following abdominal total hysterectomy:",
-    "options": {
-      "A": "DVT",
-      "B": "Paralytic ileus",
-      "C": "Constipation",
-      "D": "Perforation"
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 55,
-    "page": 7,
-    "subject": "Gastrointestinal Disorders",
-    "question": "A client who has a history of Crohn's disease is admitted to the hospital with fever, diarrhea, cramping, abdominal pain, and weight loss. The nurse should monitor the client for:",
-    "options": {
-      "A": "Hyperalbuminemia",
-      "B": "Thrombocytopenia",
-      "C": "Hypokalemia",
-      "D": "Hypercalcemia"
-    },
-    "correct_answer": "C"
-  },
-  {
-    "number": 29,
-    "page": 8,
-    "subject": "Pediatric Nursing/Aspiration Prevention",
-    "question": "To decrease the incidence of aspiration of gastric contents in a child hospitalization with severe burns, the nurse should position the head:",
-    "options": {
-      "A": "Flat except during meals",
-      "B": "Elevates 30-45 degrees during meals",
-      "C": "Elevated 15-30 degrees for 12-hours after meals",
-      "D": "Elevated 45 degrees at all times"
-    },
-    "correct_answer": "B"
-  },
-  {
-    "number": 34,
-    "page": 8,
-    "subject": "Wound Healing",
-    "question": "Following lumbar surgery a patient has a 4 millimeter (mm) surgical incision. The incision is clean and the edges are well appropriate. This type of tissue healing is classified as which of the following?",
-    "options": {
-      "A": "Primary intention",
-      "B": "Secondary intention",
-      "C": "Tertiary intention",
-      "D": "Superficial epidermal"
-    },
-    "correct_answer": "A"
-  },
-  {
-    "number": 36,
-    "page": 8,
-    "subject": "Ethical/Legal Nursing",
-    "question": "A surgeon instructs a nurse to serve as a witness to an elderly patient's informed consent for surgery. During the explanations to the patient, it becomes clear that the patient is confused and does not understand the procedure, but reluctantly sign the consent form. The nurse should:",
-    "options": {
-      "A": "Sign the form as a witness, making a nation that the patient did not appear to understand",
-      "B": "Not sign the form as a witness and notify the nurse supervisor",
-      "C": "Not sign the form and answer the patient's questions after the surgeon leaves he room",
-      "D": "Sign the form and tell surgeon that the patient doesn't understand the procedure"
-    },
-    "correct_answer": "A"
-  },
-  {
+    "id": "cf637719-2169-42b4-8255-a5d62d29402e",
     "number": 38,
-    "page": 9,
-    "subject": "Medication Administration",
-    "question": "A patient schedule for a major surgery in one hour is very nervous and upset. Which of the following order medications would the nurse administer to relax this patient?",
+    "subject": "Quantitative Aptitude",
+    "question": "IN the given figures, ABCD is a square of side 14 cm. E and F are mid points of sides AB and DC respectively. EPF is a semicircle whose diameter is EF. LMNO is a square. What is the area (in cm²) of the shaded region?",
     "options": {
-      "A": "Meperidine Hydrochloride(Demerol)",
-      "B": "Scopolamine (Transderm-Scop)",
-      "C": "Pentobarbital sodium(Nembutal sodium)",
-      "D": "Trazodone hydrochloride(Trazadone)"
+      "A": "108.5",
+      "B": "94.5",
+      "C": "70",
+      "D": "120"
     },
-    "correct_answer": "C"
+    "correctAnswer": null,
+    "explanation": ""
   },
   {
+    "id": "787c8808-1f1c-43f1-b957-c46b5a3e1443",
+    "number": 39,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, AB, AE, EF, FG and GB are semicircles. AB = 56 cm and AE = EF = FG = GB. What is the area (in cm²) of the shaded region?",
+    "options": {
+      "A": "414.46",
+      "B": "382.82",
+      "C": "406.48",
+      "D": "394.24"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "18055615-585e-49b8-b114-1181283312e7",
+    "number": 40,
+    "subject": "Quantitative Aptitude",
+    "question": "Radius of base of a hollow cone is 8 cm and its height is 15 cm. A sphere of largest radius is put inside the cone. What is the ratio of radius of base of cone to the radius of sphere?",
+    "options": {
+      "A": "5:3",
+      "B": "4:1",
+      "C": "2:1",
+      "D": "7:3"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "01c77f0c-b258-406d-bc1c-a32194d35e5a",
+    "number": 41,
+    "subject": "Quantitative Aptitude",
+    "question": "The area of a regular hexagon is equal to the area of the square. What is the ratio of the perimeter of the regular hexagon to the perimeter of square?",
+    "options": {
+      "A": "√6√3: √3√6",
+      "B": "2√3: √6√2",
+      "C": "√6√3:2",
+      "D": "√6√3: 2√3"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "62e15c32-15f1-432a-8d62-10f8a84c297b",
+    "number": 42,
+    "subject": "Quantitative Aptitude",
+    "question": "An alloys contains 32% copper, 24% nickel and rest zinc. How much zinc is present in 12 kg of the alloy?",
+    "options": {
+      "A": "672 gm",
+      "B": "6.72 kg",
+      "C": "5.28 kg",
+      "D": "528 gm"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "31b647f1-5f05-47b2-a42e-d0a6936c53e8",
+    "number": 43,
+    "subject": "Quantitative Aptitude",
+    "question": "In what ratio should coffee costing Rs. 2800/kg be mixed with coffee costing Rs. 1750/kg so that the cost of the mixture is Rs. 2150/kg.",
+    "options": {
+      "A": "8:13",
+      "B": "13:8",
+      "C": "7:5",
+      "D": "5:7"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "f8a0a9c0-6d45-42f0-97b7-6b2d1c9e8e04",
+    "number": 44,
+    "subject": "Quantitative Aptitude",
+    "question": "In an alloy, Zinc and Copper are in the ratio 1 : 2. In the second alloy, the same elements are in the ratio 2: 3. If there two alloys combined to form a new alloy in which two elements are in the ratio 5: 8, the ratio of these two alloys in the new alloys is –",
+    "options": {
+      "A": "3 : 10",
+      "B": "7:3",
+      "C": "3:7",
+      "D": "10:3"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5b23d9b0-4a8e-4f51-a20c-c7e1f4d9c7d0",
     "number": 45,
-    "page": 9,
-    "subject": "Post-anesthesia Care",
-    "question": "While caring for a patient in the post-anesthesia care unit (PACU) Who has developed Hypovolemic shock, a nurse should position the patient:",
+    "subject": "Quantitative Aptitude",
+    "question": "A jar contained a mixture for two liquids A and B in the ratio 4 : 1. When 10 L of the mixture was taken out and 10 L of liquid B was poured into the jar, this ratio becomes 2 : 3. The quantity of liquid A contained in the gas initially was –",
     "options": {
-      "A": "Flat with legs elevated",
-      "B": "In Trendelenburg position",
-      "C": "With the head of the bed elevated 45 degrees",
-      "D": "Completely flat"
+      "A": "4 L",
+      "B": "12 L",
+      "C": "8 L",
+      "D": "16 L"
     },
-    "correct_answer": "A"
+    "correctAnswer": null,
+    "explanation": ""
   },
   {
-    "number": 150,
-    "page": 9,
-    "subject": "Surgical Classifications",
-    "question": "A patient with long-standing diabetes mellitus (type I) is scheduled for surgical amputation of 4 gangrenous toes on the right foot. Which surgical intervention would this be classified as?",
+    "id": "42f9e4f5-5a1e-4c7b-8e1d-3b5a7a7a9e3e",
+    "number": 46,
+    "subject": "Quantitative Aptitude",
+    "question": "Two vessels A and B contain mixtures of milk and water in the ratios 4 : 1 and 9: 11 respectively. They are mixed in the ratio of 3 : 2. Find the ratio of milk and water in the resulting mixture.",
     "options": {
-      "A": "Palliative",
-      "B": "Curative",
-      "C": "Reconstructive",
-      "D": "Diagnostic"
+      "A": "12:25",
+      "B": "15:37",
+      "C": "17:19",
+      "D": "33:17"
     },
-    "correct_answer": "B"
+    "correctAnswer": null,
+    "explanation": ""
   },
   {
-    "number": 155,
-    "page": 9,
-    "subject": "Preoperative Care",
-    "question": "A patient is in the preoperative area to lumbar surgery. The patient reports anxiety about being in tuba ted and expresses concern about waking up during the surgery. The nurse MUST discuss the patient's concern with the",
+    "id": "5d2e0b51-24b9-4d6f-9e7f-1c5c0d2e0b51",
+    "number": 47,
+    "subject": "Quantitative Aptitude",
+    "question": "6 litres of milk and water mixture has 75% milk in it. How much milk should be added to the mixture to make it 90% pure?",
     "options": {
-      "A": "Anesthesia provider",
-      "B": "Surgeon",
-      "C": "Scrub nurse",
-      "D": "Charge nurse"
+      "A": "10 litre",
+      "B": "8 litre",
+      "C": "9 litre",
+      "D": "12 litre"
     },
-    "correct_answer": "A"
+    "correctAnswer": null,
+    "explanation": ""
   },
   {
-    "number": 157,
-    "page": 10,
-    "subject": "Child Abuse Prevention",
-    "question": "A nurse assesses a 3-month-old infant. The patient expresses anxiety and feeling over whelmed. The nurse offer information on available parenting support. This level of child abuse prevention is classified as which of the following?",
+    "id": "b9a0c7e2-1e9d-4e2a-a8f7-0c7e21e9d4e2",
+    "number": 48,
+    "subject": "Quantitative Aptitude",
+    "question": "The number 45789 is divisible by which of the single digit numbers:",
     "options": {
-      "A": "Intervention",
-      "B": "Primary",
-      "C": "Secondary",
-      "D": "Tertiary"
+      "A": "Only by 9",
+      "B": "Only by 3 and 9",
+      "C": "Only by 3",
+      "D": "Only by 3 nad 7"
     },
-    "correct_answer": "B"
+    "correctAnswer": null,
+    "explanation": ""
   },
   {
-    "number": 165,
-    "page": 10,
-    "subject": "Child Abuse Management",
-    "question": "A nurse assessing a 16-month-old child observes bruises scattered over the body that are at different stage of healing. The child also has poor and diaper rash. What the goal of treatment for this child?",
+    "id": "f3b1c4d5-8e9a-4c1e-b0e2-1a3f7b2c9d4e",
+    "number": 49,
+    "subject": "Quantitative Aptitude",
+    "question": "210102 can be divided exactly by:",
     "options": {
-      "A": "Ensure the physical and emotional safety of the child",
-      "B": "Remove the child from the parents",
-      "C": "Admonish the parents of the child",
-      "D": "Ensure that the child stays with the biological parents"
+      "A": "7",
+      "B": "3",
+      "C": "4",
+      "D": "8"
     },
-    "correct_answer": "A"
+    "correctAnswer": null,
+    "explanation": ""
   },
   {
-    "number": 274,
-    "page": 10,
-    "subject": "Professional Development/Stress Management",
-    "question": "A co-worker informs that the nurse about experiencing increased level of stress associated with daily responsibilities to help cope with professional stress, the nurse should encourage the co-worker to;",
+    "id": "6a8d7e9f-2c1b-4d0e-a1f3-5b2c9d4e1a3f",
+    "number": 50,
+    "subject": "Quantitative Aptitude",
+    "question": "A gardener planted 1936 samplings in a garden such that there were as many rows of saplings as the columns. The number of rows planted is:",
     "options": {
-      "A": "Make a list of unfinished tasks",
-      "B": "complete complex mental task before physical tasks",
-      "C": "Acknowledge daily accomplishments",
-      "D": ""
+      "A": "46",
+      "B": "44",
+      "C": "48",
+      "D": "42"
     },
-    "correct_answer": "C"
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4e1b3d2c-9a8f-4d0e-a1f3-5b2c9d4e1a3f",
+    "number": 51,
+    "subject": "Quantitative Aptitude",
+    "question": "Which least number should be added to 1000 so that the number obtained is exactly divisible by 37?",
+    "options": {
+      "A": "1",
+      "B": "25",
+      "C": "36",
+      "D": "13"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "d7e9f2c1-b4d0-4a1f-8e3b-9c2d4e1a3f5b",
+    "number": 52,
+    "subject": "Quantitative Aptitude",
+    "question": "If a nine digit number 985x3678y is divisible by 72, find the value of x + y",
+    "options": {
+      "A": "4",
+      "B": "8",
+      "C": "-2",
+      "D": "6"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3a7b8c9d-1e2f-4a3b-8c9d-1e2f3a7b8c9d",
+    "number": 53,
+    "subject": "Quantitative Aptitude",
+    "question": "If it takes 42 days for a pond to get filled with rain water. If the level of water doubles each day. Then how long would it take to fill 1/16 of pond.",
+    "options": {
+      "A": "38 days",
+      "B": "39 days",
+      "C": "32 days",
+      "D": "8 days"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1e2f3a7b-8c9d-4e1a-3f5b-2c9d4e1a3f5b",
+    "number": 54,
+    "subject": "Quantitative Aptitude",
+    "question": "The price of sugar has decreased by 15%. By what percentage can a person increase the consumption so that there is no change in the expenditure?",
+    "options": {
+      "A": "300/23 %",
+      "B": "300/17 %",
+      "C": "50/3 %",
+      "D": "20/3 %"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8c9d1e2f-3a7b-4c1e-8d9f-2c1b3d4e5a6f",
+    "number": 55,
+    "subject": "Quantitative Aptitude",
+    "question": "If A's income is 40% more than the income of B, then what percentage of B's income is less than income of A?",
+    "options": {
+      "A": "27 5/7%",
+      "B": "28 5/7%",
+      "C": "27 5/7%",
+      "D": "28 5/7%"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "a1f3e2d4-b5c6-4a7b-8e9d-0c1b3d4e5f6a",
+    "number": 56,
+    "subject": "Quantitative Aptitude",
+    "question": "In an examination, 54% of the candidates passed in science and 42% failed in mathematics. If 32% failed in both subjects, what percentage passed in both subjects?",
+    "options": {
+      "A": "56%",
+      "B": "48%",
+      "C": "32%",
+      "D": "44%"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6c7d8e9f-0a1b-4c2d-9e0f-1a2b3c4d5e6f",
+    "number": 57,
+    "subject": "Quantitative Aptitude",
+    "question": "The income of A is 24% more than the income of B. By what percent is the income of B less than the income of A ?",
+    "options": {
+      "A": "150/7 %",
+      "B": "600/29 %",
+      "C": "500/31 %",
+      "D": "600/31 %"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "f0e1d2c3-a4b5-4d6e-8f9a-0b1c2d3e4f5a",
+    "number": 58,
+    "subject": "Quantitative Aptitude",
+    "question": "In an examination, 48% of candidates passed in science and 56% failed in mathematics. If 32% failed in both subjects, then what percent of students pass in both subjects?",
+    "options": {
+      "A": "24%",
+      "B": "32%",
+      "C": "28%",
+      "D": "22%"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "b3c4d5e6-f7a8-4b9c-d0e1-f2a3b4c5d6e7",
+    "number": 59,
+    "subject": "Quantitative Aptitude",
+    "question": "The price of sugar is decreased by 10%. By what can a person increase the consumption so that there is no change in the expenditure?",
+    "options": {
+      "A": "100/11 %",
+      "B": "109/11 %",
+      "C": "100/9 %",
+      "D": "10%"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "e8f9a0b1-c2d3-4e4f-9a0b-1c2d3e4f5a6b",
+    "number": 60,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper sold two articles for Rs 9471 each. On one, he gained 23% and on the other, he lost 23%. What is the overall percentage gain or loss?",
+    "options": {
+      "A": "5.29% loss",
+      "B": "6.29% gain",
+      "C": "5.29% gain",
+      "D": "6.29% loss"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c",
+    "number": 61,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper marks his goods at a price such that after giving a discount of 25%, he gains 20%. If the cost price of the article is Rs 460, what is its marked price?",
+    "options": {
+      "A": "Rs 736",
+      "B": "Rs 748",
+      "C": "Rs 725",
+      "D": "Rs 752"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a",
+    "number": 62,
+    "subject": "Quantitative Aptitude",
+    "question": "The successive discounts of 20%, 10% and 15% is equivalent to a single discount of",
+    "options": {
+      "A": "43.5%",
+      "B": "42.2%",
+      "C": "38.8%",
+      "D": "44.5%"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "a2b3c4d5-e6f7-48a9-b0c1-d2e3f4a5b6c7",
+    "number": 63,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper sold two articles for Rs 9831 each. On one he gained 13% and on the other, he lost 13%. What is the overall percentage gain or loss?",
+    "options": {
+      "A": "6.5% loss",
+      "B": "6.5% gain",
+      "C": "1.69% gain",
+      "D": "1.69% loss"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "c3d4e5f6-a7b8-49c0-d1e2-f3a4b5c6d7e8",
+    "number": 64,
+    "subject": "Quantitative Aptitude",
+    "question": "The successive discount of 25%, 20% and 10% is equivalent to a single discount of",
+    "options": {
+      "A": "46%",
+      "B": "48%",
+      "C": "54%",
+      "D": "44%"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "e4f5a6b7-c8d9-4a0b-1c2d-3e4f5a6b7c8d",
+    "number": 65,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper marks his good at a price such that after giving a discount of 25%, the gain is 20%. If the marked price of the article is Rs 736. What is the cost price of the article?",
+    "options": {
+      "A": "Rs 450",
+      "B": "Rs 455",
+      "C": "Rs 460",
+      "D": "Rs 440"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "a5b6c7d8-e9f0-4a1b-2c3d-4e5f6a7b8c9d",
+    "number": 66,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the sum of the mean proportional between 10.8 and 4.8 and the third proportional of 2 and 4 ?",
+    "options": {
+      "A": "15.2",
+      "B": "11.2",
+      "C": "8.2",
+      "D": "10.2"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "b6c7d8e9-f0a1-4b2c-3d4e-5f6a7b8c9d0e",
+    "number": 67,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the ratio of the mean proportional between 8.1 and 3.6 and the third proportional of 2 and 3?",
+    "options": {
+      "A": "5:6",
+      "B": "5:4",
+      "C": "4:5",
+      "D": "6:5"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "c7d8e9f0-a1b2-4c3d-4e5f-6a7b8c9d0e1f",
+    "number": 68,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the ratio of mean proportional between 1.8 and 3.2 and the third proportional of 5 and 3?",
+    "options": {
+      "A": "3:5",
+      "B": "4:3",
+      "C": "3:4",
+      "D": "5:3"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "d8e9f0a1-b2c3-4d4e-5f6a-7b8c9d0e1f2a",
+    "number": 69,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the ratio of mean proportional between 3.6 and 12.1 and third proportional between 2 and 11?",
+    "options": {
+      "A": "36:5",
+      "B": "6:5",
+      "C": "11:36",
+      "D": "6:55"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "e9f0a1b2-c3d4-4e5f-6a7b-8c9d0e1f2a3b",
+    "number": 70,
+    "subject": "Quantitative Aptitude",
+    "question": "Rs. 7,80,516 is divided among A, B, C and D in the proportion of 2 : 3 : 4 : 3. The share of C is:",
+    "options": {
+      "A": "Rs. 2,60,172",
+      "B": "Rs. 1,95,129",
+      "C": "Rs. 1,30,086",
+      "D": "Rs. 2,24,562"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "f0a1b2c3-d4e5-4f6a-7b8c-9d0e1f2a3b4c",
+    "number": 71,
+    "subject": "Quantitative Aptitude",
+    "question": "There are 50 paisa, 25 paisa and Rs. 1 coins in a bag in the ratio 5 : 8 : 1. If the total value of all the coins is Rs. 55, how many 25 paisa coins are there in the bag?",
+    "options": {
+      "A": "10",
+      "B": "80",
+      "C": "50",
+      "D": "25"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+    "number": 72,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs 15000 is invested partly at 12% per annum and the remaining at 10% per annum simple interest. If the total interest at the end of 2 yrs is Rs 3344 how much money was invested at 10% per annum?",
+    "options": {
+      "A": "Rs 6,200",
+      "B": "Rs 6600",
+      "C": "Rs 6400",
+      "D": "Rs 6500"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+    "number": 73,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs 12800 is invested partly at 15% per annum and the remaining at 12% per annum simple interest. If the total interest at the end of 3 yrs is Rs 5085, then how much money was invested at 15% per annum.",
+    "options": {
+      "A": "Rs 5,200",
+      "B": "Rs 7,500",
+      "C": "Rs 5,800",
+      "D": "Rs 5,300"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+    "number": 74,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs 15,600 is invested party at 7% per annum and the remaining at 9% per annum simple interest. If the total interest at the end of 3 years is Rs 3,738, how much money was invested at 7% per annum?",
+    "options": {
+      "A": "Rs 7,800",
+      "B": "Rs 7,900",
+      "C": "Rs 7,600",
+      "D": "Rs 7,700"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+    "number": 75,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs. 10,200 is invested partly at 8% per annum and remaining at 6% per annum for 3 years at simple interest. If the total interest is Rs. 2124, how much money was invested at 6% per annum?",
+    "options": {
+      "A": "Rs. 4,900",
+      "B": "Rs. 5,200",
+      "C": "Rs. 4,800",
+      "D": "Rs. 5,400"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
+    "number": 76,
+    "subject": "Quantitative Aptitude",
+    "question": "A borrowed a loan from B at 8% simple interest for 2 years and repaid the loan with interest totaling Rs 191864. The amount of loan taken A is :",
+    "options": {
+      "A": "Rs 166540",
+      "B": "Rs 168920",
+      "C": "Rs 165400",
+      "D": "Rs 164492"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
+    "number": 77,
+    "subject": "Quantitative Aptitude",
+    "question": "Rs. 2,64,000 is invested for 3 years at 8.25% p.a. simple interest. The interest is:",
+    "options": {
+      "A": "Rs. 87,120",
+      "B": "Rs. 43,560",
+      "C": "Rs. 21,780",
+      "D": "Rs. 65,340"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2e06c3a2-a9b7-4a7b-a010-388a6d96a51d",
+    "number": 78,
+    "subject": "Quantitative Aptitude",
+    "question": "9/3 + [2 + 4/6 - (2/3 + 3/2)}] is equal to",
+    "options": {
+      "A": "3",
+      "B": "15/4",
+      "C": "4",
+      "D": "17/4"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "184ee531-1554-47ff-8c50-36932a3920fb",
+    "number": 79,
+    "subject": "Quantitative Aptitude",
+    "question": "4/7 of 7 + x - 3/5 is equal to",
+    "options": {
+      "A": "5/3",
+      "B": "8/5",
+      "C": "34/25",
+      "D": "41/25"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "31b08b5f-5ce1-460d-a77a-2f4794e5e796",
+    "number": 80,
+    "subject": "Quantitative Aptitude",
+    "question": "5 + [2/4 - 3/7 (3/3 + 9/6)}] is equal to",
+    "options": {
+      "A": "44/3",
+      "B": "7",
+      "C": "23/6",
+      "D": "22/3"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "23c2a373-193e-4395-829d-6490895c202b",
+    "number": 81,
+    "subject": "Quantitative Aptitude",
+    "question": "The value of 3 - [2 - {1/5 - (2/4 + 3/10 - 4/15)}] is",
+    "options": {
+      "A": "5/2",
+      "B": "9/10",
+      "C": "11/10",
+      "D": "13/5"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "060d4b8e-e283-49d7-8321-729938d2f00a",
+    "number": 82,
+    "subject": "Quantitative Aptitude",
+    "question": "(6.75×6.75×6.75-4.25×4.25×4.25) / (67.5×67.5+42.5×42.5+67.5×42.5) is equal to:",
+    "options": {
+      "A": "2.5",
+      "B": "0.25",
+      "C": "0.0025",
+      "D": "0.025"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "90e090a2-2114-41d3-a55a-45b7c02b37b1",
+    "number": 83,
+    "subject": "Quantitative Aptitude",
+    "question": "5 - [3/2 - {5/6 - (3/10 + 4/10 - 1/15)}] is equal to:",
+    "options": {
+      "A": "21/7",
+      "B": "3/2",
+      "C": "7/2",
+      "D": "8/3"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "e7b001a1-f3b1-417c-a44d-5221b033e08f",
+    "number": 84,
+    "subject": "Quantitative Aptitude",
+    "question": "A train travels at a speed of 76km/h. If it crosses a pole in 36 seconds, the length of the train is:",
+    "options": {
+      "A": "720 m",
+      "B": "675 m",
+      "C": "760 m",
+      "D": "630 m"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "cf637719-2169-42b4-8255-a5d62d29402e",
+    "number": 85,
+    "subject": "Quantitative Aptitude",
+    "question": "If an airplane covers a distance of 980 km in 35 minutes, then what time it will take to cover a distance of 1470 km?",
+    "options": {
+      "A": "3/2 hour",
+      "B": "1 1/8 hours",
+      "C": "7/8 hour",
+      "D": "1 1/6 hours"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "787c8808-1f1c-43f1-b957-c46b5a3e1443",
+    "number": 86,
+    "subject": "Quantitative Aptitude",
+    "question": "A boy walks 15 m in 7 seconds and then walks back in 5 seconds. His average speed (in m/s) is:",
+    "options": {
+      "A": "6",
+      "B": "2.5",
+      "C": "3.25",
+      "D": "4"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "18055615-585e-49b8-b114-1181283312e7",
+    "number": 87,
+    "subject": "Quantitative Aptitude",
+    "question": "A part of the journey is covered in 31.5 minutes at 80 km/h and the remaining part in 16 minutes at 75 km/h. The total distance of the journey is:",
+    "options": {
+      "A": "45 km",
+      "B": "38 km",
+      "C": "62 km",
+      "D": "54 km"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "01c77f0c-b258-406d-bc1c-a32194d35e5a",
+    "number": 88,
+    "subject": "Quantitative Aptitude",
+    "question": "A train 100 m long running at uniform speed crosses a station which is 500 m long in 25 seconds. How long will it take for the train to pass a station that is 380 m long?",
+    "options": {
+      "A": "21 seconds",
+      "B": "20 seconds",
+      "C": "19 seconds",
+      "D": "22 seconds"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "62e15c32-15f1-432a-8d62-10f8a84c297b",
+    "number": 89,
+    "subject": "Quantitative Aptitude",
+    "question": "A train covers a distance of 576 km at a certain speed. If the speed is decreased by 24 km/hr, it will take 2 hours more to cover the same distance. Find 33 1/3% of original speed.",
+    "options": {
+      "A": "32 km/hr",
+      "B": "24 km/hr",
+      "C": "38 km/hr",
+      "D": "28 km/hr"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "31b647f1-5f05-47b2-a42e-d0a6936c53e8",
+    "number": 90,
+    "subject": "Quantitative Aptitude",
+    "question": "A and B can finish a work together in 30 days. B and C can finish the same work together in 24 and A and C can finish the work together in 40 days. If all three work together, how long will it take them to complete the work?",
+    "options": {
+      "A": "15 days",
+      "B": "10 days",
+      "C": "20 days",
+      "D": "5 days"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "f8a0a9c0-6d45-42f0-97b7-6b2d1c9e8e04",
+    "number": 91,
+    "subject": "Quantitative Aptitude",
+    "question": "A can do a work in 30 days, B can do the same work in 48 days. After working alone for 20 days A left and B started working, how long will B take to complete the work?",
+    "options": {
+      "A": "24 days",
+      "B": "28 days",
+      "C": "38 days",
+      "D": "16 days"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5b23d9b0-4a8e-4f51-a20c-c7e1f4d9c7d0",
+    "number": 92,
+    "subject": "Quantitative Aptitude",
+    "question": "If 15 men can do a piece of work in 14 days, how many men will be needed to do the work in 30 days?",
+    "options": {
+      "A": "8",
+      "B": "10",
+      "C": "7",
+      "D": "9"
+    },
+    "correctAnswer": null,
+    "explanation": ""
+  },
+  {
+    "id": "42f9e4f5-5a1e-4c7b-8e1d-3b5a7a7a9e3e",
+    "number": 93,
+    "subject": "Quantitative Aptitude",
+    "question": "The ratio of efficiencies of A, B, C is 4:6:7. Working together, they can complete working in 39 days A and C together can complete 88 5/7% of work in how many days? (approx.)",
+    "options": {
+      "A": "53.4 days",
+      "B": "55.7 days",
+      "C": "49 days",
+      "D": "61.8 days"
+    },
+    "correctAnswer": null,
+    "explanation": ""
   }
 ]
+```

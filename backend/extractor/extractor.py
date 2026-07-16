@@ -121,7 +121,7 @@ class Extractor:
                 f"Processing {os.path.basename(chunk)}"
             )
 
-            questions = self.client.extract(chunk)
+            questions = self.client.extract(pdf_path=chunk,chunk_number=index,total_chunks=total,)
 
             Exporter.save_chunk(
                 questions,

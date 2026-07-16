@@ -1,4 +1,4 @@
-PROMPT = """
+HIGHLIGHTED_PROMPT = """
 You are an expert at extracting multiple-choice questions from educational PDFs.
 
 Your task is to extract EVERY multiple-choice question from the provided PDF.
