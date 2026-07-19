@@ -17,69 +17,76 @@ import PracticeResult from "./pages/PracticeResults";
 
 function App() {
   return (
-    <Routes>
+    <>
       <Toaster richColors position="top-right" />
-      <Route
-        path="/"
-        element={<Dashboard />}
-      />
-      <Route
-        path="dashboard"
-        element={<Dashboard />}
-      />
 
-      <Route
-        path="/exam-settings"
-        element={<ExamSettings />}
-      />
+      <Routes>
+        <Route
+          path="/"
+          element={<Dashboard />}
+        />
 
-      <Route
-        path="/exam/:examId"
-        element={<Exam />}
-      />
-      <Route
-        path="/question-bank"
-        element={<QuestionBank />}
-      />
-      <Route
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        />
+
+        <Route
+          path="/exam-settings"
+          element={<ExamSettings />}
+        />
+
+        <Route
+          path="/exam/:examId"
+          element={<Exam />}
+        />
+
+        <Route
+          path="/question-bank"
+          element={<QuestionBank />}
+        />
+
+        <Route
           path="/results"
           element={<Results />}
-      />
-      <Route
+        />
+
+        <Route
           path="/upload"
           element={<UploadPdf />}
-      />
+        />
 
-      <Route
+        <Route
           path="/history"
           element={<History />}
-      />
+        />
 
-      <Route
+        <Route
           path="/review/:examId"
           element={<Review />}
-      />
+        />
 
-      <Route
+        <Route
           path="/practice"
           element={<Practice />}
-      />
+        />
 
-      <Route
-        path="/practice/settings"
-        element={<PracticeSettings />}
-      />
+        <Route
+          path="/practice/settings"
+          element={<PracticeSettings />}
+        />
 
-      <Route
-        path="/practice/:practiceId"
-        element={<Practice />}
-      />
-      <Route
-        path="/practice/result"
-        element={<PracticeResult />}
-    />
-    </Routes>
-    
+        <Route
+          path="/practice/:practiceId"
+          element={<Practice />}
+        />
+
+        <Route
+          path="/practice/result"
+          element={<PracticeResult />}
+        />
+      </Routes>
+    </>
   );
 }
 

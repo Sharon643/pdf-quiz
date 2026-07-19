@@ -1,4 +1,5 @@
 import { UploadCloud } from "lucide-react";
+import { toast } from "sonner";
 
 interface UploadDropzoneProps {
   onFileSelected: (file: File) => void;
@@ -11,7 +12,7 @@ export default function UploadDropzone({
     if (!file) return;
 
     if (file.type !== "application/pdf") {
-      alert("Please select a PDF file.");
+      toast.error("Please select a PDF file.");
       return;
     }
 
