@@ -10,6 +10,9 @@ from extractor.config import (
 
 from extractor.json_parser import JSONParser
 from extractor.prompts.prompt import PROMPT
+import json
+
+from extractor.prompts.answer_prompt import ANSWER_PROMPT
 
 
 class GeminiClient:
@@ -148,6 +151,75 @@ Accuracy is more important than quantity.
 
         raise RuntimeError(
             "Gemini extraction failed after "
+            f"{MAX_RETRIES} attempts.\n\n"
+            f"{last_exception}"
+        )
+    
+    def generate_answers(self,questions,):
+
+        prompt = f"""
+    {ANSWER_PROMPT}
+
+    Questions
+
+    {json.dumps(questions, indent=2)}
+    """
+
+        last_exception = None
+
+        for attempt in range(1, MAX_RETRIES + 1):
+
+            print("=" * 60)
+            print(f"Generating answers ({attempt}/{MAX_RETRIES})")
+            print("=" * 60)
+
+            raw = None
+
+            try:
+
+                response = self.client.models.generate_content(
+                    model=MODEL,
+                    contents=prompt,
+                )
+
+                raw = response.text
+
+                data = JSONParser.parse(raw)
+
+                print(
+                    f"✓ Generated {len(data)} answers."
+                )
+
+                return data
+
+            except Exception as e:
+
+                last_exception = e
+
+                print(f"✗ {e}")
+
+                if raw:
+
+                    with open(
+                        "failed_answers.txt",
+                        "w",
+                        encoding="utf-8",
+                    ) as f:
+                        f.write(raw)
+
+                if attempt == MAX_RETRIES:
+                    break
+
+                wait = 2 ** (attempt - 1)
+
+                print(
+                    f"Retrying in {wait} seconds..."
+                )
+
+                time.sleep(wait)
+
+        raise RuntimeError(
+            "Answer generation failed after "
             f"{MAX_RETRIES} attempts.\n\n"
             f"{last_exception}"
         )

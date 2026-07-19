@@ -26,3 +26,5 @@ backend/failed_response.txt
 backend/progress
 
 archives/
+
+node_modules/

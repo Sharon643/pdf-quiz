@@ -74,6 +74,24 @@ class QuestionBankManager:
         self._save(data)
 
         return new_bank
+    
+    def update_modified(self,bank_id: str,):
+
+        data = self._load()
+
+        now = datetime.now().isoformat()
+
+        for bank in data["banks"]:
+
+            if bank["id"] == bank_id:
+
+                bank["lastModified"] = now
+
+                self._save(data)
+
+                return True
+
+        return False
 
     def get_all_banks(self):
 
@@ -176,3 +194,4 @@ class QuestionBankManager:
                 return bank
 
         return None
+    

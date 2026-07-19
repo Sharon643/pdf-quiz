@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 
 import type { PracticeSession } from "../types/practice";
 
@@ -17,105 +20,226 @@ export default function Practice() {
   const { practiceId } = useParams();
   const navigate = useNavigate();
 
-  const [practice, setPractice] = useState<PracticeSession | null>(null);
+  const [practice, setPractice] =
+    useState<PracticeSession | null>(null);
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [loading, setLoading] =
+    useState(true);
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [error, setError] =
+    useState("");
+
+  const [
+    currentQuestionIndex,
+    setCurrentQuestionIndex,
+  ] = useState(0);
 
   const [answers, setAnswers] = useState<
     Record<string, string | null>
   >({});
 
-  const [visitedQuestions, setVisitedQuestions] =
-    useState<Set<number>>(new Set([1]));
+  // Stores whether each answered question
+  // was correct or incorrect.
+  const [results, setResults] = useState<
+    Record<string, boolean>
+  >({});
+
+  const [
+    visitedQuestions,
+    setVisitedQuestions,
+  ] = useState<Set<number>>(
+    new Set([1])
+  );
 
   // ---------- Practice Feedback ----------
 
   const [showFeedback, setShowFeedback] =
     useState(false);
 
-  const [correctAnswer, setCorrectAnswer] =
-    useState("");
+  const [
+    correctAnswer,
+    setCorrectAnswer,
+  ] = useState("");
 
-  const [answerCorrect, setAnswerCorrect] =
-    useState(false);
+  const [
+    answerCorrect,
+    setAnswerCorrect,
+  ] = useState(false);
 
-  const [explanation, setExplanation] =
-    useState("");
+  const [
+    explanation,
+    setExplanation,
+  ] = useState("");
 
   // ---------------------------------------
 
   useEffect(() => {
     async function loadPractice() {
       if (!practiceId) {
-        setError("Invalid practice session.");
+        setError(
+          "Invalid practice session."
+        );
         setLoading(false);
         return;
       }
 
       try {
-        const session = await getPractice(practiceId);
+        const session =
+          await getPractice(practiceId);
 
         setPractice(session);
 
-        const restored: Record<
+        const restoredAnswers: Record<
           string,
           string | null
         > = {};
 
-        session.questions.forEach((question) => {
-          const answer =
-            session.answers?.[question.id];
+        const restoredVisited =
+          new Set<number>([1]);
 
-          if (answer) {
-            restored[question.id] =
-              answer.selectedOption;
+        session.questions.forEach(
+          (question, index) => {
+            const answer =
+              session.answers?.[
+                question.id
+              ];
+
+            if (!answer) return;
+
+            if (answer.selectedOption) {
+              restoredAnswers[
+                question.id
+              ] =
+                answer.selectedOption;
+
+              restoredVisited.add(
+                index + 1
+              );
+            }
           }
-        });
+        );
 
-        setAnswers(restored);
+        setAnswers(
+          restoredAnswers
+        );
+
+        setVisitedQuestions(
+          restoredVisited
+        );
+
       } catch (err) {
         console.error(err);
-        setError("Failed to load practice.");
+
+        setError(
+          "Failed to load practice."
+        );
+
       } finally {
         setLoading(false);
       }
     }
 
     loadPractice();
+
   }, [practiceId]);
 
-  const currentQuestion = useMemo(() => {
-    if (!practice) return null;
+  // ---------- Current Question ----------
 
-    return practice.questions[currentQuestionIndex];
-  }, [practice, currentQuestionIndex]);
-
-  const answeredQuestions = useMemo(() => {
-    if (!practice) return new Set<number>();
-
-    const answered = new Set<number>();
-
-    practice.questions.forEach((question, index) => {
-      if (answers[question.id]) {
-        answered.add(index + 1);
+  const currentQuestion =
+    useMemo(() => {
+      if (!practice) {
+        return null;
       }
-    });
 
-    return answered;
-  }, [answers, practice]);
+      return practice.questions[
+        currentQuestionIndex
+      ];
 
-  async function handleSelectOption(option: string) {
-    if (!practice || !currentQuestion) return;
+    }, [
+      practice,
+      currentQuestionIndex,
+    ]);
 
-    if (showFeedback) return;
+  // ---------- Answered Questions ----------
 
-    setAnswers((previous) => ({
-      ...previous,
-      [currentQuestion.id]: option,
-    }));
+  const answeredQuestions =
+    useMemo(() => {
+      if (!practice) {
+        return new Set<number>();
+      }
+
+      const answered =
+        new Set<number>();
+
+      practice.questions.forEach(
+        (question, index) => {
+          if (
+            answers[question.id]
+          ) {
+            answered.add(
+              index + 1
+            );
+          }
+        }
+      );
+
+      return answered;
+
+    }, [
+      answers,
+      practice,
+    ]);
+
+  // ---------- Correct / Wrong Counts ----------
+
+  const correctCount =
+    useMemo(() => {
+      return Object.values(
+        results
+      ).filter(
+        (value) =>
+          value === true
+      ).length;
+
+    }, [results]);
+
+  const wrongCount =
+    useMemo(() => {
+      return Object.values(
+        results
+      ).filter(
+        (value) =>
+          value === false
+      ).length;
+
+    }, [results]);
+
+  // ---------- Submit Answer ----------
+
+  async function handleSelectOption(
+    option: string
+  ) {
+    if (
+      !practice ||
+      !currentQuestion
+    ) {
+      return;
+    }
+
+    // Prevent answering the same
+    // question again after feedback.
+    if (showFeedback) {
+      return;
+    }
+
+    setAnswers(
+      (previous) => ({
+        ...previous,
+
+        [currentQuestion.id]:
+          option,
+      })
+    );
 
     try {
       const feedback =
@@ -125,248 +249,390 @@ export default function Practice() {
           option,
         );
 
+      // Store result for this
+      // specific question.
+      setResults(
+        (previous) => ({
+          ...previous,
+
+          [currentQuestion.id]:
+            feedback.correct,
+        })
+      );
+
       setCorrectAnswer(
-        feedback.correctAnswer,
+        feedback.correctAnswer
       );
 
       setAnswerCorrect(
-        feedback.correct,
+        feedback.correct
       );
 
       setExplanation(
-        feedback.explanation ?? "",
+        feedback.explanation ??
+          ""
       );
 
       setShowFeedback(true);
 
     } catch (err) {
-      console.error(err);
+      console.error(
+        "Failed to submit practice answer:",
+        err
+      );
     }
   }
 
+  // ---------- Previous Question ----------
+
   function handlePrevious() {
+    const previousIndex =
+      Math.max(
+        currentQuestionIndex - 1,
+        0
+      );
+
+    setCurrentQuestionIndex(
+      previousIndex
+    );
+
     setShowFeedback(false);
 
-    setCurrentQuestionIndex((previous) =>
-      Math.max(previous - 1, 0)
+    setVisitedQuestions(
+      (previous) => {
+        const updated =
+          new Set(previous);
+
+        updated.add(
+          previousIndex + 1
+        );
+
+        return updated;
+      }
     );
   }
+
+  // ---------- Next Question ----------
 
   function handleNext() {
     if (!practice) return;
 
-    setShowFeedback(false);
-
-    setCurrentQuestionIndex((previous) =>
+    const nextIndex =
       Math.min(
-        previous + 1,
+        currentQuestionIndex + 1,
         practice.questionCount - 1
-      )
+      );
+
+    setCurrentQuestionIndex(
+      nextIndex
     );
 
-    setVisitedQuestions((previous) => {
-      const updated = new Set(previous);
+    setShowFeedback(false);
 
-      updated.add(currentQuestionIndex + 2);
+    setVisitedQuestions(
+      (previous) => {
+        const updated =
+          new Set(previous);
 
-      return updated;
-    });
+        updated.add(
+          nextIndex + 1
+        );
+
+        return updated;
+      }
+    );
   }
+
+  // ---------- Navigator ----------
+
+  function handleQuestionSelect(
+    questionNumber: number
+  ) {
+    setCurrentQuestionIndex(
+      questionNumber - 1
+    );
+
+    setShowFeedback(false);
+
+    setVisitedQuestions(
+      (previous) => {
+        const updated =
+          new Set(previous);
+
+        updated.add(
+          questionNumber
+        );
+
+        return updated;
+      }
+    );
+  }
+
+  // ---------- Finish Practice ----------
 
   async function handleFinishPractice() {
     if (!practice) return;
 
     try {
       const result =
-          await finishPractice(
-              practice.practiceId
-          );
+        await finishPractice(
+          practice.practiceId
+        );
 
       navigate(
-          "/practice/result",
-          {
-              state: result,
-          }
+        "/practice/result",
+        {
+          state: result,
+        }
       );
 
     } catch (err) {
-      console.error(err);
+      console.error(
+        "Failed to finish practice:",
+        err
+      );
     }
   }
+
+  // ---------- Loading ----------
+
   if (loading) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-zinc-950">
+        <p className="text-zinc-400">
+          Loading Practice...
+        </p>
+      </main>
+    );
+  }
+
+  // ---------- Error ----------
+
+  if (
+    error ||
+    !practice ||
+    !currentQuestion
+  ) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-zinc-950">
+        <p className="text-red-400">
+          {error ||
+            "Practice session not found"}
+        </p>
+      </main>
+    );
+  }
+
+  // ---------- UI ----------
+
   return (
-    <main className="flex min-h-screen items-center justify-center bg-zinc-950">
-      <p className="text-zinc-400">Loading Practice...</p>
-    </main>
-  );
-}
+    <main className="min-h-screen bg-zinc-950">
 
-if (error || !practice || !currentQuestion) {
-  return (
-    <main className="flex min-h-screen items-center justify-center bg-zinc-950">
-      <p className="text-red-400">
-        {error || "Practice session not found"}
-      </p>
-    </main>
-  );
-}
+      <div className="mx-auto max-w-[1800px] px-8 py-8">
 
-const correctCount = answerCorrect
-  ? answeredQuestions.size
-  : Math.max(answeredQuestions.size - 1, 0);
+        <ExamHeader
+          current={
+            currentQuestionIndex + 1
+          }
+          total={
+            practice.questionCount
+          }
+          answered={
+            answeredQuestions.size
+          }
+          timed={false}
+          remainingSeconds={null}
+          onExit={() =>
+            navigate(
+              "/dashboard"
+            )
+          }
+        />
 
-const wrongCount =
-  answeredQuestions.size - correctCount;
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
 
-return (
-  <main className="min-h-screen bg-zinc-950">
-    <div className="mx-auto max-w-[1800px] px-8 py-8">
+          {/* LEFT */}
 
-      <ExamHeader
-        current={currentQuestionIndex + 1}
-        total={practice.questionCount}
-        answered={answeredQuestions.size}
-        timed={false}
-        remainingSeconds={null}
-        onExit={() => navigate("/dashboard")}
-      />
+          <section>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+            <QuestionPanel
+              practiceMode
 
-        {/* LEFT */}
+              showFeedback={
+                showFeedback
+              }
 
-        <section>
+              correctAnswer={
+                correctAnswer
+              }
 
-          <QuestionPanel
-            practiceMode
+              answerCorrect={
+                answerCorrect
+              }
 
-            showFeedback={showFeedback}
+              explanation={
+                explanation
+              }
 
-            correctAnswer={correctAnswer}
+              currentQuestion={
+                currentQuestionIndex + 1
+              }
 
-            answerCorrect={answerCorrect}
+              question={
+                currentQuestion
+              }
 
-            explanation={explanation}
+              selectedOption={
+                answers[
+                  currentQuestion.id
+                ] ?? null
+              }
 
-            currentQuestion={currentQuestionIndex + 1}
+              hasPrevious={
+                currentQuestionIndex >
+                0
+              }
 
-            question={currentQuestion}
+              hasNext={
+                currentQuestionIndex <
+                practice.questionCount -
+                  1
+              }
 
-            selectedOption={
-              answers[currentQuestion.id] ?? null
-            }
+              isMarkedForReview={
+                false
+              }
 
-            hasPrevious={currentQuestionIndex > 0}
+              onSelectOption={
+                handleSelectOption
+              }
 
-            hasNext={
-              currentQuestionIndex <
-              practice.questionCount - 1
-            }
+              onPrevious={
+                handlePrevious
+              }
 
-            isMarkedForReview={false}
+              onNext={
+                handleNext
+              }
 
-            onSelectOption={handleSelectOption}
+              onMarkReview={() => {}}
+            />
 
-            onPrevious={handlePrevious}
+          </section>
 
-            onNext={handleNext}
+          {/* RIGHT */}
 
-            onMarkReview={() => {}}
-          />
+          <aside className="sticky top-8 self-start space-y-6">
 
-        </section>
+            <QuestionNavigator
+              total={
+                practice.questionCount
+              }
 
-        {/* RIGHT */}
+              current={
+                currentQuestionIndex + 1
+              }
 
-        <aside className="sticky top-8 self-start space-y-6">
+              answered={
+                answeredQuestions
+              }
 
-          <QuestionNavigator
-            total={practice.questionCount}
-            current={currentQuestionIndex + 1}
-            answered={answeredQuestions}
-            review={new Set()}
-            visited={visitedQuestions}
-            onSelect={(question) => {
-              setCurrentQuestionIndex(question - 1);
+              review={
+                new Set<number>()
+              }
 
-              setShowFeedback(false);
+              visited={
+                visitedQuestions
+              }
 
-              setVisitedQuestions((previous) => {
-                const updated = new Set(previous);
+              onSelect={
+                handleQuestionSelect
+              }
+            />
 
-                updated.add(question);
+            {/* Practice Progress */}
 
-                return updated;
-              });
-            }}
-          />
+            <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
 
-          {/* Progress */}
+              <h3 className="text-lg font-semibold text-white">
+                Practice Progress
+              </h3>
 
-          <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
+              <div className="mt-6 space-y-5">
 
-            <h3 className="text-lg font-semibold text-white">
-              Practice Progress
-            </h3>
+                {/* Correct */}
 
-            <div className="mt-6 space-y-5">
+                <div className="flex items-center justify-between">
 
-              <div className="flex items-center justify-between">
-                <span className="text-zinc-400">
-                  Correct
-                </span>
+                  <span className="text-zinc-400">
+                    Correct
+                  </span>
 
-                <span className="font-semibold text-emerald-400">
-                  {correctCount}
-                </span>
-              </div>
+                  <span className="font-semibold text-emerald-400">
+                    {correctCount}
+                  </span>
 
-              <div className="flex items-center justify-between">
-                <span className="text-zinc-400">
-                  Wrong
-                </span>
+                </div>
 
-                <span className="font-semibold text-red-400">
-                  {wrongCount}
-                </span>
-              </div>
+                {/* Wrong */}
 
-              <div className="flex items-center justify-between">
-                <span className="text-zinc-400">
-                  Remaining
-                </span>
+                <div className="flex items-center justify-between">
 
-                <span className="font-semibold text-white">
-                  {practice.questionCount -
-                    answeredQuestions.size}
-                </span>
+                  <span className="text-zinc-400">
+                    Wrong
+                  </span>
+
+                  <span className="font-semibold text-red-400">
+                    {wrongCount}
+                  </span>
+
+                </div>
+
+                {/* Remaining */}
+
+                <div className="flex items-center justify-between">
+
+                  <span className="text-zinc-400">
+                    Remaining
+                  </span>
+
+                  <span className="font-semibold text-white">
+                    {practice.questionCount -
+                      answeredQuestions.size}
+                  </span>
+
+                </div>
+
               </div>
 
             </div>
 
-          </div>
+            {/* Finish */}
 
-          <button
-            onClick={handleFinishPractice}
-            className="
-              w-full
-              rounded-lg
-              bg-blue-600
-              py-3
-              font-medium
-              text-white
-              transition
-              hover:bg-blue-500
-            "
-          >
-            Finish Practice
-          </button>
+            <button
+              onClick={
+                handleFinishPractice
+              }
+              className="
+                w-full
+                rounded-lg
+                bg-blue-600
+                py-3
+                font-medium
+                text-white
+                transition
+                hover:bg-blue-500
+              "
+            >
+              Finish Practice
+            </button>
 
-        </aside>
+          </aside>
+
+        </div>
 
       </div>
 
-    </div>
-  </main>
-);
+    </main>
+  );
 }

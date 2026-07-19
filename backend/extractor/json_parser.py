@@ -24,9 +24,10 @@ class JSONParser:
     OPTIONAL_FIELDS = {
         "page": None,
         "correct_answer": None,
+        "answer_source": "none",
+        "confidence": None,
         "explanation": "",
     }
-
     @classmethod
     def parse(cls, raw: str) -> list[dict]:
 

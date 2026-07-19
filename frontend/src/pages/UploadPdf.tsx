@@ -125,11 +125,20 @@ export default function UploadPdf() {
   function renderContent() {
     switch (status) {
       case "success":
-        return (
-          <ExtractionSuccess
-            fileName={selectedFile?.name ?? ""}
-          />
-        );
+          if (!progress) {
+              return null;
+          }
+
+          return (
+              <ExtractionSuccess
+                  fileName={progress.fileName ?? ""}
+                  bankId={progress.bankId ?? ""}
+                  questionCount={progress.questionCount ?? 0}
+                  subjects={progress.subjects ?? 0}
+                  officialAnswers={progress.officialAnswers ?? 0}
+                  missingAnswers={progress.missingAnswers ?? 0}
+              />
+          );
 
       case "error":
         return (

@@ -1,0 +1,2800 @@
+```json
+[
+  {
+    "id": "a4d3e4f0-b1c2-4d5e-8f90-1234567890ab",
+    "number": 1,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "The ages of A and B are in the ratio 5:7. Five years ago, their ages were in the ratio 5:8. The respective present ages (in years) are:",
+    "options": {
+      "A": "20,28",
+      "B": "15,21",
+      "C": "25,40",
+      "D": "10,14"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "b5c4d5e1-c2d3-4e5f-9a01-234567890abc",
+    "number": 2,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "Four years ago, the ratio of ages of A and B was 3: 5. Ten years from now, the ratio of the ages of A and B will be 5 : 6. Find the sum of present ages?",
+    "options": {
+      "A": "32 years",
+      "B": "24 years",
+      "C": "26 years",
+      "D": "22 years"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "c6d5e6f2-d3e4-4f60-a1b2-34567890abcd",
+    "number": 3,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "The ratio of present ages of A and B is 1: 2 and 5 years back the ratio was 1: 3. What will be the ratio of their ages after 7 years?",
+    "options": {
+      "A": "7: 12",
+      "B": "3: 4",
+      "C": "17:27",
+      "D": "2: 1"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "d7e6f7g3-e4f5-4g71-b2c3-4567890abcde",
+    "number": 4,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "Ram's present age is thrice his son's present age and 2/5th of the present age of his father. The average present age of all of them is 46 years. What is the difference of ages of Ram's father and Ram's son at present?",
+    "options": {
+      "A": "68 years",
+      "B": "88 years",
+      "C": "78 years",
+      "D": "Cannot be determined"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "e8f7g8h4-f5g6-4h82-c3d4-567890abcdef",
+    "number": 5,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "At present Ranveer is 15 years older than Deepika. 5 years later Deepika will be 10 years old. What is the Present age of Ranveer (in years)?",
+    "options": {
+      "A": "15",
+      "B": "20",
+      "C": "25",
+      "D": "30"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "f9g8h9i5-g6h7-4i93-d4e5-67890abcdef0",
+    "number": 6,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "A person was asked to state his age. His reply was- \"Take my age 3 years hence, multiply it by 3, subtract the triple of my age 3 years ago and you will know how old I am.” What is the present age of the person (in years)?",
+    "options": {
+      "A": "24",
+      "B": "20",
+      "C": "32",
+      "D": "18"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0a1b2c3d-h7i8-4j04-e5f6-7890abcdef12",
+    "number": 7,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If a³-b³ = 208 and a- b = 4, then (a + b)² - ab is equal to",
+    "options": {
+      "A": "52",
+      "B": "38",
+      "C": "32",
+      "D": "42"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1b2c3d4e-i8j9-4k15-f6g7-890abcdef23",
+    "number": 8,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If x + 1/x = 5, then x³ + 1/x³ is equal to",
+    "options": {
+      "A": "110",
+      "B": "130",
+      "C": "145",
+      "D": "125"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2c3d4e5f-j9k0-4l26-g7h8-90abcdef34",
+    "number": 9,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If (x - 5)³ + (x − 6)³ + (x - 7)³ = 3(x - 5) (x – 6) (x – 7), then what is the value of x ?",
+    "options": {
+      "A": "6",
+      "B": "7",
+      "C": "5",
+      "D": "18"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3d4e5f6g-k0l1-4m37-h8i9-0abcdef45",
+    "number": 10,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If (2x + 3)³ + (x- 8)³ + (x+ 13)³ = (2x +3) (3x - 24) (x + 13), then what is the value of x?",
+    "options": {
+      "A": "-1.5",
+      "B": "-2.5",
+      "C": "-2",
+      "D": "-1"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4e5f6g7h-l1m2-4n48-i9j0-abcdef56",
+    "number": 11,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If a³ + b³ = 5824 and a + b = 28, then (a – b)² + ab is equal to",
+    "options": {
+      "A": "208",
+      "B": "152",
+      "C": "180",
+      "D": "236"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5f6g7h8i-m2n3-4o59-j0k1-bcdef67",
+    "number": 12,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If x − 1/x = 6, then x³-1/x³ is equal to",
+    "options": {
+      "A": "216",
+      "B": "176",
+      "C": "234",
+      "D": "198"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6g7h8i9j-n3o4-4p60-k1l2-cdef78",
+    "number": 13,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "If ratio of male workers to female worker in company P and company R is 15:7 and 13:12 respectively, then find the difference between no. of female workers in company P and that of in company R.",
+    "options": {
+      "A": "1120",
+      "B": "2400",
+      "C": "1365",
+      "D": "1400"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7h8i9j0k-o4p5-4q71-l2m3-def89",
+    "number": 14,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "No. of worker in company R are approximately what percent more than no. of worker in company S.",
+    "options": {
+      "A": "61%",
+      "B": "59%",
+      "C": "57%",
+      "D": "55%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8i9j0k1l-p5q6-4r82-m3n4-ef90",
+    "number": 15,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "If ratio of male officer to female officer in company T is 23:27. Then find difference between female officer in company T and no. of worker in company Q.",
+    "options": {
+      "A": "29070",
+      "B": "28970",
+      "C": "29970",
+      "D": "28070"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9j0k1l2m-q6r7-4s93-n4o5-f0a1",
+    "number": 16,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "If female workers are 7140 in company S and no. of female worker in company S are 78.5% more Than male officer in the same company, then find female officers in company S.",
+    "options": {
+      "A": "3680",
+      "B": "3280",
+      "C": "3480",
+      "D": "3880"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0k1l2m3n-r7s8-4t04-o5p6-12b2",
+    "number": 17,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "Find the average number of officers in company P, Q and T are approximately what percent of total workers in company S.",
+    "options": {
+      "A": "20%",
+      "B": "22%",
+      "C": "18%",
+      "D": "26%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1l2m3n4o-s8t9-4u15-p6q7-23c3",
+    "number": 18,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "AB and AC are the two tangents to a circle whose radius is 6 cm. If ∠BAC = 60°, then what is the value (in cm) of √(AB)² + (AC)²)?",
+    "options": {
+      "A": "6√6",
+      "B": "4√6",
+      "C": "9√3",
+      "D": "8√3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2m3n4o5p-t9u0-4v26-q7r8-34d4",
+    "number": 19,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, ABC is a right angled triangle. ∠ABC = 90°and ∠ACB = 60°. If the radius of the smaller circle is 2 cm, then what is the radius (in cm) of the larger circle?",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "4.5",
+      "D": "7.5"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3n4o5p6q-u0v1-4w37-r8s9-45e5",
+    "number": 20,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, O is centre of the circle. Circle has 3 tangents. If ∠QPR = 45°, then what is the value (in degrees) of ∠QOR?",
+    "options": {
+      "A": "67.5",
+      "B": "72",
+      "C": "78.5",
+      "D": "65"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4o5p6q7r-v1w2-4x48-s9t0-56f6",
+    "number": 21,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given, two identical circles of radius 4 cm touch each other. A and B are the centres of the two circles. If RQ is a tangent to the circle, then what is the length (in cm) of RQ?",
+    "options": {
+      "A": "3√3",
+      "B": "2√6",
+      "C": "4√2",
+      "D": "6√2"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5p6q7r8s-w2x3-4y59-t0u1-67g7",
+    "number": 22,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "The radius of two circles is 3 cm and 4 cm. The distance between the centres of the circles is 10 cm. What is the ratio of the length of direct common tangent to the length of the transverse common tangent?",
+    "options": {
+      "A": "√51: √68",
+      "B": "√33: √17",
+      "C": "√66: √51",
+      "D": "√28: √17"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6q7r8s9t-x3y4-4z60-u1v2-78h8",
+    "number": 23,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "A line cuts two concentric circles. The lengths of chords formed by that line on the two circles are 4 cm and 16 cm. What is the difference (in cm²) in square of radii of two circles?",
+    "options": {
+      "A": "240",
+      "B": "120",
+      "C": "60",
+      "D": "90"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7r8s9t0u-y4z5-4a71-v2w3-89i9",
+    "number": 24,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 4: 5. If their HCF is 16, then the sum of these two numbers is",
+    "options": {
+      "A": "144",
+      "B": "124",
+      "C": "160",
+      "D": "150"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8s9t0u1v-z5a6-4b82-w3x4-90j0",
+    "number": 25,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 4: 7. If their HCF is 26, then the sum of these two numbers will be",
+    "options": {
+      "A": "312",
+      "B": "364",
+      "C": "338",
+      "D": "286"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9t0u1v2w-a6b7-4c93-x4y5-01k1",
+    "number": 26,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 5 : 11. If their HCF is 24, then the sum of two these numbers is:",
+    "options": {
+      "A": "384",
+      "B": "408",
+      "C": "120",
+      "D": "264"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0u1v2w3x-b7c8-4d04-y5z6-12l2",
+    "number": 27,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 6 : 11. If their HCF is 28, then the sum of these two numbers is:",
+    "options": {
+      "A": "476",
+      "B": "448",
+      "C": "392",
+      "D": "420"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1v2w3x4y-c8d9-4e15-z6a7-23m3",
+    "number": 28,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Which of the following statement is true?",
+    "options": {
+      "A": "HCF+LCM of two numbers=Product of two numbers",
+      "B": "LCM of two natural numbers is divisible by their HCF.",
+      "C": "Two prime numbers are co-prime numbers if their LCM is 1.",
+      "D": "HCF of two numbers is the smallest common divisor of both numbers."
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2w3x4y5z-d9e0-4f26-a7b8-34n4",
+    "number": 29,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "The HCF and LCM of two numbers is 6 and 5040 respectively. If one of the numbers is 210, then the other number is :",
+    "options": {
+      "A": "630",
+      "B": "144",
+      "C": "256",
+      "D": "30"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3x4y5z6a-e0f1-4g37-b8c9-45o5",
+    "number": 30,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "From the top of a 10 m high building, the angle of elevation of the top of a tower is 60° and the angle of depression of the foot of the tower is φ, such that tanφ=1/4. What is the height of the tower to nearest metres?",
+    "options": {
+      "A": "34 m",
+      "B": "35 m",
+      "C": "36 m",
+      "D": "33 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4y5z6a7b-f1g2-4h48-c9d0-56p6",
+    "number": 31,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "A ladder leaning against a wall makes an angle α with the horizontal ground such that tan α = 4/3. If the foot of the ladder is 5 m away from the wall, what is the length of the ladder?",
+    "options": {
+      "A": "5.25 m",
+      "B": "3.75 m",
+      "C": "6.25 m",
+      "D": "4.5m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5z6a7b8c-g2h3-4i59-d0e1-67q7",
+    "number": 32,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "From the top of a 12 m high building, the angle of elevation of the top of a tower is 60° and the angle of depression of the foot of the tower is θ, such that tanθ=3/4. What is the height of the tower (√3 = 1.73)?",
+    "options": {
+      "A": "41.41m",
+      "B": "36.22 m",
+      "C": "39.68 m",
+      "D": "37.95 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6a7b8c9d-h3i4-4j60-e1f2-78r8",
+    "number": 33,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "A ladder leaning against a wall makes an angle θ with the horizontal ground such that Sinθ=12/13. If the foot of the ladder is 7.5 m from the wall, then what is the height of the point where the top of the ladder touches the wall?",
+    "options": {
+      "A": "15 m",
+      "B": "8 m",
+      "C": "18 m",
+      "D": "12 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7b8c9d0e-i4j5-4k71-f2g3-89s9",
+    "number": 34,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "From the top of 75 m high tower, the angle of depression of two points P and Q on opposite side of the base of the tower on level ground is θ and φ, such that tanθ = 3/4 and tan φ = 5/8. What is the distance between the points P and Q?",
+    "options": {
+      "A": "190 m",
+      "B": "200 m",
+      "C": "180 m",
+      "D": "220 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8c9d0e1f-j5k6-4l82-g3h4-90t0",
+    "number": 35,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "The angle of elevation of top of a tower from a point P, on the ground is θ such that tan θ = 12/5. If distance of the point P, from the base of the tower is 75m, what is the height of the tower?",
+    "options": {
+      "A": "160 m",
+      "B": "200 m",
+      "C": "190 m",
+      "D": "180 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9d0e1f2g-k6l7-4m93-h4i5-01u1",
+    "number": 36,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "ABC is a triangle. AB = 5 cm, AC = √41 cm and BC = 8 cm. AD is perpendicular to BC. What is the area (in cm²) of triangle ABD?",
+    "options": {
+      "A": "12",
+      "B": "6",
+      "C": "10",
+      "D": "20"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0e1f2g3h-l7m8-4n04-i5j6-12v2",
+    "number": 37,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, PQR is a triangle and quadrilateral ABCD is inscribed in it. QD = 2 cm, QC = 5 cm, CR = 3 cm, BR = 4 cm, PB = 6 cm, PA = 5 cm and AD = 3 cm. What is the area (in cm²) of the quadrilateral ABCD?",
+    ""
+    "options": {
+      "A": "(23√21)/4",
+      "B": "15√21/4",
+      "C": "(17√21)/5",
+      "D": "(23√21)/5"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1f2g3h4i-m8n9-4o15-j6k7-23w3",
+    "number": 38,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "IN the given figures, ABCD is a square of side 14 cm. E and F are mid points of sides AB and DC respectively. EPF is a semicircle whose diameter is EF. LMNO is a square. What is the area (in cm²) of the shaded region?",
+    "options": {
+      "A": "108.5",
+      "B": "94.5",
+      "C": "70",
+      "D": "120"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2g3h4i5j-n9o0-4p26-k7l8-34x4",
+    "number": 39,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, AB, AE, EF, FG and GB are semicircles. AB = 56 cm and AE = EF = FG = GB. What is the area (in cm²) of the shaded region?",
+    "options": {
+      "A": "414.46",
+      "B": "382.82",
+      "C": "406.48",
+      "D": "394.24"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3h4i5j6k-o0p1-4q37-l8m9-45y5",
+    "number": 40,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "Radius of base of a hollow cone is 8 cm and its height is 15 cm. A sphere of largest radius is put inside the cone. What is the ratio of radius of base of cone to the radius of sphere?",
+    "options": {
+      "A": "5:3",
+      "B": "4:1",
+      "C": "2:1",
+      "D": "7:3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4i5j6k7l-p1q2-4r48-m9n0-56z6",
+    "number": 41,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "The area of a regular hexagon is equal to the area of the square. What is the ratio of the perimeter of the regular hexagon to the perimeter of square?",
+    "options": {
+      "A": "√6√3: √3√6",
+      "B": "2√3: √6√2",
+      "C": "√6√3:2",
+      "D": "√6√3: 2√3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5j6k7l8m-q2r3-4s59-n0o1-67a7",
+    "number": 42,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "An alloys contains 32% copper, 24% nickel and rest zinc. How much zinc is present in 12 kg of the alloy?",
+    "options": {
+      "A": "672 gm",
+      "B": "6.72 kg",
+      "C": "5.28 kg",
+      "D": "528 gm"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6k7l8m9n-r3s4-4t60-o1p2-78b8",
+    "number": 43,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "In what ratio should coffee costing Rs. 2800/kg be mixed with coffee costing Rs. 1750/kg so that the cost of the mixture is Rs. 2150/kg.",
+    "options": {
+      "A": "8:13",
+      "B": "13:8",
+      "C": "7:5",
+      "D": "5:7"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7l8m9n0o-s4t5-4u71-p2q3-89c9",
+    "number": 44,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "In an alloy, Zinc and Copper are in the ratio 1 : 2. In the second alloy, the same elements are in the ratio 2: 3. If there two alloys combined to form a new alloy in which two elements are in the ratio 5: 8, the ratio of these two alloys in the new alloys is –",
+    "options": {
+      "A": "3 : 10",
+      "B": "7:3",
+      "C": "3:7",
+      "D": "10:3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8m9n0o1p-t5u6-4v82-q3r4-90d0",
+    "number": 45,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "A jar contained a mixture for two liquids A and B in the ratio 4 : 1. When 10 L of the mixture was taken out and 10 L of liquid B was poured into the jar, this ratio becomes 2 : 3. The quantity of liquid A contained in the gas initially was –",
+    "options": {
+      "A": "4 L",
+      "B": "12 L",
+      "C": "8 L",
+      "D": "16 L"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9n0o1p2q-u6v7-4w93-r4s5-01e1",
+    "number": 46,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "Two vessels A and B contain mixtures of milk and water in the ratios 4 : 1 and 9: 11 respectively. They are mixed in the ratio of 3 : 2. Find the ratio of milk and water in the resulting mixture.",
+    "options": {
+      "A": "12:25",
+      "B": "15:37",
+      "C": "17:19",
+      "D": "33:17"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0o1p2q3r-v7w8-4x04-s5t6-12f2",
+    "number": 47,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "6 litres of milk and water mixture has 75% milk in it. How much milk should be added to the mixture to make it 90% pure?",
+    "options": {
+      "A": "10 litre",
+      "B": "8 litre",
+      "C": "9 litre",
+      "D": "12 litre"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1p2q3r4s-w8x9-4y15-t6u7-23g3",
+    "number": 48,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The number 45789 is divisible by which of the single digit numbers:",
+    "options": {
+      "A": "Only by 9",
+      "B": "Only by 3 and 9",
+      "C": "Only by 3",
+      "D": "Only by 3 nad 7"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2q3r4s5t-x9y0-4z26-u7v8-34h4",
+    "number": 49,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "210102 can be divided exactly by:",
+    "options": {
+      "A": "7",
+      "B": "3",
+      "C": "4",
+      "D": "8"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3r4s5t6u-y0z1-4a37-v8w9-45i5",
+    "number": 50,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "A gardener planted 1936 samplings in a garden such that there were as many rows of saplings as the columns. The number of rows planted is:",
+    "options": {
+      "A": "46",
+      "B": "44",
+      "C": "48",
+      "D": "42"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4s5t6u7v-z1a2-4b48-w9x0-56j6",
+    "number": 51,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "Which least number should be added to 1000 so that the number obtained is exactly divisible by 37?",
+    "options": {
+      "A": "1",
+      "B": "25",
+      "C": "36",
+      "D": "13"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5t6u7v8w-a2b3-4c59-x0y1-67k7",
+    "number": 52,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "If a nine digit number 985x3678y is divisible by 72, find the value of x + y",
+    "options": {
+      "A": "4",
+      "B": "8",
+      "C": "-2",
+      "D": "6"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6u7v8w9x-b3c4-4d60-y1z2-78l8",
+    "number": 53,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "If it takes 42 days for a pond to get filled with rain water. If the level of water doubles each day. Then how long would it take to fill 1/16 of pond.",
+    "options": {
+      "A": "38 days",
+      "B": "39 days",
+      "C": "32 days",
+      "D": "8 days"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7v8w9x0y-c4d5-4e71-z2a3-89m9",
+    "number": 54,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The price of sugar has decreased by 15%. By what percentage can a person increase the consumption so that there is no change in the expenditure?",
+    "options": {
+      "A": "300/23 %",
+      "B": "300/17 %",
+      "C": "50/3 %",
+      "D": "20/3 %"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8w9x0y1z-d5e6-4f82-a3b4-90n0",
+    "number": 55,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "If A's income is 40% more than the income of B, then what percentage of B's income is less than income of A?",
+    "options": {
+      "A": "27 5/7%",
+      "B": "28 5/7%",
+      "C": "27 3/7%",
+      "D": "28 3/7%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9x0y1z2a-e6f7-4g93-b4c5-01o1",
+    "number": 56,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "In an examination, 54% of the candidates passed in science and 42% failed in mathematics. If 32% failed in both subjects, what percentage passed in both subjects?",
+    "options": {
+      "A": "56%",
+      "B": "48%",
+      "C": "32%",
+      "D": "44%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0y1z2a3b-f7g8-4h04-c5d6-12p2",
+    "number": 57,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The income of A is 24% more than the income of B. By what percent is the income of B less than the income of A ?",
+    "options": {
+      "A": "150/7 %",
+      "B": "600/29 %",
+      "C": "500/31 %",
+      "D": "600/31 %"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1z2a3b4c-g8h9-4i15-d6e7-23q3",
+    "number": 58,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "In an examination, 48% of candidates passed in science and 56% failed in mathematics. If 32% failed in both subjects, then what percent of students pass in both subjects?",
+    "options": {
+      "A": "24%",
+      "B": "32%",
+      "C": "28%",
+      "D": "22%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2a3b4c5d-h9i0-4j26-e7f8-34r4",
+    "number": 59,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The price of sugar is decreased by 10%. By what can a person increase the consumption so that there is no change in the expenditure?",
+    "options": {
+      "A": "100/11 %",
+      "B": "109/11 %",
+      "C": "100/9 %",
+      "D": "10%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3b4c5d6e-i0j1-4k37-f8g9-45s5",
+    "number": 60,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper sold two articles for Rs 9471 each. On one, he gained 23% and on the other, he lost 23%. What is the overall percentage gain or loss?",
+    "options": {
+      "A": "5.29% loss",
+      "B": "6.29% gain",
+      "C": "5.29% gain",
+      "D": "6.29% loss"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4c5d6e7f-j1k2-4l48-g9h0-56t6",
+    "number": 61,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper marks his goods at a price such that after giving a discount of 25%, he gains 20%. If the cost price of the article is Rs 460, what is its marked price?",
+    "options": {
+      "A": "Rs 736",
+      "B": "Rs 748",
+      "C": "Rs 725",
+      "D": "Rs 752"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5d6e7f8g-k2l3-4m59-h0i1-67u7",
+    "number": 62,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The successive discounts of 20%, 10% and 15% is equivalent to a single discount of",
+    "options": {
+      "A": "43.5%",
+      "B": "42.2%",
+      "C": "38.8%",
+      "D": "44.5%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6e7f8g9h-l3m4-4n60-i1j2-78v8",
+    "number": 63,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper sold two articles for Rs 9831 each. On one he gained 13% and on the other, he lost 13%. What is the overall percentage gain or loss?",
+    "options": {
+      "A": "6.5% loss",
+      "B": "6.5% gain",
+      "C": "1.69% gain",
+      "D": "1.69% loss"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7f8g9h0i-m4n5-4o71-j2k3-89w9",
+    "number": 64,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "The successive discount of 25%, 20% and 10% is equivalent to a single discount of",
+    "options": {
+      "A": "46%",
+      "B": "48%",
+      "C": "54%",
+      "D": "44%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8g9h0i1j-n5o6-4p82-k3l4-90x0",
+    "number": 65,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper marks his good at a price such that after giving a discount of 25%, the gain is 20%. If the marked price of the article is Rs 736. What is the cost price of the article?",
+    "options": {
+      "A": "Rs 450",
+      "B": "Rs 455",
+      "C": "Rs 460",
+      "D": "Rs 440"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9h0i1j2k-o6p7-4q93-l4m5-01y1",
+    "number": 66,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the sum of the mean proportional between 10.8 and 4.8 and the third proportional of 2 and 4 ?",
+    "options": {
+      "A": "15.2",
+      "B": "11.2",
+      "C": "8.2",
+      "D": "10.2"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0i1j2k3l-p7q8-4r04-m5n6-12z2",
+    "number": 67,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the ratio of the mean proportional between 8.1 and 3.6 and the third proportional of 2 and 3?",
+    "options": {
+      "A": "5:6",
+      "B": "5:4",
+      "C": "4:5",
+      "D": "6:5"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1j2k3l4m-q8r9-4s15-n6o7-23a3",
+    "number": 68,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the ratio of mean proportional between 1.8 and 3.2 and the third proportional of 5 and 3?",
+    "options": {
+      "A": "3:5",
+      "B": "4:3",
+      "C": "3:4",
+      "D": "5:3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2k3l4m5n-r9s0-4t26-o7p8-34b4",
+    "number": 69,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the ratio of mean proportional between 3.6 and 12.1 and third proportional between 2 and 11?",
+    "options": {
+      "A": "36:5",
+      "B": "6:5",
+      "C": "11:36",
+      "D": "6:55"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3l4m5n6o-s0t1-4u37-p8q9-45c5",
+    "number": 70,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "Rs. 7,80,516 is divided among A, B, C and D in the proportion of 2 : 3 : 4 : 3. The share of C is:",
+    "options": {
+      "A": "Rs. 2,60,172",
+      "B": "Rs. 1,95,129",
+      "C": "Rs. 1,30,086",
+      "D": "Rs. 2,24,562"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4m5n6o7p-t1u2-4v48-q9r0-56d6",
+    "number": 71,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "There are 50 paisa, 25 paisa and Rs. 1 coins in a bag in the ratio 5 : 8 : 1. If the total value of all the coins is Rs. 55, how many 25 paisa coins are there in the bag?",
+    "options": {
+      "A": "10",
+      "B": "80",
+      "C": "50",
+      "D": "25"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5n6o7p8q-u2v3-4w59-r0s1-67e7",
+    "number": 72,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs 15000 is invested partly at 12% per annum and the remaining at 10% per annum simple interest. If the total interest at the end of 2 yrs is Rs 3344 how much money was invested at 10% per annum?",
+    "options": {
+      "A": "Rs 6,200",
+      "B": "Rs 6600",
+      "C": "Rs 6400",
+      "D": "Rs 6500"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6o7p8q9r-v3w4-4x60-s1t2-78f8",
+    "number": 73,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs 12800 is invested partly at 15% per annum and the remaining at 12% per annum simple interest. If the total interest at the end of 3 yrs is Rs 5085, then how much money was invested at 15% per annum.",
+    "options": {
+      "A": "Rs 5,200",
+      "B": "Rs 7,500",
+      "C": "Rs 5,800",
+      "D": "Rs 5,300"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7p8q9r0s-w4x5-4y71-t2u3-89g9",
+    "number": 74,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs 15,600 is invested party at 7% per annum and the remaining at 9% per annum simple interest. If the total interest at the end of 3 years is Rs 3,738, how much money was invested at 7% per annum?",
+    "options": {
+      "A": "Rs 7,800",
+      "B": "Rs 7,900",
+      "C": "Rs 7,600",
+      "D": "Rs 7,700"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8q9r0s1t-x5y6-4z82-u3v4-90h0",
+    "number": 75,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs. 10,200 is invested partly at 8% per annum and remaining at 6% per annum for 3 years at simple interest. If the total interest is Rs. 2124, how much money was invested at 6% per annum?",
+    "options": {
+      "A": "Rs. 4,900",
+      "B": "Rs. 5,200",
+      "C": "Rs. 4,800",
+      "D": "Rs. 5,400"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9r0s1t2u-y6z7-4a93-v4w5-01i1",
+    "number": 76,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A borrowed a loan from B at 8% simple interest for 2 years and repaid the loan with interest totaling Rs 191864. The amount of loan taken A is :",
+    "options": {
+      "A": "Rs 166540",
+      "B": "Rs 168920",
+      "C": "Rs 165400",
+      "D": "Rs 164492"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0s1t2u3v-z7a8-4b04-w5x6-12j2",
+    "number": 77,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "Rs. 2,64,000 is invested for 3 years at 8.25% p.a. simple interest. The interest is:",
+    "options": {
+      "A": "Rs. 87,120",
+      "B": "Rs. 43,560",
+      "C": "Rs. 21,780",
+      "D": "Rs. 65,340"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1t2u3v4w-a8b9-4c15-x6y7-23k3",
+    "number": 78,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "9/3 + [2 + 4/6 - (2/3 + 3/4)}] is equal to",
+    "options": {
+      "A": "3",
+      "B": "15/4",
+      "C": "4",
+      "D": "17/4"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2u3v4w5x-b9c0-4d26-y7z8-34l4",
+    "number": 79,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "4/7 of 7 + x - 3/10 is equal to",
+    "options": {
+      "A": "5/25",
+      "B": "8/5",
+      "C": "34/25",
+      "D": "41/25"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3v4w5x6y-c0d1-4e37-z8a9-45m5",
+    "number": 80,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "5/4 + [2/7 - 3/3 (3/6 + 9/3)}] is equal to",
+    "options": {
+      "A": "44/6",
+      "B": "7",
+      "C": "24/6",
+      "D": "22/3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4w5x6y7z-d1e2-4f48-a9b0-56n6",
+    "number": 81,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "The value of 3/5 - [2/4 - {1/10 - (5/4 + 2/10 - 3/15)}] is",
+    "options": {
+      "A": "5/10",
+      "B": "9/10",
+      "C": "11/10",
+      "D": "13/5"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5x6y7z8a-e2f3-4g59-b0c1-67o7",
+    "number": 82,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "6.75×6.75×6.75-4.25×4.25×4.25 / 67.5×67.5+42.5×42.5+67.5×42.5 is equal to:",
+    "options": {
+      "A": "2.5",
+      "B": "0.25",
+      "C": "0.0025",
+      "D": "0.025"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6y7z8a9b-f3g4-4h60-c1d2-78p8",
+    "number": 83,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "5/2 - [3/6 - {5/10 - (3/6 + 1/10 - 15)}] is equal to:",
+    "options": {
+      "A": "210/7",
+      "B": "8/3",
+      "C": "2",
+      "D": "3/2"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7z8a9b0c-g4h5-4i71-d2e3-89q9",
+    "number": 84,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A train travels at a speed of 76km/h. If it crosses a pole in 36 seconds, the length of the train is:",
+    "options": {
+      "A": "720 m",
+      "B": "675 m",
+      "C": "760 m",
+      "D": "630 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8a9b0c1d-h5i6-4j82-e3f4-90r0",
+    "number": 85,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "If an airplane covers a distance of 980 km in 35 minutes, then what time it will take to cover a distance of 1470 km?",
+    "options": {
+      "A": "1/2 hour",
+      "B": "1 3/8 hours",
+      "C": "3/8 hour",
+      "D": "1 1/2 hours"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9b0c1d2e-i6j7-4k93-f4g5-01s1",
+    "number": 86,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A boy walks 15 m in 7 seconds and then walks back in 5 seconds. His average speed (in m/s) is:",
+    "options": {
+      "A": "6",
+      "B": "2.5",
+      "C": "3.25",
+      "D": "4"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0c1d2e3f-j7k8-4l04-g5h6-12t2",
+    "number": 87,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A part of the journey is covered in 31.5 minutes at 80 km/h and the remaining part in 16 minutes at 75 km/h. The total distance of the journey is:",
+    "options": {
+      "A": "45 km",
+      "B": "38 km",
+      "C": "62 km",
+      "D": "54 km"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1d2e3f4g-k8l9-4m15-h6i7-23u3",
+    "number": 88,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A train 100 m long running at uniform speed crosses a station which is 500 m long in 25 seconds. How long will it take for the train to pass a station that is 380 m long?",
+    "options": {
+      "A": "21 seconds",
+      "B": "20 seconds",
+      "C": "19 seconds",
+      "D": "22 seconds"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2e3f4g5h-l9m0-4n26-i7j8-34v4",
+    "number": 89,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A train covers a distance of 576 km at a certain speed. If the speed is decreased by 24 km/hr, it will take 2 hours more to cover the same distance. Find 33 1/3% of original speed.",
+    "options": {
+      "A": "32 km/hr",
+      "B": "24 km/hr",
+      "C": "38 km/hr",
+      "D": "28 km/hr"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3f4g5h6i-m0n1-4o37-j8k9-45w5",
+    "number": 90,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A and B can finish a work together in 30 days. B and C can finish the same work together in 24 and A and C can finish the work together in 40 days. If all three work together, how long will it take them to complete the work?",
+    "options": {
+      "A": "15 days",
+      "B": "10 days",
+      "C": "20 days",
+      "D": "5 days"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4g5h6i7j-n1o2-4p48-k9l0-56x6",
+    "number": 91,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A can do a work in 30 days, B can do the same work in 48 days. After working alone for 20 days A left and B started working, how long will B take to complete the work?",
+    "options": {
+      "A": "24 days",
+      "B": "28 days",
+      "C": "38 days",
+      "D": "16 days"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5h6i7j8k-o2p3-4q59-l0m1-67y7",
+    "number": 92,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "If 15 men can do a piece of work in 14 days, how many men will be needed to do the work in 30 days?",
+    "options": {
+      "A": "8",
+      "B": "10",
+      "C": "7",
+      "D": "9"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6i7j8k9l-p3q4-4r60-m1n2-78z8",
+    "number": 93,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "The ratio of efficiencies of A, B, C is 4:6:7. Working together, they can complete working in 39 days A and C together can complete 88 2/3% of work in how many days? (approx.)",
+    "options": {
+      "A": "53.4 days",
+      "B": "55.7 days",
+      "C": "49 days",
+      "D": "61.8 days"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  }
+]
+``````json
+[
+  {
+    "id": "a4d3e4f0-b1c2-4d5e-8f90-1234567890ab",
+    "number": 1,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "The ages of A and B are in the ratio 5:7. Five years ago, their ages were in the ratio 5:8. The respective present ages (in years) are:",
+    "options": {
+      "A": "20,28",
+      "B": "15,21",
+      "C": "25,40",
+      "D": "10,14"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "b5c4d5e1-c2d3-4e5f-9a01-234567890abc",
+    "number": 2,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "Four years ago, the ratio of ages of A and B was 3: 5. Ten years from now, the ratio of the ages of A and B will be 5 : 6. Find the sum of present ages?",
+    "options": {
+      "A": "32 years",
+      "B": "24 years",
+      "C": "26 years",
+      "D": "22 years"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "c6d5e6f2-d3e4-4f60-a1b2-34567890abcd",
+    "number": 3,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "The ratio of present ages of A and B is 1: 2 and 5 years back the ratio was 1: 3. What will be the ratio of their ages after 7 years?",
+    "options": {
+      "A": "7: 12",
+      "B": "3: 4",
+      "C": "17:27",
+      "D": "2: 1"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "d7e6f7g3-e4f5-4g71-b2c3-4567890abcde",
+    "number": 4,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "Ram's present age is thrice his son's present age and 2/5th of the present age of his father. The average present age of all of them is 46 years. What is the difference of ages of Ram's father and Ram's son at present?",
+    "options": {
+      "A": "68 years",
+      "B": "88 years",
+      "C": "78 years",
+      "D": "Cannot be determined"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "e8f7g8h4-f5g6-4h82-c3d4-567890abcdef",
+    "number": 5,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "At present Ranveer is 15 years older than Deepika. 5 years later Deepika will be 10 years old. What is the Present age of Ranveer (in years)?",
+    "options": {
+      "A": "15",
+      "B": "20",
+      "C": "25",
+      "D": "30"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "f9g8h9i5-g6h7-4i93-d4e5-67890abcdef0",
+    "number": 6,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "A person was asked to state his age. His reply was- \"Take my age 3 years hence, multiply it by 3, subtract the triple of my age 3 years ago and you will know how old I am.” What is the present age of the person (in years)?",
+    "options": {
+      "A": "24",
+      "B": "20",
+      "C": "32",
+      "D": "18"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0a1b2c3d-h7i8-4j04-e5f6-7890abcdef12",
+    "number": 7,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If a³-b³ = 208 and a- b = 4, then (a + b)² - ab is equal to",
+    "options": {
+      "A": "52",
+      "B": "38",
+      "C": "32",
+      "D": "42"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1b2c3d4e-i8j9-4k15-f6g7-890abcdef23",
+    "number": 8,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If x + 1/x = 5, then x³ + 1/x³ is equal to",
+    "options": {
+      "A": "110",
+      "B": "130",
+      "C": "145",
+      "D": "125"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2c3d4e5f-j9k0-4l26-g7h8-90abcdef34",
+    "number": 9,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If (x - 5)³ + (x − 6)³ + (x - 7)³ = 3(x - 5) (x – 6) (x – 7), then what is the value of x ?",
+    "options": {
+      "A": "6",
+      "B": "7",
+      "C": "5",
+      "D": "18"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3d4e5f6g-k0l1-4m37-h8i9-0abcdef45",
+    "number": 10,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If (2x + 3)³ + (x- 8)³ + (x+ 13)³ = (2x +3) (3x - 24) (x + 13), then what is the value of x?",
+    "options": {
+      "A": "-1.5",
+      "B": "-2.5",
+      "C": "-2",
+      "D": "-1"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4e5f6g7h-l1m2-4n48-i9j0-abcdef56",
+    "number": 11,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If a³ + b³ = 5824 and a + b = 28, then (a – b)² + ab is equal to",
+    "options": {
+      "A": "208",
+      "B": "152",
+      "C": "180",
+      "D": "236"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5f6g7h8i-m2n3-4o59-j0k1-bcdef67",
+    "number": 12,
+    "page": 1,
+    "subject": "Quantitative Aptitude",
+    "question": "If x − 1/x = 6, then x³-1/x³ is equal to",
+    "options": {
+      "A": "216",
+      "B": "176",
+      "C": "234",
+      "D": "198"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6g7h8i9j-n3o4-4p60-k1l2-cdef78",
+    "number": 13,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "If ratio of male workers to female worker in company P and company R is 15:7 and 13:12 respectively, then find the difference between no. of female workers in company P and that of in company R.",
+    "options": {
+      "A": "1120",
+      "B": "2400",
+      "C": "1365",
+      "D": "1400"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7h8i9j0k-o4p5-4q71-l2m3-def89",
+    "number": 14,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "No. of worker in company R are approximately what percent more than no. of worker in company S.",
+    "options": {
+      "A": "61%",
+      "B": "59%",
+      "C": "57%",
+      "D": "55%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8i9j0k1l-p5q6-4r82-m3n4-ef90",
+    "number": 15,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "If ratio of male officer to female officer in company T is 23:27. Then find difference between female officer in company T and no. of worker in company Q.",
+    "options": {
+      "A": "29070",
+      "B": "28970",
+      "C": "29970",
+      "D": "28070"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9j0k1l2m-q6r7-4s93-n4o5-f0a1",
+    "number": 16,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "If female workers are 7140 in company S and no. of female worker in company S are 78.5% more Than male officer in the same company, then find female officers in company S.",
+    "options": {
+      "A": "3680",
+      "B": "3280",
+      "C": "3480",
+      "D": "3880"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0k1l2m3n-r7s8-4t04-o5p6-12b2",
+    "number": 17,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "Find the average number of officers in company P, Q and T are approximately what percent of total workers in company S.",
+    "options": {
+      "A": "20%",
+      "B": "22%",
+      "C": "18%",
+      "D": "26%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1l2m3n4o-s8t9-4u15-p6q7-23c3",
+    "number": 18,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "AB and AC are the two tangents to a circle whose radius is 6 cm. If ∠BAC = 60°, then what is the value (in cm) of √(AB)² + (AC)²)?",
+    "options": {
+      "A": "6√6",
+      "B": "4√6",
+      "C": "9√3",
+      "D": "8√3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2m3n4o5p-t9u0-4v26-q7r8-34d4",
+    "number": 19,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, ABC is a right angled triangle. ∠ABC = 90°and ∠ACB = 60°. If the radius of the smaller circle is 2 cm, then what is the radius (in cm) of the larger circle?",
+    ""
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "4.5",
+      "D": "7.5"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3n4o5p6q-u0v1-4w37-r8s9-45e5",
+    "number": 20,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, O is centre of the circle. Circle has 3 tangents. If ∠QPR = 45°, then what is the value (in degrees) of ∠QOR?",
+    "options": {
+      "A": "67.5",
+      "B": "72",
+      "C": "78.5",
+      "D": "65"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4o5p6q7r-v1w2-4x48-s9t0-56f6",
+    "number": 21,
+    "page": 2,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given, two identical circles of radius 4 cm touch each other. A and B are the centres of the two circles. If RQ is a tangent to the circle, then what is the length (in cm) of RQ?",
+    "options": {
+      "A": "3√3",
+      "B": "2√6",
+      "C": "4√2",
+      "D": "6√2"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5p6q7r8s-w2x3-4y59-t0u1-67g7",
+    "number": 22,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "The radius of two circles is 3 cm and 4 cm. The distance between the centres of the circles is 10 cm. What is the ratio of the length of direct common tangent to the length of the transverse common tangent?",
+    "options": {
+      "A": "√51: √68",
+      "B": "√33: √17",
+      "C": "√66: √51",
+      "D": "√28: √17"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6q7r8s9t-x3y4-4z60-u1v2-78h8",
+    "number": 23,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "A line cuts two concentric circles. The lengths of chords formed by that line on the two circles are 4 cm and 16 cm. What is the difference (in cm²) in square of radii of two circles?",
+    "options": {
+      "A": "240",
+      "B": "120",
+      "C": "60",
+      "D": "90"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7r8s9t0u-y4z5-4a71-v2w3-89i9",
+    "number": 24,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 4: 5. If their HCF is 16, then the sum of these two numbers is",
+    "options": {
+      "A": "144",
+      "B": "124",
+      "C": "160",
+      "D": "150"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8s9t0u1v-z5a6-4b82-w3x4-90j0",
+    "number": 25,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 4: 7. If their HCF is 26, then the sum of these two numbers will be",
+    "options": {
+      "A": "312",
+      "B": "364",
+      "C": "338",
+      "D": "286"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9t0u1v2w-a6b7-4c93-x4y5-01k1",
+    "number": 26,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 5 : 11. If their HCF is 24, then the sum of two these numbers is:",
+    "options": {
+      "A": "384",
+      "B": "408",
+      "C": "120",
+      "D": "264"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0u1v2w3x-b7c8-4d04-y5z6-12l2",
+    "number": 27,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Two numbers are in the ratio 6 : 11. If their HCF is 28, then the sum of these two numbers is:",
+    "options": {
+      "A": "476",
+      "B": "448",
+      "C": "392",
+      "D": "420"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1v2w3x4y-c8d9-4e15-z6a7-23m3",
+    "number": 28,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "Which of the following statement is true?",
+    "options": {
+      "A": "HCF+LCM of two numbers=Product of two numbers",
+      "B": "LCM of two natural numbers is divisible by their HCF.",
+      "C": "Two prime numbers are co-prime numbers if their LCM is 1.",
+      "D": "HCF of two numbers is the smallest common divisor of both numbers."
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2w3x4y5z-d9e0-4f26-a7b8-34n4",
+    "number": 29,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "The HCF and LCM of two numbers is 6 and 5040 respectively. If one of the numbers is 210, then the other number is :",
+    "options": {
+      "A": "630",
+      "B": "144",
+      "C": "256",
+      "D": "30"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3x4y5z6a-e0f1-4g37-b8c9-45o5",
+    "number": 30,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "From the top of a 10 m high building, the angle of elevation of the top of a tower is 60° and the angle of depression of the foot of the tower is φ, such that tanφ=1/4. What is the height of the tower to nearest metres?",
+    "options": {
+      "A": "34 m",
+      "B": "35 m",
+      "C": "36 m",
+      "D": "33 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4y5z6a7b-f1g2-4h48-c9d0-56p6",
+    "number": 31,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "A ladder leaning against a wall makes an angle α with the horizontal ground such that tan α = 4/3. If the foot of the ladder is 5 m away from the wall, what is the length of the ladder?",
+    "options": {
+      "A": "5.25 m",
+      "B": "3.75 m",
+      "C": "6.25 m",
+      "D": "4.5m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5z6a7b8c-g2h3-4i59-d0e1-67q7",
+    "number": 32,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "From the top of a 12 m high building, the angle of elevation of the top of a tower is 60° and the angle of depression of the foot of the tower is θ, such that tanθ=3/4. What is the height of the tower (√3 = 1.73)?",
+    "options": {
+      "A": "41.41m",
+      "B": "36.22 m",
+      "C": "39.68 m",
+      "D": "37.95 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6a7b8c9d-h3i4-4j60-e1f2-78r8",
+    "number": 33,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "A ladder leaning against a wall makes an angle θ with the horizontal ground such that Sinθ=12/13. If the foot of the ladder is 7.5 m from the wall, then what is the height of the point where the top of the ladder touches the wall?",
+    "options": {
+      "A": "15 m",
+      "B": "8 m",
+      "C": "18 m",
+      "D": "12 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7b8c9d0e-i4j5-4k71-f2g3-89s9",
+    "number": 34,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "From the top of 75 m high tower, the angle of depression of two points P and Q on opposite side of the base of the tower on level ground is θ and φ, such that tanθ = 3/4 and tan φ = 5/8. What is the distance between the points P and Q?",
+    "options": {
+      "A": "190 m",
+      "B": "200 m",
+      "C": "180 m",
+      "D": "220 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8c9d0e1f-j5k6-4l82-g3h4-90t0",
+    "number": 35,
+    "page": 3,
+    "subject": "Quantitative Aptitude",
+    "question": "The angle of elevation of top of a tower from a point P, on the ground is θ such that tan θ = 12/5. If distance of the point P, from the base of the tower is 75m, what is the height of the tower?",
+    "options": {
+      "A": "160 m",
+      "B": "200 m",
+      "C": "190 m",
+      "D": "180 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9d0e1f2g-k6l7-4m93-h4i5-01u1",
+    "number": 36,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "ABC is a triangle. AB = 5 cm, AC = √41 cm and BC = 8 cm. AD is perpendicular to BC. What is the area (in cm²) of triangle ABD?",
+    "options": {
+      "A": "12",
+      "B": "6",
+      "C": "10",
+      "D": "20"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0e1f2g3h-l7m8-4n04-i5j6-12v2",
+    "number": 37,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, PQR is a triangle and quadrilateral ABCD is inscribed in it. QD = 2 cm, QC = 5 cm, CR = 3 cm, BR = 4 cm, PB = 6 cm, PA = 5 cm and AD = 3 cm. What is the area (in cm²) of the quadrilateral ABCD?",
+    ""
+    "options": {
+      "A": "(23√21)/4",
+      "B": "15√21/4",
+      "C": "(17√21)/5",
+      "D": "(23√21)/5"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1f2g3h4i-m8n9-4o15-j6k7-23w3",
+    "number": 38,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "IN the given figures, ABCD is a square of side 14 cm. E and F are mid points of sides AB and DC respectively. EPF is a semicircle whose diameter is EF. LMNO is a square. What is the area (in cm²) of the shaded region?",
+    "options": {
+      "A": "108.5",
+      "B": "94.5",
+      "C": "70",
+      "D": "120"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2g3h4i5j-n9o0-4p26-k7l8-34x4",
+    "number": 39,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "In the given figure, AB, AE, EF, FG and GB are semicircles. AB = 56 cm and AE = EF = FG = GB. What is the area (in cm²) of the shaded region?",
+    "options": {
+      "A": "414.46",
+      "B": "382.82",
+      "C": "406.48",
+      "D": "394.24"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3h4i5j6k-o0p1-4q37-l8m9-45y5",
+    "number": 40,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "Radius of base of a hollow cone is 8 cm and its height is 15 cm. A sphere of largest radius is put inside the cone. What is the ratio of radius of base of cone to the radius of sphere?",
+    "options": {
+      "A": "5:3",
+      "B": "4:1",
+      "C": "2:1",
+      "D": "7:3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4i5j6k7l-p1q2-4r48-m9n0-56z6",
+    "number": 41,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "The area of a regular hexagon is equal to the area of the square. What is the ratio of the perimeter of the regular hexagon to the perimeter of square?",
+    "options": {
+      "A": "√6√3: √3√6",
+      "B": "2√3: √6√2",
+      "C": "√6√3:2",
+      "D": "√6√3: 2√3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5j6k7l8m-q2r3-4s59-n0o1-67a7",
+    "number": 42,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "An alloys contains 32% copper, 24% nickel and rest zinc. How much zinc is present in 12 kg of the alloy?",
+    "options": {
+      "A": "672 gm",
+      "B": "6.72 kg",
+      "C": "5.28 kg",
+      "D": "528 gm"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6k7l8m9n-r3s4-4t60-o1p2-78b8",
+    "number": 43,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "In what ratio should coffee costing Rs. 2800/kg be mixed with coffee costing Rs. 1750/kg so that the cost of the mixture is Rs. 2150/kg.",
+    "options": {
+      "A": "8:13",
+      "B": "13:8",
+      "C": "7:5",
+      "D": "5:7"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7l8m9n0o-s4t5-4u71-p2q3-89c9",
+    "number": 44,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "In an alloy, Zinc and Copper are in the ratio 1 : 2. In the second alloy, the same elements are in the ratio 2: 3. If there two alloys combined to form a new alloy in which two elements are in the ratio 5: 8, the ratio of these two alloys in the new alloys is –",
+    "options": {
+      "A": "3 : 10",
+      "B": "7:3",
+      "C": "3:7",
+      "D": "10:3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8m9n0o1p-t5u6-4v82-q3r4-90d0",
+    "number": 45,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "A jar contained a mixture for two liquids A and B in the ratio 4 : 1. When 10 L of the mixture was taken out and 10 L of liquid B was poured into the jar, this ratio becomes 2 : 3. The quantity of liquid A contained in the gas initially was –",
+    "options": {
+      "A": "4 L",
+      "B": "12 L",
+      "C": "8 L",
+      "D": "16 L"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9n0o1p2q-u6v7-4w93-r4s5-01e1",
+    "number": 46,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "Two vessels A and B contain mixtures of milk and water in the ratios 4 : 1 and 9: 11 respectively. They are mixed in the ratio of 3 : 2. Find the ratio of milk and water in the resulting mixture.",
+    "options": {
+      "A": "12:25",
+      "B": "15:37",
+      "C": "17:19",
+      "D": "33:17"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0o1p2q3r-v7w8-4x04-s5t6-12f2",
+    "number": 47,
+    "page": 4,
+    "subject": "Quantitative Aptitude",
+    "question": "6 litres of milk and water mixture has 75% milk in it. How much milk should be added to the mixture to make it 90% pure?",
+    "options": {
+      "A": "10 litre",
+      "B": "8 litre",
+      "C": "9 litre",
+      "D": "12 litre"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1p2q3r4s-w8x9-4y15-t6u7-23g3",
+    "number": 48,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The number 45789 is divisible by which of the single digit numbers:",
+    "options": {
+      "A": "Only by 9",
+      "B": "Only by 3 and 9",
+      "C": "Only by 3",
+      "D": "Only by 3 nad 7"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2q3r4s5t-x9y0-4z26-u7v8-34h4",
+    "number": 49,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "210102 can be divided exactly by:",
+    "options": {
+      "A": "7",
+      "B": "3",
+      "C": "4",
+      "D": "8"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3r4s5t6u-y0z1-4a37-v8w9-45i5",
+    "number": 50,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "A gardener planted 1936 samplings in a garden such that there were as many rows of saplings as the columns. The number of rows planted is:",
+    "options": {
+      "A": "46",
+      "B": "44",
+      "C": "48",
+      "D": "42"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4s5t6u7v-z1a2-4b48-w9x0-56j6",
+    "number": 51,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "Which least number should be added to 1000 so that the number obtained is exactly divisible by 37?",
+    "options": {
+      "A": "1",
+      "B": "25",
+      "C": "36",
+      "D": "13"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5t6u7v8w-a2b3-4c59-x0y1-67k7",
+    "number": 52,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "If a nine digit number 985x3678y is divisible by 72, find the value of x + y",
+    "options": {
+      "A": "4",
+      "B": "8",
+      "C": "-2",
+      "D": "6"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6u7v8w9x-b3c4-4d60-y1z2-78l8",
+    "number": 53,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "If it takes 42 days for a pond to get filled with rain water. If the level of water doubles each day. Then how long would it take to fill 1/16 of pond.",
+    "options": {
+      "A": "38 days",
+      "B": "39 days",
+      "C": "32 days",
+      "D": "8 days"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7v8w9x0y-c4d5-4e71-z2a3-89m9",
+    "number": 54,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The price of sugar has decreased by 15%. By what percentage can a person increase the consumption so that there is no change in the expenditure?",
+    "options": {
+      "A": "300/23 %",
+      "B": "300/17 %",
+      "C": "50/3 %",
+      "D": "20/3 %"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8w9x0y1z-d5e6-4f82-a3b4-90n0",
+    "number": 55,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "If A's income is 40% more than the income of B, then what percentage of B's income is less than income of A?",
+    "options": {
+      "A": "27 5/7%",
+      "B": "28 5/7%",
+      "C": "27 3/7%",
+      "D": "28 3/7%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9x0y1z2a-e6f7-4g93-b4c5-01o1",
+    "number": 56,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "In an examination, 54% of the candidates passed in science and 42% failed in mathematics. If 32% failed in both subjects, what percentage passed in both subjects?",
+    "options": {
+      "A": "56%",
+      "B": "48%",
+      "C": "32%",
+      "D": "44%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0y1z2a3b-f7g8-4h04-c5d6-12p2",
+    "number": 57,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The income of A is 24% more than the income of B. By what percent is the income of B less than the income of A ?",
+    "options": {
+      "A": "150/7 %",
+      "B": "600/29 %",
+      "C": "500/31 %",
+      "D": "600/31 %"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1z2a3b4c-g8h9-4i15-d6e7-23q3",
+    "number": 58,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "In an examination, 48% of candidates passed in science and 56% failed in mathematics. If 32% failed in both subjects, then what percent of students pass in both subjects?",
+    "options": {
+      "A": "24%",
+      "B": "32%",
+      "C": "28%",
+      "D": "22%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2a3b4c5d-h9i0-4j26-e7f8-34r4",
+    "number": 59,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The price of sugar is decreased by 10%. By what can a person increase the consumption so that there is no change in the expenditure?",
+    "options": {
+      "A": "100/11 %",
+      "B": "109/11 %",
+      "C": "100/9 %",
+      "D": "10%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3b4c5d6e-i0j1-4k37-f8g9-45s5",
+    "number": 60,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper sold two articles for Rs 9471 each. On one, he gained 23% and on the other, he lost 23%. What is the overall percentage gain or loss?",
+    "options": {
+      "A": "5.29% loss",
+      "B": "6.29% gain",
+      "C": "5.29% gain",
+      "D": "6.29% loss"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4c5d6e7f-j1k2-4l48-g9h0-56t6",
+    "number": 61,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper marks his goods at a price such that after giving a discount of 25%, he gains 20%. If the cost price of the article is Rs 460, what is its marked price?",
+    "options": {
+      "A": "Rs 736",
+      "B": "Rs 748",
+      "C": "Rs 725",
+      "D": "Rs 752"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5d6e7f8g-k2l3-4m59-h0i1-67u7",
+    "number": 62,
+    "page": 5,
+    "subject": "Quantitative Aptitude",
+    "question": "The successive discounts of 20%, 10% and 15% is equivalent to a single discount of",
+    "options": {
+      "A": "43.5%",
+      "B": "42.2%",
+      "C": "38.8%",
+      "D": "44.5%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6e7f8g9h-l3m4-4n60-i1j2-78v8",
+    "number": 63,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper sold two articles for Rs 9831 each. On one he gained 13% and on the other, he lost 13%. What is the overall percentage gain or loss?",
+    "options": {
+      "A": "6.5% loss",
+      "B": "6.5% gain",
+      "C": "1.69% gain",
+      "D": "1.69% loss"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7f8g9h0i-m4n5-4o71-j2k3-89w9",
+    "number": 64,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "The successive discount of 25%, 20% and 10% is equivalent to a single discount of",
+    "options": {
+      "A": "46%",
+      "B": "48%",
+      "C": "54%",
+      "D": "44%"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8g9h0i1j-n5o6-4p82-k3l4-90x0",
+    "number": 65,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A shopkeeper marks his good at a price such that after giving a discount of 25%, the gain is 20%. If the marked price of the article is Rs 736. What is the cost price of the article?",
+    "options": {
+      "A": "Rs 450",
+      "B": "Rs 455",
+      "C": "Rs 460",
+      "D": "Rs 440"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9h0i1j2k-o6p7-4q93-l4m5-01y1",
+    "number": 66,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the sum of the mean proportional between 10.8 and 4.8 and the third proportional of 2 and 4 ?",
+    "options": {
+      "A": "15.2",
+      "B": "11.2",
+      "C": "8.2",
+      "D": "10.2"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0i1j2k3l-p7q8-4r04-m5n6-12z2",
+    "number": 67,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the ratio of the mean proportional between 8.1 and 3.6 and the third proportional of 2 and 3?",
+    "options": {
+      "A": "5:6",
+      "B": "5:4",
+      "C": "4:5",
+      "D": "6:5"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1j2k3l4m-q8r9-4s15-n6o7-23a3",
+    "number": 68,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the ratio of mean proportional between 1.8 and 3.2 and the third proportional of 5 and 3?",
+    "options": {
+      "A": "3:5",
+      "B": "4:3",
+      "C": "3:4",
+      "D": "5:3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2k3l4m5n-r9s0-4t26-o7p8-34b4",
+    "number": 69,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "What is the ratio of mean proportional between 3.6 and 12.1 and third proportional between 2 and 11?",
+    "options": {
+      "A": "36:5",
+      "B": "6:5",
+      "C": "11:36",
+      "D": "6:55"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3l4m5n6o-s0t1-4u37-p8q9-45c5",
+    "number": 70,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "Rs. 7,80,516 is divided among A, B, C and D in the proportion of 2 : 3 : 4 : 3. The share of C is:",
+    "options": {
+      "A": "Rs. 2,60,172",
+      "B": "Rs. 1,95,129",
+      "C": "Rs. 1,30,086",
+      "D": "Rs. 2,24,562"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4m5n6o7p-t1u2-4v48-q9r0-56d6",
+    "number": 71,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "There are 50 paisa, 25 paisa and Rs. 1 coins in a bag in the ratio 5 : 8 : 1. If the total value of all the coins is Rs. 55, how many 25 paisa coins are there in the bag?",
+    "options": {
+      "A": "10",
+      "B": "80",
+      "C": "50",
+      "D": "25"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5n6o7p8q-u2v3-4w59-r0s1-67e7",
+    "number": 72,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs 15000 is invested partly at 12% per annum and the remaining at 10% per annum simple interest. If the total interest at the end of 2 yrs is Rs 3344 how much money was invested at 10% per annum?",
+    "options": {
+      "A": "Rs 6,200",
+      "B": "Rs 6600",
+      "C": "Rs 6400",
+      "D": "Rs 6500"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6o7p8q9r-v3w4-4x60-s1t2-78f8",
+    "number": 73,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs 12800 is invested partly at 15% per annum and the remaining at 12% per annum simple interest. If the total interest at the end of 3 yrs is Rs 5085, then how much money was invested at 15% per annum.",
+    "options": {
+      "A": "Rs 5,200",
+      "B": "Rs 7,500",
+      "C": "Rs 5,800",
+      "D": "Rs 5,300"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7p8q9r0s-w4x5-4y71-t2u3-89g9",
+    "number": 74,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs 15,600 is invested party at 7% per annum and the remaining at 9% per annum simple interest. If the total interest at the end of 3 years is Rs 3,738, how much money was invested at 7% per annum?",
+    "options": {
+      "A": "Rs 7,800",
+      "B": "Rs 7,900",
+      "C": "Rs 7,600",
+      "D": "Rs 7,700"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8q9r0s1t-x5y6-4z82-u3v4-90h0",
+    "number": 75,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A sum of Rs. 10,200 is invested partly at 8% per annum and remaining at 6% per annum for 3 years at simple interest. If the total interest is Rs. 2124, how much money was invested at 6% per annum?",
+    "options": {
+      "A": "Rs. 4,900",
+      "B": "Rs. 5,200",
+      "C": "Rs. 4,800",
+      "D": "Rs. 5,400"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9r0s1t2u-y6z7-4a93-v4w5-01i1",
+    "number": 76,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "A borrowed a loan from B at 8% simple interest for 2 years and repaid the loan with interest totaling Rs 191864. The amount of loan taken A is :",
+    "options": {
+      "A": "Rs 166540",
+      "B": "Rs 168920",
+      "C": "Rs 165400",
+      "D": "Rs 164492"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0s1t2u3v-z7a8-4b04-w5x6-12j2",
+    "number": 77,
+    "page": 6,
+    "subject": "Quantitative Aptitude",
+    "question": "Rs. 2,64,000 is invested for 3 years at 8.25% p.a. simple interest. The interest is:",
+    "options": {
+      "A": "Rs. 87,120",
+      "B": "Rs. 43,560",
+      "C": "Rs. 21,780",
+      "D": "Rs. 65,340"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1t2u3v4w-a8b9-4c15-x6y7-23k3",
+    "number": 78,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "9/3 + [2 + 4/6 - (2/3 + 3/4)}] is equal to",
+    "options": {
+      "A": "3",
+      "B": "15/4",
+      "C": "4",
+      "D": "17/4"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2u3v4w5x-b9c0-4d26-y7z8-34l4",
+    "number": 79,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "4/7 of 7 + x - 3/10 is equal to",
+    "options": {
+      "A": "5/25",
+      "B": "8/5",
+      "C": "34/25",
+      "D": "41/25"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3v4w5x6y-c0d1-4e37-z8a9-45m5",
+    "number": 80,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "5/4 + [2/7 - 3/3 (3/6 + 9/3)}] is equal to",
+    "options": {
+      "A": "44/6",
+      "B": "7",
+      "C": "24/6",
+      "D": "22/3"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4w5x6y7z-d1e2-4f48-a9b0-56n6",
+    "number": 81,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "The value of 3/5 - [2/4 - {1/10 - (5/4 + 2/10 - 3/15)}] is",
+    "options": {
+      "A": "5/10",
+      "B": "9/10",
+      "C": "11/10",
+      "D": "13/5"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5x6y7z8a-e2f3-4g59-b0c1-67o7",
+    "number": 82,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "6.75×6.75×6.75-4.25×4.25×4.25 / 67.5×67.5+42.5×42.5+67.5×42.5 is equal to:",
+    "options": {
+      "A": "2.5",
+      "B": "0.25",
+      "C": "0.0025",
+      "D": "0.025"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6y7z8a9b-f3g4-4h60-c1d2-78p8",
+    "number": 83,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "5/2 - [3/6 - {5/10 - (3/6 + 1/10 - 15)}] is equal to:",
+    "options": {
+      "A": "210/7",
+      "B": "8/3",
+      "C": "2",
+      "D": "3/2"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "7z8a9b0c-g4h5-4i71-d2e3-89q9",
+    "number": 84,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A train travels at a speed of 76km/h. If it crosses a pole in 36 seconds, the length of the train is:",
+    "options": {
+      "A": "720 m",
+      "B": "675 m",
+      "C": "760 m",
+      "D": "630 m"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "8a9b0c1d-h5i6-4j82-e3f4-90r0",
+    "number": 85,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "If an airplane covers a distance of 980 km in 35 minutes, then what time it will take to cover a distance of 1470 km?",
+    "options": {
+      "A": "1/2 hour",
+      "B": "1 3/8 hours",
+      "C": "3/8 hour",
+      "D": "1 1/2 hours"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "9b0c1d2e-i6j7-4k93-f4g5-01s1",
+    "number": 86,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A boy walks 15 m in 7 seconds and then walks back in 5 seconds. His average speed (in m/s) is:",
+    "options": {
+      "A": "6",
+      "B": "2.5",
+      "C": "3.25",
+      "D": "4"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "0c1d2e3f-j7k8-4l04-g5h6-12t2",
+    "number": 87,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A part of the journey is covered in 31.5 minutes at 80 km/h and the remaining part in 16 minutes at 75 km/h. The total distance of the journey is:",
+    "options": {
+      "A": "45 km",
+      "B": "38 km",
+      "C": "62 km",
+      "D": "54 km"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "1d2e3f4g-k8l9-4m15-h6i7-23u3",
+    "number": 88,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A train 100 m long running at uniform speed crosses a station which is 500 m long in 25 seconds. How long will it take for the train to pass a station that is 380 m long?",
+    "options": {
+      "A": "21 seconds",
+      "B": "20 seconds",
+      "C": "19 seconds",
+      "D": "22 seconds"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "2e3f4g5h-l9m0-4n26-i7j8-34v4",
+    "number": 89,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A train covers a distance of 576 km at a certain speed. If the speed is decreased by 24 km/hr, it will take 2 hours more to cover the same distance. Find 33 1/3% of original speed.",
+    "options": {
+      "A": "32 km/hr",
+      "B": "24 km/hr",
+      "C": "38 km/hr",
+      "D": "28 km/hr"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "3f4g5h6i-m0n1-4o37-j8k9-45w5",
+    "number": 90,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A and B can finish a work together in 30 days. B and C can finish the same work together in 24 and A and C can finish the work together in 40 days. If all three work together, how long will it take them to complete the work?",
+    "options": {
+      "A": "15 days",
+      "B": "10 days",
+      "C": "20 days",
+      "D": "5 days"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "4g5h6i7j-n1o2-4p48-k9l0-56x6",
+    "number": 91,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "A can do a work in 30 days, B can do the same work in 48 days. After working alone for 20 days A left and B started working, how long will B take to complete the work?",
+    "options": {
+      "A": "24 days",
+      "B": "28 days",
+      "C": "38 days",
+      "D": "16 days"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "5h6i7j8k-o2p3-4q59-l0m1-67y7",
+    "number": 92,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "If 15 men can do a piece of work in 14 days, how many men will be needed to do the work in 30 days?",
+    "options": {
+      "A": "8",
+      "B": "10",
+      "C": "7",
+      "D": "9"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  },
+  {
+    "id": "6i7j8k9l-p3q4-4r60-m1n2-78z8",
+    "number": 93,
+    "page": 7,
+    "subject": "Quantitative Aptitude",
+    "question": "The ratio of efficiencies of A, B, C is 4:6:7. Working together, they can complete working in 39 days A and C together can complete 88 2/3% of work in how many days? (approx.)",
+    "options": {
+      "A": "53.4 days",
+      "B": "55.7 days",
+      "C": "49 days",
+      "D": "61.8 days"
+    },
+    "correct_answer": null,
+    "explanation": ""
+  }
+]
+```

@@ -55,3 +55,13 @@ export async function getQuestionBankQuestions(
 
   return response.data;
 }
+
+export async function generateAnswers(
+    bankId: string
+) {
+    const response = await api.post(
+        `/question-banks/${bankId}/generate-answers`
+    );
+
+    return response.data;
+}

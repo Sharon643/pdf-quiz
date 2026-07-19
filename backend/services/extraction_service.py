@@ -17,7 +17,8 @@ class ExtractionService:
         job_id: str,
     ) -> dict:
         """
-        Extract questions from a PDF and create a new question bank.
+        Extract questions from a PDF, create a question bank,
+        and store extraction metadata for the frontend.
         """
 
         progress = ProgressManager(job_id)
@@ -40,18 +41,30 @@ class ExtractionService:
         ) as f:
             questions = json.load(f)
 
+        question_count = len(questions)
+
         subjects = len(
             {
-                q.get("subject", "Unknown")
-                for q in questions
+                question.get("subject", "Unknown")
+                for question in questions
             }
+        )
+
+        official_answers = sum(
+            1
+            for question in questions
+            if question.get("correct_answer")
+        )
+
+        missing_answers = (
+            question_count - official_answers
         )
 
         manager = QuestionBankManager()
 
         bank = manager.create_bank(
             file_name=pdf_path.name,
-            question_count=len(questions),
+            question_count=question_count,
         )
 
         destination = (
@@ -69,6 +82,12 @@ class ExtractionService:
             percent=100,
             message="Extraction completed!",
             completed=True,
+            bankId=bank["id"],
+            fileName=bank["fileName"],
+            questionCount=question_count,
+            subjects=subjects,
+            officialAnswers=official_answers,
+            missingAnswers=missing_answers,
         )
 
         return {
@@ -76,6 +95,8 @@ class ExtractionService:
             "jobId": job_id,
             "bankId": bank["id"],
             "fileName": bank["fileName"],
-            "questionCount": len(questions),
+            "questionCount": question_count,
             "subjects": subjects,
+            "officialAnswers": official_answers,
+            "missingAnswers": missing_answers,
         }

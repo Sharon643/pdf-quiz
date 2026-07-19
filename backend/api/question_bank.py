@@ -5,6 +5,8 @@ from fastapi import APIRouter, HTTPException
 
 from utils.question_bank import QuestionBankManager
 
+from services.answer_generator import AnswerGenerator
+
 router = APIRouter()
 
 EXTRACTED_DIR = Path("data/extracted")
@@ -189,4 +191,58 @@ def get_question_bank_questions(bank_id: str):
     return {
         "count": len(result),
         "questions": result,
+    }
+
+@router.post("/question-banks/{bank_id}/generate-answers")
+def generate_answers(bank_id: str):
+
+    manager = QuestionBankManager()
+
+    bank = manager.get_bank(bank_id)
+
+    if bank is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Question bank not found.",
+        )
+
+    json_file = (
+        EXTRACTED_DIR /
+        bank["jsonFile"]
+    )
+
+    if not json_file.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="Question bank file not found.",
+        )
+
+    with open(
+        json_file,
+        "r",
+        encoding="utf-8",
+    ) as f:
+        questions = json.load(f)
+
+    generator = AnswerGenerator()
+
+    stats = generator.generate(questions)
+
+    with open(
+        json_file,
+        "w",
+        encoding="utf-8",
+    ) as f:
+        json.dump(
+            questions,
+            f,
+            indent=4,
+            ensure_ascii=False,
+        )
+
+    manager.update_modified(bank_id)
+
+    return {
+        "success": True,
+        **stats,
     }

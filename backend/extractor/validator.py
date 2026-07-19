@@ -11,11 +11,13 @@ class Validator:
     REQUIRED_FIELDS = {
         "id",
         "number",
+        "page",
         "subject",
         "question",
         "options",
-        "page",
         "correct_answer",
+        "answer_source",
+        "confidence",
         "explanation",
     }
 
@@ -211,6 +213,35 @@ class Validator:
 
                 errors.append(
                     "correct_answer does not exist in options."
+                )
+
+        # --------------------------------------------------
+        # Answer Source
+        # --------------------------------------------------
+
+        answer_source = question["answer_source"]
+
+        if answer_source not in {"pdf", "ai", "none"}:
+            errors.append(
+                "answer_source must be 'pdf', 'ai', or 'none'."
+            )
+
+        # --------------------------------------------------
+        # Confidence
+        # --------------------------------------------------
+
+        confidence = question["confidence"]
+
+        if confidence is not None:
+
+            if not isinstance(confidence, (int, float)):
+                errors.append(
+                    "confidence must be a number."
+                )
+
+            elif not (0 <= confidence <= 1):
+                errors.append(
+                    "confidence must be between 0 and 1."
                 )
 
         # --------------------------------------------------

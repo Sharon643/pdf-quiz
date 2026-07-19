@@ -1,6 +1,6 @@
 import json
-from pathlib import Path
 from json import JSONDecodeError
+from pathlib import Path
 
 
 class ProgressManager:
@@ -8,30 +8,45 @@ class ProgressManager:
         self.job_id = job_id
 
         self.progress_dir = Path("progress/jobs")
-        self.progress_dir.mkdir(parents=True, exist_ok=True)
+        self.progress_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
 
-        self.progress_file = self.progress_dir / f"{job_id}.json"
+        self.progress_file = (
+            self.progress_dir / f"{job_id}.json"
+        )
 
-    def update(
-        self,
-        stage: str,
-        percent: int,
-        message: str,
-        completed: bool = False,
-    ):
+    def update(self, **kwargs):
+        """
+        Update the progress file.
 
-        data = {
+        Any keyword arguments passed to this method
+        are written to the progress JSON.
+        """
+
+        data = self.read() or {
             "jobId": self.job_id,
-            "stage": stage,
-            "percent": percent,
-            "message": message,
-            "completed": completed,
+            "stage": "starting",
+            "percent": 0,
+            "message": "Initializing...",
+            "completed": False,
         }
 
-        with open(self.progress_file, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=4)
+        data.update(kwargs)
 
+        data["jobId"] = self.job_id
 
+        with open(
+            self.progress_file,
+            "w",
+            encoding="utf-8",
+        ) as f:
+            json.dump(
+                data,
+                f,
+                indent=4,
+            )
 
     def read(self):
 
@@ -39,11 +54,14 @@ class ProgressManager:
             return None
 
         try:
-            with open(self.progress_file, "r", encoding="utf-8") as f:
+            with open(
+                self.progress_file,
+                "r",
+                encoding="utf-8",
+            ) as f:
                 return json.load(f)
 
         except JSONDecodeError:
-            # File is currently being written.
             return {
                 "jobId": self.job_id,
                 "stage": "starting",

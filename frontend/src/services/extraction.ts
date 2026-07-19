@@ -24,6 +24,15 @@ export interface ExtractionProgress {
   percent: number;
   message: string;
   completed: boolean;
+
+  bankId?: string;
+  fileName?: string;
+
+  questionCount?: number;
+  subjects?: number;
+
+  officialAnswers?: number;
+  missingAnswers?: number;
 }
 
 export async function getExtractionStatus(

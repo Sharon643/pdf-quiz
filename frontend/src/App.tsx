@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "sonner";
+
 
 import Exam from "./pages/Exam";
 import ExamSettings from "./pages/ExamSettings";
@@ -16,6 +18,7 @@ import PracticeResult from "./pages/PracticeResults";
 function App() {
   return (
     <Routes>
+      <Toaster richColors position="top-right" />
       <Route
         path="/"
         element={<Dashboard />}
