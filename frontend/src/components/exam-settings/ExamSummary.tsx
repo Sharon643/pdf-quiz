@@ -27,7 +27,7 @@ export default function ExamSummary({
 
         <SummaryCard
           label="Questions"
-          value={`${selectedQuestions}/${totalQuestions}`}
+          value={`${selectedQuestions}`}
         />
 
         <SummaryCard

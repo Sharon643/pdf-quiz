@@ -17,6 +17,7 @@ import type { QuestionBank } from "../types/questionBank";
 import { getQuestionBanks } from "../services/questionBank";
 import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
 import { getCurrentExam } from "../services/examService";
+import { getHistory } from "../services/historyService";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -28,6 +29,8 @@ export default function Dashboard() {
   const [currentExam, setCurrentExam] = useState<any>(null);
 
   const [loading, setLoading] = useState(true);
+
+  const [examsTaken, setExamsTaken] = useState(0);
 
   useEffect(() => {
     async function loadQuestionBank() {
@@ -50,6 +53,10 @@ export default function Dashboard() {
         if (examResponse.exists) {
           setCurrentExam(examResponse.exam);
         }
+
+        const historyResponse = await getHistory();
+
+        setExamsTaken(historyResponse.exams.length);
 
       } catch (error) {
         console.error(error);
@@ -105,7 +112,7 @@ export default function Dashboard() {
 
             <StatCard
               title="Exams Taken"
-              value={8}
+              value={examsTaken}
             />
 
             <StatCard
