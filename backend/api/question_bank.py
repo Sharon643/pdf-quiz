@@ -1,248 +1,450 @@
-import json
-from pathlib import Path
-
 from fastapi import APIRouter, HTTPException
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from database.database import SessionLocal
+from database.models import Question, QuestionBank
 
 from utils.question_bank import QuestionBankManager
-
 from services.answer_generator import AnswerGenerator
+
 
 router = APIRouter()
 
-EXTRACTED_DIR = Path("data/extracted")
+
+# --------------------------------------------------
+# Helpers
+# --------------------------------------------------
+
+def serialize_question(question: Question):
+
+    return {
+        "id": question.id,
+        "number": question.number,
+        "page": question.page,
+        "subject": question.subject,
+        "question": question.question_text,
+        "options": {
+            "A": question.option_a,
+            "B": question.option_b,
+            "C": question.option_c,
+            "D": question.option_d,
+        },
+        "correct_answer": question.correct_answer,
+        "answer_source": question.answer_source,
+        "confidence": question.answer_confidence,
+        "explanation": question.explanation,
+    }
 
 
-def load_questions():
+def get_bank_questions(
+    db: Session,
+    bank_id: str,
+):
 
-    manager = QuestionBankManager()
-
-    active_bank = manager.get_active_bank()
-
-    if active_bank is None:
-        raise HTTPException(
-            status_code=404,
-            detail="No active question bank found.",
+    statement = (
+        select(Question)
+        .where(
+            Question.question_bank_id
+            == bank_id
         )
-
-    json_file = (
-        EXTRACTED_DIR /
-        active_bank["jsonFile"]
     )
 
-    if not json_file.exists():
-        raise HTTPException(
-            status_code=404,
-            detail="Question bank file not found.",
-        )
+    return list(
+        db.scalars(statement).all()
+    )
 
-    with open(
-        json_file,
-        "r",
-        encoding="utf-8",
-    ) as f:
-        return active_bank, json.load(f)
 
+# --------------------------------------------------
+# Active Question Bank
+# --------------------------------------------------
 
 @router.get("/question-bank")
 def get_question_bank():
 
-    active_bank, questions = load_questions()
+    db = SessionLocal()
 
-    subjects = len(
-        {
-            q.get("subject")
-            for q in questions
-            if q.get("subject")
+    try:
+
+        manager = QuestionBankManager(db)
+
+        active_bank = (
+            manager.get_active_bank()
+        )
+
+        if active_bank is None:
+
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    "No active question "
+                    "bank found."
+                ),
+            )
+
+        questions = get_bank_questions(
+            db,
+            active_bank["id"],
+        )
+
+        subjects = len(
+            {
+                question.subject
+                for question in questions
+                if question.subject
+            }
+        )
+
+        return {
+            "id": active_bank["id"],
+            "fileName": active_bank["fileName"],
+            "questionCount": len(questions),
+            "subjects": subjects,
+            "uploadedAt": active_bank["uploadedAt"],
+            "lastModified": active_bank["lastModified"],
+            "active": active_bank["active"],
+            "hasQuestions": len(questions) > 0,
         }
-    )
 
-    return {
-        "id": active_bank["id"],
-        "fileName": active_bank["fileName"],
-        "questionCount": len(questions),
-        "subjects": subjects,
-        "uploadedAt": active_bank["uploadedAt"],
-        "lastModified": active_bank["lastModified"],
-        "active": active_bank["active"],
-        "hasQuestions": len(questions) > 0,
-    }
+    finally:
 
+        db.close()
+
+
+# --------------------------------------------------
+# Active Bank Questions
+# --------------------------------------------------
 
 @router.get("/question-bank/questions")
 def get_questions():
 
-    _, questions = load_questions()
+    db = SessionLocal()
 
-    return {
-        "count": len(questions),
-        "questions": [
-            {
-                "id": q.get("id"),
-                "number": q.get("number"),
-                "page": q.get("page"),
-                "subject": q.get("subject"),
-                "question": q.get("question"),
-                "options": q.get("options"),
-            }
-            for q in questions
-        ],
-    }
+    try:
 
+        manager = QuestionBankManager(db)
+
+        active_bank = (
+            manager.get_active_bank()
+        )
+
+        if active_bank is None:
+
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    "No active question "
+                    "bank found."
+                ),
+            )
+
+        questions = get_bank_questions(
+            db,
+            active_bank["id"],
+        )
+
+        return {
+            "count": len(questions),
+            "questions": [
+                serialize_question(question)
+                for question in questions
+            ],
+        }
+
+    finally:
+
+        db.close()
+
+
+# --------------------------------------------------
+# All Question Banks
+# --------------------------------------------------
 
 @router.get("/question-banks")
 def get_all_question_banks():
 
-    manager = QuestionBankManager()
+    db = SessionLocal()
 
-    return {
-        "count": len(manager.get_all_banks()),
-        "banks": manager.get_all_banks(),
-    }
+    try:
+
+        manager = QuestionBankManager(db)
+
+        banks = manager.get_all_banks()
+
+        return {
+            "count": len(banks),
+            "banks": banks,
+        }
+
+    finally:
+
+        db.close()
 
 
-@router.post("/question-banks/{bank_id}/select")
-def select_question_bank(bank_id: str):
+# --------------------------------------------------
+# Select Question Bank
+# --------------------------------------------------
 
-    manager = QuestionBankManager()
+@router.post(
+    "/question-banks/{bank_id}/select"
+)
+def select_question_bank(
+    bank_id: str,
+):
 
-    success = manager.set_active_bank(bank_id)
+    db = SessionLocal()
 
-    if not success:
-        raise HTTPException(
-            status_code=404,
-            detail="Question bank not found.",
+    try:
+
+        manager = QuestionBankManager(db)
+
+        success = (
+            manager.set_active_bank(
+                bank_id
+            )
         )
 
-    return {
-        "success": True,
-        "message": "Question bank selected successfully.",
-    }
+        if not success:
+
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    "Question bank "
+                    "not found."
+                ),
+            )
+
+        return {
+            "success": True,
+            "message": (
+                "Question bank selected "
+                "successfully."
+            ),
+        }
+
+    finally:
+
+        db.close()
 
 
-@router.delete("/question-banks/{bank_id}")
-def delete_question_bank(bank_id: str):
+# --------------------------------------------------
+# Delete Question Bank
+# --------------------------------------------------
 
-    manager = QuestionBankManager()
+@router.delete(
+    "/question-banks/{bank_id}"
+)
+def delete_question_bank(
+    bank_id: str,
+):
 
-    success = manager.delete_bank(bank_id)
+    db = SessionLocal()
 
-    if not success:
-        raise HTTPException(
-            status_code=404,
-            detail="Question bank not found.",
+    try:
+
+        manager = QuestionBankManager(db)
+
+        success = (
+            manager.delete_bank(
+                bank_id
+            )
         )
 
-    return {
-        "success": True,
-        "message": "Question bank deleted successfully.",
-    }
+        if not success:
 
-@router.get("/question-banks/{bank_id}/questions")
-def get_question_bank_questions(bank_id: str):
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    "Question bank "
+                    "not found."
+                ),
+            )
 
-    manager = QuestionBankManager()
+        return {
+            "success": True,
+            "message": (
+                "Question bank deleted "
+                "successfully."
+            ),
+        }
 
-    bank = None
+    finally:
 
-    for b in manager.get_all_banks():
-        if b["id"] == bank_id:
-            bank = b
-            break
+        db.close()
 
-    if bank is None:
-        raise HTTPException(
-            status_code=404,
-            detail="Question bank not found.",
+
+# --------------------------------------------------
+# Questions For Specific Bank
+# --------------------------------------------------
+
+@router.get(
+    "/question-banks/{bank_id}/questions"
+)
+def get_question_bank_questions(
+    bank_id: str,
+):
+
+    db = SessionLocal()
+
+    try:
+
+        bank = db.get(
+            QuestionBank,
+            bank_id,
         )
 
-    json_file = (
-        Path("data/extracted")
-        / bank["jsonFile"]
-    )
+        if bank is None:
 
-    if not json_file.exists():
-        raise HTTPException(
-            status_code=404,
-            detail="Question bank file not found.",
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    "Question bank "
+                    "not found."
+                ),
+            )
+
+        questions = get_bank_questions(
+            db,
+            bank_id,
         )
 
-    with open(
-        json_file,
-        "r",
-        encoding="utf-8",
-    ) as f:
-        questions = json.load(f)
+        return {
+            "count": len(questions),
+            "questions": [
+                serialize_question(question)
+                for question in questions
+            ],
+        }
 
-    result = []
+    finally:
 
-    for question in questions:
+        db.close()
 
-        result.append(
-            {
-                "id": question.get("id"),
-                "number": question.get("number"),
-                "page": question.get("page"),
-                "subject": question.get("subject"),
-                "question": question.get("question"),
-                "options": question.get("options"),
-            }
+
+# --------------------------------------------------
+# Generate AI Answers
+# --------------------------------------------------
+
+@router.post(
+    "/question-banks/{bank_id}/generate-answers"
+)
+def generate_answers(
+    bank_id: str,
+):
+
+    db = SessionLocal()
+
+    try:
+
+        bank = db.get(
+            QuestionBank,
+            bank_id,
         )
 
-    return {
-        "count": len(result),
-        "questions": result,
-    }
+        if bank is None:
 
-@router.post("/question-banks/{bank_id}/generate-answers")
-def generate_answers(bank_id: str):
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    "Question bank "
+                    "not found."
+                ),
+            )
 
-    manager = QuestionBankManager()
-
-    bank = manager.get_bank(bank_id)
-
-    if bank is None:
-        raise HTTPException(
-            status_code=404,
-            detail="Question bank not found.",
+        db_questions = (
+            get_bank_questions(
+                db,
+                bank_id,
+            )
         )
 
-    json_file = (
-        EXTRACTED_DIR /
-        bank["jsonFile"]
-    )
+        if not db_questions:
 
-    if not json_file.exists():
-        raise HTTPException(
-            status_code=404,
-            detail="Question bank file not found.",
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    "No questions found "
+                    "for this question bank."
+                ),
+            )
+
+        # Convert database models into
+        # the canonical format expected
+        # by AnswerGenerator.
+
+        questions = [
+            serialize_question(question)
+            for question in db_questions
+        ]
+
+        generator = (
+            AnswerGenerator()
         )
 
-    with open(
-        json_file,
-        "r",
-        encoding="utf-8",
-    ) as f:
-        questions = json.load(f)
-
-    generator = AnswerGenerator()
-
-    stats = generator.generate(questions)
-
-    with open(
-        json_file,
-        "w",
-        encoding="utf-8",
-    ) as f:
-        json.dump(
-            questions,
-            f,
-            indent=4,
-            ensure_ascii=False,
+        stats = generator.generate(
+            questions
         )
 
-    manager.update_modified(bank_id)
+        # Map generated answers back
+        # to database questions.
 
-    return {
-        "success": True,
-        **stats,
-    }
+        generated_map = {
+            question["id"]: question
+            for question in questions
+        }
+
+        for db_question in db_questions:
+
+            generated = (
+                generated_map.get(
+                    db_question.id
+                )
+            )
+
+            if generated is None:
+                continue
+
+            db_question.correct_answer = (
+                generated.get(
+                    "correct_answer"
+                )
+            )
+
+            db_question.answer_confidence = (
+                generated.get(
+                    "confidence"
+                )
+            )
+
+            db_question.explanation = (
+                generated.get(
+                    "explanation"
+                )
+            )
+
+            db_question.answer_source = (
+                generated.get(
+                    "answer_source"
+                )
+            )
+
+        db.commit()
+
+        return {
+            "success": True,
+            **stats,
+        }
+
+    except HTTPException:
+
+        raise
+
+    except Exception:
+
+        db.rollback()
+
+        raise
+
+    finally:
+
+        db.close()

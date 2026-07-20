@@ -1,110 +1,301 @@
-import json
-from pathlib import Path
+from sqlalchemy import select
+from sqlalchemy.orm import selectinload
+
+from database.database import SessionLocal
+from database.models import (
+    Exam,
+    ExamAnswer,
+    Question,
+    QuestionBank,
+)
 
 
 class ReviewService:
 
-    def __init__(self):
+    # ==================================================
+    # Complete Review Data
+    # ==================================================
 
-        self.session_dir = Path("data/exams/sessions")
-        self.key_dir = Path("data/exams/keys")
-        self.history_dir = Path("data/exams/history")
+    def get_review(
+        self,
+        exam_id: str,
+    ):
 
-    # --------------------------------------------------
-    # Complete review data for one exam
-    # --------------------------------------------------
+        db = SessionLocal()
 
-    def get_review(self, exam_id: str):
+        try:
 
-        session_file = (
-            self.session_dir /
-            f"{exam_id}.json"
-        )
+            # ------------------------------------------
+            # Load completed exam + answers
+            # ------------------------------------------
 
-        key_file = (
-            self.key_dir /
-            f"{exam_id}.json"
-        )
+            statement = (
+                select(Exam)
+                .options(
+                    selectinload(
+                        Exam.answers
+                    )
+                )
+                .where(
+                    Exam.id == exam_id,
+                    Exam.status == "completed",
+                )
+            )
 
-        history_file = (
-            self.history_dir /
-            f"{exam_id}.json"
-        )
+            exam = db.scalar(
+                statement
+            )
 
-        if (
-            not session_file.exists()
-            or not key_file.exists()
-            or not history_file.exists()
-        ):
-            return None
+            if exam is None:
+                return None
 
-        with open(
-            session_file,
-            "r",
-            encoding="utf-8",
-        ) as f:
-            session = json.load(f)
+            # ------------------------------------------
+            # Question Bank
+            # ------------------------------------------
 
-        with open(
-            key_file,
-            "r",
-            encoding="utf-8",
-        ) as f:
-            answer_key = json.load(f)
+            bank = db.get(
+                QuestionBank,
+                exam.question_bank_id,
+            )
 
-        with open(
-            history_file,
-            "r",
-            encoding="utf-8",
-        ) as f:
-            history = json.load(f)
+            # ------------------------------------------
+            # Preserve Exam Question Order
+            # ------------------------------------------
 
-        review_questions = []
+            answers_sorted = sorted(
+                exam.answers,
+                key=lambda answer:
+                    answer.position,
+            )
 
-        answers = session.get("answers", {})
+            question_ids = [
+                answer.question_id
+                for answer
+                in answers_sorted
+            ]
 
-        for index, question in enumerate(session["questions"]):
+            if question_ids:
 
-            question_id = question["id"]
+                questions = list(
+                    db.scalars(
+                        select(Question)
+                        .where(
+                            Question.id.in_(
+                                question_ids
+                            )
+                        )
+                    ).all()
+                )
 
-            user_answer = answers.get(
-                question_id,
-                {},
-            ).get("selectedOption")
+            else:
 
-            marked = answers.get(
-                question_id,
-                {},
-            ).get("markedForReview", False)
+                questions = []
 
-            key = answer_key[question_id]
+            question_map = {
+                question.id: question
+                for question in questions
+            }
 
-            review_questions.append({
-                "id": question_id,
-                "index": index,
-                "question": question["question"],
-                "options": question["options"],
-                "userAnswer": user_answer,
-                "correctAnswer": key["correctAnswer"],
-                "correctOption": key["correctOption"],
-                "marked": marked,
-                "explanation": key.get("explanation", ""),
+            # ------------------------------------------
+            # Build Review Questions
+            # ------------------------------------------
 
-                "isCorrect": (
-                    user_answer == key["correctAnswer"]
-                    if user_answer is not None
-                    else False
+            review_questions = []
+
+            for index, answer in enumerate(
+                answers_sorted
+            ):
+
+                question = (
+                    question_map.get(
+                        answer.question_id
+                    )
+                )
+
+                if question is None:
+                    continue
+
+                options = {
+                    "A":
+                        question.option_a,
+
+                    "B":
+                        question.option_b,
+
+                    "C":
+                        question.option_c,
+
+                    "D":
+                        question.option_d,
+                }
+
+                correct_answer = (
+                    question.correct_answer
+                )
+
+                correct_option = (
+                    options.get(
+                        correct_answer
+                    )
+                    if correct_answer
+                    else None
+                )
+
+                user_answer = (
+                    answer.selected_option
+                )
+
+                review_questions.append(
+                    {
+                        "id":
+                            question.id,
+
+                        "index":
+                            index,
+
+                        "question":
+                            question.question_text,
+
+                        "options":
+                            options,
+
+                        "userAnswer":
+                            user_answer,
+
+                        "correctAnswer":
+                            correct_answer,
+
+                        "correctOption":
+                            correct_option,
+
+                        "marked":
+                            answer.marked_for_review,
+
+                        "explanation":
+                            question.explanation
+                            or "",
+
+                        "isCorrect": (
+                            answer.is_correct
+                            is True
+                        ),
+
+                        "isSkipped": (
+                            user_answer
+                            is None
+                        ),
+                    }
+                )
+
+            # ------------------------------------------
+            # Calculate Summary
+            # ------------------------------------------
+
+            correct = sum(
+                1
+                for answer
+                in exam.answers
+                if answer.is_correct
+                is True
+            )
+
+            wrong = sum(
+                1
+                for answer
+                in exam.answers
+                if (
+                    answer.selected_option
+                    is not None
+                    and answer.is_correct
+                    is False
+                )
+            )
+
+            unanswered = sum(
+                1
+                for answer
+                in exam.answers
+                if answer.selected_option
+                is None
+            )
+
+            total = len(
+                exam.answers
+            )
+
+            # ------------------------------------------
+            # Summary
+            # ------------------------------------------
+
+            summary = {
+                "examId":
+                    exam.id,
+
+                "questionBank": (
+                    bank.file_name
+                    if bank
+                    else "Unknown"
                 ),
 
-                "isSkipped": user_answer is None,
-            })
+                "mode": (
+                    "Timed"
+                    if exam.timed
+                    else "Practice"
+                ),
 
-        return {
+                "questionCount":
+                    total,
 
-            "examId": exam_id,
+                "correct":
+                    correct,
 
-            "summary": history,
+                "wrong":
+                    wrong,
 
-            "questions": review_questions,
+                "unanswered":
+                    unanswered,
 
-        }
+                "percentage": (
+                    exam.percentage
+                    if exam.percentage
+                    is not None
+                    else 0
+                ),
+
+                "completedAt": (
+                    exam.completed_at.isoformat()
+                    if exam.completed_at
+                    else None
+                ),
+
+                "startedAt": (
+                    exam.started_at.isoformat()
+                    if exam.started_at
+                    else None
+                ),
+
+                "timed":
+                    exam.timed,
+
+                "durationMinutes":
+                    exam.duration_minutes,
+            }
+
+            # ------------------------------------------
+            # Final Response
+            # ------------------------------------------
+
+            return {
+                "examId":
+                    exam.id,
+
+                "summary":
+                    summary,
+
+                "questions":
+                    review_questions,
+            }
+
+        finally:
+
+            db.close()

@@ -1,4 +1,3 @@
-import json
 from statistics import mean
 
 from extractor.gemini_client import GeminiClient
@@ -9,20 +8,39 @@ class AnswerGenerator:
     BATCH_SIZE = 25
 
     def __init__(self):
+
         self.client = GeminiClient()
 
-    def _chunks(self, items):
-        for i in range(0, len(items), self.BATCH_SIZE):
-            yield items[i:i + self.BATCH_SIZE]
+    def _chunks(
+        self,
+        items,
+    ):
 
-    def generate(self, questions):
+        for i in range(
+            0,
+            len(items),
+            self.BATCH_SIZE,
+        ):
+
+            yield items[
+                i:i + self.BATCH_SIZE
+            ]
+
+    def generate(
+        self,
+        questions,
+    ):
 
         unanswered = [
-            q for q in questions
-            if not q.get("correct_answer")
+            question
+            for question in questions
+            if not question.get(
+                "correct_answer"
+            )
         ]
 
         if not unanswered:
+
             return {
                 "updated": 0,
                 "remaining": 0,
@@ -31,54 +49,119 @@ class AnswerGenerator:
 
         results = []
 
-        for batch in self._chunks(unanswered):
+        for batch in self._chunks(
+            unanswered
+        ):
 
-            generated = self.client.generate_answers(batch)
+            generated = (
+                self.client.generate_answers(
+                    batch
+                )
+            )
 
             if generated:
-                results.extend(generated)
+
+                results.extend(
+                    generated
+                )
+
+        # Only accept generated results
+        # that contain an ID.
 
         answer_map = {
             item["id"]: item
             for item in results
+            if item.get("id")
         }
 
         updated = 0
+
         confidences = []
 
         for question in questions:
 
-            result = answer_map.get(question["id"])
+            question_id = (
+                question.get("id")
+            )
+
+            if not question_id:
+                continue
+
+            result = (
+                answer_map.get(
+                    question_id
+                )
+            )
 
             if result is None:
                 continue
 
-            question["correct_answer"] = result.get("correct_answer")
-            question["confidence"] = result.get("confidence")
-            question["explanation"] = result.get("explanation", "")
-            question["answer_source"] = (
+            correct_answer = (
+                result.get(
+                    "correct_answer"
+                )
+            )
+
+            confidence = (
+                result.get(
+                    "confidence"
+                )
+            )
+
+            explanation = (
+                result.get(
+                    "explanation"
+                )
+            )
+
+            question[
+                "correct_answer"
+            ] = correct_answer
+
+            question[
+                "confidence"
+            ] = confidence
+
+            question[
+                "explanation"
+            ] = explanation or ""
+
+            question[
+                "answer_source"
+            ] = (
                 "ai"
-                if result.get("correct_answer")
+                if correct_answer
                 else "none"
             )
 
-            if result.get("confidence") is not None:
-                confidences.append(result["confidence"])
+            if confidence is not None:
 
-            if result.get("correct_answer"):
+                confidences.append(
+                    confidence
+                )
+
+            if correct_answer:
+
                 updated += 1
 
         remaining = sum(
             1
-            for q in questions
-            if not q.get("correct_answer")
+            for question in questions
+            if not question.get(
+                "correct_answer"
+            )
         )
 
         return {
             "updated": updated,
+
             "remaining": remaining,
+
             "average_confidence": (
-                round(mean(confidences), 2)
+                round(
+                    mean(confidences),
+                    2,
+                )
                 if confidences
                 else 0
             ),

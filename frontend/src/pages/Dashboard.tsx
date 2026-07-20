@@ -70,19 +70,22 @@ export default function Dashboard() {
   if (loading) {
     return <DashboardSkeleton />;
   }
-  const answered =
-    currentExam
-        ? Object.keys(currentExam.answers ?? {}).length
-        : 0;
+  const answered = currentExam
+    ? Object.values(
+        currentExam.answers ?? {}
+      ).filter(
+        (answer: any) =>
+          answer.selectedOption !== null &&
+          answer.selectedOption !== undefined
+      ).length
+    : 0;
 
   const progress =
-    currentExam
-        ? Math.round(
-              (answered /
-                  currentExam.questionCount) *
-                  100
-          )
-        : 0;
+    currentExam && currentExam.questionCount > 0
+      ? Math.round(
+          (answered / currentExam.questionCount) * 100
+        )
+      : 0;
 
   return (
     <main className="min-h-screen bg-zinc-950">

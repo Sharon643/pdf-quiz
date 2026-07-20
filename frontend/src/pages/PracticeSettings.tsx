@@ -142,7 +142,7 @@ export default function PracticeSettings() {
                   rounded-lg
                   border
                   border-zinc-700
-                  bg-zinc-950
+                  bg-zinc-900
                   px-4
                   py-3
                   text-white
@@ -180,7 +180,7 @@ export default function PracticeSettings() {
                   rounded-lg
                   border
                   border-zinc-700
-                  bg-zinc-950
+                  bg-zinc-900
                   px-4
                   py-3
                   text-white

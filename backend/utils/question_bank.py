@@ -1,197 +1,274 @@
-from pathlib import Path
 from datetime import datetime
-import json
-import uuid
 
-QUESTION_BANK_FILE = Path("data/extracted/question_bank.json")
-EXTRACTED_DIR = Path("data/extracted")
+from sqlalchemy import select, update
+from sqlalchemy.orm import Session
 
-QUESTION_BANK_FILE.parent.mkdir(parents=True, exist_ok=True)
-EXTRACTED_DIR.mkdir(parents=True, exist_ok=True)
+from database.database import SessionLocal
+from database.models import QuestionBank
 
 
 class QuestionBankManager:
 
-    def _load(self):
+    def __init__(self, db: Session | None = None):
+        self.external_db = db
+        self.db = db or SessionLocal()
 
-        if not QUESTION_BANK_FILE.exists():
-            return {
-                "activeBank": None,
-                "banks": [],
-            }
+    def close(self):
+        if not self.external_db:
+            self.db.close()
 
-        with open(
-            QUESTION_BANK_FILE,
-            "r",
-            encoding="utf-8",
-        ) as f:
-            return json.load(f)
+    def _serialize_bank(
+        self,
+        bank: QuestionBank,
+    ) -> dict:
 
-    def _save(self, data):
+        return {
+            "id": bank.id,
+            "fileName": bank.file_name,
 
-        with open(
-            QUESTION_BANK_FILE,
-            "w",
-            encoding="utf-8",
-        ) as f:
-            json.dump(
-                data,
-                f,
-                indent=4,
-            )
+            # Temporary compatibility with existing
+            # JSON-based services.
+            "jsonFile": f"{bank.id}.json",
+
+            "questionCount": bank.question_count,
+
+            "uploadedAt": (
+                bank.uploaded_at.isoformat()
+                if bank.uploaded_at
+                else None
+            ),
+
+            "lastModified": (
+                bank.uploaded_at.isoformat()
+                if bank.uploaded_at
+                else None
+            ),
+
+            "active": bank.active,
+        }
+
+    # --------------------------------------------------
+    # Create Question Bank
+    # --------------------------------------------------
 
     def create_bank(
         self,
         file_name: str,
         question_count: int,
-    ):
+        user_id: str | None = None,
+    ) -> dict:
 
-        data = self._load()
+        try:
 
-        now = datetime.now().isoformat()
+            # Only one active bank for now.
+            # Once authentication is added,
+            # this will be scoped by user_id.
 
-        bank_id = str(uuid.uuid4())
+            self.db.execute(
+                update(QuestionBank)
+                .values(active=False)
+            )
 
-        json_file = f"{bank_id}.json"
+            bank = QuestionBank(
+                user_id=user_id,
+                file_name=file_name,
+                question_count=question_count,
+                active=True,
+                uploaded_at=datetime.utcnow(),
+            )
 
-        for bank in data["banks"]:
-            bank["active"] = False
+            self.db.add(bank)
 
-        new_bank = {
-            "id": bank_id,
-            "fileName": file_name,
-            "jsonFile": json_file,
-            "questionCount": question_count,
-            "uploadedAt": now,
-            "lastModified": now,
-            "active": True,
-        }
+            self.db.commit()
 
-        data["banks"].append(new_bank)
+            self.db.refresh(bank)
 
-        data["activeBank"] = bank_id
+            return self._serialize_bank(
+                bank
+            )
 
-        self._save(data)
+        except Exception:
 
-        return new_bank
-    
-    def update_modified(self,bank_id: str,):
+            self.db.rollback()
 
-        data = self._load()
+            raise
 
-        now = datetime.now().isoformat()
+    # --------------------------------------------------
+    # Update Modified
+    # --------------------------------------------------
 
-        for bank in data["banks"]:
+    def update_modified(
+        self,
+        bank_id: str,
+    ) -> bool:
 
-            if bank["id"] == bank_id:
+        # The current database model does not yet have
+        # a last_modified column.
+        #
+        # Keep this method for API compatibility.
+        # We will add last_modified in a later migration
+        # if the frontend needs it independently.
 
-                bank["lastModified"] = now
+        bank = self.db.get(
+            QuestionBank,
+            bank_id,
+        )
 
-                self._save(data)
+        return bank is not None
 
-                return True
+    # --------------------------------------------------
+    # Get All Banks
+    # --------------------------------------------------
 
-        return False
+    def get_all_banks(self) -> list[dict]:
 
-    def get_all_banks(self):
+        statement = (
+            select(QuestionBank)
+            .order_by(
+                QuestionBank.uploaded_at.desc()
+            )
+        )
 
-        return self._load()["banks"]
+        banks = self.db.scalars(
+            statement
+        ).all()
+
+        return [
+            self._serialize_bank(bank)
+            for bank in banks
+        ]
+
+    # --------------------------------------------------
+    # Get Active Bank
+    # --------------------------------------------------
 
     def get_active_bank(self):
 
-        data = self._load()
+        statement = (
+            select(QuestionBank)
+            .where(
+                QuestionBank.active.is_(True)
+            )
+            .limit(1)
+        )
 
-        active = data.get("activeBank")
+        bank = self.db.scalar(
+            statement
+        )
 
-        if active is None:
+        if not bank:
             return None
 
-        for bank in data["banks"]:
+        return self._serialize_bank(
+            bank
+        )
 
-            if bank["id"] == active:
-                return bank
-
-        return None
+    # --------------------------------------------------
+    # Set Active Bank
+    # --------------------------------------------------
 
     def set_active_bank(
         self,
         bank_id: str,
-    ):
+    ) -> bool:
 
-        data = self._load()
+        try:
 
-        found = False
+            bank = self.db.get(
+                QuestionBank,
+                bank_id,
+            )
 
-        for bank in data["banks"]:
+            if not bank:
+                return False
 
-            if bank["id"] == bank_id:
+            self.db.execute(
+                update(QuestionBank)
+                .values(active=False)
+            )
 
-                bank["active"] = True
+            bank.active = True
 
-                found = True
+            self.db.commit()
 
-            else:
+            return True
 
-                bank["active"] = False
+        except Exception:
 
-        if not found:
-            return False
+            self.db.rollback()
 
-        data["activeBank"] = bank_id
+            raise
 
-        self._save(data)
-
-        return True
+    # --------------------------------------------------
+    # Delete Bank
+    # --------------------------------------------------
 
     def delete_bank(
         self,
         bank_id: str,
+    ) -> bool:
+
+        try:
+
+            bank = self.db.get(
+                QuestionBank,
+                bank_id,
+            )
+
+            if not bank:
+                return False
+
+            was_active = bank.active
+
+            self.db.delete(bank)
+
+            self.db.flush()
+
+            if was_active:
+
+                statement = (
+                    select(QuestionBank)
+                    .order_by(
+                        QuestionBank.uploaded_at.desc()
+                    )
+                    .limit(1)
+                )
+
+                next_bank = self.db.scalar(
+                    statement
+                )
+
+                if next_bank:
+
+                    next_bank.active = True
+
+            self.db.commit()
+
+            return True
+
+        except Exception:
+
+            self.db.rollback()
+
+            raise
+
+    # --------------------------------------------------
+    # Get One Bank
+    # --------------------------------------------------
+
+    def get_bank(
+        self,
+        bank_id: str,
     ):
 
-        data = self._load()
+        bank = self.db.get(
+            QuestionBank,
+            bank_id,
+        )
 
-        bank = None
+        if not bank:
+            return None
 
-        for b in data["banks"]:
-
-            if b["id"] == bank_id:
-                bank = b
-                break
-
-        if bank is None:
-            return False
-
-        json_path = EXTRACTED_DIR / bank["jsonFile"]
-
-        if json_path.exists():
-            json_path.unlink()
-
-        data["banks"] = [
-            b
-            for b in data["banks"]
-            if b["id"] != bank_id
-        ]
-
-        if data["activeBank"] == bank_id:
-
-            if data["banks"]:
-
-                data["banks"][0]["active"] = True
-
-                data["activeBank"] = data["banks"][0]["id"]
-
-            else:
-
-                data["activeBank"] = None
-
-        self._save(data)
-
-        return True
-    
-    def get_bank(self, bank_id: str):
-        for bank in self.get_all_banks():
-            if bank["id"] == bank_id:
-                return bank
-
-        return None
-    
+        return self._serialize_bank(
+            bank
+        )

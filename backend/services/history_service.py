@@ -1,88 +1,233 @@
-import json
-from pathlib import Path
+from sqlalchemy import select
+from sqlalchemy.orm import selectinload
+
+from database.database import SessionLocal
+from database.models import (
+    Exam,
+    QuestionBank,
+)
 
 
 class HistoryService:
 
-    def __init__(self):
+    # --------------------------------------------------
+    # Serialize completed exam
+    # --------------------------------------------------
 
-        self.history_dir = Path("data/exams/history")
-        self.history_dir.mkdir(
-            parents=True,
-            exist_ok=True,
+    def _serialize_exam(
+        self,
+        db,
+        exam: Exam,
+    ):
+
+        bank = db.get(
+            QuestionBank,
+            exam.question_bank_id,
         )
+
+        correct = 0
+        wrong = 0
+        unanswered = 0
+
+        for answer in exam.answers:
+
+            if answer.selected_option is None:
+                unanswered += 1
+
+            elif answer.is_correct is True:
+                correct += 1
+
+            else:
+                wrong += 1
+
+        return {
+            "examId": exam.id,
+
+            "questionBank": (
+                bank.file_name
+                if bank
+                else "Unknown"
+            ),
+
+            "mode": (
+                "Timed"
+                if exam.timed
+                else "Practice"
+            ),
+
+            "questionCount":
+                exam.question_count,
+
+            "correct":
+                correct,
+
+            "wrong":
+                wrong,
+
+            "unanswered":
+                unanswered,
+
+            "percentage": (
+                exam.percentage
+                if exam.percentage
+                is not None
+                else 0
+            ),
+
+            "completedAt": (
+                exam.completed_at.isoformat()
+                if exam.completed_at
+                else None
+            ),
+
+            "startedAt": (
+                exam.started_at.isoformat()
+                if exam.started_at
+                else None
+            ),
+
+            "timed":
+                exam.timed,
+
+            "durationMinutes":
+                exam.duration_minutes,
+        }
 
     # --------------------------------------------------
     # Return every completed exam
     # --------------------------------------------------
 
-    def get_history(self):
+    def get_history(
+        self,
+    ):
 
-        history = []
+        db = SessionLocal()
 
-        files = sorted(
-            self.history_dir.glob("*.json"),
-            key=lambda file: file.stat().st_mtime,
-            reverse=True,
-        )
+        try:
 
-        for file in files:
+            statement = (
+                select(Exam)
+                .options(
+                    selectinload(
+                        Exam.answers
+                    )
+                )
+                .where(
+                    Exam.status
+                    == "completed"
+                )
+                .order_by(
+                    Exam.completed_at.desc()
+                )
+            )
 
-            try:
+            exams = list(
+                db.scalars(
+                    statement
+                ).all()
+            )
 
-                with open(
-                    file,
-                    "r",
-                    encoding="utf-8",
-                ) as f:
+            return [
+                self._serialize_exam(
+                    db,
+                    exam,
+                )
+                for exam in exams
+            ]
 
-                    history.append(json.load(f))
+        finally:
 
-            except Exception:
-
-                continue
-
-        return history
+            db.close()
 
     # --------------------------------------------------
-    # Return one history entry
+    # Return one completed exam
     # --------------------------------------------------
 
-    def get_exam(self, exam_id: str):
+    def get_exam(
+        self,
+        exam_id: str,
+    ):
 
-        history_file = (
-            self.history_dir /
-            f"{exam_id}.json"
-        )
+        db = SessionLocal()
 
-        if not history_file.exists():
-            return None
+        try:
 
-        with open(
-            history_file,
-            "r",
-            encoding="utf-8",
-        ) as f:
+            statement = (
+                select(Exam)
+                .options(
+                    selectinload(
+                        Exam.answers
+                    )
+                )
+                .where(
+                    Exam.id
+                    == exam_id,
 
-            return json.load(f)
+                    Exam.status
+                    == "completed",
+                )
+            )
+
+            exam = db.scalar(
+                statement
+            )
+
+            if exam is None:
+                return None
+
+            return self._serialize_exam(
+                db,
+                exam,
+            )
+
+        finally:
+
+            db.close()
 
     # --------------------------------------------------
     # Delete history
     # --------------------------------------------------
 
-    def delete_exam(self, exam_id: str):
+    def delete_exam(
+        self,
+        exam_id: str,
+    ):
 
-        history_file = (
-            self.history_dir /
-            f"{exam_id}.json"
-        )
+        db = SessionLocal()
 
-        if not history_file.exists():
-            return False
+        try:
 
-        history_file.unlink()
+            exam = db.scalar(
+                select(Exam)
+                .where(
+                    Exam.id
+                    == exam_id,
 
-        return True
+                    Exam.status
+                    == "completed",
+                )
+            )
+
+            if exam is None:
+                return False
+
+            db.delete(
+                exam
+            )
+
+            db.commit()
+
+            return True
+
+        except Exception:
+
+            db.rollback()
+
+            raise
+
+        finally:
+
+            db.close()
 
     # --------------------------------------------------
     # Filter by mode
@@ -93,7 +238,9 @@ class HistoryService:
         mode: str,
     ):
 
-        history = self.get_history()
+        history = (
+            self.get_history()
+        )
 
         return [
             exam
@@ -111,12 +258,16 @@ class HistoryService:
         bank_name: str,
     ):
 
-        history = self.get_history()
+        history = (
+            self.get_history()
+        )
 
         return [
             exam
             for exam in history
-            if exam["questionBank"].lower()
+            if exam[
+                "questionBank"
+            ].lower()
             == bank_name.lower()
         ]
 
@@ -129,4 +280,43 @@ class HistoryService:
         limit: int = 5,
     ):
 
-        return self.get_history()[:limit]
+        db = SessionLocal()
+
+        try:
+
+            statement = (
+                select(Exam)
+                .options(
+                    selectinload(
+                        Exam.answers
+                    )
+                )
+                .where(
+                    Exam.status
+                    == "completed"
+                )
+                .order_by(
+                    Exam.completed_at.desc()
+                )
+                .limit(
+                    limit
+                )
+            )
+
+            exams = list(
+                db.scalars(
+                    statement
+                ).all()
+            )
+
+            return [
+                self._serialize_exam(
+                    db,
+                    exam,
+                )
+                for exam in exams
+            ]
+
+        finally:
+
+            db.close()

@@ -127,16 +127,35 @@ class Exporter:
 
         output_dir = os.path.dirname(output_file)
 
+        os.makedirs(
+            output_dir,
+            exist_ok=True,
+        )
+
+        # Collect IDs only from valid questions
+        # that actually have an ID.
         valid_ids = {
-            question["id"]
+            question.get("id")
             for question in valid_questions
+            if question.get("id") is not None
         }
 
-        invalid_questions = [
-            question
-            for question in all_questions
-            if question["id"] not in valid_ids
-        ]
+        invalid_questions = []
+
+        for question in all_questions:
+
+            question_id = question.get("id")
+
+            # Missing ID means the question did not
+            # satisfy the expected schema, so preserve
+            # it in invalid_questions.json instead of
+            # crashing the entire merge.
+            if question_id is None:
+                invalid_questions.append(question)
+                continue
+
+            if question_id not in valid_ids:
+                invalid_questions.append(question)
 
         with open(
             os.path.join(
@@ -173,7 +192,9 @@ class Exporter:
 
                 for error in errors:
 
-                    f.write(error + "\n")
+                    f.write(
+                        str(error) + "\n"
+                    )
 
     @staticmethod
     def _print_summary(

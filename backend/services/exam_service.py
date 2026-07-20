@@ -1,376 +1,780 @@
-import json
 import random
-import uuid
-from pathlib import Path
-from utils.exam_manager import ExamManager
-from utils.question_bank import QuestionBankManager
+
 from datetime import datetime, UTC
+
+from sqlalchemy import select
+from sqlalchemy.orm import selectinload
+
+from database.database import SessionLocal
+from database.models import (
+    Exam,
+    ExamAnswer,
+    Question,
+    QuestionBank,
+)
+
 
 class ExamService:
 
-    def __init__(self):
+    # ==================================================
+    # Helpers
+    # ==================================================
 
-        self.bank_manager = QuestionBankManager()
-
-        self.session_dir = Path("data/exams/sessions")
-        self.key_dir = Path("data/exams/keys")
-        self.history_dir = Path("data/exams/history")
-        self.history_dir.mkdir(parents=True, exist_ok=True)
-
-        self.session_dir.mkdir(parents=True, exist_ok=True)
-        self.key_dir.mkdir(parents=True, exist_ok=True)
-
-    def generate_exam(
-    self,
-    question_count: int,
-    timed: bool,
-    duration_minutes: int | None,
+    def _serialize_question(
+        self,
+        question: Question,
     ):
 
-        # -----------------------------
-        # Load Question Bank
-        # -----------------------------
+        return {
+            "id": question.id,
+            "number": question.number,
+            "page": question.page,
+            "subject": question.subject,
+            "question": question.question_text,
+            "options": {
+                "A": question.option_a,
+                "B": question.option_b,
+                "C": question.option_c,
+                "D": question.option_d,
+            },
+        }
 
-        active_bank = self.bank_manager.get_active_bank()
+    def _get_exam_with_answers(
+        self,
+        db,
+        exam_id: str,
+    ):
 
-        if active_bank is None:
-            raise ValueError("No active question bank found.")
-
-        question_bank = (
-            Path("data/extracted")
-            / active_bank["jsonFile"]
+        statement = (
+            select(Exam)
+            .options(
+                selectinload(
+                    Exam.answers
+                )
+            )
+            .where(
+                Exam.id == exam_id
+            )
         )
 
-        with open(
-            question_bank,
-            "r",
-            encoding="utf-8",
-        ) as f:
-            questions = json.load(f)
+        return db.scalar(
+            statement
+        )
 
-        random.shuffle(questions)
+    def _serialize_exam(
+        self,
+        db,
+        exam: Exam,
+    ):
 
-        selected = questions[: min(question_count, len(questions))]
-
-        exam_id = str(uuid.uuid4())
-
-        session_questions = []
-        answer_key = {}
-
-        # -----------------------------
-        # Build Session + Answer Key
-        # -----------------------------
-
-        for question in selected:
-
-            question_id = str(uuid.uuid4())
-
-            answer_key[question_id] = {
-                "correctAnswer": question.get("correct_answer"),
-                "correctOption": question.get("correct_option"),
-                "explanation": question.get("explanation", ""),
-            }
-
-            frontend_question = question.copy()
-
-            frontend_question.pop("correct_answer", None)
-            frontend_question.pop("correct_option", None)
-            frontend_question.pop("explanation", None)
-
-            frontend_question["id"] = question_id
-
-            session_questions.append(frontend_question)
-
-        # -----------------------------
-        # Exam Session
-        # -----------------------------
-
-        session = {
-            "examId": exam_id,
-
-            "questionBank": active_bank["fileName"],
-
-            "questionCount": len(session_questions),
-
-            "startedAt": datetime.now(UTC).isoformat(),
-
-            "timed": timed,
-            "durationMinutes": duration_minutes,
-
-            "questions": session_questions,
-            "answers": {},
-            "completed": False,
+        answer_map = {
+            answer.question_id: answer
+            for answer in exam.answers
         }
 
-        # -----------------------------
-        # Save Files
-        # -----------------------------
+        question_ids = list(
+            answer_map.keys()
+        )
 
-        session_file = self.session_dir / f"{exam_id}.json"
+        if question_ids:
 
-        key_file = self.key_dir / f"{exam_id}.json"
-
-        with open(
-            session_file,
-            "w",
-            encoding="utf-8",
-        ) as f:
-
-            json.dump(
-                session,
-                f,
-                indent=4,
-                ensure_ascii=False,
+            statement = (
+                select(Question)
+                .where(
+                    Question.id.in_(
+                        question_ids
+                    )
+                )
             )
 
-        with open(
-            key_file,
-            "w",
-            encoding="utf-8",
-        ) as f:
-
-            json.dump(
-                answer_key,
-                f,
-                indent=4,
-                ensure_ascii=False,
+            questions = list(
+                db.scalars(
+                    statement
+                ).all()
             )
-
-        return {
-            "success": True,
-            "examId": exam_id,
-            "questionCount": len(session_questions),
-            "questionBank": active_bank["fileName"],
-        }
-    
-
-    def get_exam(self, exam_id: str):
-
-        manager = ExamManager(exam_id)
-
-        session = manager.read_session()
-
-        if session is None:
-            return None
-
-        if (
-            session.get("timed")
-            and session.get("durationMinutes") is not None
-        ):
-
-            started = datetime.fromisoformat(
-                session["startedAt"]
-            )
-
-            now = datetime.now(UTC)
-
-            elapsed = (
-                now - started
-            ).total_seconds()
-
-            remaining = max(
-                0,
-                session["durationMinutes"] * 60 - int(elapsed),
-            )
-
-            session["remainingSeconds"] = remaining
 
         else:
 
-            session["remainingSeconds"] = None
+            questions = []
 
-        return session
-    
+        question_map = {
+            question.id: question
+            for question in questions
+        }
+
+        # Preserve the order stored by ExamAnswer.
+        # Current schema does not have a position
+        # column, so ordering falls back to question
+        # number for now.
+
+        questions.sort(
+            key=lambda question: (
+                question.number
+                if question.number is not None
+                else 0
+            )
+        )
+
+        serialized_questions = [
+            self._serialize_question(
+                question
+            )
+            for question in questions
+        ]
+
+        answers = {}
+
+        for answer in exam.answers:
+
+            answers[
+                answer.question_id
+            ] = {
+                "selectedOption":
+                    answer.selected_option,
+
+                "markedForReview":
+                    answer.marked_for_review,
+            }
+
+        remaining_seconds = None
+
+        if (
+            exam.timed
+            and exam.duration_minutes
+            is not None
+        ):
+
+            started = exam.started_at
+
+            # PostgreSQL may return a naive
+            # datetime depending on column config.
+            if started.tzinfo is None:
+
+                started = (
+                    started.replace(
+                        tzinfo=UTC
+                    )
+                )
+
+            elapsed = (
+                datetime.now(UTC)
+                - started
+            ).total_seconds()
+
+            remaining_seconds = max(
+                0,
+                exam.duration_minutes
+                * 60
+                - int(elapsed),
+            )
+
+        bank = db.get(
+            QuestionBank,
+            exam.question_bank_id,
+        )
+
+        return {
+            "examId": exam.id,
+
+            "questionBank": (
+                bank.file_name
+                if bank
+                else "Unknown"
+            ),
+
+            "questionCount":
+                exam.question_count,
+
+            "startedAt":
+                exam.started_at.isoformat(),
+
+            "timed":
+                exam.timed,
+
+            "durationMinutes":
+                exam.duration_minutes,
+
+            "questions":
+                serialized_questions,
+
+            "answers":
+                answers,
+
+            "completed":
+                exam.status
+                == "completed",
+
+            "remainingSeconds":
+                remaining_seconds,
+        }
+
+    # ==================================================
+    # Generate Exam
+    # ==================================================
+
+    def generate_exam(
+        self,
+        question_count: int,
+        timed: bool,
+        duration_minutes: int | None,
+    ):
+
+        db = SessionLocal()
+
+        try:
+
+            active_bank = db.scalar(
+                select(
+                    QuestionBank
+                )
+                .where(
+                    QuestionBank.active
+                    .is_(True)
+                )
+                .limit(1)
+            )
+
+            if active_bank is None:
+
+                raise ValueError(
+                    "No active question "
+                    "bank found."
+                )
+
+            questions = list(
+                db.scalars(
+                    select(
+                        Question
+                    )
+                    .where(
+                        Question
+                        .question_bank_id
+                        == active_bank.id
+                    )
+                ).all()
+            )
+
+            if not questions:
+
+                raise ValueError(
+                    "Question bank "
+                    "contains no questions."
+                )
+
+            random.shuffle(
+                questions
+            )
+
+            selected = questions[
+                :min(
+                    question_count,
+                    len(questions),
+                )
+            ]
+
+            exam = Exam(
+                question_bank_id=
+                    active_bank.id,
+
+                question_count=
+                    len(selected),
+
+                timed=timed,
+
+                duration_minutes=
+                    duration_minutes,
+
+                status="in_progress",
+
+                started_at=
+                    datetime.now(UTC),
+            )
+
+            db.add(
+                exam
+            )
+
+            db.flush()
+
+            # Create one ExamAnswer row
+            # per selected question.
+            #
+            # selected_option starts as NULL.
+
+            for position, question in enumerate(selected):
+
+                exam_answer = ExamAnswer(
+                    exam_id=exam.id,
+
+                    question_id=
+                        question.id,
+
+                    selected_option=None,
+
+                    is_correct=None,
+
+                    marked_for_review=False,
+
+                    position=position,
+                )
+
+                db.add(
+                    exam_answer
+                )
+
+            db.commit()
+
+            return {
+                "success": True,
+
+                "examId":
+                    exam.id,
+
+                "questionCount":
+                    len(selected),
+
+                "questionBank":
+                    active_bank.file_name,
+            }
+
+        except Exception:
+
+            db.rollback()
+
+            raise
+
+        finally:
+
+            db.close()
+
+    # ==================================================
+    # Get Exam
+    # ==================================================
+
+    def get_exam(
+        self,
+        exam_id: str,
+    ):
+
+        db = SessionLocal()
+
+        try:
+
+            exam = (
+                self._get_exam_with_answers(
+                    db,
+                    exam_id,
+                )
+            )
+
+            if exam is None:
+                return None
+
+            return self._serialize_exam(
+                db,
+                exam,
+            )
+
+        finally:
+
+            db.close()
+
+    # ==================================================
+    # Save Answer
+    # ==================================================
+
     def save_answer(
         self,
         exam_id: str,
         question_id: str,
         selected_option: str | None,
     ):
-        manager = ExamManager(exam_id)
 
-        session = manager.read_session()
+        db = SessionLocal()
 
-        if session is None:
-            return None
+        try:
 
-        valid_question_ids = {
-            question["id"]
-            for question in session["questions"]
-        }
-
-        if question_id not in valid_question_ids:
-            raise ValueError("Invalid question ID.")
-
-        return manager.update_answer(
-            question_id,
-            selected_option,
-        )
-    
-    def mark_for_review(
-    self,
-    exam_id: str,
-    question_id: str,
-    marked: bool,
-):
-
-        manager = ExamManager(exam_id)
-
-        return manager.mark_for_review(
-            question_id,
-            marked,
-        )
-    
-    def submit_exam(self, exam_id: str):
-
-        manager = ExamManager(exam_id)
-
-        session = manager.read_session()
-        answer_key = manager.read_answer_key()
-
-        if session is None or answer_key is None:
-            return None
-
-        correct = 0
-        wrong = 0
-        unanswered = 0
-
-        answers = session.get("answers", {})
-
-        for question_id, key in answer_key.items():
-
-            user_answer = answers.get(question_id, {}).get("selectedOption")
-
-            if user_answer is None:
-                unanswered += 1
-
-            elif user_answer == key["correctAnswer"]:
-                correct += 1
-
-            else:
-                wrong += 1
-
-        total = len(answer_key)
-
-        percentage = round((correct / total) * 100, 2) if total else 0
-        self.save_exam_history(
-                session,
-                correct,
-                wrong,
-                unanswered,
-                percentage,
+            exam = db.get(
+                Exam,
+                exam_id,
             )
 
-        session["completed"] = True
+            if exam is None:
+                return None
 
-        manager.save_session(session)
+            if exam.status == "completed":
 
-        return {
-            "success": True,
+                raise ValueError(
+                    "Exam is already completed."
+                )
 
-            "examId": session["examId"],
+            answer = db.scalar(
+                select(
+                    ExamAnswer
+                )
+                .where(
+                    ExamAnswer.exam_id
+                    == exam_id,
 
-            "score": correct,
+                    ExamAnswer.question_id
+                    == question_id,
+                )
+            )
 
-            "totalQuestions": total,
+            if answer is None:
 
-            "correctAnswers": correct,
+                raise ValueError(
+                    "Invalid question ID."
+                )
 
-            "wrongAnswers": wrong,
+            answer.selected_option = (
+                selected_option
+            )
 
-            "unanswered": unanswered,
+            db.commit()
 
-            "percentage": percentage,
-        }
-    
+            return True
 
-    def get_current_exam(self):
+        except Exception:
 
-        for session_file in sorted(
-            self.session_dir.glob("*.json"),
-            reverse=True,
-        ):
+            db.rollback()
 
-            with open(
-                session_file,
-                "r",
-                encoding="utf-8",
-            ) as f:
+            raise
 
-                session = json.load(f)
+        finally:
 
-            if not session.get("completed", False):
-                return session
+            db.close()
 
-        return None
-    
+    # ==================================================
+    # Mark For Review
+    # ==================================================
 
-    def has_unfinished_exam(self):
+    def mark_for_review(
+        self,
+        exam_id: str,
+        question_id: str,
+        marked: bool,
+    ):
+
+        db = SessionLocal()
+
+        try:
+
+            answer = db.scalar(
+                select(
+                    ExamAnswer
+                )
+                .where(
+                    ExamAnswer.exam_id
+                    == exam_id,
+
+                    ExamAnswer.question_id
+                    == question_id,
+                )
+            )
+
+            if answer is None:
+                return None
+
+            answer.marked_for_review = (
+                marked
+            )
+
+            db.commit()
+
+            return True
+
+        except Exception:
+
+            db.rollback()
+
+            raise
+
+        finally:
+
+            db.close()
+
+    # ==================================================
+    # Submit Exam
+    # ==================================================
+
+    def submit_exam(
+        self,
+        exam_id: str,
+    ):
+
+        db = SessionLocal()
+
+        try:
+
+            exam = (
+                self._get_exam_with_answers(
+                    db,
+                    exam_id,
+                )
+            )
+
+            if exam is None:
+                return None
+
+            correct = 0
+            wrong = 0
+            unanswered = 0
+
+            for answer in exam.answers:
+
+                question = db.get(
+                    Question,
+                    answer.question_id,
+                )
+
+                if question is None:
+
+                    unanswered += 1
+                    continue
+
+                if (
+                    answer.selected_option
+                    is None
+                ):
+
+                    unanswered += 1
+
+                    answer.is_correct = (
+                        None
+                    )
+
+                elif (
+                    answer.selected_option
+                    == question.correct_answer
+                ):
+
+                    correct += 1
+
+                    answer.is_correct = (
+                        True
+                    )
+
+                else:
+
+                    wrong += 1
+
+                    answer.is_correct = (
+                        False
+                    )
+
+            total = len(
+                exam.answers
+            )
+
+            percentage = (
+                round(
+                    (
+                        correct
+                        / total
+                    )
+                    * 100,
+                    2,
+                )
+                if total
+                else 0
+            )
+
+            exam.score = correct
+
+            exam.percentage = (
+                percentage
+            )
+
+            exam.status = (
+                "completed"
+            )
+
+            exam.completed_at = (
+                datetime.now(UTC)
+            )
+
+            db.commit()
+
+            return {
+                "success": True,
+
+                "examId":
+                    exam.id,
+
+                "score":
+                    correct,
+
+                "totalQuestions":
+                    total,
+
+                "correctAnswers":
+                    correct,
+
+                "wrongAnswers":
+                    wrong,
+
+                "unanswered":
+                    unanswered,
+
+                "percentage":
+                    percentage,
+            }
+
+        except Exception:
+
+            db.rollback()
+
+            raise
+
+        finally:
+
+            db.close()
+
+    # ==================================================
+    # Current Exam
+    # ==================================================
+
+    def get_current_exam(
+        self,
+    ):
+
+        db = SessionLocal()
+
+        try:
+
+            statement = (
+                select(
+                    Exam
+                )
+                .options(
+                    selectinload(
+                        Exam.answers
+                    )
+                )
+                .where(
+                    Exam.status
+                    == "in_progress"
+                )
+                .order_by(
+                    Exam.started_at.desc()
+                )
+                .limit(1)
+            )
+
+            exam = db.scalar(
+                statement
+            )
+
+            if exam is None:
+                return None
+
+            return self._serialize_exam(
+                db,
+                exam,
+            )
+
+        finally:
+
+            db.close()
+
+    # ==================================================
+    # Unfinished Exam
+    # ==================================================
+
+    def has_unfinished_exam(
+        self,
+    ):
 
         exam = self.get_current_exam()
 
         if exam is None:
             return None
 
-        return {
-            "examId": exam["examId"],
-            "questionCount": exam["questionCount"],
-            "timed": exam["timed"],
-            "startedAt": exam["startedAt"],
-        }
-    
-    def delete_exam(self, exam_id: str):
-
-        manager = ExamManager(exam_id)
-
-        if manager.session_file.exists():
-            manager.session_file.unlink()
-
-        if manager.key_file.exists():
-            manager.key_file.unlink()
-
-        return {
-            "success": True,
-        }
-    
-    def save_exam_history(
-    self,
-    session: dict,
-    correct: int,
-    wrong: int,
-    unanswered: int,
-    percentage: float,
-):
-
-        history = {
-            "examId": session["examId"],
-            "questionBank": session.get("questionBank", "Unknown"),
-            "mode": "Timed" if session.get("timed") else "Practice",
-            "questionCount": session["questionCount"],
-            "correct": correct,
-            "wrong": wrong,
-            "unanswered": unanswered,
-            "percentage": percentage,
-            "completedAt": datetime.now(UTC).isoformat(),
-            "startedAt": session["startedAt"],
-            "timed": session["timed"],
-            "durationMinutes": session.get("durationMinutes"),
-        }
-
-        history_file = (
-            self.history_dir /
-            f"{session['examId']}.json"
+        answers = exam.get(
+            "answers",
+            {}
         )
 
-        with open(
-            history_file,
-            "w",
-            encoding="utf-8",
-        ) as f:
-
-            json.dump(
-                history,
-                f,
-                indent=4,
-                ensure_ascii=False,
+        answered_count = sum(
+            1
+            for answer in answers.values()
+            if answer.get(
+                "selectedOption"
             )
+            is not None
+        )
+
+        question_count = exam[
+            "questionCount"
+        ]
+
+        progress = (
+            round(
+                answered_count
+                / question_count
+                * 100
+            )
+            if question_count > 0
+            else 0
+        )
+
+        return {
+            "examId":
+                exam["examId"],
+
+            "questionCount":
+                question_count,
+
+            "answeredCount":
+                answered_count,
+
+            "progress":
+                progress,
+
+            "timed":
+                exam["timed"],
+
+            "startedAt":
+                exam["startedAt"],
+        }
+
+    # ==================================================
+    # Delete Exam
+    # ==================================================
+
+    def delete_exam(
+        self,
+        exam_id: str,
+    ):
+
+        db = SessionLocal()
+
+        try:
+
+            exam = db.get(
+                Exam,
+                exam_id,
+            )
+
+            if exam is not None:
+
+                db.delete(
+                    exam
+                )
+
+                db.commit()
+
+            return {
+                "success": True,
+            }
+
+        except Exception:
+
+            db.rollback()
+
+            raise
+
+        finally:
+
+            db.close()
