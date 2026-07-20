@@ -28,3 +28,6 @@ backend/progress
 archives/
 
 node_modules/
+
+backend/alembic
+backend/alembic.ini
