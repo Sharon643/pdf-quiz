@@ -8,7 +8,7 @@ from api.exam import router as exam_router
 from api import history
 from api import review
 from api.practice import router as practice_router
-
+from api.auth import router as auth_router
 
 
 
@@ -26,6 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(auth_router)
 app.include_router(question_bank_router)
 app.include_router(extraction_router)
 app.include_router(progress_router)

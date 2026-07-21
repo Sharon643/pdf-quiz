@@ -19,6 +19,8 @@ class ExtractionService:
         self,
         pdf_path: Path,
         job_id: str,
+        user_id: str,
+        original_file_name: str,
     ) -> dict:
 
         progress = ProgressManager(
@@ -92,8 +94,9 @@ class ExtractionService:
             # ----------------------------------------------
 
             bank = manager.create_bank(
-                file_name=pdf_path.name,
+                file_name=original_file_name,
                 question_count=question_count,
+                user_id=user_id,
             )
 
             # ----------------------------------------------

@@ -1,4 +1,4 @@
-import { LayoutDashboard, Settings } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
 
 export default function DashboardHeader() {
   return (
@@ -15,24 +15,6 @@ export default function DashboardHeader() {
 
         </div>
       </div>
-
-      <button
-        className="
-          flex
-          h-10
-          w-10
-          items-center
-          justify-center
-          rounded-lg
-          border
-          border-zinc-800
-          bg-zinc-900
-          transition-colors
-          hover:bg-zinc-800
-        "
-      >
-        <Settings size={18} />
-      </button>
     </header>
   );
 }

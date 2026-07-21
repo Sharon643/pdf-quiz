@@ -13,6 +13,8 @@ import Review from "./pages/Review";
 import Practice from "./pages/Practice"
 import PracticeSettings from "./pages/PracticeSettings";
 import PracticeResult from "./pages/PracticeResults";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 
 function App() {
@@ -21,6 +23,15 @@ function App() {
       <Toaster richColors position="top-right" />
 
       <Routes>
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+
+        <Route
+          path="/register"
+          element={<Register />}
+        />
         <Route
           path="/"
           element={<Dashboard />}

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+
 import {
   Upload,
   ClipboardList,
   Brain,
   RotateCcw,
 } from "lucide-react";
+
 import { useNavigate } from "react-router-dom";
 
 import DashboardHeader from "../components/dashboard/DashboardHeader";
@@ -12,206 +14,501 @@ import ContinueCard from "../components/dashboard/ContinueCard";
 import QuestionBankCard from "../components/dashboard/QuestionBankCard";
 import QuickActionCard from "../components/dashboard/QuickActionCard";
 import StatCard from "../components/dashboard/StatCard";
+import UserMenu from "../components/UserMenu";
+import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
 
 import type { QuestionBank } from "../types/questionBank";
+
 import { getQuestionBanks } from "../services/questionBank";
-import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
 import { getCurrentExam } from "../services/examService";
 import { getHistory } from "../services/historyService";
+
+import { useAuth } from "../context/AuthContext";
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
 
-  const [questionBanks, setQuestionBanks] = useState<QuestionBank[]>([]);
+  const { user } = useAuth();
 
-  const [activeBank, setActiveBank] = useState<QuestionBank | null>(null);
+  const [questionBanks, setQuestionBanks] =
+    useState<QuestionBank[]>([]);
 
-  const [currentExam, setCurrentExam] = useState<any>(null);
+  const [activeBank, setActiveBank] =
+    useState<QuestionBank | null>(null);
 
-  const [loading, setLoading] = useState(true);
+  const [currentExam, setCurrentExam] =
+    useState<any>(null);
 
-  const [examsTaken, setExamsTaken] = useState(0);
+  const [loading, setLoading] =
+    useState(true);
+
+  const [examsTaken, setExamsTaken] =
+    useState(0);
+
+  // --------------------------------------------------
+  // Load Dashboard Data
+  // --------------------------------------------------
 
   useEffect(() => {
-    async function loadQuestionBank() {
+    async function loadDashboard() {
       try {
 
-        const data = await getQuestionBanks();
+        // Question Banks
 
-        setQuestionBanks(data.banks);
+        const data =
+          await getQuestionBanks();
+
+        setQuestionBanks(
+          data.banks
+        );
 
         const active =
           data.banks.find(
-            (bank: QuestionBank) => bank.active
+            (bank: QuestionBank) =>
+              bank.active
           ) ?? null;
 
-        setActiveBank(active);
+        setActiveBank(
+          active
+        );
 
-        // NEW CODE
-        const examResponse = await getCurrentExam();
 
-        if (examResponse.exists) {
-          setCurrentExam(examResponse.exam);
+        // Current Exam
+
+        const examResponse =
+          await getCurrentExam();
+
+        if (
+          examResponse.exists
+        ) {
+          setCurrentExam(
+            examResponse.exam
+          );
+        } else {
+          setCurrentExam(
+            null
+          );
         }
 
-        const historyResponse = await getHistory();
 
-        setExamsTaken(historyResponse.exams.length);
+        // Exam History
+
+        const historyResponse =
+          await getHistory();
+
+        setExamsTaken(
+          historyResponse.exams.length
+        );
 
       } catch (error) {
-        console.error(error);
+
+        console.error(
+          "Failed to load dashboard:",
+          error
+        );
+
       } finally {
+
         setLoading(false);
+
       }
     }
-    loadQuestionBank();
+
+    loadDashboard();
+
   }, []);
 
+
+  // --------------------------------------------------
+  // Loading
+  // --------------------------------------------------
+
   if (loading) {
-    return <DashboardSkeleton />;
+    return (
+      <DashboardSkeleton />
+    );
   }
-  const answered = currentExam
-    ? Object.values(
-        currentExam.answers ?? {}
-      ).filter(
-        (answer: any) =>
-          answer.selectedOption !== null &&
-          answer.selectedOption !== undefined
-      ).length
-    : 0;
+
+
+  // --------------------------------------------------
+  // Current Exam Progress
+  // --------------------------------------------------
+
+  const answered =
+    currentExam
+      ? Object.values(
+          currentExam.answers ?? {}
+        ).filter(
+          (answer: any) =>
+            answer.selectedOption !== null &&
+            answer.selectedOption !== undefined
+        ).length
+      : 0;
+
 
   const progress =
-    currentExam && currentExam.questionCount > 0
+    currentExam &&
+    currentExam.questionCount > 0
+
       ? Math.round(
-          (answered / currentExam.questionCount) * 100
+          (
+            answered /
+            currentExam.questionCount
+          ) * 100
         )
+
       : 0;
+
+
+  // --------------------------------------------------
+  // User
+  // --------------------------------------------------
+
+  const userName =
+    user?.user_metadata?.name ||
+    "there";
+
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
 
   return (
     <main className="min-h-screen bg-zinc-950">
-      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-8 py-8">
 
-        <DashboardHeader />
+      <div
+        className="
+          mx-auto
+          flex
+          max-w-7xl
+          flex-col
+          gap-10
+          px-8
+          py-8
+        "
+      >
 
-        {/* Welcome */}
+        {/* ==================================================
+            Header
+        ================================================== */}
+
+        <div
+          className="
+            flex
+            items-center
+            justify-between
+            gap-4
+          "
+        >
+
+          <DashboardHeader />
+
+          <UserMenu />
+
+        </div>
+
+
+        {/* ==================================================
+            Welcome
+        ================================================== */}
+
         <section>
-          <h2 className="text-4xl font-semibold text-white">
-            Welcome back.
+
+          <h2
+            className="
+              text-4xl
+              font-semibold
+              text-white
+            "
+          >
+            Welcome back, {userName}.
           </h2>
 
-          <p className="mt-2 text-zinc-400">
+          <p
+            className="
+              mt-2
+              text-zinc-400
+            "
+          >
             Continue your preparation and build momentum.
           </p>
+
         </section>
 
-        {/* Statistics */}
+
+        {/* ==================================================
+            Statistics
+        ================================================== */}
+
         <section>
-          <div className="grid gap-6 md:grid-cols-3">
+
+          <div
+            className="
+              grid
+              gap-6
+              md:grid-cols-3
+            "
+          >
 
             <StatCard
               title="Questions"
-              value={activeBank?.questionCount ?? 0}
+              value={
+                activeBank?.questionCount ??
+                0
+              }
             />
 
             <StatCard
               title="Exams Taken"
-              value={examsTaken}
+              value={
+                examsTaken
+              }
             />
 
             <StatCard
               title="Question Banks"
-              value={questionBanks.length}
+              value={
+                questionBanks.length
+              }
             />
 
           </div>
+
         </section>
 
-        {/* Continue + Question Bank */}
+
+        {/* ==================================================
+            Continue + Question Bank
+        ================================================== */}
+
         <section>
-          <div className="grid gap-6 lg:grid-cols-2">
+
+          <div
+            className="
+              grid
+              gap-6
+              lg:grid-cols-2
+            "
+          >
 
             <ContinueCard
-                title={
-                    currentExam
-                        ? "Continue Exam"
-                        : "No Active Exam"
-                }
-                questionCount={
-                    currentExam?.questionCount ?? 0
-                }
-                progress={progress}
-                lastStudied={
-                    currentExam
-                        ? new Date(
-                              currentExam.startedAt
-                          ).toLocaleDateString()
-                        : "N/A"
-                }
-                onResume={() =>
-                    currentExam
-                        ? navigate(
-                              `/exam/${currentExam.examId}`
-                          )
-                        : navigate("/exam-settings")
-                }
-            />
 
-            <QuestionBankCard
-              fileName={activeBank?.fileName ?? "No Question Bank"}
-              questionCount={activeBank?.questionCount ?? 0}
-              uploadedAt={
-                activeBank?.uploadedAt
-                  ? new Date(activeBank.uploadedAt).toLocaleDateString("en-GB")
+              title={
+                currentExam
+                  ? "Continue Exam"
+                  : "No Active Exam"
+              }
+
+              questionCount={
+                currentExam?.questionCount ??
+                0
+              }
+
+              progress={
+                progress
+              }
+
+              lastStudied={
+                currentExam
+
+                  ? new Date(
+                      currentExam.startedAt
+                    ).toLocaleDateString()
+
                   : "N/A"
               }
-              onManage={() => navigate("/question-bank")}
-              onUpload={() => navigate("/")}
+
+              onResume={() =>
+                currentExam
+
+                  ? navigate(
+                      `/exam/${currentExam.examId}`
+                    )
+
+                  : navigate(
+                      "/exam-settings"
+                    )
+              }
+
+            />
+
+
+            <QuestionBankCard
+
+              fileName={
+                activeBank?.fileName ??
+                "No Question Bank"
+              }
+
+              questionCount={
+                activeBank?.questionCount ??
+                0
+              }
+
+              uploadedAt={
+                activeBank?.uploadedAt
+
+                  ? new Date(
+                      activeBank.uploadedAt
+                    ).toLocaleDateString(
+                      "en-GB"
+                    )
+
+                  : "N/A"
+              }
+
+              onManage={() =>
+                navigate(
+                  "/question-bank"
+                )
+              }
+
+              onUpload={() =>
+                navigate(
+                  "/upload"
+                )
+              }
+
             />
 
           </div>
+
         </section>
 
-        {/* Get Started */}
+
+        {/* ==================================================
+            Get Started
+        ================================================== */}
+
         <section>
 
           <div className="mb-6">
-            <h2 className="text-xl font-semibold text-white">
+
+            <h2
+              className="
+                text-xl
+                font-semibold
+                text-white
+              "
+            >
               Get Started
             </h2>
 
-            <p className="mt-2 text-zinc-400">
+            <p
+              className="
+                mt-2
+                text-zinc-400
+              "
+            >
               Choose how you'd like to continue learning.
             </p>
+
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+          <div
+            className="
+              grid
+              gap-6
+              md:grid-cols-2
+              xl:grid-cols-4
+            "
+          >
 
             <QuickActionCard
+
               title="Upload PDF"
-              description="Import questions into your question bank."
-              icon={<Upload size={22} className="text-zinc-400" />}
-              onClick={() => navigate("/upload")}
+
+              description="
+                Import questions into your question bank.
+              "
+
+              icon={
+                <Upload
+                  size={22}
+                  className="text-zinc-400"
+                />
+              }
+
+              onClick={() =>
+                navigate(
+                  "/upload"
+                )
+              }
+
             />
 
+
             <QuickActionCard
+
               title="Start Exam"
-              description="Simulate a real timed examination."
-              icon={<ClipboardList size={22} className="text-zinc-400" />}
-              onClick={() => navigate("/exam-settings")}
+
+              description="
+                Simulate a real timed examination.
+              "
+
+              icon={
+                <ClipboardList
+                  size={22}
+                  className="text-zinc-400"
+                />
+              }
+
+              onClick={() =>
+                navigate(
+                  "/exam-settings"
+                )
+              }
+
             />
 
+
             <QuickActionCard
+
               title="Practice"
-              description="Practice with instant feedback."
-              icon={<Brain size={22} className="text-zinc-400" />}
-              onClick={() => navigate("/practice/settings")}
+
+              description="
+                Practice with instant feedback.
+              "
+
+              icon={
+                <Brain
+                  size={22}
+                  className="text-zinc-400"
+                />
+              }
+
+              onClick={() =>
+                navigate(
+                  "/practice/settings"
+                )
+              }
+
             />
 
+
             <QuickActionCard
+
               title="Exam History"
-              description="Review previous exams."
-              icon={<RotateCcw size={22} className="text-zinc-400" />}
-              onClick={() => navigate("/history")}
+
+              description="
+                Review previous exams.
+              "
+
+              icon={
+                <RotateCcw
+                  size={22}
+                  className="text-zinc-400"
+                />
+              }
+
+              onClick={() =>
+                navigate(
+                  "/history"
+                )
+              }
+
             />
 
           </div>
@@ -219,6 +516,7 @@ export default function Dashboard() {
         </section>
 
       </div>
+
     </main>
   );
 }

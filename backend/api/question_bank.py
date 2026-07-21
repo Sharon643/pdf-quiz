@@ -1,4 +1,12 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import (
+    APIRouter,
+    HTTPException,
+    Depends,
+)
+
+from auth.dependencies import (
+    get_current_user,
+)
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -60,7 +68,11 @@ def get_bank_questions(
 # --------------------------------------------------
 
 @router.get("/question-bank")
-def get_question_bank():
+def get_question_bank(
+    current_user=Depends(
+        get_current_user
+    ),
+):
 
     db = SessionLocal()
 
@@ -69,7 +81,9 @@ def get_question_bank():
         manager = QuestionBankManager(db)
 
         active_bank = (
-            manager.get_active_bank()
+            manager.get_active_bank(
+                current_user["id"]
+            )
         )
 
         if active_bank is None:
@@ -116,7 +130,11 @@ def get_question_bank():
 # --------------------------------------------------
 
 @router.get("/question-bank/questions")
-def get_questions():
+def get_questions(
+    current_user=Depends(
+        get_current_user
+    ),
+):
 
     db = SessionLocal()
 
@@ -125,7 +143,9 @@ def get_questions():
         manager = QuestionBankManager(db)
 
         active_bank = (
-            manager.get_active_bank()
+            manager.get_active_bank(
+                current_user["id"]
+            )
         )
 
         if active_bank is None:
@@ -161,7 +181,11 @@ def get_questions():
 # --------------------------------------------------
 
 @router.get("/question-banks")
-def get_all_question_banks():
+def get_all_question_banks(
+    current_user=Depends(
+        get_current_user
+    ),
+):
 
     db = SessionLocal()
 
@@ -169,7 +193,7 @@ def get_all_question_banks():
 
         manager = QuestionBankManager(db)
 
-        banks = manager.get_all_banks()
+        banks = manager.get_all_banks(current_user["id"])
 
         return {
             "count": len(banks),
@@ -190,6 +214,10 @@ def get_all_question_banks():
 )
 def select_question_bank(
     bank_id: str,
+
+    current_user=Depends(
+        get_current_user
+    ),
 ):
 
     db = SessionLocal()
@@ -200,9 +228,11 @@ def select_question_bank(
 
         success = (
             manager.set_active_bank(
-                bank_id
+                bank_id,
+                current_user["id"],
             )
         )
+        
 
         if not success:
 
@@ -236,6 +266,10 @@ def select_question_bank(
 )
 def delete_question_bank(
     bank_id: str,
+
+    current_user=Depends(
+        get_current_user
+    ),
 ):
 
     db = SessionLocal()
@@ -246,9 +280,11 @@ def delete_question_bank(
 
         success = (
             manager.delete_bank(
-                bank_id
+                bank_id,
+                current_user["id"],
             )
         )
+        
 
         if not success:
 
@@ -282,15 +318,25 @@ def delete_question_bank(
 )
 def get_question_bank_questions(
     bank_id: str,
+
+    current_user=Depends(
+        get_current_user
+    ),
 ):
 
     db = SessionLocal()
 
     try:
 
-        bank = db.get(
-            QuestionBank,
-            bank_id,
+        bank = db.scalar(
+            select(QuestionBank)
+            .where(
+                QuestionBank.id
+                == bank_id,
+
+                QuestionBank.user_id
+                == current_user["id"],
+            )
         )
 
         if bank is None:
@@ -330,6 +376,10 @@ def get_question_bank_questions(
 )
 def generate_answers(
     bank_id: str,
+
+    current_user=Depends(
+        get_current_user
+    ),
 ):
 
     db = SessionLocal()
