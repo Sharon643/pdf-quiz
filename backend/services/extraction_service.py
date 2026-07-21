@@ -1,6 +1,5 @@
 from pathlib import Path
 import json
-import shutil
 
 from database.database import SessionLocal
 from database.models import Question
@@ -214,21 +213,6 @@ class ExtractionService:
             #
             # Keep this until those services are migrated
             # to PostgreSQL.
-
-            destination = (
-                Path("data/extracted")
-                / bank["jsonFile"]
-            )
-
-            destination.parent.mkdir(
-                parents=True,
-                exist_ok=True,
-            )
-
-            shutil.copy2(
-                output_json,
-                destination,
-            )
 
             # ----------------------------------------------
             # Complete

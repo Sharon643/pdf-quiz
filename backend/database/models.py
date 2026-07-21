@@ -26,10 +26,10 @@ def generate_uuid() -> str:
 class User(Base):
     __tablename__ = "users"
 
+    # Same UUID as Supabase auth.users.id
     id: Mapped[str] = mapped_column(
         String(36),
         primary_key=True,
-        default=generate_uuid,
     )
 
     email: Mapped[str] = mapped_column(
@@ -37,11 +37,6 @@ class User(Base):
         unique=True,
         nullable=False,
         index=True,
-    )
-
-    password_hash: Mapped[str] = mapped_column(
-        String(255),
-        nullable=False,
     )
 
     created_at: Mapped[datetime] = mapped_column(
