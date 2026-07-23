@@ -17,6 +17,11 @@ from fastapi.security import (
 
 from jwt import PyJWKClient
 
+from sqlalchemy import select
+
+from database.database import SessionLocal
+from database.models import User
+
 
 load_dotenv()
 
@@ -68,10 +73,7 @@ jwks_client = PyJWKClient(
 # ============================================================
 
 def get_current_user(
-    credentials:
-        HTTPAuthorizationCredentials
-        | None
-        = Depends(security),
+    credentials: HTTPAuthorizationCredentials | None = Depends(security),
 ):
 
     # --------------------------------------------------------
@@ -81,21 +83,16 @@ def get_current_user(
     if credentials is None:
 
         raise HTTPException(
-            status_code=
-                status.HTTP_401_UNAUTHORIZED,
-
-            detail=
-                "Authentication required.",
-
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentication required.",
             headers={
-                "WWW-Authenticate":
-                    "Bearer"
+                "WWW-Authenticate": "Bearer"
             },
         )
 
-
     token = credentials.credentials
 
+    db = SessionLocal()
 
     try:
 
@@ -103,13 +100,9 @@ def get_current_user(
         # Find signing key from Supabase JWKS
         # ----------------------------------------------------
 
-        signing_key = (
-            jwks_client
-            .get_signing_key_from_jwt(
-                token
-            )
+        signing_key = jwks_client.get_signing_key_from_jwt(
+            token
         )
-
 
         # ----------------------------------------------------
         # Verify JWT
@@ -117,18 +110,13 @@ def get_current_user(
 
         payload = jwt.decode(
             token,
-
             signing_key.key,
-
             algorithms=[
                 "ES256",
                 "RS256",
             ],
-
             issuer=JWT_ISSUER,
-
             audience="authenticated",
-
             options={
                 "require": [
                     "exp",
@@ -137,73 +125,63 @@ def get_current_user(
             },
         )
 
-
-        # ----------------------------------------------------
-        # Extract Supabase User
-        # ----------------------------------------------------
-
-        user_id = payload.get(
-            "sub"
-        )
-
-        email = payload.get(
-            "email"
-        )
-
+        user_id = payload.get("sub")
+        email = payload.get("email")
 
         if not user_id:
 
             raise HTTPException(
-                status_code=
-                    status.HTTP_401_UNAUTHORIZED,
-
-                detail=
-                    "Invalid authentication token.",
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid authentication token.",
             )
 
+        # ----------------------------------------------------
+        # Ensure user exists in our database
+        # ----------------------------------------------------
+
+        user = db.scalar(
+            select(User).where(
+                User.id == user_id
+            )
+        )
+
+        if user is None:
+
+            user = User(
+                id=user_id,
+                email=email,
+            )
+
+            db.add(user)
+            db.commit()
 
         return {
-            "id":
-                user_id,
-
-            "email":
-                email,
-
-            "role":
-                payload.get(
-                    "role"
-                ),
-
-            "metadata":
-                payload.get(
-                    "user_metadata",
-                    {},
-                ),
+            "id": user_id,
+            "email": email,
+            "role": payload.get("role"),
+            "metadata": payload.get(
+                "user_metadata",
+                {},
+            ),
         }
-
 
     except HTTPException:
 
         raise
 
-
     except jwt.ExpiredSignatureError:
 
         raise HTTPException(
-            status_code=
-                status.HTTP_401_UNAUTHORIZED,
-
-            detail=
-                "Authentication token has expired.",
-
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentication token has expired.",
             headers={
-                "WWW-Authenticate":
-                    "Bearer"
+                "WWW-Authenticate": "Bearer"
             },
         )
 
-
     except Exception as error:
+
+        db.rollback()
 
         print(
             "JWT verification failed:",
@@ -211,14 +189,13 @@ def get_current_user(
         )
 
         raise HTTPException(
-            status_code=
-                status.HTTP_401_UNAUTHORIZED,
-
-            detail=
-                "Invalid authentication token.",
-
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid authentication token.",
             headers={
-                "WWW-Authenticate":
-                    "Bearer"
+                "WWW-Authenticate": "Bearer"
             },
         )
+
+    finally:
+
+        db.close()

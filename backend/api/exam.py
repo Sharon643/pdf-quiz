@@ -1,4 +1,10 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import (
+    APIRouter,
+    Depends,
+    HTTPException,
+)
+
+from auth.dependencies import get_current_user
 
 from schemas.exam import (
     GenerateExamRequest,
@@ -20,9 +26,14 @@ service = ExamService()
     "/exam/generate",
     response_model=GenerateExamResponse,
 )
-def generate_exam(request: GenerateExamRequest):
+def generate_exam(
+    request: GenerateExamRequest,
+    current_user=Depends(get_current_user),
+):
 
-    unfinished = service.has_unfinished_exam()
+    unfinished = service.has_unfinished_exam(
+    current_user["id"]
+    )
 
     if unfinished is not None:
         return {
@@ -32,15 +43,20 @@ def generate_exam(request: GenerateExamRequest):
         }
 
     return service.generate_exam(
-        question_count=request.questionCount,
-        timed=request.timed,
-        duration_minutes=request.durationMinutes,
+    user_id=current_user["id"],
+    question_count=request.questionCount,
+    timed=request.timed,
+    duration_minutes=request.durationMinutes,
     )
 
 @router.get("/exam/current")
-def get_current_exam():
+def get_current_exam(
+    current_user=Depends(get_current_user),
+):
 
-    exam = service.get_current_exam()
+    exam = service.get_current_exam(
+    current_user["id"]
+    )
 
     return {
         "exists": exam is not None,
@@ -52,9 +68,15 @@ def get_current_exam():
     "/exam/{exam_id}",
     response_model=ExamSession,
 )
-def get_exam(exam_id: str):
+def get_exam(
+    exam_id: str,
+    current_user=Depends(get_current_user),
+):
 
-    exam = service.get_exam(exam_id)
+    exam = service.get_exam(
+    exam_id,
+    current_user["id"],
+    )
 
     if exam is None:
         raise HTTPException(
@@ -68,11 +90,13 @@ def get_exam(exam_id: str):
 def save_answer(
     exam_id: str,
     request: SaveAnswerRequest,
+    current_user=Depends(get_current_user),
 ):
 
     try:
         session = service.save_answer(
             exam_id,
+            current_user["id"],
             request.questionId,
             request.selectedOption,
         )
@@ -97,10 +121,12 @@ def save_answer(
 def mark_for_review(
     exam_id: str,
     request: MarkReviewRequest,
+    current_user=Depends(get_current_user),
 ):
 
     session = service.mark_for_review(
         exam_id,
+        current_user["id"],
         request.questionId,
         request.marked,
     )
@@ -119,9 +145,12 @@ def mark_for_review(
     "/exam/{exam_id}/submit",
     response_model=SubmitExamResponse,
 )
-def submit_exam(exam_id: str):
+def submit_exam(exam_id: str,current_user=Depends(get_current_user)):
 
-    result = service.submit_exam(exam_id)
+    result = service.submit_exam(
+    exam_id,
+    current_user["id"],
+    )
 
     if result is None:
         raise HTTPException(
@@ -132,9 +161,11 @@ def submit_exam(exam_id: str):
     return result
 
 @router.get("/exam/unfinished")
-def unfinished_exam():
+def unfinished_exam(current_user=Depends(get_current_user)):
 
-    exam = service.has_unfinished_exam()
+    exam = service.has_unfinished_exam(
+    current_user["id"]
+    )
 
     return {
         "exists": exam is not None,
@@ -143,6 +174,9 @@ def unfinished_exam():
 
 
 @router.delete("/exam/{exam_id}")
-def delete_exam(exam_id: str):
+def delete_exam(exam_id: str,current_user=Depends(get_current_user)):
 
-    return service.delete_exam(exam_id)
+    return service.delete_exam(
+    exam_id,
+    current_user["id"],
+    )

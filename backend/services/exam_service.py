@@ -40,9 +40,9 @@ class ExamService:
         }
 
     def _get_exam_with_answers(
-        self,
-        db,
-        exam_id: str,
+    db,
+    exam_id: str,
+    user_id: str,
     ):
 
         statement = (
@@ -53,7 +53,8 @@ class ExamService:
                 )
             )
             .where(
-                Exam.id == exam_id
+                Exam.id == exam_id,
+                Exam.user_id == user_id,
             )
         )
 
@@ -214,6 +215,7 @@ class ExamService:
 
     def generate_exam(
         self,
+        user_id: str,
         question_count: int,
         timed: bool,
         duration_minutes: int | None,
@@ -224,13 +226,12 @@ class ExamService:
         try:
 
             active_bank = db.scalar(
-                select(
-                    QuestionBank
-                )
+                select(QuestionBank)
                 .where(
-                    QuestionBank.active
-                    .is_(True)
+                    QuestionBank.user_id == user_id,
+                    QuestionBank.active.is_(True),
                 )
+            
                 .limit(1)
             )
 
@@ -273,6 +274,8 @@ class ExamService:
             ]
 
             exam = Exam(
+                user_id=user_id,
+
                 question_bank_id=
                     active_bank.id,
 
@@ -352,19 +355,19 @@ class ExamService:
     # ==================================================
 
     def get_exam(
-        self,
-        exam_id: str,
+    self,
+    exam_id,
+    user_id,
     ):
 
         db = SessionLocal()
 
         try:
 
-            exam = (
-                self._get_exam_with_answers(
-                    db,
-                    exam_id,
-                )
+            exam = self._get_exam_with_answers(
+                db,
+                exam_id,
+                user_id,
             )
 
             if exam is None:
@@ -384,19 +387,23 @@ class ExamService:
     # ==================================================
 
     def save_answer(
-        self,
-        exam_id: str,
-        question_id: str,
-        selected_option: str | None,
+    self,
+    exam_id,
+    user_id,
+    question_id,
+    selected_option,
     ):
 
         db = SessionLocal()
 
         try:
 
-            exam = db.get(
-                Exam,
-                exam_id,
+            exam = db.scalar(
+                select(Exam)
+                .where(
+                    Exam.id == exam_id,
+                    Exam.user_id == user_id,
+                )
             )
 
             if exam is None:
@@ -450,15 +457,27 @@ class ExamService:
     # ==================================================
 
     def mark_for_review(
-        self,
-        exam_id: str,
-        question_id: str,
-        marked: bool,
+    self,
+    exam_id: str,
+    user_id: str,
+    question_id: str,
+    marked: bool,
     ):
 
         db = SessionLocal()
+        
 
         try:
+
+            exam = db.scalar(
+                    select(Exam).where(
+                        Exam.id == exam_id,
+                        Exam.user_id == user_id,
+                    )
+                )
+            
+            if exam is None:
+                    return None
 
             answer = db.scalar(
                 select(
@@ -499,19 +518,19 @@ class ExamService:
     # ==================================================
 
     def submit_exam(
-        self,
-        exam_id: str,
+    self,
+    exam_id,
+    user_id,
     ):
 
         db = SessionLocal()
 
         try:
 
-            exam = (
-                self._get_exam_with_answers(
-                    db,
-                    exam_id,
-                )
+            exam = self._get_exam_with_answers(
+                db,
+                exam_id,
+                user_id,
             )
 
             if exam is None:
@@ -636,7 +655,8 @@ class ExamService:
     # ==================================================
 
     def get_current_exam(
-        self,
+    self,
+    user_id,
     ):
 
         db = SessionLocal()
@@ -653,8 +673,8 @@ class ExamService:
                     )
                 )
                 .where(
-                    Exam.status
-                    == "in_progress"
+                    Exam.user_id == user_id,
+                    Exam.status == "in_progress",
                 )
                 .order_by(
                     Exam.started_at.desc()
@@ -683,10 +703,13 @@ class ExamService:
     # ==================================================
 
     def has_unfinished_exam(
-        self,
+    self,
+    user_id,
     ):
 
-        exam = self.get_current_exam()
+        exam = self.get_current_exam(
+            user_id
+        )
 
         if exam is None:
             return None
@@ -746,15 +769,19 @@ class ExamService:
     def delete_exam(
         self,
         exam_id: str,
+        user_id
     ):
 
         db = SessionLocal()
 
         try:
 
-            exam = db.get(
-                Exam,
-                exam_id,
+            exam = db.scalar(
+                select(Exam)
+                .where(
+                    Exam.id == exam_id,
+                    Exam.user_id == user_id,
+                )
             )
 
             if exam is not None:
