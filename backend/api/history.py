@@ -1,4 +1,5 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from auth.dependencies import get_current_user
 
 from services.history_service import HistoryService
 
@@ -17,10 +18,14 @@ service = HistoryService()
     "/history",
     response_model=HistoryListResponse,
 )
-def get_history():
+def get_history(
+    current_user=Depends(get_current_user),
+):
 
     return {
-        "exams": service.get_history(),
+        "exams": service.get_history(
+    current_user["id"]
+    ),
     }
 
 
@@ -28,10 +33,12 @@ def get_history():
     "/history/recent",
     response_model=HistoryListResponse,
 )
-def get_recent():
+def get_recent(current_user=Depends(get_current_user)):
 
     return {
-        "exams": service.get_recent(),
+        "exams": service.get_recent(
+    current_user["id"]
+    ),
     }
 
 
@@ -39,9 +46,12 @@ def get_recent():
     "/history/{exam_id}",
     response_model=HistoryItem,
 )
-def get_exam(exam_id: str):
+def get_exam(exam_id: str,current_user=Depends(get_current_user)):
 
-    exam = service.get_exam(exam_id)
+    exam = service.get_exam(
+    exam_id,
+    current_user["id"],
+    )
 
     if exam is None:
         raise HTTPException(
@@ -56,9 +66,12 @@ def get_exam(exam_id: str):
     "/history/{exam_id}",
     response_model=DeleteHistoryResponse,
 )
-def delete_exam(exam_id: str):
+def delete_exam(exam_id: str,current_user=Depends(get_current_user)):
 
-    deleted = service.delete_exam(exam_id)
+    deleted = service.delete_exam(
+    exam_id,
+    current_user["id"],
+    )
 
     if not deleted:
         raise HTTPException(

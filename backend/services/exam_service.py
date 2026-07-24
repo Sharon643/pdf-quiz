@@ -40,6 +40,7 @@ class ExamService:
         }
 
     def _get_exam_with_answers(
+    self,
     db,
     exam_id: str,
     user_id: str,

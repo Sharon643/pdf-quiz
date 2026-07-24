@@ -98,7 +98,8 @@ class HistoryService:
     # --------------------------------------------------
 
     def get_history(
-        self,
+    self,
+    user_id: str,
     ):
 
         db = SessionLocal()
@@ -113,8 +114,8 @@ class HistoryService:
                     )
                 )
                 .where(
-                    Exam.status
-                    == "completed"
+                    Exam.user_id == user_id,
+                    Exam.status == "completed",
                 )
                 .order_by(
                     Exam.completed_at.desc()
@@ -144,8 +145,9 @@ class HistoryService:
     # --------------------------------------------------
 
     def get_exam(
-        self,
-        exam_id: str,
+    self,
+    exam_id: str,
+    user_id: str,
     ):
 
         db = SessionLocal()
@@ -159,13 +161,11 @@ class HistoryService:
                         Exam.answers
                     )
                 )
-                .where(
-                    Exam.id
-                    == exam_id,
-
-                    Exam.status
-                    == "completed",
-                )
+            .where(
+                Exam.id == exam_id,
+                Exam.user_id == user_id,
+                Exam.status == "completed",
+            )
             )
 
             exam = db.scalar(
@@ -191,6 +191,7 @@ class HistoryService:
     def delete_exam(
         self,
         exam_id: str,
+        user_id:str
     ):
 
         db = SessionLocal()
@@ -200,11 +201,9 @@ class HistoryService:
             exam = db.scalar(
                 select(Exam)
                 .where(
-                    Exam.id
-                    == exam_id,
-
-                    Exam.status
-                    == "completed",
+                    Exam.id == exam_id,
+                    Exam.user_id == user_id,
+                    Exam.status == "completed",
                 )
             )
 
@@ -236,11 +235,10 @@ class HistoryService:
     def get_by_mode(
         self,
         mode: str,
+        user_id
     ):
 
-        history = (
-            self.get_history()
-        )
+        history = self.get_history(user_id)
 
         return [
             exam
@@ -256,11 +254,10 @@ class HistoryService:
     def get_by_question_bank(
         self,
         bank_name: str,
+        user_id: str
     ):
 
-        history = (
-            self.get_history()
-        )
+        history = self.get_history(user_id)
 
         return [
             exam
@@ -276,8 +273,9 @@ class HistoryService:
     # --------------------------------------------------
 
     def get_recent(
-        self,
-        limit: int = 5,
+    self,
+    user_id: str,
+    limit: int = 5,
     ):
 
         db = SessionLocal()
@@ -292,8 +290,8 @@ class HistoryService:
                     )
                 )
                 .where(
-                    Exam.status
-                    == "completed"
+                    Exam.user_id == user_id,
+                    Exam.status == "completed",
                 )
                 .order_by(
                     Exam.completed_at.desc()
